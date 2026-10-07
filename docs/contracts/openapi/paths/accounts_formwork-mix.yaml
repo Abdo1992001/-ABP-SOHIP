@@ -1,0 +1,25 @@
+get:
+  tags: [CRM]
+  summary: Monthly and yearly formwork-customer mix against the 70% target
+  operationId: get_accounts_formwork_mix
+  security: [{ WebCookie: [] }, { DesktopOAuth: [] }]
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/FormworkMixEnvelope.yaml
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '403': { $ref: ../components/responses/Error403.yaml }
+  x-abp-module: CRM
+  x-abp-permission: accounts.view
+  x-abp-scope-rule: Country scope; distinct customers with ERP orders in period
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: none
+  x-abp-success-schema: FormworkMixEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

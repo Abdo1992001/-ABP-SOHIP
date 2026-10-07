@@ -1,0 +1,34 @@
+post:
+  tags: [Identity]
+  summary: Submit a public access request for admin review
+  operationId: post_auth_request-access
+  description: >-
+    Permission: public. Writes an AccessRequest row only — creates no
+    AppUser and grants no access. An admin with users.create must review and
+    approve the request before any account exists.
+  security: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema: { $ref: ../components/schemas/SubmitAccessRequestRequest.yaml }
+  responses:
+    '202':
+      description: Request recorded, pending admin review
+      content:
+        application/json:
+          schema: { $ref: ../components/schemas/AccessRequestEnvelope.yaml }
+    '400': { $ref: ../components/responses/Error400.yaml }
+    '429': { $ref: ../components/responses/Error429.yaml }
+    '500': { $ref: ../components/responses/Error500.yaml }
+  x-abp-module: Identity
+  x-abp-permission: public
+  x-abp-scope-rule: Unauthenticated; rate-limited by source IP
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: SubmitAccessRequestRequest
+  x-abp-success-schema: AccessRequestEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

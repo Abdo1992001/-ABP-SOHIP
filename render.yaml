@@ -1,0 +1,61 @@
+# ENVIRONMENT = STAGING ONLY
+# Render is an implementation/test environment. Azure remains ABP's locked
+# production deployment authority; this Blueprint never authorizes production.
+services:
+  - type: web
+    name: abp-api-staging
+    runtime: docker
+    region: frankfurt
+    plan: starter
+    # Render Blueprints support a boolean here; GitHub CI remains the merge gate.
+    autoDeploy: true
+    dockerfilePath: apps/api/Dockerfile
+    dockerContext: .
+    preDeployCommand: corepack pnpm db:migrate:deploy
+    healthCheckPath: /api/v1/health/ready
+    envVars:
+      - key: NODE_ENV
+        value: staging
+      - key: DATABASE_URL
+        fromDatabase:
+          name: abp-postgres-staging
+          property: connectionString
+      - key: ABP_ALLOWED_ORIGINS
+        sync: false
+
+  - type: worker
+    name: abp-worker-staging
+    runtime: docker
+    region: frankfurt
+    plan: starter
+    autoDeploy: true
+    dockerfilePath: apps/worker/Dockerfile
+    dockerContext: .
+    envVars:
+      - key: NODE_ENV
+        value: staging
+      - key: DATABASE_URL
+        fromDatabase:
+          name: abp-postgres-staging
+          property: connectionString
+
+  - type: web
+    name: abp-web-staging
+    runtime: docker
+    region: frankfurt
+    plan: starter
+    autoDeploy: true
+    dockerfilePath: apps/web/Dockerfile
+    dockerContext: .
+    healthCheckPath: /
+    envVars:
+      - key: ABP_API_BASE_URL
+        sync: false
+
+databases:
+  - name: abp-postgres-staging
+    databaseName: abp_commercial_staging
+    region: frankfurt
+    plan: basic-256mb
+    postgresMajorVersion: "17"
+    ipAllowList: []

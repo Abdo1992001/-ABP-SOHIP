@@ -1,0 +1,17 @@
+get:
+  security: [{ ExternalBffAssertion: [] }]
+  tags: [Logistics]
+  summary: Client-safe own shipment milestones
+  operationId: get_portal_customers_by_accountId_shipments
+  parameters: [{ name: accountId, in: path, required: true, schema: { type: string, format: uuid } }, { $ref: ../components/parameters/Offset.yaml }, { $ref: ../components/parameters/Limit.yaml }]
+  responses:
+    '200': { description: Success, content: { application/json: { schema: { type: object, additionalProperties: false, required: [data, meta], properties: { data: { type: array, items: { type: object, additionalProperties: false, required: [shipmentId, shipmentRef, erpOrderId, milestoneCode], properties: { shipmentId: { type: string, format: uuid }, shipmentRef: { type: string }, erpOrderId: { type: string, format: uuid }, milestoneCode: { type: string }, blDate: { type: [string, 'null'], format: date }, portOfDischarge: { type: [string, 'null'] }, actualArrivalAt: { type: [string, 'null'], format: date-time } } } }, meta: { $ref: ../components/schemas/OffsetPageMeta.yaml } } } } } }
+    '400': { $ref: ../components/responses/Error400.yaml }
+  x-abp-module: Client Portal
+  x-abp-permission: external.active-binding
+  x-abp-scope-rule: Current explicit customer binding through the source ERP order
+  x-abp-concurrency: NONE
+  x-abp-execution-mode: SYNC
+  x-abp-job-dto: false
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

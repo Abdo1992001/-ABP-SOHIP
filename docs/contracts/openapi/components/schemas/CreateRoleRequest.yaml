@@ -1,0 +1,16 @@
+type: object
+properties:
+  roleCode:
+    type: string
+  name:
+    type: string
+  permissionIds:
+    type: array
+    items:
+      type: string
+      format: uuid
+additionalProperties: false
+required:
+  - roleCode
+  - name
+  - permissionIds

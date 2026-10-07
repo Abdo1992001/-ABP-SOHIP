@@ -1,0 +1,67 @@
+put:
+  tags:
+    - Logistics
+  summary: Update DRAFT planning inputs and invalidate prior derived results
+  operationId: put_logistics_plan_versions_by_versionId_draft_content
+  description: >-
+    Permission: logistics.edit. Scope: Plan scope. FLAT_ON_FACE only; invalid
+    orientation rejected.
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/LogisticsPlanVersionEnvelope.yaml
+      headers:
+        ETag:
+          $ref: ../components/headers/ETag.yaml
+    '400':
+      $ref: ../components/responses/Error400.yaml
+    '401':
+      $ref: ../components/responses/Error401.yaml
+    '403':
+      $ref: ../components/responses/Error403.yaml
+    '404':
+      $ref: ../components/responses/Error404.yaml
+    '409':
+      $ref: ../components/responses/Error409.yaml
+    '412':
+      $ref: ../components/responses/Error412.yaml
+    '422':
+      $ref: ../components/responses/Error422.yaml
+    '429':
+      $ref: ../components/responses/Error429.yaml
+    '500':
+      $ref: ../components/responses/Error500.yaml
+    '503':
+      $ref: ../components/responses/Error503.yaml
+  parameters:
+    - name: versionId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    - $ref: ../components/parameters/IfMatch.yaml
+    - $ref: ../components/parameters/CsrfToken.yaml
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/SaveLogisticsDraftRequest.yaml
+  x-abp-module: Logistics
+  x-abp-permission: logistics.edit
+  x-abp-scope-rule: Plan scope
+  x-abp-concurrency: If-Match
+  x-abp-idempotency: Recommended
+  x-abp-request-schema: SaveLogisticsDraftRequest
+  x-abp-success-schema: LogisticsPlanVersionEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

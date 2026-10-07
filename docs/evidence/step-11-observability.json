@@ -1,0 +1,18 @@
+{
+  "verdict": "PASS",
+  "generatedAt": "2026-09-07T02:54:24.749Z",
+  "checks": {
+    "structuredHttpLogs": true,
+    "tracePropagation": true,
+    "apiReadiness": true,
+    "workerReadiness": true,
+    "workerGracefulShutdown": true,
+    "applicationInsights": true,
+    "logAnalytics90Days": true,
+    "alerts": true,
+    "platformTraceEvidencePresent": true
+  },
+  "openTelemetry": "W3C trace/correlation instrumentation boundary ready",
+  "azureConfiguration": "PASS",
+  "liveAzureTelemetry": "PENDING EXTERNAL"
+}

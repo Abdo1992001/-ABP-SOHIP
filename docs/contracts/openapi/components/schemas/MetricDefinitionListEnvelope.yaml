@@ -1,0 +1,14 @@
+type: object
+properties:
+  data:
+    type: array
+    items: { $ref: ./MetricDefinition.yaml }
+  meta:
+    type: object
+    properties:
+      total: { type: integer, minimum: 0 }
+      projected: { type: boolean }
+    additionalProperties: false
+    required: [total, projected]
+additionalProperties: false
+required: [data, meta]

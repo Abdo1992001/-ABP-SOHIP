@@ -1,0 +1,56 @@
+type: object
+properties:
+  customerShareId:
+    type: string
+    format: uuid
+    description: Share grant.
+  accountId:
+    type: string
+    format: uuid
+    description: Shared customer.
+  recipientUserId:
+    type: string
+    format: uuid
+    description: Recipient.
+  shareScopeCode:
+    type: string
+    description: CUSTOMER_CONTACTS / COMMERCIAL_WORKSPACE etc.
+  accessLevelCode:
+    type: string
+    description: VIEW/COLLABORATE_EDIT.
+  expiresAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+    description: Optional expiry.
+  statusCode:
+    type: string
+    description: ACTIVE/REVOKED/EXPIRED.
+  createdByUserId:
+    type: string
+    format: uuid
+    description: Owner/action actor.
+  revokedByUserId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    description: Revoker.
+  revokedAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+    description: Revocation time.
+  rowVersion:
+    type: string
+    description: Strong ETag token required to revoke this grant.
+additionalProperties: false
+required:
+  - accountId
+  - createdByUserId
+  - customerShareId
+  - recipientUserId
+  - shareScopeCode
+  - rowVersion

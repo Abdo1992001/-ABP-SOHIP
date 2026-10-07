@@ -1,0 +1,35 @@
+{
+  "classification": "TEST_DEMO_STAGING_ONLY",
+  "evaluationOrder": [
+    "active-session",
+    "country-scope",
+    "workspace-rbac",
+    "explicit-deny",
+    "resource-context",
+    "field-projection",
+    "workflow-action"
+  ],
+  "invariants": {
+    "countryScopeNeverWidenedBy": ["ownership", "manager", "share"],
+    "denyWins": true,
+    "salesManagementAndSupportWorkspace": "SALES",
+    "crossWorkspaceSalesCrmDefault": "DENY"
+  },
+  "personas": [
+    "sales.user.eg",
+    "sales.user.global",
+    "sales.manager.eg",
+    "sales.manager.global",
+    "sales.support.limited",
+    "logistics.user",
+    "operations.user",
+    "finance.user",
+    "denied.user",
+    "suspended.user"
+  ],
+  "evidence": {
+    "postgresqlIntegration": "apps/api/src/customer/customer.integration.test.ts",
+    "policyUnit": "packages/authorization/src/policy.test.ts",
+    "proofCommand": "pnpm proof:authorization"
+  }
+}

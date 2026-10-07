@@ -1,0 +1,22 @@
+type: object
+additionalProperties: false
+required:
+  - field
+  - code
+  - messageKey
+  - params
+properties:
+  field:
+    type: string
+    minLength: 1
+    maxLength: 200
+  code:
+    type: string
+    minLength: 1
+    maxLength: 100
+  messageKey:
+    type: string
+    minLength: 1
+    maxLength: 200
+  params:
+    $ref: ./ErrorParamMap.yaml

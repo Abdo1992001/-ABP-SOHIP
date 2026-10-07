@@ -1,0 +1,27 @@
+post:
+  tags: [Messages]
+  summary: Upload a local attachment for an authorized conversation
+  operationId: post_conversations_by_conversationId_attachments
+  security: [{ WebCookie: [] }, { DesktopOAuth: [] }]
+  parameters:
+    - { name: conversationId, in: path, required: true, schema: { type: string, format: uuid } }
+    - { $ref: ../components/parameters/CsrfToken.yaml }
+  requestBody:
+    required: true
+    content: { application/json: { schema: { $ref: ../components/schemas/MessageAttachmentUploadRequest.yaml } } }
+  responses:
+    '201': { description: Created, content: { application/json: { schema: { $ref: ../components/schemas/MessageAttachmentEnvelope.yaml } } } }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '404': { $ref: ../components/responses/Error404.yaml }
+    '422': { $ref: ../components/responses/Error422.yaml }
+  x-abp-module: Messages
+  x-abp-permission: authenticated
+  x-abp-scope-rule: Active participant only
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: MessageAttachmentUploadRequest
+  x-abp-success-schema: MessageAttachmentEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

@@ -1,0 +1,12 @@
+type: object
+additionalProperties: false
+required: [templateVersionId, versionNo, contentHash, languageCode, brandCode, previewModeCode, renderedContent, sample]
+properties:
+  templateVersionId: { type: string, format: uuid }
+  versionNo: { type: integer, minimum: 1 }
+  contentHash: { type: string }
+  languageCode: { type: string }
+  brandCode: { type: string }
+  previewModeCode: { type: string, enum: [DETERMINISTIC_SAMPLE] }
+  renderedContent: { type: string }
+  sample: { $ref: ./TemplatePreviewSample.yaml }

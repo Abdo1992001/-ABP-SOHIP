@@ -1,0 +1,39 @@
+parameters:
+  - name: reportId
+    in: path
+    required: true
+    schema: { type: string, pattern: '^RPT-[0-9]{3}$' }
+get:
+  tags: [Analytics]
+  summary: Resolve one governed analytics report
+  operationId: get_analytics_reports_by_reportId
+  security: [{ WebCookie: [] }, { DesktopOAuth: [] }]
+  parameters:
+    - { name: asOf, in: query, schema: { type: string, format: date-time } }
+    - { name: from, in: query, schema: { type: string, format: date-time } }
+    - { name: to, in: query, schema: { type: string, format: date-time } }
+    - { name: currency, in: query, schema: { type: string, enum: [USD, EGP], default: USD } }
+    - { name: countryCode, in: query, schema: { $ref: ../components/schemas/CountryCode.yaml } }
+  responses:
+    '200':
+      description: Governed report with permission-projected metrics
+      content:
+        application/json:
+          schema: { $ref: ../components/schemas/GovernedAnalyticsReportEnvelope.yaml }
+    '400': { $ref: ../components/responses/Error400.yaml }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '403': { $ref: ../components/responses/Error403.yaml }
+    '404': { $ref: ../components/responses/Error404.yaml }
+    '422': { $ref: ../components/responses/Error422.yaml }
+    '500': { $ref: ../components/responses/Error500.yaml }
+  x-abp-module: Analytics
+  x-abp-permission: Registry-defined report view permission
+  x-abp-scope-rule: Country Scope and DENY applied before aggregation; restricted fields omitted
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: AnalyticsReportQuery
+  x-abp-success-schema: GovernedAnalyticsReportEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

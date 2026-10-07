@@ -1,0 +1,14 @@
+type: object
+additionalProperties: false
+required:
+  - resourceTypeCode
+  - resourceId
+properties:
+  resourceTypeCode:
+    type: string
+    maxLength: 80
+    description: Supported resource type for a scoped advisory.
+  resourceId:
+    type: string
+    format: uuid
+    description: Resource identifier.

@@ -1,0 +1,11 @@
+type: object
+additionalProperties: false
+required: [productId, totalRequestedQuantity, distinctOfficialQuotationCount]
+properties:
+  productId: { type: string, format: uuid }
+  skuCode: { type: [string, 'null'] }
+  thicknessMm: { type: [string, 'null'] }
+  widthMm: { type: [string, 'null'] }
+  lengthMm: { type: [string, 'null'] }
+  totalRequestedQuantity: { type: string }
+  distinctOfficialQuotationCount: { type: integer, minimum: 0 }

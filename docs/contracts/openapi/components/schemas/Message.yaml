@@ -1,0 +1,28 @@
+type: object
+additionalProperties: false
+required: [messageId, conversationId, senderUserId, senderName, body, createdAt, reactions, attachments]
+properties:
+  messageId: { type: string, format: uuid }
+  conversationId: { type: string, format: uuid }
+  senderUserId: { type: string, format: uuid }
+  senderName: { type: string }
+  senderPhotoUpdatedAt:
+    type: [string, 'null']
+    format: date-time
+    description: Null when the sender has no photo or has hidden it.
+  replyToMessageId: { type: [string, 'null'], format: uuid }
+  body: { type: string, maxLength: 10000 }
+  createdAt: { type: string, format: date-time }
+  editedAt: { type: [string, 'null'], format: date-time }
+  reactions:
+    type: array
+    items:
+      type: object
+      additionalProperties: false
+      required: [userId, emoji]
+      properties:
+        userId: { type: string, format: uuid }
+        emoji: { type: string, maxLength: 16 }
+  attachments:
+    type: array
+    items: { $ref: ./MessageAttachment.yaml }

@@ -1,0 +1,98 @@
+type: object
+properties:
+  paymentId:
+    type: string
+    format: uuid
+    description: Payment fact.
+  sourceSystemId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    description: Source.
+  sourcePaymentKey:
+    type:
+      - string
+      - 'null'
+    description: Source natural key.
+  accountId:
+    type: string
+    format: uuid
+    description: Customer.
+  salesOrderId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    description: Optional order link.
+  paymentDate:
+    type: string
+    format: date
+    description: Payment date.
+  amount:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+    description: Payment amount.
+  currencyCode:
+    type: string
+    description: Currency.
+  paymentMethodCode:
+    type:
+      - string
+      - 'null'
+    description: Method.
+  statusCode:
+    type: string
+    description: Payment status.
+    enum:
+      - ACTIVE
+      - VOID
+  rawReference:
+    type:
+      - string
+      - 'null'
+    description: Source/reference value.
+  sourceTypeCode:
+    type: string
+    enum:
+      - IMPORT
+      - MANUAL
+  createdByUserId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  createdAt:
+    type: string
+    format: date-time
+  rowVersion:
+    $ref: ./RowVersion.yaml
+  voidedAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+  voidedByUserId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  voidReason:
+    type:
+      - string
+      - 'null'
+  correctionOfPaymentId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+additionalProperties: false
+required:
+  - accountId
+  - amount
+  - currencyCode
+  - paymentDate
+  - paymentId
+  - sourceTypeCode
+  - createdAt
+  - rowVersion

@@ -1,0 +1,21 @@
+type: object
+additionalProperties: false
+required: [data]
+properties:
+  data:
+    type: object
+    additionalProperties: false
+    required: [calculationFormulaId, formulaKey, displayName, expression, statusCode]
+    properties:
+      calculationFormulaId: { type: string, format: uuid }
+      formulaKey: { type: string, maxLength: 80 }
+      displayName: { type: string, maxLength: 160 }
+      arabicLabel: { type: [string, 'null'], maxLength: 160 }
+      expression: { type: string, maxLength: 500 }
+      description: { type: [string, 'null'], maxLength: 500 }
+      # The unit the rate should be entered in. A rule priced by square
+      # metre and one priced by kilogram both read `rate`, and the
+      # difference is only visible if the screen says so.
+      rateUnitLabel: { type: [string, 'null'], maxLength: 40 }
+      statusCode: { type: string, enum: [ACTIVE, RETIRED] }
+      sortOrder: { type: integer, minimum: 0 }

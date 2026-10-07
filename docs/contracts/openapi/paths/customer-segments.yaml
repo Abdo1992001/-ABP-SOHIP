@@ -1,0 +1,36 @@
+get:
+  tags: [CRM]
+  summary: Governed customer segment reference list
+  operationId: get_customer_segments
+  parameters: [{ $ref: ../components/parameters/Offset.yaml }, { $ref: ../components/parameters/Limit.yaml }, { $ref: ../components/parameters/Search.yaml }]
+  responses: { '200': { description: Success, content: { application/json: { schema: { $ref: ../components/schemas/CustomerSegmentListEnvelope.yaml } } } }, '400': { $ref: ../components/responses/Error400.yaml } }
+  x-abp-module: CRM
+  x-abp-permission: customer-segments.view
+  x-abp-scope-rule: Reference projection only; no access grant
+  x-abp-concurrency: NONE
+  x-abp-execution-mode: SYNC
+  x-abp-job-dto: false
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true
+post:
+  tags: [Administration]
+  summary: Create governed customer segment
+  operationId: post_customer_segments
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          additionalProperties: false
+          required: [code, displayNameEn, displayNameAr]
+          properties: { code: { type: string }, displayNameEn: { type: string }, displayNameAr: { type: string } }
+  responses: { '201': { description: Created, content: { application/json: { schema: { $ref: ../components/schemas/CustomerSegmentEnvelope.yaml } } } }, '400': { $ref: ../components/responses/Error400.yaml } }
+  x-abp-module: Administration
+  x-abp-permission: customer-segments.manage
+  x-abp-scope-rule: Configuration authority; never grants customer access
+  x-abp-concurrency: NONE
+  x-abp-execution-mode: SYNC
+  x-abp-job-dto: false
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

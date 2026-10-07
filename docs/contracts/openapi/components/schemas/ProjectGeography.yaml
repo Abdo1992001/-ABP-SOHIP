@@ -1,0 +1,15 @@
+type: object
+additionalProperties: false
+required:
+  - country
+  - continent
+  - marketScope
+properties:
+  country:
+    $ref: ./CountryReference.yaml
+  continent:
+    $ref: ./ContinentCode.yaml
+  marketScope:
+    $ref: ./MarketScope.yaml
+description: Server-authoritative Project geography derived from the Project country, never from Customer HQ or React.
+

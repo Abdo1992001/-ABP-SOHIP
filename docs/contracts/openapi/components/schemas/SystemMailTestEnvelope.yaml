@@ -1,0 +1,11 @@
+type: object
+additionalProperties: false
+required: [data]
+properties:
+  data:
+    type: object
+    additionalProperties: false
+    required: [emailMessageId, to]
+    properties:
+      emailMessageId: { type: string, format: uuid }
+      to: { type: string }

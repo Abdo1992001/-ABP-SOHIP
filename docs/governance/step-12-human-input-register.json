@@ -1,0 +1,135 @@
+{
+  "status": "ACTION_REQUIRED_NON_PEOPLE_DECISIONS_AND_DEFERRED_PEOPLE_ITEMS",
+  "policy": "People-related identities, rosters, attendees and staffing assignments are deferred by explicit Business direction. They are preserved as release blockers and are not requested in this run.",
+  "counts": {
+    "nonPeopleDecisions": 8,
+    "peopleItemsDeferred": 4,
+    "externalExecutionDependencies": 2
+  },
+  "nonPeopleDecisions": [
+    {
+      "id": "D-01",
+      "legacyItems": ["HI-003 partial"],
+      "dependency": "DEP-005",
+      "releaseGate": "RG-14",
+      "decisionRequired": "Choose Contacts source strategy: NEW SYSTEM ONLY or MIGRATION LATER if an approved source is subsequently supplied.",
+      "recommendation": "NEW SYSTEM ONLY for initial V1; never infer or fabricate Contacts.",
+      "approverRole": "Business/Data Owner",
+      "status": "PENDING BUSINESS DECISION"
+    },
+    {
+      "id": "D-02",
+      "legacyItems": ["HI-003 partial"],
+      "dependency": "DEP-005",
+      "releaseGate": "RG-14",
+      "decisionRequired": "Approve Customer cutover source strategy and final extract/freeze rule.",
+      "recommendation": "Approve current mapping/DQ basis and require a fresh final extract/hash at cutoff.",
+      "approverRole": "Business/Data Owner",
+      "status": "PENDING BUSINESS DECISION"
+    },
+    {
+      "id": "D-03",
+      "legacyItems": ["HI-004"],
+      "dependency": "DEP-005",
+      "releaseGate": "RG-14",
+      "decisionRequired": "Approve Product/SKU source strategy, crosswalk and final extract/freeze rule.",
+      "recommendation": "Approve current seed/DQ basis and refresh/freeze the final binary at cutoff.",
+      "approverRole": "Business/Product + Data Owner",
+      "status": "PENDING BUSINESS DECISION"
+    },
+    {
+      "id": "D-04",
+      "legacyItems": ["HI-005"],
+      "dependency": "DEP-005",
+      "releaseGate": "RG-14",
+      "decisionRequired": "Select authoritative ERP, FX, Payments and Cheques systems/sources and initial extract/sync methods.",
+      "recommendation": "Trusted source integrations with stable source keys, raw lineage, correction history, DQ and reconciliation.",
+      "approverRole": "Business/Data + Finance Owner",
+      "status": "PENDING BUSINESS DECISION"
+    },
+    {
+      "id": "D-05",
+      "legacyItems": ["HI-006 non-identity policy portion"],
+      "dependency": "DEP-005 / DEP-008",
+      "releaseGate": "RG-12 / RG-14",
+      "decisionRequired": "Approve cutover classifications for Complaints, Users, Roles, Country Scope, R&D access and Client bindings.",
+      "recommendation": "Complaints new-system-only; Users external provisioning; Roles/Country Scope/R&D configured at Go-Live; Client bindings external provisioning plus explicit audited configuration.",
+      "approverRole": "Business + Security + Data Owner",
+      "status": "PENDING BUSINESS DECISION"
+    },
+    {
+      "id": "D-06",
+      "legacyItems": ["HI-007"],
+      "dependency": "DEP-006",
+      "releaseGate": "RG-08",
+      "decisionRequired": "Approve or replace the exact Low/Expected/Peak production workload profile.",
+      "recommendation": "APPROVE AS INITIAL PRODUCTION BASELINE, followed by a formal production-like load/spike/soak run.",
+      "approverRole": "Business/Product + Technical Owner",
+      "status": "PENDING BUSINESS DECISION"
+    },
+    {
+      "id": "D-07",
+      "legacyItems": ["HI-009"],
+      "dependency": "DEP-007",
+      "releaseGate": "RG-09",
+      "decisionRequired": "Approve or amend the 28-category retention matrix.",
+      "recommendation": "REQUIRES CHANGES: define exact Customer and Contact post-relationship periods, then obtain governance approval.",
+      "approverRole": "Business + Legal/Privacy + Security",
+      "status": "PENDING BUSINESS/GOVERNANCE DECISION"
+    },
+    {
+      "id": "D-08",
+      "legacyItems": ["HI-013"],
+      "dependency": "DEP-003",
+      "releaseGate": "RG-09",
+      "decisionRequired": "Choose a DR malware-scanning strategy for UAE Central or another approved DR region.",
+      "recommendation": "Evaluate failure-closed alternative scanning in UAE Central first; use another supported region if equivalence cannot be proven; do not default to a security exception.",
+      "approverRole": "Security + Technical/Azure; Business/Data if region/residency changes",
+      "status": "PENDING BUSINESS/SECURITY DECISION"
+    }
+  ],
+  "peopleRelatedDeferred": [
+    {
+      "id": "HI-001",
+      "topic": "Staffing owners and backups",
+      "status": "DEFERRED BY BUSINESS",
+      "releaseImpact": "Operational readiness remains open."
+    },
+    {
+      "id": "HI-002",
+      "topic": "Training attendees, schedule and attendance evidence",
+      "status": "DEFERRED BY BUSINESS",
+      "releaseImpact": "RG-13 remains open."
+    },
+    {
+      "id": "HI-010",
+      "topic": "UAT participants, execution and signoff",
+      "status": "DEFERRED BY BUSINESS",
+      "releaseImpact": "RG-11 remains open."
+    },
+    {
+      "id": "HI-011",
+      "topic": "Production identity/access roster and certification",
+      "status": "DEFERRED BY BUSINESS",
+      "releaseImpact": "RG-12 remains open."
+    }
+  ],
+  "externalExecutionDependencies": [
+    {
+      "id": "EX-01",
+      "legacyItem": "HI-008",
+      "topic": "Authorize and run production-like load/spike/soak after D-06 approval.",
+      "status": "PENDING EXTERNAL ENVIRONMENT/EVIDENCE"
+    },
+    {
+      "id": "EX-02",
+      "legacyItem": "HI-012",
+      "topic": "Run formal staging cutover and rollback rehearsals after decisions, staging and production evidence exist.",
+      "status": "PENDING EXTERNAL ENVIRONMENT/EVIDENCE"
+    }
+  ],
+  "sourcePack": "docs/governance/step-12-non-people-decision-pack.json",
+  "step12": "BLOCKED",
+  "productionReady": false,
+  "productionDeployment": "NOT_EXECUTED"
+}

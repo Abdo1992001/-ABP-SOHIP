@@ -1,0 +1,45 @@
+get:
+  tags:
+    - Identity
+  summary: What a role can do, for the View-as preview
+  operationId: get_me_role_preview_by_roleCode
+  description: >-
+    Permission: a system administrator or a sales manager. Returns the
+    permission codes a role grants, so the View-as preview shows what that role
+    really sees rather than a guess from the route matrix.
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  parameters:
+    - name: roleCode
+      in: path
+      required: true
+      schema:
+        type: string
+        maxLength: 60
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/RolePreviewEnvelope.yaml
+    '401':
+      $ref: ../components/responses/Error401.yaml
+    '403':
+      $ref: ../components/responses/Error403.yaml
+    '404':
+      $ref: ../components/responses/Error404.yaml
+    '500':
+      $ref: ../components/responses/Error500.yaml
+  x-abp-module: Identity
+  x-abp-permission: authenticated
+  x-abp-scope-rule: Authorized
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: NONE
+  x-abp-success-schema: RolePreviewEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

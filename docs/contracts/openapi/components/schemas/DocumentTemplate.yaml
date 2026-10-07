@@ -1,0 +1,19 @@
+type: object
+additionalProperties: false
+required: [templateId, code, name, documentTypeCode, languageCode, brandCode, statusCode, rowVersion, versionCount, createdAt, updatedAt]
+properties:
+  templateId: { type: string, format: uuid }
+  code: { type: string }
+  name: { type: string }
+  documentTypeCode: { type: string }
+  languageCode: { type: string }
+  brandCode: { type: string }
+  statusCode: { type: string, enum: [ACTIVE, INACTIVE] }
+  rowVersion: { $ref: ./RowVersion.yaml }
+  activeVersion:
+    oneOf:
+      - $ref: ./DocumentTemplateVersion.yaml
+      - type: 'null'
+  versionCount: { type: integer, minimum: 0 }
+  createdAt: { type: string, format: date-time }
+  updatedAt: { type: string, format: date-time }

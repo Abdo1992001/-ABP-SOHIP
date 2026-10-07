@@ -1,0 +1,27 @@
+type: object
+properties:
+  documentTypeCode:
+    type: string
+  fileName:
+    type: string
+  mimeType:
+    type: string
+  sizeBytes:
+    type: integer
+    format: int64
+    minimum: 1
+  targetResourceType:
+    type:
+      - string
+      - 'null'
+  targetResourceId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+additionalProperties: false
+required:
+  - documentTypeCode
+  - fileName
+  - mimeType
+  - sizeBytes

@@ -1,0 +1,31 @@
+post:
+  tags: [Messages]
+  summary: Post into a record's conversation, starting it if it does not exist
+  description: >-
+    Posting joins the thread; there is no invite step, because the people on a
+    deal are whoever is working it and that list changes by itself.
+  operationId: post_record_conversations_by_contextType_by_contextId_messages
+  security: [{ WebCookie: [] }, { DesktopOAuth: [] }]
+  parameters:
+    - { name: contextType, in: path, required: true, schema: { type: string, enum: [OPPORTUNITY, QUOTATION] } }
+    - { name: contextId, in: path, required: true, schema: { type: string, format: uuid } }
+    - { $ref: ../components/parameters/CsrfToken.yaml }
+  requestBody:
+    required: true
+    content: { application/json: { schema: { $ref: ../components/schemas/SendMessageRequest.yaml } } }
+  responses:
+    '201': { description: Created, content: { application/json: { schema: { $ref: ../components/schemas/MessageEnvelope.yaml } } } }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '404': { $ref: ../components/responses/Error404.yaml }
+    '422': { $ref: ../components/responses/Error422.yaml }
+  x-abp-module: Messages
+  x-abp-permission: authenticated
+  x-abp-scope-rule: Record visibility, scoped by the caller's country grants
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: SendMessageRequest
+  x-abp-success-schema: MessageEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

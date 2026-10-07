@@ -1,0 +1,37 @@
+{
+  "generatedAt": "2026-08-30T06:00:05.913Z",
+  "generator": "apps/api/src/analytics-proof-cli.ts",
+  "execution": "real NestJS runtime and PostgreSQL queries",
+  "metricRegistryCount": 72,
+  "reportRegistryCount": 18,
+  "requirements": {
+    "total": 328,
+    "mapped": 328,
+    "unmapped": 0
+  },
+  "checks": {
+    "metricRegistry": "PASS",
+    "reportRegistry": "PASS",
+    "semanticServices": "PASS",
+    "sourceLineageValidation": "PASS",
+    "authorizationTests": "PASS",
+    "countryScopeTests": "PASS",
+    "denyTests": "PASS",
+    "dqExclusionTests": "PASS",
+    "currencyTests": "PASS",
+    "asOfTests": "PASS",
+    "targetTests": "PASS",
+    "wonReopenTests": "PASS",
+    "erpTests": "PASS",
+    "geographyTests": "PASS",
+    "groupTests": "PASS",
+    "drilldownTests": "PASS",
+    "exportTests": "PASS",
+    "frontendReconciliation": "PASS",
+    "exportReconciliation": "PASS",
+    "forbiddenSemanticScan": "PASS",
+    "postgresql17": "PASS"
+  },
+  "openDefects": [],
+  "technicalVerdict": "PASS"
+}

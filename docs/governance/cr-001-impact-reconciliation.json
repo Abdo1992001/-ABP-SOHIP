@@ -1,0 +1,298 @@
+{
+  "changeRequestId": "CR-001",
+  "title": "Commercial UX, lifecycle, logistics execution, complaints, client portal, and R&D access change",
+  "status": "IMPLEMENTED_RECONCILED",
+  "approval": {
+    "businessInputApproved": true,
+    "implementationAuthorized": true,
+    "productionAuthorized": false,
+    "reason": "The seven previously open design gates were explicitly business-approved and implemented as a controlled forward delta; production authorization remains separate."
+  },
+  "baselineBeforeChange": {
+    "baselineId": "ABP-SSOT-2026-08-20-R1",
+    "stepsPassed": "1-11",
+    "step12Started": false,
+    "openApiVersion": "1.4.0",
+    "openApiCanonicalFileSha256": "98dd2d29dbedce0a87fefc757e9359b241e7dfd986496fca14ec8be26a809a90",
+    "openApiEvidenceSha256": "7a7cb32a0df396e7bd4241ccfda4bbaf4f9eb891e2b35f17f43286f7515cbbba",
+    "generatedClientVersion": "1.4.0",
+    "generatedClientSha256": "442d295b60ad2a5d2191d4f27b1b00cfc7282364b30226b06b508f2be4443fe1",
+    "mandatoryRuntimeOperations": {
+      "implemented": 198,
+      "total": 198,
+      "outOfScopeV1": 21
+    },
+    "evidenceValidity": "VALID_FOR_PRE_CR_001_BASELINE_ONLY"
+  },
+  "governance": {
+    "step12Allowed": true,
+    "featureImplementationAllowed": true,
+    "schemaMutationAllowed": true,
+    "openApiMutationAllowed": true,
+    "historicalEvidenceMayBeOverwritten": false,
+    "requiredNextState": "CR_001_PASS_STEP_12_NOT_STARTED"
+  },
+  "preservedInvariants": [
+    "No formal quotation revisions",
+    "SENT quotation content is immutable",
+    "A changed SENT quotation creates a new quotation linked by supersedes_quotation_id",
+    "ERP sales orders remain imported read-only facts; no internal order lifecycle",
+    "Country Scope remains mandatory authorization and is independent from Local/Global business classification",
+    "DENY wins",
+    "Capacity remains estimate-only at Standard 900, Ordinary 700, Curved 600 boards/day and 24 hours/day",
+    "No capacity reservations, MES, routing, or QC execution",
+    "No invented finance or analytics facts",
+    "Cancel remains out of V1 unless separately governed",
+    "Client Portal authorization is isolated server-side and cannot inherit internal Sales access blindly",
+    "R&D receives no pricing, cost, margin, finance, write, approval, or commercial administration access by default"
+  ],
+  "scopeItems": [
+    {
+      "id": "CR-001-01",
+      "subject": "Rename Win Ratio to Sales Conversion Rate",
+      "classification": "SEMANTIC_CORRECTION",
+      "decisionStatus": "LOCKED_IMPLEMENTATION_PENDING",
+      "affectedSteps": [2, 4, 7, 9, 10, 11],
+      "constraints": [
+        "The governed semantic registry owns the definition and version",
+        "React must not calculate the authoritative metric"
+      ]
+    },
+    {
+      "id": "CR-001-02",
+      "subject": "Present the affected Product Mix dimension as Customer Segment",
+      "classification": "SEMANTIC_DIMENSION_CORRECTION",
+      "decisionStatus": "PARTIALLY_LOCKED_TAXONOMY_REQUIRED",
+      "affectedSteps": [2, 4, 5, 7, 9, 10, 11],
+      "constraints": [
+        "This does not authorize a frontend-only label over incompatible source data",
+        "The authoritative taxonomy and effective-dating source must be approved"
+      ]
+    },
+    {
+      "id": "CR-001-03",
+      "subject": "Top Customers by Value and Top Countries by Value",
+      "classification": "GOVERNED_ANALYTICS_EXTENSION",
+      "decisionStatus": "PARTIALLY_LOCKED_METRIC_BASIS_REQUIRED",
+      "affectedSteps": [2, 4, 5, 7, 9, 10, 11],
+      "constraints": [
+        "Show Top 5 first and expose More for an authorized expanded result",
+        "The monetary fact, date basis, currency basis, exclusions, and tie behavior must be explicit",
+        "Country Scope and DENY apply before ranking"
+      ]
+    },
+    {
+      "id": "CR-001-04",
+      "subject": "Opportunity lifecycle owns Hot Lead, WON, and LOST",
+      "classification": "DOMAIN_LIFECYCLE_CORRECTION",
+      "decisionStatus": "PARTIALLY_LOCKED_TRANSITION_DESIGN_REQUIRED",
+      "affectedSteps": [2, 4, 5, 6, 7, 8, 9, 10, 11],
+      "constraints": [
+        "Opportunity and quotation states must not be conflated",
+        "Intermediate stages may be configurable only through an approved governed design",
+        "Cancel remains out of V1"
+      ]
+    },
+    {
+      "id": "CR-001-05",
+      "subject": "Quotation Draft, Submitted, Under Negotiation, Approved, and Sent states",
+      "classification": "WORKFLOW_CHANGE",
+      "decisionStatus": "DESIGN_REQUIRED",
+      "affectedSteps": [2, 4, 5, 6, 7, 8, 9, 11],
+      "constraints": [
+        "Exact transitions, guards, actors, approvals, retries, and concurrency require approval",
+        "SENT remains immutable",
+        "No formal revisions",
+        "Changes after SENT use supersedes_quotation_id",
+        "Cancel remains out of V1"
+      ]
+    },
+    {
+      "id": "CR-001-06",
+      "subject": "Logistics execution and shipment tracking milestones",
+      "classification": "MATERIAL_SCOPE_EXTENSION",
+      "decisionStatus": "DESIGN_REQUIRED",
+      "affectedSteps": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+      "constraints": [
+        "Required milestones are Ready for Delivery, Shipped, Vessel Departed, and Arrived at Port of Discharge",
+        "Required context includes shipment reference, customer, ERP fact link, destination country, status, BL date, port, and arrival/discharge data",
+        "No implementation may infer dispatch, POD, delivery confirmation, carrier integration, or accounting semantics"
+      ]
+    },
+    {
+      "id": "CR-001-07",
+      "subject": "Local/Global business classification",
+      "classification": "BUSINESS_CLASSIFICATION_CHANGE",
+      "decisionStatus": "LOCKED_IMPLEMENTATION_PENDING",
+      "affectedSteps": [2, 4, 5, 6, 7, 9, 10, 11],
+      "constraints": [
+        "Local countries are Egypt, Libya, Saudi Arabia, and United Arab Emirates",
+        "All other countries are Global",
+        "This classification never grants or expands authorization",
+        "Country Scope remains the authorization boundary"
+      ]
+    },
+    {
+      "id": "CR-001-08",
+      "subject": "Standalone Complaints Management",
+      "classification": "MATERIAL_SCOPE_EXTENSION",
+      "decisionStatus": "DESIGN_REQUIRED",
+      "affectedSteps": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+      "constraints": [
+        "A complaint may relate to customer, project, ERP fact, product, quotation, and client user only where a governed relation exists",
+        "Lifecycle, priority, SLA, assignment, closure, approval, evidence, and notifications must not be invented"
+      ]
+    },
+    {
+      "id": "CR-001-09",
+      "subject": "External Client Portal",
+      "classification": "MATERIAL_SCOPE_AND_SECURITY_EXTENSION",
+      "decisionStatus": "SECURITY_AND_IDENTITY_DESIGN_REQUIRED",
+      "affectedSteps": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+      "constraints": [
+        "An external user sees only explicitly authorized customer context",
+        "The portal may expose permitted order and shipment facts and the user's own complaint flows only after contracts are approved",
+        "Isolation is enforced server-side",
+        "External identity, session, provisioning, revocation, and customer binding are explicit",
+        "Internal Sales authorization rules must not be reused blindly"
+      ]
+    },
+    {
+      "id": "CR-001-10",
+      "subject": "R&D view-only technical and product intelligence",
+      "classification": "ACCESS_AND_PROJECTION_EXTENSION",
+      "decisionStatus": "ACCESS_CONTRACT_REQUIRED",
+      "affectedSteps": [2, 3, 4, 5, 7, 9, 10, 11],
+      "constraints": [
+        "Access is read-only and limited to approved technical/product intelligence",
+        "Pricing, cost, margin, finance, write actions, approvals, and commercial administration are omitted by default",
+        "Field projection, aggregation, export, and minimum-cohort rules require approval"
+      ]
+    }
+  ],
+  "decisionGateAudit": [
+    {
+      "id": "CR001-DG-01",
+      "subject": "Customer Segment taxonomy, source authority, ownership, and effective dating"
+    },
+    {
+      "id": "CR001-DG-02",
+      "subject": "Top-value monetary fact, event/date basis, currency conversion, exclusions, tie behavior, and More pagination"
+    },
+    {
+      "id": "CR001-DG-03",
+      "subject": "Opportunity stages, configuration ownership, transition guards, reopen behavior, and WON/LOST evidence"
+    },
+    {
+      "id": "CR001-DG-04",
+      "subject": "Quotation transition graph, actors, approval relation, concurrency, retries, and document/send prerequisites"
+    },
+    {
+      "id": "CR001-DG-05",
+      "subject": "Shipment aggregate, cardinality, source authority, milestone actors, evidence, amendments, dates, and backdating"
+    },
+    {
+      "id": "CR001-DG-06",
+      "subject": "Complaint lifecycle, priority, SLA, ownership, assignment, closure, attachments, approvals, and notifications"
+    },
+    {
+      "id": "CR001-DG-07",
+      "subject": "Client identity provisioning, MFA/session policy, invitation, customer binding, revocation, and recovery"
+    },
+    {
+      "id": "CR001-DG-08",
+      "subject": "Client Portal order, shipment, complaint, document, export, and attachment permissions and projections"
+    },
+    {
+      "id": "CR001-DG-09",
+      "subject": "R&D datasets, field projection, aggregation, minimum cohort, drilldown, export, audit, and retention"
+    },
+    {
+      "id": "CR001-DG-10",
+      "subject": "Local/Global effective date, historical reclassification, snapshot behavior, and reference-data governance"
+    }
+  ],
+  "stepImpact": [
+    {
+      "step": 2,
+      "requiredAction": "Reconcile domain boundaries, business terminology, material scope, actors, and handoffs"
+    },
+    {
+      "step": 3,
+      "requiredAction": "Add external-client and R&D access models; define shipment and complaint permissions without weakening Country Scope or DENY"
+    },
+    {
+      "step": 4,
+      "requiredAction": "Update modules, screens, functional actions, and traceability denominators through formal delta history"
+    },
+    {
+      "step": 5,
+      "requiredAction": "Design canonical aggregates, relationships, provenance, effective dating, and restricted projections"
+    },
+    {
+      "step": 6,
+      "requiredAction": "Use forward-only expand/contract migrations, constraints, indexes, row versions, audit, and outbox changes"
+    },
+    {
+      "step": 7,
+      "requiredAction": "Publish a new typed OpenAPI/client version and implement real authorized PostgreSQL-backed operations"
+    },
+    {
+      "step": 8,
+      "requiredAction": "Approve and implement new state machines, transaction boundaries, events, retries, idempotency, and concurrency"
+    },
+    {
+      "step": 9,
+      "requiredAction": "Update internal UX and add isolated portal/R&D projections with no fake or dead UI"
+    },
+    {
+      "step": 10,
+      "requiredAction": "Version semantic metrics, dimensions, rankings, shipment analytics, and access-aware drilldowns/exports"
+    },
+    {
+      "step": 11,
+      "requiredAction": "Run targeted security, authorization, migration, performance, observability, backup/restore, and full regression evidence against the new baseline"
+    }
+  ],
+  "releaseGateImpact": {
+    "directEvidenceRefreshRequired": [
+      "RG-01",
+      "RG-02",
+      "RG-03",
+      "RG-04",
+      "RG-05",
+      "RG-06",
+      "RG-07",
+      "RG-08",
+      "RG-09",
+      "RG-10"
+    ],
+    "downstreamGatesRemainPending": [
+      "RG-11",
+      "RG-12",
+      "RG-13",
+      "RG-14",
+      "RG-15",
+      "RG-16"
+    ],
+    "passed": 0,
+    "total": 16
+  },
+  "requiredSequence": [
+    "CR001-DG-01 through CR001-DG-10 approved",
+    "CR-001 forward schema, API, runtime, UI, authorization, analytics, and evidence delta applied",
+    "Steps 1 through 11 regression refreshed",
+    "Step 12 remains NOT STARTED and requires a separate explicit task",
+    "Production remains unauthorized until the real release gates pass"
+  ],
+  "finalReconciliation": {
+    "scopeItemsImplemented": "10/10",
+    "decisionGatesClosed": "10/10",
+    "openDecisionGates": [],
+    "ssotDeviations": 0,
+    "historicalEvidenceOverwritten": false,
+    "step12": "NOT_STARTED",
+    "productionReady": false,
+    "releaseGatesPassed": 0
+  }
+}

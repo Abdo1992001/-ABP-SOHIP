@@ -1,0 +1,58 @@
+get:
+  tags: [Administration]
+  summary: List governed document templates
+  operationId: get_admin_document_templates
+  security: [{ WebCookie: [] }, { DesktopOAuth: [] }]
+  parameters:
+    - $ref: ../components/parameters/Offset.yaml
+    - $ref: ../components/parameters/Limit.yaml
+    - $ref: ../components/parameters/Search.yaml
+    - { name: documentTypeCode, in: query, schema: { type: string } }
+    - { name: languageCode, in: query, schema: { type: string } }
+    - { name: brandCode, in: query, schema: { type: string } }
+    - { name: statusCode, in: query, schema: { type: string, enum: [ACTIVE, INACTIVE] } }
+  responses:
+    '200': { description: Success, content: { application/json: { schema: { $ref: ../components/schemas/DocumentTemplateListEnvelope.yaml } } } }
+    '400': { $ref: ../components/responses/Error400.yaml }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '403': { $ref: ../components/responses/Error403.yaml }
+    '429': { $ref: ../components/responses/Error429.yaml }
+    '500': { $ref: ../components/responses/Error500.yaml }
+  x-abp-module: Administration
+  x-abp-permission: documents.view
+  x-abp-scope-rule: ADMIN workspace + Permission + DENY
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: TemplateListQuery
+  x-abp-success-schema: DocumentTemplateListEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true
+  x-abp-pagination: OFFSET
+post:
+  tags: [Administration]
+  summary: Create a governed document template identity
+  operationId: post_admin_document_templates
+  security: [{ WebCookie: [] }, { DesktopOAuth: [] }]
+  parameters: [{ $ref: ../components/parameters/IdempotencyKey.yaml }, { $ref: ../components/parameters/CsrfToken.yaml }]
+  requestBody: { required: true, content: { application/json: { schema: { $ref: ../components/schemas/CreateDocumentTemplateRequest.yaml } } } }
+  responses:
+    '201': { description: Created, content: { application/json: { schema: { $ref: ../components/schemas/DocumentTemplateEnvelope.yaml } } } }
+    '400': { $ref: ../components/responses/Error400.yaml }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '403': { $ref: ../components/responses/Error403.yaml }
+    '409': { $ref: ../components/responses/Error409.yaml }
+    '422': { $ref: ../components/responses/Error422.yaml }
+    '500': { $ref: ../components/responses/Error500.yaml }
+  x-abp-module: Administration
+  x-abp-permission: documents.create
+  x-abp-scope-rule: ADMIN workspace + Permission + DENY + audit
+  x-abp-concurrency: NONE
+  x-abp-idempotency: Required
+  x-abp-request-schema: CreateDocumentTemplateRequest
+  x-abp-success-schema: DocumentTemplateEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

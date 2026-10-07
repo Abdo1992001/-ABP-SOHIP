@@ -1,0 +1,27 @@
+type: object
+properties:
+  bookedAmount:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+  shippedAmount:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+  invoicedAmount:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+  collectedAmount:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+  currencyCode:
+    type: string
+  asOf:
+    type: string
+    format: date-time
+additionalProperties: false
+required:
+  - bookedAmount
+  - shippedAmount
+  - invoicedAmount
+  - collectedAmount
+  - currencyCode
+  - asOf

@@ -1,0 +1,20 @@
+type: object
+properties:
+  jobTitle:
+    type:
+      - string
+      - 'null'
+    maxLength: 200
+  roleIds:
+    type: array
+    items:
+      type: string
+      format: uuid
+  countryCodes:
+    type: array
+    items:
+      type: string
+additionalProperties: false
+required:
+  - roleIds
+  - countryCodes

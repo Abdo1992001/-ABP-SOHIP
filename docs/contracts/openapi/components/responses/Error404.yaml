@@ -1,0 +1,5 @@
+description: Resource not found or safely masked
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/ErrorEnvelope.yaml

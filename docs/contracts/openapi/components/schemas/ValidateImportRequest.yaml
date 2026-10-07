@@ -1,0 +1,13 @@
+type: object
+properties:
+  parserVersion:
+    type: string
+  mappingVersion:
+    type: string
+additionalProperties: false
+required:
+  - parserVersion
+  - mappingVersion
+description: >-
+  Starts a documented validation attempt; job fileSha256 is part of the
+  fingerprint source.

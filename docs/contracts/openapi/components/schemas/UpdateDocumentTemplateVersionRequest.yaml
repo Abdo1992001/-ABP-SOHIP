@@ -1,0 +1,5 @@
+type: object
+additionalProperties: false
+required: [content]
+properties:
+  content: { type: string, maxLength: 100000 }

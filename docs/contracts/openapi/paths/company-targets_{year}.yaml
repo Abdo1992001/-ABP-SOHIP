@@ -1,0 +1,66 @@
+put:
+  tags:
+    - Targets
+  summary: Set annual ACROW target
+  operationId: put_company_targets_by_year
+  description: 'Permission: targets.manage. Scope: Management. USD base.'
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/CompanyTargetEnvelope.yaml
+      headers:
+        ETag:
+          $ref: ../components/headers/ETag.yaml
+    '400':
+      $ref: ../components/responses/Error400.yaml
+    '401':
+      $ref: ../components/responses/Error401.yaml
+    '403':
+      $ref: ../components/responses/Error403.yaml
+    '404':
+      $ref: ../components/responses/Error404.yaml
+    '409':
+      $ref: ../components/responses/Error409.yaml
+    '412':
+      $ref: ../components/responses/Error412.yaml
+    '422':
+      $ref: ../components/responses/Error422.yaml
+    '429':
+      $ref: ../components/responses/Error429.yaml
+    '500':
+      $ref: ../components/responses/Error500.yaml
+    '503':
+      $ref: ../components/responses/Error503.yaml
+  parameters:
+    - name: year
+      in: path
+      required: true
+      schema:
+        type: string
+        format: string
+    - $ref: ../components/parameters/IfMatch.yaml
+    - $ref: ../components/parameters/IdempotencyKey.yaml
+    - $ref: ../components/parameters/CsrfToken.yaml
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/SetCompanyTargetRequest.yaml
+  x-abp-module: Targets
+  x-abp-permission: targets.manage
+  x-abp-scope-rule: Management
+  x-abp-concurrency: If-Match
+  x-abp-idempotency: Required
+  x-abp-request-schema: SetCompanyTargetRequest
+  x-abp-success-schema: CompanyTargetEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

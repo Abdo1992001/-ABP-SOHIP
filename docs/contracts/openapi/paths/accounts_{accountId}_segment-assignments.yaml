@@ -1,0 +1,35 @@
+get:
+  tags: [CRM]
+  summary: Effective-dated customer segment history
+  operationId: get_accounts_by_accountId_segment_assignments
+  parameters: [{ name: accountId, in: path, required: true, schema: { type: string, format: uuid } }]
+  responses:
+    '200': { description: Success, content: { application/json: { schema: { type: object, additionalProperties: false, required: [data], properties: { data: { type: array, items: { $ref: ../components/schemas/CustomerSegmentAssignment.yaml } } } } } } }
+    '400': { $ref: ../components/responses/Error400.yaml }
+  x-abp-module: CRM
+  x-abp-permission: customer-segments.view
+  x-abp-scope-rule: Country Scope then account context; DENY wins
+  x-abp-concurrency: NONE
+  x-abp-execution-mode: SYNC
+  x-abp-job-dto: false
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true
+post:
+  tags: [CRM]
+  summary: Assign an active customer segment from an effective date
+  operationId: post_accounts_by_accountId_segment_assignments
+  parameters: [{ name: accountId, in: path, required: true, schema: { type: string, format: uuid } }]
+  requestBody:
+    required: true
+    content: { application/json: { schema: { type: object, additionalProperties: false, required: [segmentId, effectiveFrom], properties: { segmentId: { type: string, format: uuid }, effectiveFrom: { type: string, format: date-time }, sourceCode: { type: string }, sourceReference: { type: string } } } } }
+  responses:
+    '200': { description: Assigned, content: { application/json: { schema: { type: object, additionalProperties: false, required: [data], properties: { data: { $ref: ../components/schemas/CustomerSegmentAssignment.yaml } } } } } }
+    '400': { $ref: ../components/responses/Error400.yaml }
+  x-abp-module: CRM
+  x-abp-permission: customer-segments.assign
+  x-abp-scope-rule: Country Scope then existing account edit context; assignment grants no access
+  x-abp-concurrency: SERIALIZED_EFFECTIVE_RANGE
+  x-abp-execution-mode: SYNC
+  x-abp-job-dto: false
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

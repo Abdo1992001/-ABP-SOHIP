@@ -1,0 +1,60 @@
+delete:
+  tags:
+    - CRM
+  summary: Remove/deactivate contact channel
+  operationId: delete_contact_channels_by_channelId
+  description: 'Permission: contacts.edit. Scope: Contact/account scope. '
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ContactEnvelope.yaml
+      headers:
+        ETag:
+          $ref: ../components/headers/ETag.yaml
+    '400':
+      $ref: ../components/responses/Error400.yaml
+    '401':
+      $ref: ../components/responses/Error401.yaml
+    '403':
+      $ref: ../components/responses/Error403.yaml
+    '404':
+      $ref: ../components/responses/Error404.yaml
+    '409':
+      $ref: ../components/responses/Error409.yaml
+    '412':
+      $ref: ../components/responses/Error412.yaml
+    '422':
+      $ref: ../components/responses/Error422.yaml
+    '429':
+      $ref: ../components/responses/Error429.yaml
+    '500':
+      $ref: ../components/responses/Error500.yaml
+    '503':
+      $ref: ../components/responses/Error503.yaml
+  parameters:
+    - name: channelId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    - $ref: ../components/parameters/IfMatch.yaml
+    - $ref: ../components/parameters/IdempotencyKey.yaml
+    - $ref: ../components/parameters/CsrfToken.yaml
+  x-abp-module: CRM
+  x-abp-permission: contacts.edit
+  x-abp-scope-rule: Contact/account scope
+  x-abp-concurrency: If-Match
+  x-abp-idempotency: Required
+  x-abp-request-schema: NONE
+  x-abp-success-schema: ContactEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

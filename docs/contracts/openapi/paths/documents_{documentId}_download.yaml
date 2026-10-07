@@ -1,0 +1,56 @@
+get:
+  tags:
+    - Documents
+  summary: Issue authorized signed download
+  operationId: get_documents_by_documentId_download
+  description: >-
+    Permission: documents.view. Scope: Linked resource scope. Short-lived signed
+    link.
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/DownloadLinkEnvelope.yaml
+    '400':
+      $ref: ../components/responses/Error400.yaml
+    '401':
+      $ref: ../components/responses/Error401.yaml
+    '403':
+      $ref: ../components/responses/Error403.yaml
+    '404':
+      $ref: ../components/responses/Error404.yaml
+    '409':
+      $ref: ../components/responses/Error409.yaml
+    '412':
+      $ref: ../components/responses/Error412.yaml
+    '422':
+      $ref: ../components/responses/Error422.yaml
+    '429':
+      $ref: ../components/responses/Error429.yaml
+    '500':
+      $ref: ../components/responses/Error500.yaml
+    '503':
+      $ref: ../components/responses/Error503.yaml
+  parameters:
+    - name: documentId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  x-abp-module: Documents
+  x-abp-permission: documents.view
+  x-abp-scope-rule: Linked resource scope
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: NONE
+  x-abp-success-schema: DownloadLinkEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

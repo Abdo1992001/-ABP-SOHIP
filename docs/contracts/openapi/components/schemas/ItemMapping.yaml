@@ -1,0 +1,47 @@
+type: object
+properties:
+  mappingId:
+    type: string
+    format: uuid
+    description: Resolver mapping.
+  sourceItemId:
+    type: string
+    format: uuid
+    description: Source record.
+  productId:
+    type: string
+    format: uuid
+    description: Canonical item.
+  mappingMethodCode:
+    type: string
+    description: EXACT_SKU/BARCODE/MANUAL/APPROVED_RULE etc.
+  confidencePct:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+    description: Confidence for non-exact resolver.
+  mappedByUserId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    description: Human mapper if applicable.
+  mappedAt:
+    type: string
+    format: date-time
+    description: Mapping time.
+  rationale:
+    type:
+      - string
+      - 'null'
+    description: Mapping explanation.
+  statusCode:
+    type: string
+    description: ACTIVE/REVOKED/REPLACED.
+additionalProperties: false
+required:
+  - mappingId
+  - mappingMethodCode
+  - productId
+  - sourceItemId

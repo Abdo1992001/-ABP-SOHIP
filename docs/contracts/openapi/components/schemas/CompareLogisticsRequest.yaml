@@ -1,0 +1,11 @@
+type: object
+properties:
+  planVersionIds:
+    type: array
+    items:
+      type: string
+      format: uuid
+    minItems: 2
+additionalProperties: false
+required:
+  - planVersionIds

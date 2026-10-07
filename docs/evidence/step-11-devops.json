@@ -1,0 +1,28 @@
+{
+  "verdict": "PASS",
+  "generatedAt": "2026-09-07T23:10:39.516Z",
+  "bicep": "PASS",
+  "compiledTemplate": ".tmp/step11-main.json",
+  "githubActions": "PASS",
+  "oidcDesign": "PASS",
+  "liveOidc": "PENDING EXTERNAL",
+  "containers": {
+    "api": "non-root",
+    "worker": "non-root",
+    "web": "unprivileged"
+  },
+  "desktop": {
+    "status": "PASS",
+    "msix": "UNSIGNED_LAYOUT_READY_MAKEAPPX_NOT_INSTALLED",
+    "signing": "PENDING EXTERNAL CERTIFICATE",
+    "security": {
+      "contextIsolation": true,
+      "sandbox": true,
+      "nodeIntegration": false,
+      "permissionsDefault": "DENY"
+    }
+  },
+  "buildPromotion": "immutable digest",
+  "rollback": "previous digest/revision",
+  "sbom": "docs/evidence/step-11-sbom.cdx.json"
+}

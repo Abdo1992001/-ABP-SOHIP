@@ -1,0 +1,7 @@
+name: dateTo
+in: query
+required: false
+description: Only orders on or before this date.
+schema:
+  type: string
+  format: date

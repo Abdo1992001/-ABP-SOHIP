@@ -1,0 +1,44 @@
+type: object
+properties:
+  taxPolicyId:
+    type: string
+    format: uuid
+    description: Tax policy version.
+  taxCode:
+    type: string
+    description: Stable tax code.
+  versionNo:
+    type: integer
+    format: int32
+    description: Version within tax code.
+  taxRatePct:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+    description: Applied tax percentage.
+  effectiveFrom:
+    type: string
+    format: date-time
+    description: Effective start.
+  effectiveTo:
+    type:
+      - string
+      - 'null'
+    format: date-time
+    description: Effective end.
+  statusCode:
+    type: string
+    description: ACTIVE/INACTIVE.
+  createdByUserId:
+    type: string
+    format: uuid
+    description: Authorized actor.
+  createdAt:
+    type: string
+    format: date-time
+    description: Creation timestamp.
+additionalProperties: false
+required:
+  - createdByUserId
+  - effectiveFrom
+  - taxPolicyId
+  - taxRatePct

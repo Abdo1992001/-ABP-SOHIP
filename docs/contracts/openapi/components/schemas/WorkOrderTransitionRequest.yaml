@@ -1,0 +1,11 @@
+type: object
+additionalProperties: false
+required: [expectedRowVersion, targetStatusCode]
+properties:
+  expectedRowVersion: { type: string, pattern: '^\d+$' }
+  targetStatusCode: { type: string, enum: [PLANNED, RELEASED, IN_PROGRESS, ON_HOLD, QC, COMPLETED, CANCELLED] }
+  reason: { type: string, maxLength: 500 }
+  quantityProduced: { type: string, pattern: '^\d+(\.\d{1,4})?$' }
+  quantityRejected: { type: string, pattern: '^\d+(\.\d{1,4})?$' }
+  qcResultCode: { type: string, enum: [PASS, CONDITIONAL, FAIL] }
+  qcNotes: { type: string, maxLength: 2000 }

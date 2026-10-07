@@ -1,0 +1,19 @@
+{
+  "expo": {
+    "name": "ABP Commercial",
+    "slug": "abp-commercial",
+    "version": "1.0.0",
+    "orientation": "default",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": false,
+    "android": {
+      "package": "com.acrow.abpcommercial",
+      "usesCleartextTraffic": true
+    },
+    "plugins": [
+      "expo-secure-store",
+      "expo-local-authentication",
+      "expo-notifications"
+    ]
+  }
+}

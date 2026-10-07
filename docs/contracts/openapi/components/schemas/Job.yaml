@@ -1,0 +1,55 @@
+type: object
+additionalProperties: false
+required:
+  - jobId
+  - jobType
+  - status
+  - progress
+  - attemptCount
+  - maxAttempts
+  - createdAt
+  - startedAt
+  - finishedAt
+  - resultReference
+  - error
+  - traceId
+  - correlationId
+properties:
+  jobId:
+    $ref: ./UUID.yaml
+  jobType:
+    type: string
+    minLength: 1
+    maxLength: 100
+  status:
+    $ref: ./JobStatus.yaml
+  progress:
+    type: integer
+    minimum: 0
+    maximum: 100
+  attemptCount:
+    type: integer
+    minimum: 0
+  maxAttempts:
+    type: integer
+    minimum: 1
+  createdAt:
+    $ref: ./DateTime.yaml
+  startedAt:
+    oneOf:
+      - $ref: ./DateTime.yaml
+      - type: 'null'
+  finishedAt:
+    oneOf:
+      - $ref: ./DateTime.yaml
+      - type: 'null'
+  resultReference:
+    oneOf:
+      - $ref: ./ResourceReference.yaml
+      - type: 'null'
+  error:
+    $ref: ./JobError.yaml
+  traceId:
+    $ref: ./TraceId.yaml
+  correlationId:
+    $ref: ./CorrelationId.yaml

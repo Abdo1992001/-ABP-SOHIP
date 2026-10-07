@@ -1,0 +1,7 @@
+type: object
+additionalProperties: false
+required: [expectedRowVersion, accountId]
+properties:
+  expectedRowVersion: { type: string, pattern: '^\d+$' }
+  accountId: { type: string, format: uuid }
+  openComplaint: { type: boolean }

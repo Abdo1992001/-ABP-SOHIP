@@ -1,0 +1,17 @@
+type: object
+description: >-
+  A product photo. Owned by the product, referenced by quotation lines, so that
+  re-uploading a photo never rewrites a document already sent to a customer.
+properties:
+  productImageId: { type: string, format: uuid }
+  productId: { type: string, format: uuid }
+  fileName: { type: string }
+  contentType: { type: string }
+  sizeBytes: { type: integer }
+  isPrimary: { type: boolean }
+  createdAt: { type: string, format: date-time }
+  url:
+    type: string
+    description: Where the bytes are served from.
+additionalProperties: false
+required: [productImageId, productId, fileName, contentType, url]

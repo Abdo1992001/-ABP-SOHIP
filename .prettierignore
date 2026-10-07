@@ -1,0 +1,10 @@
+pnpm-lock.yaml
+packages/database/src/generated/
+packages/api-client/src/generated/
+docs/contracts/openapi/
+docs/contracts/api-inventory.md
+dist/
+coverage/
+artifacts/
+docs/evidence/*.json
+docs/architecture/step-12-go-live-handoff.json

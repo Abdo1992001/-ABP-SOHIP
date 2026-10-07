@@ -1,0 +1,94 @@
+type: object
+properties:
+  chequeId:
+    type: string
+    format: uuid
+    description: Cheque fact.
+  sourceSystemId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    description: Source.
+  sourceChequeKey:
+    type:
+      - string
+      - 'null'
+    description: Source natural key.
+  accountId:
+    type: string
+    format: uuid
+    description: Customer.
+  salesOrderId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    description: Optional order link.
+  chequeNumber:
+    type: string
+    description: Cheque number.
+  bankName:
+    type:
+      - string
+      - 'null'
+    description: Bank.
+  amount:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+    description: Amount.
+  currencyCode:
+    type: string
+    description: Currency.
+  issueDate:
+    type:
+      - string
+      - 'null'
+    format: date
+    description: Issue date.
+  dueDate:
+    type:
+      - string
+      - 'null'
+    format: date
+    description: Due date.
+  statusCode:
+    type: string
+    description: PENDING/CLEARED/BOUNCED/CANCELLED etc.
+    enum:
+      - RECEIVED
+      - DEPOSITED
+      - CLEARED
+      - BOUNCED
+      - CANCELLED
+  clearedAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+    description: Clear time.
+  depositedAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+  bouncedAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+  cancelledAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+  rowVersion:
+    $ref: ./RowVersion.yaml
+additionalProperties: false
+required:
+  - accountId
+  - amount
+  - chequeId
+  - chequeNumber
+  - currencyCode
+  - rowVersion

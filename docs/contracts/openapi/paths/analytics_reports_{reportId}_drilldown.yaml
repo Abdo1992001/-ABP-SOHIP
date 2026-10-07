@@ -1,0 +1,106 @@
+parameters:
+  - name: reportId
+    in: path
+    required: true
+    schema:
+      type: string
+      pattern: ^RPT-[0-9]{3}$
+get:
+  tags:
+    - Analytics
+  summary: Authorized paginated drilldown independent from aggregate access
+  operationId: get_analytics_reports_by_reportId_drilldown
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  parameters:
+    - name: asOf
+      in: query
+      schema:
+        type: string
+        format: date-time
+    - name: from
+      in: query
+      schema:
+        type: string
+        format: date-time
+    - name: to
+      in: query
+      schema:
+        type: string
+        format: date-time
+    - name: currency
+      in: query
+      schema:
+        type: string
+        enum:
+          - USD
+          - EGP
+        default: USD
+    - name: countryCode
+      in: query
+      schema:
+        $ref: ../components/schemas/CountryCode.yaml
+    - name: offset
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+    - name: limit
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 200
+        default: 25
+    - name: sort
+      in: query
+      schema:
+        type: string
+        enum:
+          - date_asc
+          - date_desc
+        default: date_desc
+    - name: metricId
+      in: query
+      required: false
+      schema:
+        type: string
+        maxLength: 40
+    - name: stageCode
+      in: query
+      required: false
+      schema:
+        type: string
+        maxLength: 40
+  responses:
+    "200":
+      description: Reauthorized source projection
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/AnalyticsDrilldownEnvelope.yaml
+    "400":
+      $ref: ../components/responses/Error400.yaml
+    "401":
+      $ref: ../components/responses/Error401.yaml
+    "403":
+      $ref: ../components/responses/Error403.yaml
+    "404":
+      $ref: ../components/responses/Error404.yaml
+    "422":
+      $ref: ../components/responses/Error422.yaml
+    "500":
+      $ref: ../components/responses/Error500.yaml
+  x-abp-module: Analytics
+  x-abp-permission: Registry-defined drilldown permission
+  x-abp-scope-rule: Independently reauthorized Country Scope, DENY, and field projection
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: AnalyticsDrilldownQuery
+  x-abp-success-schema: AnalyticsDrilldownEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

@@ -1,0 +1,28 @@
+type: object
+properties:
+  displayName:
+    type: string
+  jobTitle:
+    type:
+      - string
+      - 'null'
+  channels:
+    type: array
+    items:
+      type: object
+      properties:
+        channelTypeCode:
+          type: string
+          enum: [EMAIL]
+          description: The contact's email address.
+        value:
+          type: string
+        isPrimary:
+          type: boolean
+      additionalProperties: false
+      required:
+        - channelTypeCode
+        - value
+additionalProperties: false
+required:
+  - displayName

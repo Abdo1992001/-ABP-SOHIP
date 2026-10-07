@@ -1,0 +1,31 @@
+get:
+  tags: [Reference]
+  summary: Active governed Opportunity stage policies
+  operationId: get_reference_opportunity_stage_policies
+  security: [{ WebCookie: [] }, { DesktopOAuth: [] }]
+  responses:
+    '200':
+      description: Active policies
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: false
+            required: [data]
+            properties:
+              data:
+                type: array
+                items: { $ref: ../components/schemas/OpportunityStagePolicy.yaml }
+    '401': { $ref: ../components/responses/Error401.yaml }
+  x-abp-module: Pipeline
+  x-abp-permission: opportunities.view
+  x-abp-scope-rule: Reference only
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: NONE
+  x-abp-success-schema: OpportunityStagePolicy[]
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true
+

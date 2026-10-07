@@ -1,0 +1,33 @@
+type: object
+properties:
+  name:
+    type: string
+    minLength: 1
+    maxLength: 300
+  countryCode:
+    $ref: ./CountryCode.yaml
+  city:
+    type:
+      - string
+      - 'null'
+  region:
+    type:
+      - string
+      - 'null'
+  addressText:
+    type:
+      - string
+      - 'null'
+  primaryAccountId:
+    type: string
+    format: uuid
+  primaryRoleCode:
+    type: string
+    minLength: 1
+    maxLength: 100
+additionalProperties: false
+required:
+  - name
+  - countryCode
+  - primaryAccountId
+  - primaryRoleCode

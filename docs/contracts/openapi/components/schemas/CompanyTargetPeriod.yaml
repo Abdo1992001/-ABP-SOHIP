@@ -1,0 +1,22 @@
+type: object
+properties:
+  periodTypeCode:
+    type: string
+    enum:
+      - MONTH
+      - QUARTER
+  periodStart:
+    type: string
+    format: date
+  periodEnd:
+    type: string
+    format: date
+  targetAmount:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+additionalProperties: false
+required:
+  - periodTypeCode
+  - periodStart
+  - periodEnd
+  - targetAmount

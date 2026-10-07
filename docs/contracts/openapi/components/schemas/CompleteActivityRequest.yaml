@@ -1,0 +1,28 @@
+type: object
+properties:
+  expectedRowVersion:
+    $ref: ./RowVersion.yaml
+  outcomeCode:
+    type:
+      - string
+      - 'null'
+  notes:
+    type:
+      - string
+      - 'null'
+  nextFollowUp:
+    type: object
+    properties:
+      dueAt:
+        type: string
+        format: date-time
+      subject:
+        type:
+          - string
+          - 'null'
+    additionalProperties: false
+    required:
+      - dueAt
+additionalProperties: false
+required:
+  - expectedRowVersion

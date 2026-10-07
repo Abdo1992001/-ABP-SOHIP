@@ -1,0 +1,17 @@
+type: object
+properties:
+  from:
+    type: string
+    format: date-time
+  to:
+    type: string
+    format: date-time
+  currency:
+    type: string
+    enum: [USD, EGP]
+  countryCodes:
+    type: array
+    items:
+      $ref: ./CountryCode.yaml
+additionalProperties: false
+required: [from, to, currency, countryCodes]

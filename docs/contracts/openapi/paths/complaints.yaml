@@ -1,0 +1,130 @@
+get:
+  tags:
+    - CRM Service
+  summary: Complaint grid
+  operationId: get_complaints
+  description: "Permission: complaints.view. Scope: Country + customer/case scope. "
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    "200":
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ComplaintListEnvelope.yaml
+    "400":
+      $ref: ../components/responses/Error400.yaml
+    "401":
+      $ref: ../components/responses/Error401.yaml
+    "403":
+      $ref: ../components/responses/Error403.yaml
+    "404":
+      $ref: ../components/responses/Error404.yaml
+    "409":
+      $ref: ../components/responses/Error409.yaml
+    "412":
+      $ref: ../components/responses/Error412.yaml
+    "422":
+      $ref: ../components/responses/Error422.yaml
+    "429":
+      $ref: ../components/responses/Error429.yaml
+    "500":
+      $ref: ../components/responses/Error500.yaml
+    "503":
+      $ref: ../components/responses/Error503.yaml
+  parameters:
+    - $ref: ../components/parameters/Page.yaml
+    - $ref: ../components/parameters/Offset.yaml
+    - $ref: ../components/parameters/Limit.yaml
+    - $ref: ../components/parameters/Sort.yaml
+    - $ref: ../components/parameters/Search.yaml
+    - $ref: ../components/parameters/AccountFilter.yaml
+    - name: statusCode
+      in: query
+      required: false
+      schema:
+        type: string
+        enum: [OPEN, OPERATIONS_REVIEW, QUALITY_REVIEW, SOLUTION, RESOLVED, CLOSED]
+    - name: assignedToMe
+      in: query
+      required: false
+      schema:
+        type: string
+        enum: ['true', 'false']
+    - name: overdue
+      in: query
+      required: false
+      schema:
+        type: string
+        enum: ['true', 'false']
+  x-abp-module: CRM Service
+  x-abp-permission: complaints.view
+  x-abp-scope-rule: Country + customer/case scope
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: ComplaintListQuery
+  x-abp-success-schema: ComplaintListEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true
+  x-abp-pagination: OFFSET
+post:
+  tags:
+    - CRM Service
+  summary: Create complaint
+  operationId: post_complaints
+  description: "Permission: complaints.create. Scope: Country + account access.
+    Does not widen account access."
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    "201":
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ComplaintEnvelope.yaml
+    "400":
+      $ref: ../components/responses/Error400.yaml
+    "401":
+      $ref: ../components/responses/Error401.yaml
+    "403":
+      $ref: ../components/responses/Error403.yaml
+    "404":
+      $ref: ../components/responses/Error404.yaml
+    "409":
+      $ref: ../components/responses/Error409.yaml
+    "412":
+      $ref: ../components/responses/Error412.yaml
+    "422":
+      $ref: ../components/responses/Error422.yaml
+    "429":
+      $ref: ../components/responses/Error429.yaml
+    "500":
+      $ref: ../components/responses/Error500.yaml
+    "503":
+      $ref: ../components/responses/Error503.yaml
+  parameters:
+    - $ref: ../components/parameters/IdempotencyKey.yaml
+    - $ref: ../components/parameters/CsrfToken.yaml
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/CreateComplaintRequest.yaml
+  x-abp-module: CRM Service
+  x-abp-permission: complaints.create
+  x-abp-scope-rule: Country + account access
+  x-abp-concurrency: NONE
+  x-abp-idempotency: Required
+  x-abp-request-schema: CreateComplaintRequest
+  x-abp-success-schema: ComplaintEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

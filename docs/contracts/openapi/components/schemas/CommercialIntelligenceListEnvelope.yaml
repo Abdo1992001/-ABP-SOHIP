@@ -1,0 +1,17 @@
+type: object
+additionalProperties: false
+required: [data, page]
+properties:
+  data:
+    type: array
+    items:
+      $ref: ./CommercialIntelligenceRecord.yaml
+  page:
+    type: object
+    additionalProperties: false
+    required: [number, size, totalItems, totalPages]
+    properties:
+      number: { type: integer, minimum: 1 }
+      size: { type: integer, minimum: 1, maximum: 200 }
+      totalItems: { type: integer, minimum: 0 }
+      totalPages: { type: integer, minimum: 0 }

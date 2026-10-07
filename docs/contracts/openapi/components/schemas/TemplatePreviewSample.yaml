@@ -1,0 +1,7 @@
+type: object
+additionalProperties: false
+required: [quotationNumber, customerName, validUntil]
+properties:
+  quotationNumber: { type: string }
+  customerName: { type: string }
+  validUntil: { type: string, format: date }

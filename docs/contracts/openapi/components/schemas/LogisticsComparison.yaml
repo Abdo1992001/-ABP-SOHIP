@@ -1,0 +1,46 @@
+type: object
+properties:
+  versions:
+    type: array
+    items:
+      type: object
+      properties:
+        planVersionId:
+          type: string
+          format: uuid
+        vehicleCount:
+          type: integer
+          format: int64
+        utilizationPct:
+          type:
+            - string
+            - 'null'
+          pattern: ^-?\d+(\.\d+)?$
+        loadedQty:
+          type: string
+          pattern: ^-?\d+(\.\d+)?$
+        remainingQty:
+          type: string
+          pattern: ^-?\d+(\.\d+)?$
+        totalWeightKg:
+          type: string
+          pattern: ^-?\d+(\.\d+)?$
+        hardErrorCount:
+          type: integer
+          format: int64
+        warningCount:
+          type: integer
+          format: int64
+      additionalProperties: false
+      required:
+        - planVersionId
+        - vehicleCount
+        - loadedQty
+        - remainingQty
+        - totalWeightKg
+        - hardErrorCount
+        - warningCount
+    minItems: 1
+additionalProperties: false
+required:
+  - versions

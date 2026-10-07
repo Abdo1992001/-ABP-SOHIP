@@ -1,0 +1,560 @@
+{
+  "packId": "STEP12-NON-PEOPLE-LAUNCH-DECISIONS-R1",
+  "status": "READY_FOR_BUSINESS_DECISIONS",
+  "scope": "NON_PEOPLE_DECISIONS_ONLY",
+  "featureDevelopment": false,
+  "productionDeployment": "NOT_EXECUTED",
+  "technicalBaseline": {
+    "rcCommit": "31b58204a65756451b75565422103abe4ec97826",
+    "openapiVersion": "1.6.0",
+    "openapiSha256": "f1d00e39cc0151e40f2166f7dae67885a007d622199d1d4a4705c112fc317053",
+    "generatedClientVersion": "1.6.0",
+    "generatedClientSha256": "fd5b0797605ffbd18210d8681c82d8ca1f9d49d385962efcf6b0d202b19b0f90",
+    "runtimeImplemented": 217,
+    "runtimeTotal": 217,
+    "outOfScope": 21,
+    "migrations": 35,
+    "screens": 55,
+    "actions": 195,
+    "generatedClientDrift": 0,
+    "schemaDrift": 0,
+    "ssotDeviations": 0
+  },
+  "decisions": [
+    {
+      "id": "D-01",
+      "name": "Contacts Source Strategy",
+      "currentEvidence": "No authoritative Contact source found after auditing 10 workbooks; no Contact records may be inferred or invented.",
+      "options": [
+        {
+          "id": "A",
+          "name": "NEW SYSTEM ONLY",
+          "decision": "Migrate Customers but create Contacts only in ABP from Go-Live.",
+          "businessImpact": "No historical contacts; users build a clean governed directory during normal work.",
+          "cutoverImpact": "Removes Contact migration from cutover and avoids an unbounded source dependency.",
+          "dataImpact": "Zero migrated Contact rows; all new records have ABP lineage, authorization and audit.",
+          "risk": "Initial Customer records may lack named contact channels until users add them."
+        },
+        {
+          "id": "B",
+          "name": "MIGRATION LATER",
+          "decision": "Go live without historical Contacts and keep a governed migration pending until an approved source is supplied.",
+          "businessImpact": "Allows later recovery of trusted history without blocking the core launch.",
+          "cutoverImpact": "No Contact load at initial cutover; a later controlled import/reconciliation is required.",
+          "dataImpact": "Future source must include customer linkage, channel syntax, source keys, hashes and DQ evidence.",
+          "risk": "Long-lived pending migration can create duplicate Contacts if deduplication and ownership are not governed."
+        }
+      ],
+      "optionC": "NOT AVAILABLE: repository evidence identifies no real authoritative alternative.",
+      "recommendation": "OPTION A — NEW SYSTEM ONLY. It is the safest initial V1 basis because no authoritative source exists; retain a separately approved future migration only as a governed change if a real source appears.",
+      "businessDecisionRequired": true
+    },
+    {
+      "id": "D-02",
+      "name": "Customer Source / Final Cutover Strategy",
+      "source": "customer list.xlsx",
+      "sha256": "1436e626c548ea5daf11548c02f2471ab420e4e3ad8f29a018ea7f50a6693c11",
+      "localStaging": "121/121 PASS; 0 rejected; 0 conflicts",
+      "options": [
+        {
+          "id": "A",
+          "decision": "Approve the current file as the initial migration-source design, then require a fresh final extract and new hash at cutover.",
+          "implication": "Preserves CURRENT SOURCE SNAPSHOT != FINAL CUTOVER EXTRACT and captures changes before launch."
+        },
+        {
+          "id": "B",
+          "decision": "Explicitly freeze the current binary as the final cutover extract.",
+          "implication": "Fastest option, but all later ERP changes are excluded and require explicit reconciliation."
+        },
+        {
+          "id": "C",
+          "decision": "Replace it with another approved authoritative ERP extract and rerun the same DQ/reconciliation gates.",
+          "implication": "Required only if Business rejects the current source or identifies a superior canonical export."
+        }
+      ],
+      "recommendation": "OPTION A — approve the mapping/DQ basis now and produce a fresh final extract at the governed cutoff.",
+      "finalCutoffEvidence": [
+        "exact filename",
+        "extraction/cutoff timestamp",
+        "SHA-256",
+        "source row count and excluded summary-row count",
+        "121 canonical customer candidates or documented actual final count",
+        "blocking/non-blocking DQ status",
+        "source-to-staging-to-canonical reconciliation",
+        "Business/Data approval"
+      ],
+      "businessDecisionRequired": true
+    },
+    {
+      "id": "D-03",
+      "name": "Product/SKU Source / Final Cutover Strategy",
+      "source": "pvc codes.xlsx",
+      "sha256": "a87ec0402be5c26210dd3b86d780119991b33c38c57c79dc244e0d92354079dd",
+      "localStaging": "2914/2914 PASS; 0 rejected; 0 conflicts; 66/66 dimension reviews dispositioned",
+      "options": [
+        {
+          "id": "A",
+          "decision": "Approve the current workbook as the master-seed source and refresh/freeze the final binary at cutover.",
+          "implication": "Retains validated code grammar and crosswalk while allowing final master changes."
+        },
+        {
+          "id": "B",
+          "decision": "Freeze the current binary now as the final seed.",
+          "implication": "Simple and deterministic, but later approved SKU changes are excluded."
+        },
+        {
+          "id": "C",
+          "decision": "Use a governed ERP/master sync at cutover if a real authoritative product master is confirmed.",
+          "implication": "Improves ongoing authority but requires source keys, schema, DQ, reconciliation and integration evidence."
+        }
+      ],
+      "recommendation": "OPTION A — approve the current mapping/DQ basis and refresh/freeze the final binary at cutover; choose C only after an actual authoritative ERP master is proven.",
+      "businessDecisionRequired": true
+    },
+    {
+      "id": "D-04",
+      "name": "ERP / Finance Source Strategy",
+      "sources": [
+        {
+          "domain": "ERP Orders / Commercial Facts",
+          "canonicalTruthOwner": "Authoritative ERP plus Business/Data owner",
+          "requiredSource": "Approved ERP export or API with stable source keys, raw lineage, quantities, currency and dates",
+          "currentIntegrationMethod": "Idempotent private import/sync through validation, DQ and reconciliation",
+          "currentSourceAvailability": "Discovery workbook available; approved production source/extract unavailable",
+          "classification": "LIVE ERP IMPORT/SYNC — CURRENTLY PENDING SOURCE",
+          "cutoverRequirement": "Approved source/system owner, method, schema, cutoff, hash/count, Booked/Shipped/Invoiced separation, DQ and reconciliation"
+        },
+        {
+          "domain": "FX",
+          "canonicalTruthOwner": "Finance",
+          "requiredSource": "Approved USD/EGP rate source with effective_at, source identity and audit lineage",
+          "currentIntegrationMethod": "Effective-dated governed Finance import/API; no silent overwrite or overlap",
+          "currentSourceAvailability": "No approved real source",
+          "classification": "LIVE ERP IMPORT/SYNC OR MANUAL APPROVED SEED — CURRENTLY PENDING SOURCE",
+          "cutoverRequirement": "Select rate authority; provide effective periods, values, source reference, coverage reconciliation and Finance approval"
+        },
+        {
+          "domain": "Payments",
+          "canonicalTruthOwner": "Finance source system",
+          "requiredSource": "Trusted transactional source/export/API with source keys, allocations/customer references, amounts and currency",
+          "currentIntegrationMethod": "Restricted private Finance import with source correction history",
+          "currentSourceAvailability": "No approved real source",
+          "classification": "LIVE ERP IMPORT/SYNC — CURRENTLY PENDING SOURCE",
+          "cutoverRequirement": "Approve system/owner/extract, cutoff, hash/count and source-fact reconciliation; no invented AR or revenue"
+        },
+        {
+          "domain": "Cheques",
+          "canonicalTruthOwner": "Finance source system",
+          "requiredSource": "Trusted transactional source/export/API with stable source keys and contracted dates/amounts",
+          "currentIntegrationMethod": "Restricted private Finance import with correction lineage",
+          "currentSourceAvailability": "No approved real source",
+          "classification": "LIVE ERP IMPORT/SYNC — CURRENTLY PENDING SOURCE",
+          "cutoverRequirement": "Approve system/owner/extract, cutoff, hash/count, validation and reconciliation"
+        }
+      ],
+      "decisionsRequired": [
+        "ERP production source and export/API method",
+        "ERP and Finance source owners",
+        "FX rate authority and initial seed/sync method",
+        "Payments source/extract",
+        "Cheques source/extract",
+        "cutoff, schema, file/API evidence, SHA-256/counts, DQ and reconciliation for each source"
+      ]
+    },
+    {
+      "id": "D-05",
+      "name": "Other Cutover Data Strategy",
+      "classifications": [
+        {
+          "domain": "Complaints",
+          "recommendation": "NEW SYSTEM ONLY",
+          "basis": "Capability exists but no authoritative legacy complaint source is approved; do not invent history."
+        },
+        {
+          "domain": "User Accounts",
+          "recommendation": "EXTERNAL IDENTITY PROVISIONING",
+          "basis": "Create from verified Entra/external identities; never migrate display names from random spreadsheets."
+        },
+        {
+          "domain": "Role Assignments",
+          "recommendation": "CONFIGURED AT GO-LIVE",
+          "basis": "Use a governed role-binding register tied to unique identities and least privilege."
+        },
+        {
+          "domain": "Country Scope",
+          "recommendation": "CONFIGURED AT GO-LIVE",
+          "basis": "Explicit server-side user-country assignments; Country Scope is mandatory and cannot be widened by ownership/share/manager logic."
+        },
+        {
+          "domain": "R&D Access",
+          "recommendation": "CONFIGURED AT GO-LIVE",
+          "basis": "Assign the governed R&D role to verified identities; keep access read-only and intersected with scope/DENY."
+        },
+        {
+          "domain": "Client Portal Customer Bindings",
+          "recommendation": "EXTERNAL IDENTITY PROVISIONING + CONFIGURED AT GO-LIVE",
+          "basis": "Explicit, audited external-identity-to-customer bindings; no inferred or name-based mapping."
+        }
+      ],
+      "businessDecisionsRequired": [
+        "confirm Complaints as new-system-only or provide a real approved legacy source",
+        "approve identity provisioning authority",
+        "approve governed role/Country Scope/R&D/client-binding configuration rules"
+      ]
+    },
+    {
+      "id": "D-06",
+      "name": "Production Workload Profile Approval",
+      "status": "PROPOSED",
+      "profiles": {
+        "low": {
+          "concurrentInternalUsers": 10,
+          "concurrentClientPortalUsers": 10,
+          "requestsPerSecond": 5,
+          "searchPerMinute": 15,
+          "dashboardLoadsPerMinute": 10,
+          "quotationAutosavesPerMinute": 10,
+          "pricingPreviewsPerMinute": 15,
+          "analyticsQueriesPerMinute": 10,
+          "exportsPerHour": 2,
+          "erpImportSizeRows": 10000,
+          "erpImportMaximumFileSizeMiB": 25,
+          "erpImportFrequency": "weekly/on-demand",
+          "complaintTransactionsPerDay": 10,
+          "shipmentUpdatesPerDay": 20,
+          "documentUploadsPerDay": 20,
+          "workerJobsPerMinute": 5,
+          "dbConnectionExpectations": "5-20"
+        },
+        "expected": {
+          "concurrentInternalUsers": 25,
+          "concurrentClientPortalUsers": 20,
+          "requestsPerSecond": 10,
+          "searchPerMinute": 30,
+          "dashboardLoadsPerMinute": 30,
+          "quotationAutosavesPerMinute": 20,
+          "pricingPreviewsPerMinute": 30,
+          "analyticsQueriesPerMinute": 20,
+          "exportsPerHour": 5,
+          "erpImportSizeRows": 50000,
+          "erpImportMaximumFileSizeMiB": 100,
+          "erpImportFrequency": "daily/on-demand",
+          "complaintTransactionsPerDay": 25,
+          "shipmentUpdatesPerDay": 50,
+          "documentUploadsPerDay": 50,
+          "workerJobsPerMinute": 10,
+          "dbConnectionExpectations": "10-40"
+        },
+        "peak": {
+          "concurrentInternalUsers": 60,
+          "concurrentClientPortalUsers": 100,
+          "requestsPerSecond": 30,
+          "searchPerMinute": 120,
+          "dashboardLoadsPerMinute": 120,
+          "quotationAutosavesPerMinute": 80,
+          "pricingPreviewsPerMinute": 120,
+          "analyticsQueriesPerMinute": 60,
+          "exportsPerHour": 20,
+          "erpImportSizeRows": 250000,
+          "erpImportMaximumFileSizeMiB": 250,
+          "erpImportFrequency": "daily plus controlled replay",
+          "complaintTransactionsPerDay": 100,
+          "shipmentUpdatesPerDay": 200,
+          "documentUploadsPerDay": 200,
+          "workerJobsPerMinute": 40,
+          "dbConnectionExpectations": "20-80"
+        }
+      },
+      "recommendation": "APPROVE AS INITIAL PRODUCTION BASELINE",
+      "technicalJustification": "The profile is bounded and consistent with the modular-monolith/PostgreSQL worker architecture; local technical performance passes with headroom. Approval must still be followed by a production-like load/spike/soak run using the approved Peak profile and representative data.",
+      "businessApprovalRequired": true
+    },
+    {
+      "id": "D-07",
+      "name": "Retention Matrix Approval",
+      "categoryCount": 28,
+      "records": [
+        {
+          "category": "Critical Audit",
+          "proposedRetention": "7 years after event",
+          "archiveDeleteRule": "partition/archive then approved purge",
+          "immutable": "YES",
+          "engineeringBaseline": "7 years",
+          "approvalImpact": "Business + Legal + Security"
+        },
+        {
+          "category": "Security Audit",
+          "proposedRetention": "1 year searchable; extension only by incident/legal hold",
+          "archiveDeleteRule": "retention policy + legal hold",
+          "immutable": "YES",
+          "engineeringBaseline": "1 year",
+          "approvalImpact": "Security + Legal"
+        },
+        {
+          "category": "Access Events",
+          "proposedRetention": "1 year",
+          "archiveDeleteRule": "policy purge/legal hold",
+          "immutable": "YES",
+          "engineeringBaseline": "1 year",
+          "approvalImpact": "Security + Legal"
+        },
+        {
+          "category": "Authentication Events",
+          "proposedRetention": "1 year",
+          "archiveDeleteRule": "identity/log retention",
+          "immutable": "YES",
+          "engineeringBaseline": "1 year",
+          "approvalImpact": "Security + Legal"
+        },
+        {
+          "category": "Application Logs",
+          "proposedRetention": "90 days searchable",
+          "archiveDeleteRule": "Log Analytics retention",
+          "immutable": "NO",
+          "engineeringBaseline": "90 days searchable",
+          "approvalImpact": "Technical + Security"
+        },
+        {
+          "category": "Infrastructure Logs",
+          "proposedRetention": "90 days searchable",
+          "archiveDeleteRule": "Log Analytics retention",
+          "immutable": "NO",
+          "engineeringBaseline": "90 days searchable",
+          "approvalImpact": "Technical + Security"
+        },
+        {
+          "category": "ERP Raw Import",
+          "proposedRetention": "7 years after import, subject to source-data policy",
+          "archiveDeleteRule": "immutable private object/version retention then approved purge",
+          "immutable": "YES",
+          "engineeringBaseline": "7 years candidate",
+          "approvalImpact": "Business + Legal + Data Owner"
+        },
+        {
+          "category": "ERP Reconciliation Evidence",
+          "proposedRetention": "7 years after run",
+          "archiveDeleteRule": "immutable evidence archive",
+          "immutable": "YES",
+          "engineeringBaseline": "7 years candidate",
+          "approvalImpact": "Business + Legal + Data Owner"
+        },
+        {
+          "category": "Quotations",
+          "proposedRetention": "7 years after terminal state as a business proposal",
+          "archiveDeleteRule": "archive; purge only when no hold/dependency",
+          "immutable": "SENT IMMUTABLE",
+          "engineeringBaseline": "No formal duration approved",
+          "approvalImpact": "Business + Legal"
+        },
+        {
+          "category": "Official PDFs",
+          "proposedRetention": "Same as governing quotation; proposed 7 years",
+          "archiveDeleteRule": "private versioned object storage",
+          "immutable": "YES",
+          "engineeringBaseline": "Immutable history required",
+          "approvalImpact": "Business + Legal"
+        },
+        {
+          "category": "Customers",
+          "proposedRetention": "Active lifecycle + approved post-relationship period",
+          "archiveDeleteRule": "archive, restricted projection, approved anonymize/purge",
+          "immutable": "NO",
+          "engineeringBaseline": "No formal duration approved",
+          "approvalImpact": "Business + Legal/Privacy"
+        },
+        {
+          "category": "Contacts",
+          "proposedRetention": "Active need + approved post-relationship period",
+          "archiveDeleteRule": "archive/anonymize/purge with audit preservation",
+          "immutable": "NO",
+          "engineeringBaseline": "No formal duration approved",
+          "approvalImpact": "Business + Legal/Privacy"
+        },
+        {
+          "category": "Projects",
+          "proposedRetention": "7 years after closure proposal",
+          "archiveDeleteRule": "archive/purge policy",
+          "immutable": "NO",
+          "engineeringBaseline": "No formal duration approved",
+          "approvalImpact": "Business + Legal"
+        },
+        {
+          "category": "Opportunities",
+          "proposedRetention": "7 years after terminal state proposal",
+          "archiveDeleteRule": "archive/purge policy",
+          "immutable": "NO",
+          "engineeringBaseline": "No formal duration approved",
+          "approvalImpact": "Business + Legal"
+        },
+        {
+          "category": "Activities",
+          "proposedRetention": "Aligned to related customer/opportunity; proposed max 7 years",
+          "archiveDeleteRule": "archive/purge with parent policy",
+          "immutable": "NO",
+          "engineeringBaseline": "No formal duration approved",
+          "approvalImpact": "Business + Legal/Privacy"
+        },
+        {
+          "category": "Complaints",
+          "proposedRetention": "7 years after closure proposal",
+          "archiveDeleteRule": "archive; attachment purge subject to hold",
+          "immutable": "HISTORY IMMUTABLE",
+          "engineeringBaseline": "No formal duration approved",
+          "approvalImpact": "Business + Legal/Quality"
+        },
+        {
+          "category": "Shipment History",
+          "proposedRetention": "7 years after final milestone proposal",
+          "archiveDeleteRule": "archive; no history overwrite",
+          "immutable": "YES",
+          "engineeringBaseline": "Immutable milestone/correction history",
+          "approvalImpact": "Business + Legal/Logistics"
+        },
+        {
+          "category": "Payments",
+          "proposedRetention": "7 years after source fact proposal",
+          "archiveDeleteRule": "restricted archive/correction history",
+          "immutable": "SOURCE/CORRECTION HISTORY",
+          "engineeringBaseline": "No formal duration approved",
+          "approvalImpact": "Finance + Legal"
+        },
+        {
+          "category": "Cheques",
+          "proposedRetention": "7 years proposal",
+          "archiveDeleteRule": "restricted archive/purge policy",
+          "immutable": "HISTORY",
+          "engineeringBaseline": "No formal duration approved",
+          "approvalImpact": "Finance + Legal"
+        },
+        {
+          "category": "Returned Scrap",
+          "proposedRetention": "7 years after decision proposal",
+          "archiveDeleteRule": "immutable calculation/approval evidence archive",
+          "immutable": "YES",
+          "engineeringBaseline": "Audited approval and original-price evidence",
+          "approvalImpact": "Finance + Business + Legal"
+        },
+        {
+          "category": "Documents",
+          "proposedRetention": "Inherit governing business record; working files 1 year after replacement proposal",
+          "archiveDeleteRule": "versioned private object lifecycle",
+          "immutable": "OFFICIAL VERSIONS ONLY",
+          "engineeringBaseline": "Official history immutable",
+          "approvalImpact": "Business + Legal + Security"
+        },
+        {
+          "category": "Client Portal Audit",
+          "proposedRetention": "1 year; longer under incident/legal hold",
+          "archiveDeleteRule": "immutable audit retention",
+          "immutable": "YES",
+          "engineeringBaseline": "1 year security/access baseline",
+          "approvalImpact": "Security + Legal/Privacy"
+        },
+        {
+          "category": "R&D Analytics Evidence",
+          "proposedRetention": "1 year result evidence; source follows source policy",
+          "archiveDeleteRule": "aggregate evidence purge; lineage governed separately",
+          "immutable": "PUBLISHED EVIDENCE",
+          "engineeringBaseline": "No formal duration approved",
+          "approvalImpact": "Business/Data + Legal/Privacy"
+        },
+        {
+          "category": "PITR",
+          "proposedRetention": "14 days",
+          "archiveDeleteRule": "Azure PostgreSQL managed PITR",
+          "immutable": "PROVIDER CONTROLLED",
+          "engineeringBaseline": "14 days",
+          "approvalImpact": "Technical + Security + Legal"
+        },
+        {
+          "category": "Daily Backups",
+          "proposedRetention": "35 days",
+          "archiveDeleteRule": "managed/logical lifecycle",
+          "immutable": "YES",
+          "engineeringBaseline": "35 days",
+          "approvalImpact": "Technical + Security + Legal"
+        },
+        {
+          "category": "Monthly Backups",
+          "proposedRetention": "12 months",
+          "archiveDeleteRule": "backup archive lifecycle",
+          "immutable": "YES",
+          "engineeringBaseline": "12 months",
+          "approvalImpact": "Technical + Security + Legal"
+        },
+        {
+          "category": "Exports",
+          "proposedRetention": "24 hours service copy; recipient responsibility after download proposal",
+          "archiveDeleteRule": "automatic object deletion and download audit",
+          "immutable": "NO",
+          "engineeringBaseline": "Short-lived authorized download",
+          "approvalImpact": "Business + Security + Legal/Privacy"
+        },
+        {
+          "category": "Temporary Signed URLs",
+          "proposedRetention": "15-minute maximum validity proposal; URL not retained beyond audit-safe metadata",
+          "archiveDeleteRule": "expiry and key rotation",
+          "immutable": "NO",
+          "engineeringBaseline": "Short lived; no public storage",
+          "approvalImpact": "Security"
+        }
+      ],
+      "undefinedItems": [
+        "Exact post-relationship retention duration for Customers",
+        "Exact post-relationship retention duration for Contacts"
+      ],
+      "undefinedCount": 2,
+      "recommendation": "REQUIRES CHANGES",
+      "recommendationReason": "Define exact Customer and Contact post-relationship periods, then obtain Business/Legal/Privacy/Security approval. All other engineering proposals remain suitable for that governance review but are not legally approved."
+    },
+    {
+      "id": "D-08",
+      "name": "DR Malware-Scanning Decision",
+      "primaryRegion": "UAE North",
+      "currentDrCandidate": "UAE Central",
+      "problem": "Equivalent support for the Primary malware-scanning capability is not confirmed in UAE Central.",
+      "options": [
+        {
+          "id": "A",
+          "decision": "Keep UAE Central and deploy an approved alternative failure-closed malware scanner behind private quarantine.",
+          "security": "Acceptable only with equivalent verdict, audit, alerting, quarantine and failure-closed behavior.",
+          "costComplexity": "Medium to high; adds scanner compute, signatures/updates, scaling, monitoring and operational ownership.",
+          "rtoRpo": "Preserves UAE Central proximity but scanner capacity/startup must be included in DR RTO testing; database RPO design unchanged.",
+          "architectureImpact": "Blob quarantine -> private scanner -> clean promotion; unsafe/unavailable scanner blocks release.",
+          "iacImpact": "Add scanner workload, private endpoints/identity, queues/events, alerting and failure policies.",
+          "operationalImpact": "Patch/signature management, capacity tests and incident runbook required.",
+          "goLiveImpact": "RG-09 stays open until equivalence and a formal DR restore/scanning test pass."
+        },
+        {
+          "id": "B",
+          "decision": "Select another Azure DR region with confirmed malware-scanning and required service parity.",
+          "security": "Strongest managed-control parity if support is verified before selection.",
+          "costComplexity": "Medium; regional architecture, egress, data residency and service availability must be reassessed.",
+          "rtoRpo": "May increase latency or replication distance; RTO/RPO require measured validation.",
+          "architectureImpact": "Region pair, networking, replication, Front Door routing and storage design change.",
+          "iacImpact": "Parameterize/validate the replacement region and all dependent resources/policies.",
+          "operationalImpact": "New regional failover, access and support runbooks; residency approval may be required.",
+          "goLiveImpact": "RG-09 remains open until the region decision, parity proof and DR drill complete."
+        },
+        {
+          "id": "C",
+          "decision": "Accept a time-bounded formal security exception for UAE Central.",
+          "security": "Residual malware risk accepted explicitly; requires compensating controls, named risk owner, expiry and remediation date.",
+          "costComplexity": "Lowest immediate build effort but creates governance, audit and remediation debt.",
+          "rtoRpo": "Minimal immediate topology change; security capability is degraded during DR.",
+          "architectureImpact": "No parity fix; compensating quarantine/manual controls must be documented.",
+          "iacImpact": "Exception metadata and compensating controls only; no equivalent managed scanning.",
+          "operationalImpact": "Manual review/escalation burden and strict exception expiry tracking.",
+          "goLiveImpact": "Cannot close RG-09 without explicit Security and Business risk acceptance; not recommended for convenience."
+        }
+      ],
+      "recommendation": "OPTION A first, because it preserves the selected UAE Central DR topology. If equivalent failure-closed scanning cannot be proven within the release window, select OPTION B. Do not select OPTION C by default.",
+      "decisionRequired": true
+    }
+  ],
+  "nonPeopleDecisionCount": 8,
+  "peopleItemsDeferred": ["HI-001", "HI-002", "HI-010", "HI-011"],
+  "step12": "BLOCKED",
+  "productionReady": false,
+  "productionDeployment": "NOT_EXECUTED"
+}

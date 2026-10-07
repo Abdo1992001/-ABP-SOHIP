@@ -1,0 +1,30 @@
+get:
+  tags: [Messages]
+  summary: Read the conversation attached to one commercial record
+  description: >-
+    Returns the thread for a record, creating nothing. conversationId is null
+    when nobody has posted yet. Access follows the record, not a participant
+    list: whoever may see the opportunity or quotation may read its thread.
+  operationId: get_record_conversations_by_contextType_by_contextId
+  security: [{ WebCookie: [] }, { DesktopOAuth: [] }]
+  parameters:
+    - { name: contextType, in: path, required: true, schema: { type: string, enum: [OPPORTUNITY, QUOTATION] } }
+    - { name: contextId, in: path, required: true, schema: { type: string, format: uuid } }
+    - { $ref: ../components/parameters/Page.yaml }
+    - { $ref: ../components/parameters/Limit.yaml }
+  responses:
+    '200': { description: Success, content: { application/json: { schema: { $ref: ../components/schemas/RecordThreadEnvelope.yaml } } } }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '404': { $ref: ../components/responses/Error404.yaml }
+    '422': { $ref: ../components/responses/Error422.yaml }
+  x-abp-module: Messages
+  x-abp-permission: authenticated
+  x-abp-scope-rule: Record visibility, scoped by the caller's country grants
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: MessageListQuery
+  x-abp-success-schema: RecordThreadEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

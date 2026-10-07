@@ -1,0 +1,12 @@
+type: string
+enum:
+  - AFRICA
+  - ASIA
+  - EUROPE
+  - NORTH_AMERICA
+  - SOUTH_AMERICA
+  - OCEANIA
+  # An imported row whose country cannot be normalized is parked on an explicit
+  # unknown country rather than guessed into a real one.
+  - UNKNOWN
+description: Canonical continent. MENA and GCC are region groups, never continent values.

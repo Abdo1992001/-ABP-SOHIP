@@ -1,0 +1,82 @@
+type: object
+properties:
+  activityId:
+    type: string
+    format: uuid
+    description: Activity/task.
+  typeCode:
+    type: string
+    description: CALL/MEETING/WHATSAPP/EMAIL/SITE_VISIT/FOLLOW_UP etc.
+  ownerUserId:
+    type: string
+    format: uuid
+    description: Activity owner.
+  countryCode:
+    type: string
+    description: Scope country.
+  subject:
+    type:
+      - string
+      - "null"
+    description: Short title.
+  notes:
+    type:
+      - string
+      - "null"
+    description: Activity notes.
+  occurredAt:
+    type:
+      - string
+      - "null"
+    format: date-time
+    description: Actual event time.
+  scheduledAt:
+    type:
+      - string
+      - "null"
+    format: date-time
+    description: Scheduled activity time.
+  dueAt:
+    type:
+      - string
+      - "null"
+    format: date-time
+    description: Task due time.
+  taskStatusCode:
+    type:
+      - string
+      - "null"
+    description: OPEN/COMPLETED/CANCELLED etc.
+  outcomeCode:
+    type:
+      - string
+      - "null"
+    description: Structured outcome.
+  completedAt:
+    type:
+      - string
+      - "null"
+    format: date-time
+    description: Completion time.
+  links:
+    type: array
+    description: Resources this activity is about (quotation, opportunity, account…).
+    items:
+      type: object
+      additionalProperties: false
+      properties:
+        resourceTypeCode:
+          type: string
+        resourceId:
+          type: string
+          format: uuid
+        isPrimary:
+          type: boolean
+  rowVersion:
+    $ref: ./RowVersion.yaml
+additionalProperties: false
+required:
+  - activityId
+  - countryCode
+  - ownerUserId
+  - typeCode

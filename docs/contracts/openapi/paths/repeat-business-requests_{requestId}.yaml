@@ -1,0 +1,48 @@
+patch:
+  tags: [Commercial Intelligence]
+  summary: Update repeat business request
+  operationId: patch_repeat_business_requests_by_requestId
+  description: 'Permission: repeat-business.manage. Scope: Country + authorized sales.'
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  parameters:
+    - name: requestId
+      in: path
+      required: true
+      schema: { type: string, format: uuid }
+    - $ref: ../components/parameters/CsrfToken.yaml
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/UpdateRepeatBusinessRequest.yaml
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/CommercialIntelligenceEnvelope.yaml
+    '400': { $ref: ../components/responses/Error400.yaml }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '403': { $ref: ../components/responses/Error403.yaml }
+    '404': { $ref: ../components/responses/Error404.yaml }
+    '409': { $ref: ../components/responses/Error409.yaml }
+    '412': { $ref: ../components/responses/Error412.yaml }
+    '422': { $ref: ../components/responses/Error422.yaml }
+    '429': { $ref: ../components/responses/Error429.yaml }
+    '500': { $ref: ../components/responses/Error500.yaml }
+    '503': { $ref: ../components/responses/Error503.yaml }
+  x-abp-module: Commercial Intelligence
+  x-abp-permission: repeat-business.manage
+  x-abp-scope-rule: Country + authorized sales
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: UpdateRepeatBusinessRequest
+  x-abp-success-schema: CommercialIntelligenceEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

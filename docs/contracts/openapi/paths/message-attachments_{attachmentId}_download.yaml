@@ -1,0 +1,23 @@
+get:
+  tags: [Messages]
+  summary: Download an authorized message attachment
+  operationId: get_message_attachments_by_attachmentId_download
+  security: [{ WebCookie: [] }, { DesktopOAuth: [] }]
+  parameters: [{ name: attachmentId, in: path, required: true, schema: { type: string, format: uuid } }]
+  responses:
+    '200':
+      description: Attachment bytes
+      content: { application/octet-stream: { schema: { type: string, format: binary } } }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '404': { $ref: ../components/responses/Error404.yaml }
+  x-abp-module: Messages
+  x-abp-permission: authenticated
+  x-abp-scope-rule: Active participant only
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: NONE
+  x-abp-success-schema: BINARY
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

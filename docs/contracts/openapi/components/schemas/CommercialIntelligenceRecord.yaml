@@ -1,0 +1,52 @@
+type: object
+additionalProperties: false
+required: [id, statusCode]
+properties:
+  id: { type: string, format: uuid }
+  title: { type: string }
+  sourceName: { type: string }
+  sourceUrl: { type: [string, 'null'], format: uri }
+  publishedDate: { type: string, format: date }
+  retrievedDate: { type: string, format: date }
+  eventDate: { type: [string, 'null'], format: date }
+  evidence: { type: string }
+  evidenceHash: { type: string }
+  verificationCode: { type: string, enum: [VERIFIED, UNVERIFIED, REJECTED] }
+  classificationCode: { type: string, enum: [FACT, FORECAST, OPINION, UNVERIFIED] }
+  countryCode: { type: [string, 'null'] }
+  summary: { type: [string, 'null'] }
+  name: { type: string }
+  companyName: { type: string }
+  normalizedName: { type: string }
+  segmentCode: { type: [string, 'null'] }
+  rationale: { type: string }
+  priorityScore: { type: [string, 'null'] }
+  rankingSource: { type: string }
+  website: { type: [string, 'null'], format: uri }
+  sourceSignalId: { type: [string, 'null'], format: uuid }
+  ownerUserId: { type: [string, 'null'], format: uuid }
+  strengths: { type: [string, 'null'] }
+  weaknesses: { type: [string, 'null'] }
+  notes: { type: [string, 'null'] }
+  resourceType: { type: string }
+  resourceId: { type: string, format: uuid }
+  label: { type: string }
+  accountId: { type: string, format: uuid }
+  subject: { type: string }
+  description: { type: string }
+  requestedByUserId: { type: string, format: uuid }
+  assignedOwnerUserId: { type: string, format: uuid }
+  salesResponse: { type: [string, 'null'] }
+  statusCode: { type: string }
+  createdAt: { type: string, format: date-time }
+  updatedAt: { type: string, format: date-time }
+  rowVersion: { type: string }
+  account:
+    type: object
+    additionalProperties: false
+    required: [id, accountRef, canonicalName, countryCode]
+    properties:
+      id: { type: string, format: uuid }
+      accountRef: { type: string }
+      canonicalName: { type: string }
+      countryCode: { type: string }

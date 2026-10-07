@@ -1,0 +1,64 @@
+post:
+  tags:
+    - Customer Feedback
+  summary: Follow up feedback
+  operationId: post_customer_feedback_by_feedbackId_follow_ups
+  description: 'Permission: feedback.manage. NEW, ACKNOWLEDGED, CONTACTED, CLOSED; closing needs a note.'
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/FeedbackEnvelope.yaml
+      headers:
+        ETag:
+          $ref: ../components/headers/ETag.yaml
+    '400':
+      $ref: ../components/responses/Error400.yaml
+    '401':
+      $ref: ../components/responses/Error401.yaml
+    '403':
+      $ref: ../components/responses/Error403.yaml
+    '404':
+      $ref: ../components/responses/Error404.yaml
+    '409':
+      $ref: ../components/responses/Error409.yaml
+    '412':
+      $ref: ../components/responses/Error412.yaml
+    '422':
+      $ref: ../components/responses/Error422.yaml
+    '429':
+      $ref: ../components/responses/Error429.yaml
+    '500':
+      $ref: ../components/responses/Error500.yaml
+    '503':
+      $ref: ../components/responses/Error503.yaml
+  parameters:
+    - name: feedbackId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    - $ref: ../components/parameters/CsrfToken.yaml
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/FeedbackFollowUpRequest.yaml
+  x-abp-module: Customer Feedback
+  x-abp-permission: feedback.manage
+  x-abp-scope-rule: Own customers and routed feedback; managers see the country
+  x-abp-concurrency: expectedRowVersion
+  x-abp-idempotency: NONE
+  x-abp-request-schema: FeedbackFollowUpRequest
+  x-abp-success-schema: FeedbackEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

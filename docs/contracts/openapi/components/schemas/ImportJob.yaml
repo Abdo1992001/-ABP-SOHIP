@@ -1,0 +1,116 @@
+type: object
+properties:
+  importJobId:
+    type: string
+    format: uuid
+    description: Import run.
+  jobRef:
+    type:
+      - string
+      - 'null'
+    description: Human-facing job reference, e.g. IMP-004.
+  label:
+    type:
+      - string
+      - 'null'
+    description: What this run was.
+  summary:
+    # Was `additionalProperties: true`, i.e. "some object" — which told a
+    # client nothing and let the contract check flag it, correctly. The rows
+    # actually written here have a fixed shape; only the counter *names* vary
+    # ("Rows Read", "items.SERVICE", "Products Loaded" and so on), and their
+    # values are always counts. So the envelope is typed and only the counter
+    # map stays open, with its value type declared.
+    type:
+      - object
+      - 'null'
+    additionalProperties: false
+    properties:
+      label:
+        type: string
+        description: What this run was, in the words the import wrote.
+      durationMs:
+        type: integer
+        minimum: 0
+        description: How long the run took.
+      issueCount:
+        type: integer
+        minimum: 0
+        description: Rows the run could not accept.
+      counters:
+        type: object
+        additionalProperties:
+          type: integer
+          minimum: 0
+        description: >-
+          Named tallies from the run — rows read, items detected, products
+          loaded, and per-category counts. The names depend on what was
+          imported; the values are always counts.
+    description: >-
+      The staging report recorded when the job ran.
+  createdAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+  sourceSystemId:
+    type: string
+    format: uuid
+    description: Source.
+  importTypeCode:
+    type: string
+    description: ITEM_MASTER/SALES_ORDERS/FINANCE/CUSTOMERS etc.
+  fileName:
+    type:
+      - string
+      - 'null'
+    description: Original file name.
+  fileSha256:
+    type:
+      - string
+      - 'null'
+    description: Dedup/idempotency fingerprint.
+  statusCode:
+    type: string
+    description: UPLOADED/VALIDATING/PREVIEWED/COMMITTED/FAILED/ROLLED_BACK.
+  createdByUserId:
+    type: string
+    format: uuid
+    description: Actor.
+  previewedAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+    description: Preview time.
+  committedAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+    description: Commit time.
+  rolledBackAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+    description: Rollback time if supported.
+  currentPreviewAttemptId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  currentPreviewFingerprint:
+    type:
+      - string
+      - 'null'
+  statusUrl:
+    type:
+      - string
+      - 'null'
+additionalProperties: false
+required:
+  - createdByUserId
+  - importJobId
+  - importTypeCode
+  - sourceSystemId

@@ -1,0 +1,49 @@
+type: object
+properties:
+  sourceSalesOrderId:
+    type: string
+    format: uuid
+    description: Raw ERP order.
+  sourceSystemId:
+    type: string
+    format: uuid
+    description: ERP source.
+  sourceOrderKey:
+    type: string
+    description: Natural source key.
+  rawOrderNumber:
+    type:
+      - string
+      - 'null'
+    description: Raw order number.
+  rawCustomerNumber:
+    type:
+      - string
+      - 'null'
+    description: Raw customer number.
+  rawStatus:
+    type:
+      - string
+      - 'null'
+    description: Raw status.
+  rawPayloadJsonb:
+    type: object
+    additionalProperties:
+      $ref: ./DynamicJsonValue.yaml
+    description: Full raw header payload.
+    maxProperties: 100
+  importRowId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    description: Import lineage.
+additionalProperties: false
+required:
+  - rawPayloadJsonb
+  - sourceOrderKey
+  - sourceSalesOrderId
+  - sourceSystemId
+description: >-
+  Imported read-only ERP canonical fact with source lineage. No internal create,
+  confirm, amend, handover, close, shipment, or POD command semantics.

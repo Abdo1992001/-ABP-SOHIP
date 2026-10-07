@@ -1,0 +1,15 @@
+type: object
+properties:
+  resolutionCode:
+    type: string
+  resourceId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  reason:
+    type: string
+additionalProperties: false
+required:
+  - resolutionCode
+  - reason

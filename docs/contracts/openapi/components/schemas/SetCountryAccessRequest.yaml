@@ -1,0 +1,12 @@
+type: object
+properties:
+  countryCodes:
+    type: array
+    items:
+      type: string
+  reason:
+    type: string
+additionalProperties: false
+required:
+  - countryCodes
+  - reason

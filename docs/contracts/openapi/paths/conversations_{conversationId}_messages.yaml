@@ -1,0 +1,27 @@
+post:
+  tags: [Messages]
+  summary: Send a message into an authorized conversation
+  operationId: post_conversations_by_conversationId_messages
+  security: [{ WebCookie: [] }, { DesktopOAuth: [] }]
+  parameters:
+    - { name: conversationId, in: path, required: true, schema: { type: string, format: uuid } }
+    - { $ref: ../components/parameters/CsrfToken.yaml }
+  requestBody:
+    required: true
+    content: { application/json: { schema: { $ref: ../components/schemas/SendMessageRequest.yaml } } }
+  responses:
+    '201': { description: Created, content: { application/json: { schema: { $ref: ../components/schemas/MessageEnvelope.yaml } } } }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '404': { $ref: ../components/responses/Error404.yaml }
+    '422': { $ref: ../components/responses/Error422.yaml }
+  x-abp-module: Messages
+  x-abp-permission: authenticated
+  x-abp-scope-rule: Active participant only
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: SendMessageRequest
+  x-abp-success-schema: MessageEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

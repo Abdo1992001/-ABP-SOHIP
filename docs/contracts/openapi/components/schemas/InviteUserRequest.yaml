@@ -1,0 +1,18 @@
+type: object
+properties:
+  expectedRowVersion:
+    $ref: ./RowVersion.yaml
+  deliveryChannel:
+    type: string
+    enum:
+      - EMAIL
+      - MANUAL
+  expiresInHours:
+    type: integer
+    format: int64
+    minimum: 1
+additionalProperties: false
+required:
+  - expectedRowVersion
+  - deliveryChannel
+  - expiresInHours

@@ -1,0 +1,41 @@
+type: object
+properties:
+  productId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  productFamilyId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  minPrice:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+  referencePrice:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+  maxPrice:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+  currencyCode:
+    type: string
+  effectiveFrom:
+    type: string
+    format: date-time
+  effectiveTo:
+    type:
+      - string
+      - 'null'
+    format: date-time
+additionalProperties: false
+required:
+  - currencyCode
+  - effectiveFrom

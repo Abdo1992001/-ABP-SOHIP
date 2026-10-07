@@ -1,0 +1,178 @@
+name: abp-production
+
+services:
+  db:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: abp
+      POSTGRES_USER: abp
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in the protected production env file}
+    volumes:
+      - abp_pgdata_prod:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U abp -d abp"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+    networks: [abp-internal]
+
+  migrate:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    command:
+      [
+        "node",
+        "packages/database/node_modules/prisma/build/index.js",
+        "migrate",
+        "deploy",
+        "--config",
+        "packages/database/prisma.config.ts",
+      ]
+    env_file:
+      - path: .env.production
+        required: false
+    environment:
+      DATABASE_URL: postgresql://abp:${POSTGRES_PASSWORD}@db:5432/abp?schema=public
+    depends_on:
+      db: { condition: service_healthy }
+    networks: [abp-internal]
+    restart: "no"
+
+  object-storage-init:
+    image: alpine:3.22
+    command:
+      [
+        "sh",
+        "-c",
+        "mkdir -p /data/{documents,quotation-pdfs,imports,exports,profile-images,attachments} && chown -R 1000:1000 /data && chmod -R 0770 /data",
+      ]
+    volumes: [abp_objects_prod:/data]
+    restart: "no"
+
+  api:
+    build: { context: ., dockerfile: apps/api/Dockerfile }
+    restart: unless-stopped
+    env_file:
+      - path: .env.production
+        required: false
+    environment:
+      DATABASE_URL: postgresql://abp:${POSTGRES_PASSWORD}@db:5432/abp?schema=public
+      PORT: "3000"
+      ABP_LOCAL_OBJECT_ROOT: /workspace/storage
+      ABP_BACKUP_STATUS_FILE: /backup-status/latest.json
+    volumes:
+      - abp_objects_prod:/workspace/storage
+      - abp_backup_status_prod:/backup-status:ro
+    read_only: false
+    depends_on:
+      migrate: { condition: service_completed_successfully }
+      object-storage-init: { condition: service_completed_successfully }
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:3000/api/v1/health/ready').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+    networks: [abp-internal]
+
+  worker:
+    build: { context: ., dockerfile: apps/worker/Dockerfile }
+    restart: unless-stopped
+    env_file:
+      - path: .env.production
+        required: false
+    environment:
+      DATABASE_URL: postgresql://abp:${POSTGRES_PASSWORD}@db:5432/abp?schema=public
+      ABP_WORKER_HEALTH_PORT: "3001"
+      ABP_LOCAL_OBJECT_ROOT: /workspace/storage
+      ABP_BACKUP_STATUS_FILE: /backup-status/latest.json
+    volumes:
+      - abp_objects_prod:/workspace/storage
+      - abp_backup_status_prod:/backup-status:ro
+    depends_on:
+      migrate: { condition: service_completed_successfully }
+      object-storage-init: { condition: service_completed_successfully }
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:3001/health/ready').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+    networks: [abp-internal]
+
+  web:
+    build: { context: ., dockerfile: apps/web/Dockerfile }
+    restart: unless-stopped
+    environment:
+      PORT: "8080"
+      ABP_API_BASE_URL: https://abp-commercial.local/api/v1
+    depends_on:
+      api: { condition: service_healthy }
+    networks: [abp-internal]
+
+  # Nightly backup of the database and every document, each restored into a
+  # scratch database before it counts. Set ABP_BACKUP_DIR to where backups
+  # are kept and ABP_BACKUP_OFFSITE_DIR to a second disk or network share.
+  backup:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    entrypoint: ["/bin/sh", "/scripts/backup.sh"]
+    command: ["service"]
+    environment:
+      PGHOST: db
+      PGUSER: abp
+      PGPASSWORD: ${POSTGRES_PASSWORD}
+      PGDATABASE: abp
+      TZ: Africa/Cairo
+      ABP_BACKUP_HOUR: ${ABP_BACKUP_HOUR:-2}
+      ABP_BACKUP_KEEP_DAILY: ${ABP_BACKUP_KEEP_DAILY:-14}
+      ABP_BACKUP_KEEP_MONTHLY: ${ABP_BACKUP_KEEP_MONTHLY:-6}
+      ABP_BACKUP_OFFSITE_DIR: ${ABP_BACKUP_OFFSITE_DIR:+/offsite}
+    volumes:
+      - ./scripts/docker/backup:/scripts:ro
+      - ${ABP_BACKUP_DIR:-./backups}:/backups
+      - ${ABP_BACKUP_OFFSITE_DIR:-./backups-offsite-unset}:/offsite
+      - abp_objects_prod:/objects
+      - abp_backup_status_prod:/status
+    depends_on:
+      db: { condition: service_healthy }
+    networks: [abp-internal]
+
+  reverse-proxy:
+    image: caddy:2.10-alpine
+    restart: unless-stopped
+    ports:
+      - "443:443"
+      - "80:80"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      web: { condition: service_started }
+      api: { condition: service_healthy }
+    networks: [abp-internal]
+
+volumes:
+  abp_pgdata_prod:
+  abp_objects_prod:
+  abp_backup_status_prod:
+  caddy_data:
+  caddy_config:
+
+networks:
+  abp-internal:
+    driver: bridge
+    internal: false

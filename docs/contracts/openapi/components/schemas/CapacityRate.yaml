@@ -1,0 +1,69 @@
+type: object
+properties:
+  capacityRateId:
+    type: string
+    format: uuid
+    description: Effective capacity rate.
+  categoryCode:
+    type: string
+    enum:
+      - STANDARD
+      - ORDINARY
+      - CURVED
+  boardsPerDay:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+    description: 900/700/600 defaults via config records.
+  effectiveFrom:
+    type: string
+    format: date-time
+    description: Start.
+  effectiveTo:
+    type:
+      - string
+      - 'null'
+    format: date-time
+    description: End.
+  sourceCode:
+    type: string
+    description: Source of rate.
+  changedByUserId:
+    type: string
+    format: uuid
+    description: Authorized actor.
+additionalProperties: false
+required:
+  - boardsPerDay
+  - capacityRateId
+  - categoryCode
+  - changedByUserId
+  - effectiveFrom
+  - sourceCode
+allOf:
+  - if:
+      properties:
+        categoryCode:
+          const: STANDARD
+    then:
+      properties:
+        boardsPerDay:
+          const: '900'
+  - if:
+      properties:
+        categoryCode:
+          const: ORDINARY
+    then:
+      properties:
+        boardsPerDay:
+          const: '700'
+  - if:
+      properties:
+        categoryCode:
+          const: CURVED
+    then:
+      properties:
+        boardsPerDay:
+          const: '600'
+description: >-
+  Estimate-only rates at 24 hours/day. No reservation, overbooking, work order,
+  MES, routing, or QC semantics.

@@ -1,0 +1,129 @@
+get:
+  tags:
+    - CRM
+  summary: Customer contacts
+  operationId: get_accounts_by_accountId_contacts
+  description: >-
+    Permission: contacts.view. Scope: Account/contact grant. Contact-only
+    recipient sees only selected contacts.
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ContactListEnvelope.yaml
+    '400':
+      $ref: ../components/responses/Error400.yaml
+    '401':
+      $ref: ../components/responses/Error401.yaml
+    '403':
+      $ref: ../components/responses/Error403.yaml
+    '404':
+      $ref: ../components/responses/Error404.yaml
+    '409':
+      $ref: ../components/responses/Error409.yaml
+    '412':
+      $ref: ../components/responses/Error412.yaml
+    '422':
+      $ref: ../components/responses/Error422.yaml
+    '429':
+      $ref: ../components/responses/Error429.yaml
+    '500':
+      $ref: ../components/responses/Error500.yaml
+    '503':
+      $ref: ../components/responses/Error503.yaml
+  parameters:
+    - name: accountId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    - $ref: ../components/parameters/Page.yaml
+    - $ref: ../components/parameters/Offset.yaml
+    - $ref: ../components/parameters/Limit.yaml
+    - $ref: ../components/parameters/Sort.yaml
+    - $ref: ../components/parameters/Search.yaml
+  x-abp-module: CRM
+  x-abp-permission: contacts.view
+  x-abp-scope-rule: Account/contact grant
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: ContactListQuery
+  x-abp-success-schema: ContactListEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true
+  x-abp-pagination: OFFSET
+post:
+  tags:
+    - CRM
+  summary: Create contact
+  operationId: post_accounts_by_accountId_contacts
+  description: >-
+    Permission: contacts.create. Scope: Account edit scope. Nested initial
+    channels allowed.
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    '201':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ContactEnvelope.yaml
+      headers:
+        ETag:
+          $ref: ../components/headers/ETag.yaml
+    '400':
+      $ref: ../components/responses/Error400.yaml
+    '401':
+      $ref: ../components/responses/Error401.yaml
+    '403':
+      $ref: ../components/responses/Error403.yaml
+    '404':
+      $ref: ../components/responses/Error404.yaml
+    '409':
+      $ref: ../components/responses/Error409.yaml
+    '412':
+      $ref: ../components/responses/Error412.yaml
+    '422':
+      $ref: ../components/responses/Error422.yaml
+    '429':
+      $ref: ../components/responses/Error429.yaml
+    '500':
+      $ref: ../components/responses/Error500.yaml
+    '503':
+      $ref: ../components/responses/Error503.yaml
+  parameters:
+    - name: accountId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    - $ref: ../components/parameters/IdempotencyKey.yaml
+    - $ref: ../components/parameters/CsrfToken.yaml
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/CreateContactRequest.yaml
+  x-abp-module: CRM
+  x-abp-permission: contacts.create
+  x-abp-scope-rule: Account edit scope
+  x-abp-concurrency: NONE
+  x-abp-idempotency: Required
+  x-abp-request-schema: CreateContactRequest
+  x-abp-success-schema: ContactEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

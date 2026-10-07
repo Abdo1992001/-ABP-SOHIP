@@ -1,0 +1,64 @@
+get:
+  tags:
+    - CRM
+  summary: Contact directory
+  operationId: get_contacts
+  description: >-
+    Permission: contacts.view. Scope: Account/contact grant. Every contact the
+    caller may see across their customers, with the customer's name and the
+    primary channel. Contact-only recipient sees only selected contacts.
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ContactDirectoryEnvelope.yaml
+    '400':
+      $ref: ../components/responses/Error400.yaml
+    '401':
+      $ref: ../components/responses/Error401.yaml
+    '403':
+      $ref: ../components/responses/Error403.yaml
+    '404':
+      $ref: ../components/responses/Error404.yaml
+    '409':
+      $ref: ../components/responses/Error409.yaml
+    '412':
+      $ref: ../components/responses/Error412.yaml
+    '422':
+      $ref: ../components/responses/Error422.yaml
+    '429':
+      $ref: ../components/responses/Error429.yaml
+    '500':
+      $ref: ../components/responses/Error500.yaml
+    '503':
+      $ref: ../components/responses/Error503.yaml
+  parameters:
+    - $ref: ../components/parameters/Page.yaml
+    - $ref: ../components/parameters/Offset.yaml
+    - $ref: ../components/parameters/Limit.yaml
+    - $ref: ../components/parameters/Sort.yaml
+    - $ref: ../components/parameters/Search.yaml
+    - name: accountId
+      in: query
+      required: false
+      description: Only this customer's contacts.
+      schema:
+        type: string
+        format: uuid
+  x-abp-module: CRM
+  x-abp-permission: contacts.view
+  x-abp-scope-rule: Account/contact grant
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: ContactListQuery
+  x-abp-success-schema: ContactDirectoryEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true
+  x-abp-pagination: OFFSET

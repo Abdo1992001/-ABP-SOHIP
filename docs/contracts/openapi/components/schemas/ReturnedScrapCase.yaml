@@ -1,0 +1,146 @@
+type: object
+properties:
+  returnedScrapCaseId:
+    type: string
+    format: uuid
+    description: Returned scrap case.
+  caseRef:
+    type: string
+    description: Human case ref.
+  accountId:
+    type: string
+    format: uuid
+    description: Customer.
+  salesOrderId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    description: Optional source order.
+  countryCode:
+    type: string
+    description: Scope country.
+  statusCode:
+    type: string
+    enum:
+      - DRAFT
+      - PENDING_APPROVAL
+      - APPROVED
+      - FINALIZED
+      - REJECTED
+      - CANCELLED
+  receivedAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+    description: Return receipt time.
+  policyId:
+    type: string
+    format: uuid
+    description: Applied policy.
+  appliedCreditPctSnapshot:
+    type: string
+    const: '25'
+    description: Locked 25 percent benefit rate snapshot.
+  assessedBaseAmount:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+    description: Eligible base amount.
+  creditAmount:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+    description: Calculated credit.
+  originalQuotationId:
+    type: string
+    format: uuid
+    description: Mandatory original quotation.
+  approvalStatusCode:
+    type: string
+    description: Manager approval lifecycle.
+  approvedByUserId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    description: Manager/authorized approver.
+  approvedAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+    description: Approval time.
+  benefitTypeCode:
+    type: string
+    enum:
+      - CREDIT
+      - REPLACEMENT
+  benefitValueAmount:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+    description: Total 25% benefit value.
+  currencyCodeSnapshot:
+    type: string
+  assessmentHash:
+    type:
+      - string
+      - 'null'
+  submittedAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+  finalizedAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+  finalizedByUserId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  cancelledAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+  cancelledByUserId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  cancelReason:
+    type:
+      - string
+      - 'null'
+  rejectedAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+  rejectedByUserId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  rejectionReason:
+    type:
+      - string
+      - 'null'
+  rowVersion:
+    $ref: ./RowVersion.yaml
+additionalProperties: false
+required:
+  - accountId
+  - appliedCreditPctSnapshot
+  - benefitTypeCode
+  - countryCode
+  - originalQuotationId
+  - policyId
+  - returnedScrapCaseId
+  - currencyCodeSnapshot
+  - rowVersion
+description: >-
+  Manager-approved benefit = 25% × original purchase unit price × eligible
+  returned quantity. Current product price and Net Sales are excluded.

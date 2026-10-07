@@ -1,0 +1,8 @@
+type: object
+additionalProperties: false
+required: [resourceType, resourceId, label]
+properties:
+  resourceType: { type: string, enum: [MARKET_SIGNAL, TARGET_MARKET, TARGET_ACCOUNT, COMPETITOR] }
+  resourceId: { type: string, format: uuid }
+  label: { type: string, minLength: 1, maxLength: 300 }
+  notes: { type: string, maxLength: 2000 }

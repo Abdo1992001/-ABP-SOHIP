@@ -1,0 +1,160 @@
+{
+  "assessment": "STEP_12_FORMAL_GATE_REVIEW",
+  "productionReady": false,
+  "passed": 5,
+  "total": 16,
+  "gates": [
+    {
+      "id": "RG-01",
+      "name": "SSOT",
+      "status": "BLOCKED_BY_DEP_004",
+      "evidence": [
+        "ABP_Final_SSOT_Reconciliation_Baseline_R1.xlsx",
+        "ABP_Baseline_R1_Archive_Package.zip.sha256.txt"
+      ],
+      "missing": [
+        "ABP_Final_SSOT_Reconciliation_Baseline_R1_SIGNED.xlsx",
+        "three signoffs",
+        "signed manifest"
+      ]
+    },
+    {
+      "id": "RG-02",
+      "name": "Typed OpenAPI",
+      "status": "PASS",
+      "evidence": [
+        "docs/contracts/contract-evidence.json",
+        "docs/evidence/step-09/frontend-proof.json"
+      ],
+      "basis": "217/217 implemented, drift 0, no unresolved refs/placeholders"
+    },
+    {
+      "id": "RG-03",
+      "name": "Semantic BI",
+      "status": "PASS",
+      "evidence": [
+        "docs/analytics/metric-registry.json",
+        "docs/analytics/report-registry.json",
+        "docs/evidence/step-10-query-performance.json"
+      ],
+      "basis": "72 metrics, 18 reports, governed PostgreSQL-backed semantic proof"
+    },
+    {
+      "id": "RG-04",
+      "name": "Security",
+      "status": "BLOCKED_BY_DEP_001_DEP_002",
+      "evidence": ["docs/delivery/step-11-security-qa-devops.md"],
+      "missing": [
+        "live Entra/MFA/Conditional Access",
+        "live Key Vault/private networking/security controls"
+      ]
+    },
+    {
+      "id": "RG-05",
+      "name": "Authorization and IDOR",
+      "status": "PASS",
+      "evidence": [
+        "docs/governance/cr-001-implementation-evidence.json",
+        "docs/delivery/step-11-security-qa-devops.md"
+      ],
+      "basis": "42/42 negative tests, Country Scope, DENY, client isolation and R&D read-only"
+    },
+    {
+      "id": "RG-06",
+      "name": "Data Integrity and Concurrency",
+      "status": "PASS",
+      "evidence": [
+        "docs/delivery/step-08-workflows.md",
+        "docs/governance/cr-001-implementation-evidence.json"
+      ],
+      "basis": "ETag, idempotency, immutable SENT, supersede, effective dating, outbox and DQ guards"
+    },
+    {
+      "id": "RG-07",
+      "name": "Migrations",
+      "status": "PASS",
+      "evidence": [
+        "docs/governance/step-12-baseline-freeze.json",
+        "docs/delivery/step-06-postgresql-physical-schema.md"
+      ],
+      "basis": "35 migrations, fresh PG17, existing upgrade and zero drift"
+    },
+    {
+      "id": "RG-08",
+      "name": "Performance",
+      "status": "BLOCKED_BY_DEP_006",
+      "evidence": ["docs/evidence/step-10-query-performance.json"],
+      "missing": ["approved workload profile", "production-like formal run"]
+    },
+    {
+      "id": "RG-09",
+      "name": "Backup and DR",
+      "status": "BLOCKED_BY_DEP_002_DEP_003_DEP_007",
+      "evidence": [
+        "docs/runbooks/backup-restore.md",
+        "docs/architecture/step-11-dr-design.md"
+      ],
+      "missing": [
+        "live Azure backup/PITR",
+        "restore drill",
+        "DR scanning decision",
+        "retention approval"
+      ]
+    },
+    {
+      "id": "RG-10",
+      "name": "Monitoring",
+      "status": "BLOCKED_BY_DEP_002",
+      "evidence": [
+        "docs/delivery/step-11-security-qa-devops.md",
+        "infra/modules/observability.bicep"
+      ],
+      "missing": ["live Azure telemetry and alert firing evidence"]
+    },
+    {
+      "id": "RG-11",
+      "name": "UAT",
+      "status": "BLOCKED_BY_DEP_008",
+      "evidence": ["docs/governance/uat-plan.md"],
+      "missing": ["roster", "executed evidence", "business signoff"]
+    },
+    {
+      "id": "RG-12",
+      "name": "Access Certification",
+      "status": "BLOCKED_BY_DEP_008",
+      "evidence": ["docs/governance/production-access-certification.md"],
+      "missing": ["named production roster", "formal certification"]
+    },
+    {
+      "id": "RG-13",
+      "name": "Training",
+      "status": "BLOCKED_BY_DEP_004",
+      "evidence": ["docs/governance/training-readiness.md"],
+      "missing": ["trainer", "attendance", "completion evidence"]
+    },
+    {
+      "id": "RG-14",
+      "name": "Cutover Dry Run",
+      "status": "BLOCKED_BY_DEP_002_DEP_005",
+      "evidence": [
+        "docs/runbooks/go-live-cutover.md",
+        "docs/governance/cutover-source-register.md"
+      ],
+      "missing": ["authorized staging", "approved extracts", "timed rehearsal"]
+    },
+    {
+      "id": "RG-15",
+      "name": "Rollback",
+      "status": "BLOCKED_PENDING_REHEARSAL",
+      "evidence": ["docs/runbooks/rollback.md"],
+      "missing": ["staging rollback rehearsal", "named ownership"]
+    },
+    {
+      "id": "RG-16",
+      "name": "Final Go / No-Go",
+      "status": "NO_GO_BLOCKED",
+      "evidence": ["docs/governance/final-go-no-go.json"],
+      "missing": ["all remaining gates and dependencies"]
+    }
+  ]
+}

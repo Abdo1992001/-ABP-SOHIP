@@ -1,0 +1,10 @@
+type: object
+additionalProperties: false
+required:
+  - data
+properties:
+  data:
+    type: array
+    items:
+      $ref: ./CountryReference.yaml
+description: Active canonical country references for application selectors. Country Scope is enforced separately on business commands.

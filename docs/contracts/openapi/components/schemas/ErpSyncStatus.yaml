@@ -1,0 +1,35 @@
+type: object
+additionalProperties: false
+required:
+  - statusCode
+  - totalOrders
+  - pendingCount
+  - syncedCount
+  - failedCount
+  - latestSyncedAt
+properties:
+  statusCode:
+    type: string
+    enum:
+      - NOT_CONFIGURED
+      - NOT_REQUIRED
+      - PENDING_SYNC
+      - SYNCING
+      - SYNCED
+      - SYNC_FAILED
+      - MIXED
+  totalOrders:
+    type: integer
+    minimum: 0
+  pendingCount:
+    type: integer
+    minimum: 0
+  syncedCount:
+    type: integer
+    minimum: 0
+  failedCount:
+    type: integer
+    minimum: 0
+  latestSyncedAt:
+    type: [string, 'null']
+    format: date-time

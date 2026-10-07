@@ -1,0 +1,20 @@
+get:
+  tags: [Messages]
+  summary: Colleagues available to message
+  operationId: get_messages_directory
+  security: [{ WebCookie: [] }, { DesktopOAuth: [] }]
+  parameters: [{ $ref: ../components/parameters/Search.yaml }, { $ref: ../components/parameters/Limit.yaml }]
+  responses:
+    '200': { description: Success, content: { application/json: { schema: { $ref: ../components/schemas/MessageDirectoryEnvelope.yaml } } } }
+    '401': { $ref: ../components/responses/Error401.yaml }
+  x-abp-module: Messages
+  x-abp-permission: authenticated
+  x-abp-scope-rule: Active users only
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: MessageListQuery
+  x-abp-success-schema: MessageDirectoryEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

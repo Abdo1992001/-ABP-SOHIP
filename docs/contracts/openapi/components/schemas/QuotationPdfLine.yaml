@@ -1,0 +1,22 @@
+type: object
+description: >-
+  One priced row read from a quotation PDF. The quantity is the figure that
+  satisfies quantity x unitPrice = lineTotal; a row where no figure satisfies
+  it is never represented here, it is returned as an unreconciled row instead.
+properties:
+  description:
+    type: string
+    description: As printed, with the row number and the numeric columns removed.
+    maxLength: 500
+  qty:
+    type: number
+  unitPrice:
+    type: number
+  lineTotal:
+    type: number
+additionalProperties: false
+required:
+  - description
+  - qty
+  - unitPrice
+  - lineTotal

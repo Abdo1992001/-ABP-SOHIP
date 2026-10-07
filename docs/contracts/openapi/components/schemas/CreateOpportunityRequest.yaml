@@ -1,0 +1,74 @@
+type: object
+properties:
+  title:
+    type: string
+    minLength: 3
+    maxLength: 200
+    description: >-
+      What the deal is called, in the words a salesperson would use on the
+      phone. Required: the reference finds the row, the title is how a person
+      recognises it in a pipeline.
+  accountId:
+    type: string
+    format: uuid
+  projectId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  requirementTypeCode:
+    type:
+      - string
+      - 'null'
+  noProjectReasonCode:
+    type:
+      - string
+      - 'null'
+  estimatedValue:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+  currencyCode:
+    type:
+      - string
+      - 'null'
+  expectedCloseDate:
+    type:
+      - string
+      - 'null'
+    format: date
+  productScopes:
+    type: array
+    items:
+      type: object
+      properties:
+        productFamilyId:
+          type:
+            - string
+            - 'null'
+          format: uuid
+        productId:
+          type:
+            - string
+            - 'null'
+          format: uuid
+        estimatedQty:
+          type:
+            - string
+            - 'null'
+          pattern: ^-?\d+(\.\d+)?$
+        estimatedValue:
+          type:
+            - string
+            - 'null'
+          pattern: ^-?\d+(\.\d+)?$
+        currencyCode:
+          type:
+            - string
+            - 'null'
+      additionalProperties: false
+additionalProperties: false
+required:
+  - title
+  - accountId

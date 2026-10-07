@@ -1,0 +1,5 @@
+type: string
+enum: [FORMWORK, OTHER]
+description: >-
+  Commercial customer split used for the governed 70% formwork-customer mix.
+  This is independent from the existing account category and customer segment.

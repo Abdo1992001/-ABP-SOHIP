@@ -1,0 +1,11 @@
+name: archiveState
+in: query
+required: false
+description: Customer archive filter. ACTIVE is the default; ALL is explicit and permission-scoped.
+schema:
+  type: string
+  enum:
+    - ACTIVE
+    - ARCHIVED
+    - ALL
+  default: ACTIVE

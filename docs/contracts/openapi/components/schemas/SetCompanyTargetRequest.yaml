@@ -1,0 +1,12 @@
+type: object
+properties:
+  annualTargetAmount:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+  baseCurrencyCode:
+    type: string
+    const: USD
+additionalProperties: false
+required:
+  - annualTargetAmount
+  - baseCurrencyCode

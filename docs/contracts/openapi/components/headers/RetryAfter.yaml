@@ -1,0 +1,4 @@
+description: Seconds before a rate-limited request should be retried.
+schema:
+  type: integer
+  minimum: 1

@@ -1,0 +1,7 @@
+/apps/api/src/platform/ @technical-owner @security-owner
+/packages/authorization/ @technical-owner @security-owner
+/packages/database/prisma/ @technical-owner @data-owner
+/docs/contracts/ @technical-owner
+/.github/workflows/ @technical-owner @security-owner
+/infra/ @technical-owner @security-owner
+

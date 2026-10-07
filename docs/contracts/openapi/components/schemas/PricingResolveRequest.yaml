@@ -1,0 +1,25 @@
+type: object
+properties:
+  productId:
+    type: string
+    format: uuid
+  qty:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+  currencyCode:
+    type: string
+  at:
+    type:
+      - string
+      - 'null'
+    format: date-time
+  quotationId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+additionalProperties: false
+required:
+  - productId
+  - qty
+  - currencyCode

@@ -1,0 +1,11 @@
+type: object
+properties:
+  data:
+    $ref: ./ReconciliationIssue.yaml
+  meta:
+    $ref: ./PaginationMeta.yaml
+  links:
+    $ref: ./Links.yaml
+additionalProperties: false
+required:
+  - data

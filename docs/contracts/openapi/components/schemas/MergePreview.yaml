@@ -1,0 +1,58 @@
+type: object
+properties:
+  masterAccountId:
+    type: string
+    format: uuid
+  sourceAccountId:
+    type: string
+    format: uuid
+  fieldConflicts:
+    type: array
+    items:
+      type: object
+      properties:
+        field:
+          type: string
+        masterValue:
+          type:
+            - string
+            - 'null'
+        sourceValue:
+          type:
+            - string
+            - 'null'
+      additionalProperties: false
+      required:
+        - field
+  relationCounts:
+    type: object
+    properties:
+      contacts:
+        type: integer
+        format: int64
+      projects:
+        type: integer
+        format: int64
+      opportunities:
+        type: integer
+        format: int64
+      quotations:
+        type: integer
+        format: int64
+    additionalProperties: false
+    required:
+      - contacts
+      - projects
+      - opportunities
+      - quotations
+  blockingIssues:
+    type: array
+    items:
+      type: string
+additionalProperties: false
+required:
+  - masterAccountId
+  - sourceAccountId
+  - fieldConflicts
+  - relationCounts
+  - blockingIssues

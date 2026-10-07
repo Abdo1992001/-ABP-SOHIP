@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "services": {
+    "postgresql17": "HEALTHY",
+    "api": "HEALTHY",
+    "worker": "HEALTHY",
+    "web": "HEALTHY"
+  },
+  "checks": {
+    "apiReadyHttp": 200,
+    "reportsSpaDeepLinkHttp": 200,
+    "analyticsExportOutbox": "PASS",
+    "analyticsExportDurableJob": "PASS",
+    "analyticsExportDocument": "AVAILABLE",
+    "objectStorageNonRootWrite": "PASS"
+  },
+  "notes": "Named object-storage volume ownership is initialized by a one-shot non-application service before API and worker startup. Application containers remain non-root."
+}

@@ -1,0 +1,13 @@
+type: object
+additionalProperties: true
+required: [feedbackId, feedbackRef, kindCode, statusCode, contactName, message, rowVersion]
+properties:
+  feedbackId: { type: string, format: uuid }
+  feedbackRef: { type: string }
+  kindCode: { type: string, enum: [SATISFACTION, PROBLEM, SUGGESTION, QUESTION] }
+  rating: { type: [integer, 'null'] }
+  isCritical: { type: boolean }
+  statusCode: { type: string, enum: [NEW, ACKNOWLEDGED, CONTACTED, CLOSED] }
+  contactName: { type: string }
+  message: { type: string }
+  rowVersion: { type: string, pattern: '^\d+$' }

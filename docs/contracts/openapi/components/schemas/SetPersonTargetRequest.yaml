@@ -1,0 +1,9 @@
+type: object
+properties:
+  amountEgp:
+    type: [string, 'null']
+    pattern: ^\d+(\.\d+)?$
+    description: The annual target in EGP, or null to clear it.
+additionalProperties: false
+required:
+  - amountEgp

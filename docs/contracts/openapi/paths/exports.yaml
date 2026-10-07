@@ -1,0 +1,58 @@
+post:
+  tags:
+    - Exports
+  summary: Create report/data export job
+  operationId: post_exports
+  description: >-
+    Permission: exports.create. Scope: Same source scope + explicit export
+    permission. Audit filters/row count.
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    '202':
+      description: Accepted
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ExportJobEnvelope.yaml
+    '400':
+      $ref: ../components/responses/Error400.yaml
+    '401':
+      $ref: ../components/responses/Error401.yaml
+    '403':
+      $ref: ../components/responses/Error403.yaml
+    '404':
+      $ref: ../components/responses/Error404.yaml
+    '409':
+      $ref: ../components/responses/Error409.yaml
+    '412':
+      $ref: ../components/responses/Error412.yaml
+    '422':
+      $ref: ../components/responses/Error422.yaml
+    '429':
+      $ref: ../components/responses/Error429.yaml
+    '500':
+      $ref: ../components/responses/Error500.yaml
+    '503':
+      $ref: ../components/responses/Error503.yaml
+  parameters:
+    - $ref: ../components/parameters/IdempotencyKey.yaml
+    - $ref: ../components/parameters/CsrfToken.yaml
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/CreateExportRequest.yaml
+  x-abp-module: Exports
+  x-abp-permission: exports.create
+  x-abp-scope-rule: Same source scope + explicit export permission
+  x-abp-concurrency: NONE
+  x-abp-idempotency: Required
+  x-abp-request-schema: CreateExportRequest
+  x-abp-success-schema: JobEnvelope
+  x-abp-job-dto: true
+  x-abp-execution-mode: ASYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

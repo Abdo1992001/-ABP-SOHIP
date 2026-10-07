@@ -1,0 +1,36 @@
+type: object
+properties:
+  companySalesTargetId:
+    type: string
+    format: uuid
+    description: Company target header.
+  targetYear:
+    type: integer
+    format: int32
+    description: Calendar/business target year.
+  companyCode:
+    type: string
+    description: Fixed V1 company scope code.
+  baseCurrencyCode:
+    type: string
+    description: Target base currency; EGP display is derived.
+  annualTargetAmount:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+    description: Annual ACROW target.
+  statusCode:
+    type: string
+    description: Target lifecycle.
+  createdByUserId:
+    type: string
+    format: uuid
+    description: Management actor who created target.
+  rowVersion:
+    $ref: ./RowVersion.yaml
+    description: Optimistic concurrency.
+additionalProperties: false
+required:
+  - annualTargetAmount
+  - companySalesTargetId
+  - createdByUserId
+  - targetYear

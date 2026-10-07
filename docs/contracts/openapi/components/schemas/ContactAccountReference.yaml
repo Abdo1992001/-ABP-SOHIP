@@ -1,0 +1,17 @@
+type: object
+properties:
+  accountId:
+    type: string
+    format: uuid
+    description: Owning account identity only.
+  accountRef:
+    type: string
+    description: Human account reference.
+  canonicalName:
+    type: string
+    description: Customer display identity.
+additionalProperties: false
+required:
+  - accountId
+  - accountRef
+  - canonicalName

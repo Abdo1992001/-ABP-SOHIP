@@ -1,0 +1,60 @@
+get:
+  tags:
+    - Operations
+  summary: Production schedule
+  operationId: get_operations_production_schedule
+  description: 'Permission: work-orders.view. Runs overlapping the window, by line, against the date each customer asked for, with the shipments planned for the same orders.'
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ProductionScheduleEnvelope.yaml
+    '400':
+      $ref: ../components/responses/Error400.yaml
+    '401':
+      $ref: ../components/responses/Error401.yaml
+    '403':
+      $ref: ../components/responses/Error403.yaml
+    '404':
+      $ref: ../components/responses/Error404.yaml
+    '409':
+      $ref: ../components/responses/Error409.yaml
+    '412':
+      $ref: ../components/responses/Error412.yaml
+    '422':
+      $ref: ../components/responses/Error422.yaml
+    '429':
+      $ref: ../components/responses/Error429.yaml
+    '500':
+      $ref: ../components/responses/Error500.yaml
+    '503':
+      $ref: ../components/responses/Error503.yaml
+  parameters:
+    - name: from
+      in: query
+      required: true
+      schema:
+        type: string
+        format: date
+    - name: to
+      in: query
+      required: true
+      schema:
+        type: string
+        format: date
+  x-abp-module: Operations
+  x-abp-permission: work-orders.view
+  x-abp-scope-rule: Account access within country scope
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: NONE
+  x-abp-success-schema: ProductionScheduleEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

@@ -1,0 +1,116 @@
+type: object
+description: >-
+  What this customer has actually bought, derived from imported ERP sales
+  orders. Separate from the pipeline, which is what they might buy.
+properties:
+  accountId:
+    type: string
+  currencyCode:
+    type: string
+  totalValue:
+    type: string
+  orderCount:
+    type: integer
+  itemCount:
+    type: integer
+  firstOrderDate:
+    type: string
+  lastOrderDate:
+    type: string
+  relationshipTypeCode:
+    type: string
+  businessTypeCode:
+    $ref: ./AccountBusinessTypeCode.yaml
+  priceHistory:
+    type: array
+    description: Recent quotation prices for this customer, newest first.
+    items:
+      type: object
+      additionalProperties: false
+      required: [quotationId, quotationRef, quotationStatusCode, quotedOn, lineNo, description, materialClass, unitCode, unitPrice, currencyCode]
+      properties:
+        quotationId: { type: string, format: uuid }
+        quotationRef: { type: string }
+        quotationStatusCode: { type: string }
+        quotedOn: { type: string, format: date }
+        lineNo: { type: integer }
+        description: { type: string }
+        materialClass:
+          type: [string, 'null']
+        unitCode: { type: string }
+        unitPrice: { type: string }
+        pricePerKg:
+          type: [string, 'null']
+        weightPerPieceKg:
+          type: [string, 'null']
+        boardWidthMm:
+          type: [string, 'null']
+        boardLengthMm:
+          type: [string, 'null']
+        thicknessMm:
+          type: [string, 'null']
+        currencyCode: { type: string }
+  markets:
+    type: array
+    items:
+      type: object
+      properties:
+        countryCode:
+          type: string
+        countryName:
+          type: string
+        value:
+          type: string
+        orderCount:
+          type: integer
+      additionalProperties: false
+  products:
+    type: array
+    items:
+      type: object
+      properties:
+        productId:
+          type: string
+        description:
+          type: string
+        quantity:
+          type: string
+        value:
+          type: string
+        lastOrderDate:
+          type: string
+      additionalProperties: false
+  orders:
+    type: array
+    items:
+      type: object
+      properties:
+        orderId:
+          type: string
+        orderNumber:
+          type: string
+        orderDate:
+          type: string
+        statusCode:
+          type: string
+        currencyCode:
+          type: string
+        value:
+          type: string
+        lineCount:
+          type: integer
+        customerPoNumber:
+          type: string
+      additionalProperties: false
+additionalProperties: false
+required:
+  - accountId
+  - currencyCode
+  - totalValue
+  - orderCount
+  - itemCount
+  - businessTypeCode
+  - markets
+  - products
+  - orders
+  - priceHistory

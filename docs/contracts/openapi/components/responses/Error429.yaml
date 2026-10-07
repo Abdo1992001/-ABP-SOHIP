@@ -1,0 +1,8 @@
+description: Rate limit exceeded
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/ErrorEnvelope.yaml
+headers:
+  Retry-After:
+    $ref: ../headers/RetryAfter.yaml

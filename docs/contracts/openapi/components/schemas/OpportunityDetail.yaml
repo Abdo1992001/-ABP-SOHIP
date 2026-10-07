@@ -1,0 +1,19 @@
+type: object
+allOf:
+  - $ref: ./OpportunityListItem.yaml
+  - type: object
+    additionalProperties: false
+    required: [noProjectReasonCode, lostReasonCode, wonAt, wonValueSnapshot, stageHistory, wonSnapshots, rowVersion]
+    properties:
+      noProjectReasonCode: { type: [string, 'null'] }
+      lostReasonCode: { type: [string, 'null'] }
+      wonAt: { type: [string, 'null'], format: date-time }
+      wonValueSnapshot: { oneOf: [ { $ref: ./Decimal.yaml }, { type: 'null' } ] }
+      stageHistory:
+        type: array
+        items: { $ref: ./OpportunityStageHistoryItem.yaml }
+      wonSnapshots:
+        type: array
+        items: { $ref: ./OpportunityWonSnapshot.yaml }
+      rowVersion: { $ref: ./RowVersion.yaml }
+

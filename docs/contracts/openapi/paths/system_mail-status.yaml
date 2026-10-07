@@ -1,0 +1,30 @@
+get:
+  tags: [System]
+  summary: Email status
+  operationId: get_system_mail_status
+  description: 'Whether the system can send email, through which provider and from which mailbox. Never returns secrets.'
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema: { $ref: ../components/schemas/SystemMailStatusEnvelope.yaml }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '403': { $ref: ../components/responses/Error403.yaml }
+    '422': { $ref: ../components/responses/Error422.yaml }
+    '429': { $ref: ../components/responses/Error429.yaml }
+    '500': { $ref: ../components/responses/Error500.yaml }
+  x-abp-module: System
+  x-abp-permission: authenticated
+  x-abp-scope-rule: System-wide
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: NONE
+  x-abp-success-schema: SystemMailStatusEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

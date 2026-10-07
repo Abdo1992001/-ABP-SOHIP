@@ -1,0 +1,48 @@
+type: object
+properties:
+  accountId:
+    type: string
+    format: uuid
+  projectId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  salesOrderId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  contactId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  complaintTypeCode:
+    type: string
+  channelCode:
+    type:
+      - string
+      - 'null'
+    enum:
+      - PHONE_CALL
+      - MESSAGE
+      - VISIT
+      - EMAIL
+      - null
+  severityCode:
+    type:
+      - string
+      - 'null'
+  description:
+    type: string
+  customerOrderId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+additionalProperties: false
+required:
+  - accountId
+  - complaintTypeCode
+  - description

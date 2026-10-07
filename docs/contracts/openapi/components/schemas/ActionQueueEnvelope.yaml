@@ -1,0 +1,17 @@
+type: object
+properties:
+  data:
+    type: array
+    items:
+      $ref: ./ActionQueueItem.yaml
+  meta:
+    $ref: ./PaginationMeta.yaml
+  links:
+    $ref: ./Links.yaml
+  analyticsMetadata:
+    $ref: ./AnalyticsResponseMetadata.yaml
+additionalProperties: false
+required:
+  - data
+  - meta
+  - analyticsMetadata

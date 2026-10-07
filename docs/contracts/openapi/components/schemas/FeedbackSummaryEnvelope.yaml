@@ -1,0 +1,13 @@
+type: object
+additionalProperties: false
+required: [data]
+properties:
+  data:
+    type: object
+    additionalProperties: true
+    required: [since, total]
+    properties:
+      since: { type: string, format: date }
+      total: { type: integer }
+      average: { type: [number, 'null'] }
+      csatPct: { type: [number, 'null'] }

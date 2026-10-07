@@ -1,0 +1,15 @@
+type: object
+properties:
+  expectedRowVersion:
+    $ref: ./RowVersion.yaml
+  newDueAt:
+    type: string
+    format: date-time
+  reason:
+    type:
+      - string
+      - 'null'
+additionalProperties: false
+required:
+  - expectedRowVersion
+  - newDueAt

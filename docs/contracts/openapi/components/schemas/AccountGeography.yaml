@@ -1,0 +1,19 @@
+type: object
+additionalProperties: false
+required:
+  - country
+  - continent
+  - marketScope
+properties:
+  country:
+    oneOf:
+      - $ref: ./CountryReference.yaml
+      - type: 'null'
+    description: Resolved canonical country, or null only while governed Data Quality resolution is outstanding.
+  continent:
+    oneOf:
+      - $ref: ./ContinentCode.yaml
+      - type: 'null'
+  marketScope:
+    $ref: ./MarketScope.yaml
+description: Server-authoritative Customer geography. React must not derive continent or market scope.

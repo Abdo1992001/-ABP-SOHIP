@@ -1,0 +1,16 @@
+type: object
+additionalProperties: false
+required: [documentVersionId, documentId, versionNo, mimeType, sizeBytes, contentHash, sourceTypeCode, createdByUserId, createdAt, immutable]
+properties:
+  documentVersionId: { type: string, format: uuid }
+  documentId: { type: string, format: uuid }
+  versionNo: { type: integer, minimum: 1 }
+  mimeType: { type: string }
+  sizeBytes: { type: integer, minimum: 0 }
+  contentHash: { type: string }
+  sourceTypeCode: { type: string, enum: [UPLOADED, GENERATED_OFFICIAL, GENERATED_WORKING, IMPORTED] }
+  createdByUserId: { type: string, format: uuid }
+  createdAt: { type: string, format: date-time }
+  templateVersionId: { type: [string, 'null'], format: uuid }
+  rendererVersion: { type: [string, 'null'] }
+  immutable: { type: boolean }

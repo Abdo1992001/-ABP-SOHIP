@@ -1,0 +1,33 @@
+post:
+  tags: [Identity]
+  summary: Disable local TOTP after current-code verification
+  operationId: post_auth_mfa_disable
+  security: [{ WebCookie: [] }]
+  parameters: [{ $ref: ../components/parameters/CsrfToken.yaml }]
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema: { $ref: ../components/schemas/MfaCodeRequest.yaml }
+  responses:
+    '201':
+      description: MFA disabled
+      content:
+        application/json:
+          schema: { $ref: ../components/schemas/LocalResetEnvelope.yaml }
+    '400': { $ref: ../components/responses/Error400.yaml }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '403': { $ref: ../components/responses/Error403.yaml }
+    '409': { $ref: ../components/responses/Error409.yaml }
+    '500': { $ref: ../components/responses/Error500.yaml }
+  x-abp-module: Identity
+  x-abp-permission: authenticated
+  x-abp-scope-rule: Self
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: MfaCodeRequest
+  x-abp-success-schema: LocalResetEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

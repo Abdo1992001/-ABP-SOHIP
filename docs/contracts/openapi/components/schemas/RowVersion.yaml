@@ -1,0 +1,9 @@
+type: string
+minLength: 3
+maxLength: 200
+pattern: ^"rv-[1-9][0-9]*"$
+description: >-
+  Strong opaque representation version. The response body rowVersion and ETag
+  header contain the identical value "rv-N", where N is the server row-version
+  counter. A mutation sends that exact prior value in If-Match; clients must not
+  alter or weaken it.

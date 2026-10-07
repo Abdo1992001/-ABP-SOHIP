@@ -1,0 +1,9 @@
+# Only what a person owns. Role, country scope, manager, team and account
+# status are absent on purpose: administration sets those.
+type: object
+additionalProperties: false
+properties:
+  displayName: { type: string, minLength: 2, maxLength: 120 }
+  phone: { type: [string, 'null'], maxLength: 40 }
+  photoVisible: { type: boolean }
+  phoneVisible: { type: boolean }

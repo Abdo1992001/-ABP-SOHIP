@@ -1,0 +1,5 @@
+description: No valid authenticated session
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/ErrorEnvelope.yaml

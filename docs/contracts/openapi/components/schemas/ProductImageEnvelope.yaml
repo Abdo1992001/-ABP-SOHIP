@@ -1,0 +1,6 @@
+type: object
+properties:
+  data:
+    $ref: ./ProductImage.yaml
+additionalProperties: false
+required: [data]

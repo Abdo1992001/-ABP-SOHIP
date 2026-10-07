@@ -1,0 +1,36 @@
+get:
+  tags: [Identity]
+  summary: A colleague's avatar image
+  description: >-
+    404 when the person has no photo, which is the signal for the client to
+    draw their initials instead of a broken image.
+  operationId: get_users_by_userId_avatar
+  security: [{ WebCookie: [] }, { DesktopOAuth: [] }]
+  parameters:
+    - { name: userId, in: path, required: true, schema: { type: string, format: uuid } }
+    - name: v
+      in: query
+      required: false
+      description: The subject's photoUpdatedAt, so a replaced photo is a new URL.
+      schema: { type: string }
+  responses:
+    '200':
+      description: Image bytes
+      content:
+        image/png: { schema: { type: string, format: binary } }
+        image/jpeg: { schema: { type: string, format: binary } }
+        image/gif: { schema: { type: string, format: binary } }
+        image/webp: { schema: { type: string, format: binary } }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '404': { $ref: ../components/responses/Error404.yaml }
+  x-abp-module: Identity
+  x-abp-permission: authenticated
+  x-abp-scope-rule: Any authenticated colleague
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: none
+  x-abp-success-schema: binary
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

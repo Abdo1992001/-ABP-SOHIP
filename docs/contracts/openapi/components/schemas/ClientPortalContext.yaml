@@ -1,0 +1,8 @@
+type: object
+additionalProperties: false
+required: [accountId, accountRef, displayName, countryCode]
+properties:
+  accountId: { type: string, format: uuid }
+  accountRef: { type: string }
+  displayName: { type: string }
+  countryCode: { type: string, minLength: 2, maxLength: 2 }

@@ -1,0 +1,16 @@
+type: object
+additionalProperties: false
+required:
+  - workspace
+  - enabled
+  - capabilities
+properties:
+  workspace:
+    $ref: ./WorkspaceCode.yaml
+  enabled:
+    type: boolean
+  capabilities:
+    type: array
+    uniqueItems: true
+    items:
+      $ref: ./PermissionCode.yaml

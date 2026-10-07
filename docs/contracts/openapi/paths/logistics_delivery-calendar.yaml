@@ -1,0 +1,18 @@
+get:
+  tags: [Logistics]
+  summary: Delivery calendar
+  operationId: get_logistics_delivery_calendar
+  description: 'Planned dispatches, expected deliveries, dispatches and deliveries, and the dates customers asked for, day by day. Dates that passed without the event are late.'
+  parameters:
+    - { name: from, in: query, required: true, schema: { type: string, format: date } }
+    - { name: to, in: query, required: true, schema: { type: string, format: date } }
+  responses: { '200': { description: Success, content: { application/json: { schema: { $ref: ../components/schemas/DeliveryCalendarEnvelope.yaml } } } }, '400': { $ref: ../components/responses/Error400.yaml }, '422': { $ref: ../components/responses/Error422.yaml } }
+  x-abp-module: Logistics
+  x-abp-permission: shipments.view
+  x-abp-scope-rule: Country Scope; customer orders by account access
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-execution-mode: SYNC
+  x-abp-job-dto: false
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

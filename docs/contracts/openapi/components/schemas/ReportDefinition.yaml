@@ -1,0 +1,40 @@
+type: object
+properties:
+  reportId: { type: string, pattern: '^RPT-[0-9]{3}$' }
+  reportVersion: { type: string, pattern: '^\d+\.\d+\.\d+$' }
+  name: { type: string }
+  description: { type: string }
+  metricIds:
+    type: array
+    items: { type: string, pattern: '^MET-[A-Z]+-[0-9]{3}$' }
+  dimensions:
+    type: array
+    items: { type: string }
+  filters:
+    type: array
+    items: { type: string }
+  asOfSupport: { type: boolean }
+  currencySupport:
+    type: array
+    items: { type: string, enum: [USD, EGP] }
+  countryScope: { type: string, enum: [SOURCE_ROWS_BEFORE_AGGREGATION] }
+  permissions:
+    type: object
+    properties:
+      view: { type: string }
+      drilldown: { type: string }
+      export: { type: string }
+    additionalProperties: false
+    required: [view, drilldown, export]
+  drilldowns: { type: boolean }
+  exportFormats:
+    type: array
+    items: { type: string }
+  frontendRoute: { type: string }
+  status: { type: string, enum: [ACTIVE] }
+  guard: { type: string }
+  testEvidence:
+    type: array
+    items: { type: string }
+additionalProperties: false
+required: [reportId, reportVersion, name, description, metricIds, dimensions, filters, asOfSupport, currencySupport, permissions, countryScope, drilldowns, exportFormats, frontendRoute, status, guard, testEvidence]

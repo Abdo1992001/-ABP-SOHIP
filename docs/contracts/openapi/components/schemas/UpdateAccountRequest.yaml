@@ -1,0 +1,33 @@
+type: object
+properties:
+  canonicalName:
+    type:
+      - string
+      - 'null'
+    minLength: 1
+    maxLength: 300
+  accountCategoryCode:
+    $ref: ./AccountCategoryCode.yaml
+  businessTypeCode:
+    $ref: ./AccountBusinessTypeCode.yaml
+  defaultCurrencyCode:
+    type:
+      - string
+      - 'null'
+  address:
+    type:
+      - string
+      - 'null'
+    maxLength: 500
+    description: Postal address, as printed on the buyer block of a proforma invoice.
+  taxNumber:
+    type:
+      - string
+      - 'null'
+    maxLength: 60
+    description: Tax registration number — NIP in Poland, its equivalent elsewhere.
+  hqCountryCode:
+    oneOf:
+      - $ref: ./CountryCode.yaml
+      - type: 'null'
+additionalProperties: false

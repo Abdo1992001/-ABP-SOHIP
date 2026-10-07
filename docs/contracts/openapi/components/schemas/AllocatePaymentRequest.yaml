@@ -1,0 +1,30 @@
+type: object
+properties:
+  paymentId:
+    type: string
+    format: uuid
+  allocations:
+    type: array
+    items:
+      type: object
+      properties:
+        salesOrderId:
+          type:
+            - string
+            - 'null'
+          format: uuid
+        allocatedAmount:
+          type: string
+          pattern: ^-?\d+(\.\d+)?$
+      additionalProperties: false
+      required:
+        - allocatedAmount
+    minItems: 1
+  reason:
+    type:
+      - string
+      - 'null'
+additionalProperties: false
+required:
+  - paymentId
+  - allocations

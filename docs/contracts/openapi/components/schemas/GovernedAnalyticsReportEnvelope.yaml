@@ -1,0 +1,5 @@
+type: object
+properties:
+  data: { $ref: ./GovernedAnalyticsReport.yaml }
+additionalProperties: false
+required: [data]

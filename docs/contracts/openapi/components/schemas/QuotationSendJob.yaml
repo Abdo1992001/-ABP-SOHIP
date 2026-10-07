@@ -1,0 +1,66 @@
+type: object
+properties:
+  quotationSendJobId:
+    type: string
+    format: uuid
+  quotationId:
+    type: string
+    format: uuid
+  candidateHash:
+    type: string
+  quotationRowVersionSnapshot:
+    type: integer
+    format: int64
+  statusCode:
+    type: string
+    enum:
+      - QUEUED
+      - RUNNING
+      - SUCCEEDED
+      - FAILED
+      - CANCELLED
+  documentVersionId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  sendEventId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  createdByUserId:
+    type: string
+    format: uuid
+  createdAt:
+    type: string
+    format: date-time
+  startedAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+  finishedAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+  failureCode:
+    type:
+      - string
+      - 'null'
+  rowVersion:
+    $ref: ./RowVersion.yaml
+  statusUrl:
+    type: string
+additionalProperties: false
+required:
+  - quotationSendJobId
+  - quotationId
+  - candidateHash
+  - quotationRowVersionSnapshot
+  - statusCode
+  - createdByUserId
+  - createdAt
+  - rowVersion
+  - statusUrl

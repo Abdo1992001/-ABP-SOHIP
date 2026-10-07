@@ -1,0 +1,34 @@
+get:
+  tags: [Customer Map]
+  summary: Customers and projects on the map
+  operationId: get_map_places
+  description: 'Permission: accounts.view. Every visible customer and project, placed by its pin, the district or city in its address, or its country, with orders and quotations by value, projects and roles. Also the Egyptian places the map can fly to.'
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  parameters:
+    - { name: countryCode, in: query, required: false, schema: { type: string, pattern: '^[A-Z]{2}$' } }
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema: { $ref: ../components/schemas/MapPlacesEnvelope.yaml }
+    '400': { $ref: ../components/responses/Error400.yaml }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '403': { $ref: ../components/responses/Error403.yaml }
+    '404': { $ref: ../components/responses/Error404.yaml }
+    '422': { $ref: ../components/responses/Error422.yaml }
+    '429': { $ref: ../components/responses/Error429.yaml }
+    '500': { $ref: ../components/responses/Error500.yaml }
+  x-abp-module: Customer Map
+  x-abp-permission: accounts.view
+  x-abp-scope-rule: Account and project access within country scope
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: NONE
+  x-abp-success-schema: MapPlacesEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

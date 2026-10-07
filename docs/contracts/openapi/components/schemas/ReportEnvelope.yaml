@@ -1,0 +1,14 @@
+type: object
+properties:
+  data:
+    $ref: ./Report.yaml
+  meta:
+    $ref: ./PaginationMeta.yaml
+  links:
+    $ref: ./Links.yaml
+  analyticsMetadata:
+    $ref: ./AnalyticsResponseMetadata.yaml
+additionalProperties: false
+required:
+  - data
+  - analyticsMetadata

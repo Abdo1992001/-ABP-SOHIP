@@ -1,0 +1,41 @@
+delete:
+  tags: [Commercial Intelligence]
+  summary: Remove watchlist entry
+  operationId: delete_watchlist_by_watchlistEntryId
+  description: 'Permission: watchlist.manage. Scope: Current user.'
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  parameters:
+    - name: watchlistEntryId
+      in: path
+      required: true
+      schema: { type: string, format: uuid }
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/CommandResult.yaml
+    '400': { $ref: ../components/responses/Error400.yaml }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '403': { $ref: ../components/responses/Error403.yaml }
+    '404': { $ref: ../components/responses/Error404.yaml }
+    '409': { $ref: ../components/responses/Error409.yaml }
+    '412': { $ref: ../components/responses/Error412.yaml }
+    '422': { $ref: ../components/responses/Error422.yaml }
+    '429': { $ref: ../components/responses/Error429.yaml }
+    '500': { $ref: ../components/responses/Error500.yaml }
+    '503': { $ref: ../components/responses/Error503.yaml }
+  x-abp-module: Commercial Intelligence
+  x-abp-permission: watchlist.manage
+  x-abp-scope-rule: Current user
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: None
+  x-abp-success-schema: CommandResult
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

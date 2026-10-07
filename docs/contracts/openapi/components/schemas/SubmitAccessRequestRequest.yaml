@@ -1,0 +1,28 @@
+type: object
+properties:
+  fullName:
+    type: string
+    minLength: 1
+    maxLength: 200
+  workEmail:
+    type: string
+    format: email
+  companyOrRole:
+    type:
+      - string
+      - 'null'
+    maxLength: 200
+  countryCode:
+    type:
+      - string
+      - 'null'
+    maxLength: 2
+  message:
+    type:
+      - string
+      - 'null'
+    maxLength: 2000
+additionalProperties: false
+required:
+  - fullName
+  - workEmail

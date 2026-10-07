@@ -1,0 +1,65 @@
+post:
+  tags:
+    - Customer Orders
+  summary: Move a customer order
+  operationId: post_customer_orders_by_customerOrderId_transitions
+  description: 'Permission: sales-orders.manage. DRAFT, CONFIRMED, IN_PRODUCTION, READY, HANDED_OVER, CLOSED; cancel with a reason until hand-over.'
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/CustomerOrderEnvelope.yaml
+      headers:
+        ETag:
+          $ref: ../components/headers/ETag.yaml
+    '400':
+      $ref: ../components/responses/Error400.yaml
+    '401':
+      $ref: ../components/responses/Error401.yaml
+    '403':
+      $ref: ../components/responses/Error403.yaml
+    '404':
+      $ref: ../components/responses/Error404.yaml
+    '409':
+      $ref: ../components/responses/Error409.yaml
+    '412':
+      $ref: ../components/responses/Error412.yaml
+    '422':
+      $ref: ../components/responses/Error422.yaml
+    '429':
+      $ref: ../components/responses/Error429.yaml
+    '500':
+      $ref: ../components/responses/Error500.yaml
+    '503':
+      $ref: ../components/responses/Error503.yaml
+  parameters:
+    - name: customerOrderId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    - $ref: ../components/parameters/IdempotencyKey.yaml
+    - $ref: ../components/parameters/CsrfToken.yaml
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/CustomerOrderTransitionRequest.yaml
+  x-abp-module: Customer Orders
+  x-abp-permission: sales-orders.manage
+  x-abp-scope-rule: Account access within country scope
+  x-abp-concurrency: expectedRowVersion
+  x-abp-idempotency: Required
+  x-abp-request-schema: CustomerOrderTransitionRequest
+  x-abp-success-schema: CustomerOrderEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

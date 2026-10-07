@@ -1,0 +1,24 @@
+type: object
+properties:
+  targetStatusCode:
+    type: string
+    enum:
+      - DEPOSITED
+      - CLEARED
+      - BOUNCED
+      - CANCELLED
+  expectedRowVersion:
+    $ref: ./RowVersion.yaml
+  reason:
+    type:
+      - string
+      - 'null'
+  evidenceDocumentId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+additionalProperties: false
+required:
+  - targetStatusCode
+  - expectedRowVersion

@@ -1,0 +1,9 @@
+type: object
+additionalProperties: false
+required: [sourceSystemCode, sourcePaymentKey, sourceTypeCode, importedAt]
+properties:
+  sourceSystemCode: { type: string }
+  sourcePaymentKey: { type: string }
+  sourceTypeCode: { type: string, enum: [IMPORT, MANUAL] }
+  importedAt: { type: string, format: date-time }
+  rawReference: { type: [string, 'null'] }

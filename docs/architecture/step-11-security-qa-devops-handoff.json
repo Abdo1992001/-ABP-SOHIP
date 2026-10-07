@@ -1,0 +1,88 @@
+{
+  "version": "1.0.0",
+  "sourceStep": 10,
+  "targetStep": 11,
+  "status": "HANDOFF_ONLY_STEP_11_NOT_STARTED",
+  "assets": [
+    "docs/analytics/metric-registry.json",
+    "docs/analytics/report-registry.json",
+    "docs/analytics/step-10-requirement-traceability.json",
+    "docs/evidence/d10-bi-proof.json",
+    "docs/evidence/step-10-analytics-ui-inventory.json",
+    "docs/evidence/step-10-query-performance.json"
+  ],
+  "analyticsEndpoints": [
+    "registry",
+    "metric result",
+    "report result",
+    "drilldown",
+    "durable export",
+    "export status"
+  ],
+  "heavyReports": [
+    "RPT-001 executive pack",
+    "ERP fact reports",
+    "geography/group reports",
+    "Finance-restricted reports"
+  ],
+  "expectedWorkloads": [
+    "dashboard refresh",
+    "large authorized drilldown",
+    "concurrent country-scoped users",
+    "XLSX/PDF generation"
+  ],
+  "rateLimitConsiderations": [
+    "drilldowns",
+    "export creation",
+    "export polling"
+  ],
+  "postgresqlRisks": [
+    "large scoped aggregates",
+    "DQ predicates",
+    "effective-dated FX joins",
+    "WON snapshot reversal queries"
+  ],
+  "asyncJobs": [
+    "analytics exports through transactional outbox and durable job worker"
+  ],
+  "artifactRequirements": [
+    "immutable document version",
+    "content hash",
+    "authorized download",
+    "retention policy"
+  ],
+  "observabilityRequirements": [
+    "query latency by reportId",
+    "rows scanned",
+    "export queue age",
+    "job failures",
+    "source freshness",
+    "authorization denials"
+  ],
+  "securityVerificationTargets": [
+    "authorization matrix",
+    "Country Scope",
+    "DENY",
+    "drilldown/export separation",
+    "field projection",
+    "audit and redaction"
+  ],
+  "qaTargets": [
+    "golden reconciliation",
+    "load/spike/soak",
+    "BI source reconciliation",
+    "export tampering",
+    "access revocation"
+  ],
+  "devOpsTargets": [
+    "observability",
+    "SLO evidence",
+    "production release evidence",
+    "backup/restore",
+    "signed deployment"
+  ],
+  "releaseGate": {
+    "id": "RG-03",
+    "status": "TECHNICAL_EVIDENCE_GENERATED_PENDING_FORMAL_GATE_REVIEW"
+  }
+}

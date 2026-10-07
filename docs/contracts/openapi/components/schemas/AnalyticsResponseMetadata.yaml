@@ -1,0 +1,38 @@
+type: object
+additionalProperties: false
+required:
+  - metricId
+  - metricVersion
+  - asOf
+  - source
+  - currency
+  - basis
+  - scope
+properties:
+  metricId:
+    type: string
+    minLength: 1
+    maxLength: 100
+  metricVersion:
+    type: string
+    minLength: 1
+    maxLength: 50
+  asOf:
+    $ref: ./DateTime.yaml
+  source:
+    type: string
+    minLength: 1
+    maxLength: 100
+  currency:
+    oneOf:
+      - $ref: ./CurrencyCode.yaml
+      - type: 'null'
+  basis:
+    type: string
+    minLength: 1
+    maxLength: 200
+  scope:
+    type: string
+    minLength: 1
+    maxLength: 200
+description: Semantic provenance only; the frontend is never the KPI authority.

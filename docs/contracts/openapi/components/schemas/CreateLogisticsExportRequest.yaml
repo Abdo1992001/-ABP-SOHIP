@@ -1,0 +1,13 @@
+type: object
+properties:
+  formatCode:
+    type: string
+    enum:
+      - PDF
+      - XLSX
+      - PNG
+  includeValidation:
+    type: boolean
+additionalProperties: false
+required:
+  - formatCode

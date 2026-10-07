@@ -1,0 +1,9 @@
+name: accountCategoryCode
+in: query
+required: false
+description: Existing governed Customer category code; no category values are introduced by this contract.
+schema:
+  type: string
+  minLength: 1
+  maxLength: 100
+  pattern: ^[A-Z][A-Z0-9_]{0,99}$

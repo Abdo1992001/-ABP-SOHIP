@@ -1,0 +1,75 @@
+type: object
+properties:
+  targetStatusCode:
+    type: string
+    enum: [OPEN, OPERATIONS_REVIEW, QUALITY_REVIEW, SOLUTION, RESOLVED, CLOSED]
+  expectedRowVersion:
+    $ref: ./RowVersion.yaml
+  reason:
+    type:
+      - string
+      - 'null'
+    maxLength: 1000
+    description: Required when sending a complaint back a stage.
+  note:
+    type:
+      - string
+      - 'null'
+    maxLength: 2000
+  assigneeUserId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    description: Who works the next stage (a review).
+  customerOrderId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    description: The customer order the complaint concerns.
+  operationsFindings:
+    type:
+      - string
+      - 'null'
+    maxLength: 5000
+    description: What Operations found (order, load, delivery).
+  rootCauseCode:
+    type:
+      - string
+      - 'null'
+    enum: [MATERIAL, PRODUCTION, PACKAGING, LOADING, TRANSPORT, SITE_HANDLING, SPECIFICATION, DOCUMENTATION, BILLING, SERVICE, NOT_JUSTIFIED, OTHER, null]
+  rootCauseDetail:
+    type:
+      - string
+      - 'null'
+    maxLength: 5000
+  correctiveAction:
+    type:
+      - string
+      - 'null'
+    maxLength: 5000
+  preventiveAction:
+    type:
+      - string
+      - 'null'
+    maxLength: 5000
+  solutionOwnerUserId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  solutionDueDate:
+    type:
+      - string
+      - 'null'
+    format: date
+  resolution:
+    type:
+      - string
+      - 'null'
+    maxLength: 5000
+additionalProperties: false
+required:
+  - targetStatusCode
+  - expectedRowVersion

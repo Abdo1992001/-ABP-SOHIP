@@ -1,0 +1,112 @@
+post:
+  tags:
+    - Capacity
+  summary: Create immutable estimate
+  operationId: post_capacity_estimates
+  description: >-
+    Permission: capacity.estimate. Scope: Source access if quote/order.
+    900/700/600 active snapshots.
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    '201':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/CapacityEstimateEnvelope.yaml
+    '400':
+      $ref: ../components/responses/Error400.yaml
+    '401':
+      $ref: ../components/responses/Error401.yaml
+    '403':
+      $ref: ../components/responses/Error403.yaml
+    '404':
+      $ref: ../components/responses/Error404.yaml
+    '409':
+      $ref: ../components/responses/Error409.yaml
+    '412':
+      $ref: ../components/responses/Error412.yaml
+    '422':
+      $ref: ../components/responses/Error422.yaml
+    '429':
+      $ref: ../components/responses/Error429.yaml
+    '500':
+      $ref: ../components/responses/Error500.yaml
+    '503':
+      $ref: ../components/responses/Error503.yaml
+  parameters:
+    - $ref: ../components/parameters/IdempotencyKey.yaml
+    - $ref: ../components/parameters/CsrfToken.yaml
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/CapacityEstimateRequest.yaml
+  x-abp-module: Capacity
+  x-abp-permission: capacity.estimate
+  x-abp-scope-rule: Source access if quote/order
+  x-abp-concurrency: NONE
+  x-abp-idempotency: Required
+  x-abp-request-schema: CapacityEstimateRequest
+  x-abp-success-schema: CapacityEstimateEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true
+get:
+  tags:
+    - Capacity
+  summary: Estimate history
+  operationId: get_capacity_estimates
+  description: 'Permission: capacity.view. Scope: Scoped. '
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/CapacityEstimateListEnvelope.yaml
+    '400':
+      $ref: ../components/responses/Error400.yaml
+    '401':
+      $ref: ../components/responses/Error401.yaml
+    '403':
+      $ref: ../components/responses/Error403.yaml
+    '404':
+      $ref: ../components/responses/Error404.yaml
+    '409':
+      $ref: ../components/responses/Error409.yaml
+    '412':
+      $ref: ../components/responses/Error412.yaml
+    '422':
+      $ref: ../components/responses/Error422.yaml
+    '429':
+      $ref: ../components/responses/Error429.yaml
+    '500':
+      $ref: ../components/responses/Error500.yaml
+    '503':
+      $ref: ../components/responses/Error503.yaml
+  x-abp-module: Capacity
+  x-abp-permission: capacity.view
+  x-abp-scope-rule: Scoped
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: CapacityEstimateListQuery
+  x-abp-success-schema: CapacityEstimateListEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true
+  parameters:
+    - $ref: ../components/parameters/Page.yaml
+    - $ref: ../components/parameters/Offset.yaml
+    - $ref: ../components/parameters/Limit.yaml
+    - $ref: ../components/parameters/Sort.yaml
+    - $ref: ../components/parameters/Search.yaml
+  x-abp-pagination: OFFSET

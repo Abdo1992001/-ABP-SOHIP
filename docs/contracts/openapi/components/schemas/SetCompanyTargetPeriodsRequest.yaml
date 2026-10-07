@@ -1,0 +1,10 @@
+type: object
+properties:
+  periods:
+    type: array
+    items:
+      $ref: ./CompanyTargetPeriod.yaml
+    minItems: 1
+additionalProperties: false
+required:
+  - periods

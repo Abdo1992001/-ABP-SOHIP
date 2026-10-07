@@ -1,0 +1,25 @@
+type: object
+properties:
+  groupNetworkId:
+    type: string
+    format: uuid
+    description: Group/network.
+  groupCode:
+    type: string
+    description: Stable group code.
+  name:
+    type: string
+    description: Display name.
+  groupTypeCode:
+    type:
+      - string
+      - 'null'
+    description: ACROW_NETWORK/AICS/OTHER etc.
+  isActive:
+    type: boolean
+    description: Current classification availability.
+additionalProperties: false
+required:
+  - groupCode
+  - groupNetworkId
+  - name

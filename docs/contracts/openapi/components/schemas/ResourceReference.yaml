@@ -1,0 +1,14 @@
+type: object
+additionalProperties: false
+required:
+  - resourceType
+  - resourceId
+properties:
+  resourceType:
+    type: string
+    minLength: 1
+    maxLength: 100
+  resourceId:
+    type: string
+    minLength: 1
+    maxLength: 200

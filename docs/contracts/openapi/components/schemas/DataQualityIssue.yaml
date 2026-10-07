@@ -1,0 +1,56 @@
+type: object
+properties:
+  issueId:
+    type: string
+    format: uuid
+    description: DQ issue.
+  importJobId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    description: Related import.
+  importRowId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    description: Related row.
+  resourceTypeCode:
+    type:
+      - string
+      - 'null'
+    description: Canonical resource type if post-import issue.
+  resourceId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    description: Canonical resource ID.
+  issueCode:
+    type: string
+    description: Machine issue code.
+  severityCode:
+    type: string
+    description: INFO/WARN/ERROR/BLOCKER.
+  message:
+    type: string
+    description: Human explanation.
+  statusCode:
+    type: string
+    description: OPEN/RESOLVED/WAIVED.
+  sourceEntityCode: { type: string }
+  sourceRecordKey: { type: string }
+  resolutionCode: { type: [string, 'null'] }
+  resolution: { type: [string, 'null'] }
+  mappingTargetId: { type: [string, 'null'], format: uuid }
+  resolvedByUserId: { type: [string, 'null'], format: uuid }
+  resolvedAt: { type: [string, 'null'], format: date-time }
+  rowVersion: { $ref: ./RowVersion.yaml }
+  createdAt: { type: string, format: date-time }
+additionalProperties: false
+required:
+  - issueCode
+  - issueId
+  - message
+  - severityCode

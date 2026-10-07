@@ -1,0 +1,67 @@
+get:
+  tags: [Pricing]
+  summary: List the stored pricing rules
+  operationId: get_pricing_calculation_formulas
+  parameters:
+    - $ref: ../components/parameters/Offset.yaml
+    - $ref: ../components/parameters/Limit.yaml
+    - name: includeRetired
+      in: query
+      required: false
+      schema: { type: boolean }
+      description: Include rules that have been retired from the picker.
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/CalculationFormulaListEnvelope.yaml
+    '400': { $ref: ../components/responses/Error400.yaml }
+  x-abp-permission: pricing.view
+  x-abp-scope-rule: Company-wide pricing rules; no country projection
+  x-abp-module: Pricing
+  x-abp-concurrency: NONE
+  x-abp-execution-mode: SYNC
+  x-abp-job-dto: false
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true
+post:
+  tags: [Pricing]
+  summary: Create a pricing rule, refusing an expression that will not evaluate
+  operationId: post_pricing_calculation_formulas
+  parameters:
+    - $ref: ../components/parameters/IdempotencyKey.yaml
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          additionalProperties: false
+          required: [formulaKey, displayName, expression]
+          properties:
+            formulaKey: { type: string, maxLength: 80 }
+            displayName: { type: string, maxLength: 160 }
+            arabicLabel: { type: [string, 'null'], maxLength: 160 }
+            expression: { type: string, maxLength: 500 }
+            description: { type: [string, 'null'], maxLength: 500 }
+            rateUnitLabel: { type: [string, 'null'], maxLength: 40 }
+            sortOrder: { type: integer, minimum: 0, maximum: 9999 }
+  responses:
+    '200':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/CalculationFormulaEnvelope.yaml
+    '400': { $ref: ../components/responses/Error400.yaml }
+    '422': { $ref: ../components/responses/Error422.yaml }
+  x-abp-permission: pricing.policy.manage
+  x-abp-scope-rule: Expression validated against the line variable set before save
+  x-abp-module: Pricing
+  x-abp-concurrency: NONE
+  x-abp-execution-mode: SYNC
+  x-abp-job-dto: false
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

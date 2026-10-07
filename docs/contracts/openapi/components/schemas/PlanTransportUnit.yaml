@@ -1,0 +1,53 @@
+type: object
+properties:
+  planTransportUnitId:
+    type: string
+    format: uuid
+    description: Vehicle/container instance in a plan version.
+  planVersionId:
+    type: string
+    format: uuid
+    description: Plan version.
+  templateId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    description: Source template.
+  instanceNo:
+    type: integer
+    format: int32
+    description: Instance number within version.
+  nameSnapshot:
+    type:
+      - string
+      - 'null'
+    description: Template/name snapshot.
+  lengthMmSnapshot:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+    description: Usable length snapshot.
+  widthMmSnapshot:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+    description: Usable width snapshot.
+  heightMmSnapshot:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+    description: Usable height snapshot.
+  maxWeightKgSnapshot:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+    description: Payload limit snapshot.
+  createdAt:
+    type: string
+    format: date-time
+    description: Creation timestamp.
+additionalProperties: false
+required:
+  - heightMmSnapshot
+  - lengthMmSnapshot
+  - maxWeightKgSnapshot
+  - planTransportUnitId
+  - planVersionId
+  - widthMmSnapshot

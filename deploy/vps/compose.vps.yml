@@ -1,0 +1,16 @@
+# Layered on docker-compose.production.yml for a single online server:
+#   docker compose --env-file .env.production \
+#     -f docker-compose.production.yml -f deploy/vps/compose.vps.yml up -d --build
+services:
+  web:
+    environment:
+      # The browser calls the API on the same address it loaded the page from.
+      ABP_API_BASE_URL: /api/v1
+  worker:
+    environment:
+      ABP_PUBLIC_BASE_URL: https://${ABP_DOMAIN:?Set ABP_DOMAIN in .env.production}
+  reverse-proxy:
+    environment:
+      ABP_DOMAIN: ${ABP_DOMAIN:?Set ABP_DOMAIN in .env.production}
+    volumes:
+      - ./deploy/vps/Caddyfile:/etc/caddy/Caddyfile:ro

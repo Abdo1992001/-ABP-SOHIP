@@ -1,0 +1,11 @@
+type: object
+additionalProperties: false
+required: [data, meta]
+properties:
+  data:
+    type: array
+    maxItems: 200
+    items:
+      $ref: CustomerFeedback.yaml
+  meta:
+    $ref: OffsetPaginationMeta.yaml

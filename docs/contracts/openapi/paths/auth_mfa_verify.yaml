@@ -1,0 +1,31 @@
+post:
+  tags: [Identity]
+  summary: Complete a local TOTP login challenge
+  operationId: post_auth_mfa_verify
+  security: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema: { $ref: ../components/schemas/MfaVerifyRequest.yaml }
+  responses:
+    '200':
+      description: Authenticated session
+      content:
+        application/json:
+          schema: { $ref: ../components/schemas/LocalAuthEnvelope.yaml }
+    '400': { $ref: ../components/responses/Error400.yaml }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '429': { $ref: ../components/responses/Error429.yaml }
+    '500': { $ref: ../components/responses/Error500.yaml }
+  x-abp-module: Identity
+  x-abp-permission: public
+  x-abp-scope-rule: Single unexpired local MFA challenge
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: MfaVerifyRequest
+  x-abp-success-schema: LocalAuthEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

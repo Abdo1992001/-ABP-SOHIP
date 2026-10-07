@@ -1,0 +1,41 @@
+type: object
+additionalProperties: false
+required: [data, meta]
+properties:
+  data:
+    type: array
+    maxItems: 200
+    items:
+      type: object
+      additionalProperties: false
+      required: [clientIdentityId, issuer, subject, statusCode, rowVersion]
+      properties:
+        clientIdentityId: { type: string, format: uuid }
+        issuer: { type: string }
+        subject: { type: string }
+        displayName: { type: [string, 'null'] }
+        email: { type: [string, 'null'] }
+        statusCode: { type: string, enum: [ACTIVE, REVOKED] }
+        provisionedAt: { type: string, format: date-time }
+        activeBindingCount: { type: integer, minimum: 0 }
+        rowVersion: { type: string }
+        # The customers this identity may see. An administrator cannot revoke
+        # a binding they cannot read, so the bindings come back with the list.
+        bindings:
+          type: array
+          maxItems: 200
+          items:
+            type: object
+            additionalProperties: false
+            required: [bindingId, clientIdentityId, accountId, statusCode, rowVersion]
+            properties:
+              bindingId: { type: string, format: uuid }
+              clientIdentityId: { type: string, format: uuid }
+              accountId: { type: string, format: uuid }
+              accountName: { type: [string, 'null'] }
+              statusCode: { type: string }
+              validFrom: { type: string, format: date-time }
+              validTo: { type: [string, 'null'], format: date-time }
+              rowVersion: { type: string }
+  meta:
+    $ref: ./OffsetPageMeta.yaml

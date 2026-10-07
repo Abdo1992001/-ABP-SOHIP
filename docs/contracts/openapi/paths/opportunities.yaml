@@ -1,0 +1,128 @@
+get:
+  tags:
+    - Pipeline
+  summary: Pipeline grid/Kanban
+  operationId: get_opportunities
+  description: >-
+    Permission: opportunities.view. Scope: effective Opportunity Country then
+    Account context. Stage policies are governed server configuration.
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/OpportunityListEnvelope.yaml
+    '400':
+      $ref: ../components/responses/Error400.yaml
+    '401':
+      $ref: ../components/responses/Error401.yaml
+    '403':
+      $ref: ../components/responses/Error403.yaml
+    '404':
+      $ref: ../components/responses/Error404.yaml
+    '409':
+      $ref: ../components/responses/Error409.yaml
+    '412':
+      $ref: ../components/responses/Error412.yaml
+    '422':
+      $ref: ../components/responses/Error422.yaml
+    '429':
+      $ref: ../components/responses/Error429.yaml
+    '500':
+      $ref: ../components/responses/Error500.yaml
+    '503':
+      $ref: ../components/responses/Error503.yaml
+  parameters:
+    - $ref: ../components/parameters/Page.yaml
+    - $ref: ../components/parameters/Offset.yaml
+    - $ref: ../components/parameters/Limit.yaml
+    - $ref: ../components/parameters/Sort.yaml
+    - $ref: ../components/parameters/Search.yaml
+    - name: accountId
+      in: query
+      required: false
+      schema: { $ref: ../components/schemas/UUID.yaml }
+    - name: projectId
+      in: query
+      required: false
+      schema: { $ref: ../components/schemas/UUID.yaml }
+    - name: stageCode
+      in: query
+      required: false
+      schema: { type: string, minLength: 1, maxLength: 100 }
+  x-abp-module: Pipeline
+  x-abp-permission: opportunities.view
+  x-abp-scope-rule: Country + account scope
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: OpportunityListQuery
+  x-abp-success-schema: OpportunityListEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true
+  x-abp-pagination: OFFSET
+post:
+  tags:
+    - Pipeline
+  summary: Create opportunity
+  operationId: post_opportunities
+  description: >-
+    Permission: opportunities.create. Scope: Account/Country scope. Default
+    NEW_LEAD.
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    '201':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/OpportunityEnvelope.yaml
+      headers:
+        ETag: { $ref: ../components/headers/ETag.yaml }
+    '400':
+      $ref: ../components/responses/Error400.yaml
+    '401':
+      $ref: ../components/responses/Error401.yaml
+    '403':
+      $ref: ../components/responses/Error403.yaml
+    '404':
+      $ref: ../components/responses/Error404.yaml
+    '409':
+      $ref: ../components/responses/Error409.yaml
+    '412':
+      $ref: ../components/responses/Error412.yaml
+    '422':
+      $ref: ../components/responses/Error422.yaml
+    '429':
+      $ref: ../components/responses/Error429.yaml
+    '500':
+      $ref: ../components/responses/Error500.yaml
+    '503':
+      $ref: ../components/responses/Error503.yaml
+  parameters:
+    - $ref: ../components/parameters/IdempotencyKey.yaml
+    - $ref: ../components/parameters/CsrfToken.yaml
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/CreateOpportunityRequest.yaml
+  x-abp-module: Pipeline
+  x-abp-permission: opportunities.create
+  x-abp-scope-rule: Account/Country scope
+  x-abp-concurrency: NONE
+  x-abp-idempotency: Required
+  x-abp-request-schema: CreateOpportunityRequest
+  x-abp-success-schema: OpportunityEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

@@ -1,0 +1,2 @@
+$ref: ./ProjectDetail.yaml
+description: Compatibility alias for the safe Project detail projection. New contracts should reference ProjectDetail explicitly.

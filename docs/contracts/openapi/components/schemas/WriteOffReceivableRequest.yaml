@@ -1,0 +1,12 @@
+type: object
+properties:
+  expectedRowVersion:
+    type: string
+    pattern: ^\d+$
+  reason:
+    type: string
+    maxLength: 500
+additionalProperties: false
+required:
+  - expectedRowVersion
+  - reason

@@ -1,0 +1,11 @@
+{
+  "contractVersion": "1.3.0",
+  "openapiOperations": 191,
+  "mandatoryRuntimeOperations": 191,
+  "outOfScopeV1Operations": 21,
+  "openapiSha256": "ee4b858e6755b84746437aaf1733405ebc5edc14b00ab28f3d988499f19833b1",
+  "generatedClientPackage": "@abp/api-client@1.3.0",
+  "generatedClientSha256": "4aa123fb7305d061929d7e1c394787f51a2afe6bbe146e31568bc8612933b4b7",
+  "status": "HISTORICAL_VERIFIED_EVIDENCE",
+  "supersededBy": "1.4.0"
+}

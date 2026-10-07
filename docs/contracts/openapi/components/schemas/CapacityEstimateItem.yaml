@@ -1,0 +1,32 @@
+type: object
+properties:
+  categoryCode:
+    type: string
+    enum:
+      - STANDARD
+      - ORDINARY
+      - CURVED
+  quantityBoards:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+  rateBoardsPerDaySnapshot:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+  requiredDaysDecimal:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+  durationHours:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+  estimatedFinishAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+additionalProperties: false
+required:
+  - categoryCode
+  - quantityBoards
+  - rateBoardsPerDaySnapshot
+  - requiredDaysDecimal
+  - durationHours

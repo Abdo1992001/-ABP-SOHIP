@@ -1,0 +1,58 @@
+post:
+  tags:
+    - Pricing
+  summary: Resolve price/guardrails/FX context
+  operationId: post_pricing_resolve
+  description: >-
+    Permission: pricing.view. Scope: Authorized product/context. Cost/margin
+    omitted unless permitted.
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/PricingResolveEnvelope.yaml
+    '400':
+      $ref: ../components/responses/Error400.yaml
+    '401':
+      $ref: ../components/responses/Error401.yaml
+    '403':
+      $ref: ../components/responses/Error403.yaml
+    '404':
+      $ref: ../components/responses/Error404.yaml
+    '409':
+      $ref: ../components/responses/Error409.yaml
+    '412':
+      $ref: ../components/responses/Error412.yaml
+    '422':
+      $ref: ../components/responses/Error422.yaml
+    '429':
+      $ref: ../components/responses/Error429.yaml
+    '500':
+      $ref: ../components/responses/Error500.yaml
+    '503':
+      $ref: ../components/responses/Error503.yaml
+  parameters:
+    - $ref: ../components/parameters/IdempotencyKey.yaml
+    - $ref: ../components/parameters/CsrfToken.yaml
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/PricingResolveRequest.yaml
+  x-abp-module: Pricing
+  x-abp-permission: pricing.view
+  x-abp-scope-rule: Authorized product/context
+  x-abp-concurrency: NONE
+  x-abp-idempotency: Required
+  x-abp-request-schema: PricingResolveRequest
+  x-abp-success-schema: PricingResolveEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

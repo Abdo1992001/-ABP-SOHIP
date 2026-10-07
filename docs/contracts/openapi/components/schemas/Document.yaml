@@ -1,0 +1,50 @@
+type: object
+properties:
+  documentId:
+    type: string
+    format: uuid
+    description: Logical document.
+  documentTypeCode:
+    type: string
+    description: PO/QUOTE/POD? POD deferred; SPEC etc.
+  resourceTypeCode: { type: string }
+  resourceId: { type: string, format: uuid }
+  title:
+    type:
+      - string
+      - 'null'
+    description: Display title.
+  statusCode:
+    type: string
+    description: Document lifecycle.
+  mimeType: { type: string }
+  sizeBytes: { type: integer, minimum: 0 }
+  contentHash: { type: string }
+  classificationCode: { type: string }
+  official: { type: boolean }
+  immutable: { type: boolean }
+  createdByUserId: { type: string, format: uuid }
+  createdAt: { type: string, format: date-time }
+  # The extra associations this document carries. POST /documents/{id}/links
+  # creates them and DELETE /document-links/{id} removes them, but nothing
+  # returned them — so a link, once made, could be neither seen nor undone.
+  links:
+    type: array
+    maxItems: 200
+    items:
+      $ref: ./DocumentLink.yaml
+additionalProperties: false
+required:
+  - documentId
+  - documentTypeCode
+  - resourceTypeCode
+  - resourceId
+  - mimeType
+  - sizeBytes
+  - contentHash
+  - classificationCode
+  - statusCode
+  - official
+  - immutable
+  - createdByUserId
+  - createdAt

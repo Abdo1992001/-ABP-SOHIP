@@ -1,0 +1,5 @@
+description: Safe internal error
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/ErrorEnvelope.yaml

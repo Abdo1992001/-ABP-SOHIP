@@ -1,0 +1,30 @@
+parameters:
+  - { name: versionId, in: path, required: true, schema: { type: string, format: uuid } }
+patch:
+  tags: [Administration]
+  summary: Update mutable template draft content
+  operationId: patch_admin_document_template_versions_by_versionId
+  security: [{ WebCookie: [] }, { DesktopOAuth: [] }]
+  parameters: [{ $ref: ../components/parameters/IfMatch.yaml }, { $ref: ../components/parameters/IdempotencyKey.yaml }, { $ref: ../components/parameters/CsrfToken.yaml }]
+  requestBody: { required: true, content: { application/json: { schema: { $ref: ../components/schemas/UpdateDocumentTemplateVersionRequest.yaml } } } }
+  responses:
+    '200': { description: Updated, headers: { ETag: { $ref: ../components/headers/ETag.yaml } }, content: { application/json: { schema: { $ref: ../components/schemas/DocumentTemplateVersionEnvelope.yaml } } } }
+    '400': { $ref: ../components/responses/Error400.yaml }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '403': { $ref: ../components/responses/Error403.yaml }
+    '404': { $ref: ../components/responses/Error404.yaml }
+    '409': { $ref: ../components/responses/Error409.yaml }
+    '412': { $ref: ../components/responses/Error412.yaml }
+    '422': { $ref: ../components/responses/Error422.yaml }
+    '500': { $ref: ../components/responses/Error500.yaml }
+  x-abp-module: Administration
+  x-abp-permission: documents.create
+  x-abp-scope-rule: ADMIN workspace + Permission + DENY + draft-only immutability guard
+  x-abp-concurrency: If-Match required
+  x-abp-idempotency: Required
+  x-abp-request-schema: UpdateDocumentTemplateVersionRequest
+  x-abp-success-schema: DocumentTemplateVersionEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

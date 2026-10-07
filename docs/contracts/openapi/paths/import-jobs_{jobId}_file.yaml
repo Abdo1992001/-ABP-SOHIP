@@ -1,0 +1,70 @@
+post:
+  tags:
+    - Imports
+  summary: Upload and safely preview an import file
+  operationId: post_import_jobs_by_jobId_file
+  description: >-
+    Uploads the exact binary content registered for the import job, performs
+    safe CSV or XLSX parsing, detects the schema, applies the selected mapping
+    version and persists the validation preview. Permission: imports.manage.
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  parameters:
+    - $ref: ../components/parameters/JobId.yaml
+    - $ref: ../components/parameters/CsrfToken.yaml
+    - name: parserVersion
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: '^[A-Za-z0-9._-]{1,50}$'
+    - name: mappingVersion
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: '^[A-Za-z0-9._-]{1,50}$'
+  requestBody:
+    required: true
+    content:
+      application/octet-stream:
+        schema:
+          type: string
+          format: binary
+  responses:
+    '200':
+      description: File accepted and preview persisted
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ImportJobEnvelope.yaml
+    '400':
+      $ref: ../components/responses/Error400.yaml
+    '401':
+      $ref: ../components/responses/Error401.yaml
+    '403':
+      $ref: ../components/responses/Error403.yaml
+    '404':
+      $ref: ../components/responses/Error404.yaml
+    '409':
+      $ref: ../components/responses/Error409.yaml
+    '422':
+      $ref: ../components/responses/Error422.yaml
+    '429':
+      $ref: ../components/responses/Error429.yaml
+    '500':
+      $ref: ../components/responses/Error500.yaml
+    '503':
+      $ref: ../components/responses/Error503.yaml
+  x-abp-module: Imports
+  x-abp-permission: imports.manage
+  x-abp-scope-rule: Actor-owned import job and destination country
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: ImportFileBinary
+  x-abp-success-schema: ImportJobEnvelope
+  x-abp-job-dto: true
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

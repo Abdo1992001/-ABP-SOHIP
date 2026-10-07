@@ -1,0 +1,69 @@
+{
+  "generatedAt": "2026-08-30T05:49:36.795Z",
+  "database": "PostgreSQL 17",
+  "workflowCount": 14,
+  "mappedOperations": 14,
+  "implementedWorkflows": 14,
+  "stateTransitions": "PASS",
+  "positiveTests": [
+    "approval routing and decision",
+    "official PDF render and persistence",
+    "governed manual send and SENT transition",
+    "import validation and atomic commit",
+    "reconciliation completion",
+    "clean upload availability",
+    "scope-intersected data export",
+    "returned-scrap approval and finalization",
+    "logistics deterministic optimizer and export boundary"
+  ],
+  "negativeTests": [
+    "self approval denied",
+    "stale If-Match denied",
+    "infected EICAR upload rejected",
+    "unconfigured email provider persisted DEAD without delivery claim",
+    "duplicate official artifact prevented",
+    "DQ blocker guard",
+    "Country Scope denial",
+    "shipment and POD absent"
+  ],
+  "idempotency": {
+    "status": "PASS",
+    "officialArtifactsForCandidate": 1
+  },
+  "concurrency": {
+    "status": "PASS",
+    "mechanism": "rowVersion + conditional update + worker leases"
+  },
+  "crashRecovery": {
+    "status": "PASS",
+    "recoveredJobId": "c703d53e-711b-4f66-82d4-a835dec0ceca"
+  },
+  "retry": {
+    "status": "PASS",
+    "mechanism": "bounded exponential retry and DEAD terminal state"
+  },
+  "postgresql": "PASS",
+  "worker": {
+    "status": "PASS",
+    "processed": 19
+  },
+  "outbox": "PASS",
+  "failures": {
+    "permanentProviderFailureJobId": "eb3547e9-302a-4d66-ad4f-a9aad84867cb",
+    "infectedUploadSessionId": "905cc903-0dfb-401f-8f91-97b0c405aad7"
+  },
+  "domainEvidence": {
+    "quotationId": "d3dec664-03f6-47b6-9a6a-cc32d12a6513",
+    "officialDocumentId": "3fe67fa5-de05-4631-8171-0ed670833150",
+    "officialDocumentSha256": "c77aa242610aee67d38ee2181d0c97fbf969a190265312a90f536eba7e0016f2",
+    "manualSendEvidenceId": "8514ddba-5368-439b-bef4-5298602bd00a",
+    "completedExports": 48,
+    "cleanUploads": 14,
+    "completedReconciliations": 3,
+    "committedImports": 1,
+    "canonicalOrders": 2,
+    "approvalAssignments": 30,
+    "returnAssignments": 13
+  },
+  "unresolved": 0
+}

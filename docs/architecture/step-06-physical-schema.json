@@ -1,0 +1,271 @@
+{
+  "verdict": "PASS",
+  "logicalEntityCount": 49,
+  "changePlanDomains": [
+    "Quotation history/documents/send",
+    "ERP import/DQ/reconciliation/orders",
+    "Capacity estimate configuration",
+    "Logistics planning",
+    "FX/payments/cheques",
+    "Returned scrap",
+    "Company targets",
+    "Geography/document governance"
+  ],
+  "migration": "20260822020000_step6_physical_schema",
+  "physicalPolicy": {
+    "money": "numeric(18,4); FX numeric(24,12)",
+    "timestamps": "timestamptz(6)",
+    "archive": "existing commercial records use archived_at/status; new facts are retained",
+    "canonicalWriter": {
+      "erp": "import/reconciliation pipeline",
+      "finance": "import/reconciliation pipeline"
+    }
+  },
+  "mappings": [
+    {
+      "logicalEntity": "ApplicationUser",
+      "table": "app_users",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "Role",
+      "table": "roles",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "Permission",
+      "table": "permissions",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "CountryScope",
+      "table": "user_country_access",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "UserPermissionOverride",
+      "table": "user_permission_overrides",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "ApplicationSession",
+      "table": "app_sessions",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "Customer",
+      "table": "accounts",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "CustomerGroup",
+      "table": "group_networks",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "CustomerGroupMembership",
+      "table": "account_group_memberships",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "CustomerShare",
+      "table": "customer_shares",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "Contact",
+      "table": "contacts",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "Project",
+      "table": "projects",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "Opportunity",
+      "table": "opportunities",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "OpportunityWonContribution",
+      "table": "opportunity_won_snapshots",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "Activity",
+      "table": "activities",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "ProductFamily",
+      "table": "product_families",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "Product",
+      "table": "products",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "PricingRule",
+      "table": "pricing_rules",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "PricingConfiguration",
+      "table": "pricing_configurations",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "Quotation",
+      "table": "quotations",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "QuotationLine",
+      "table": "quotation_lines",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "QuotationAdjustment",
+      "table": "quotation_adjustments",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "QuotationApproval",
+      "table": "quotation_approvals",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "OfficialQuotationDocument",
+      "table": "official_quotation_documents",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "QuotationSendEvent",
+      "table": "quotation_send_events",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "ImportBatch",
+      "table": "import_batches",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "ImportRow",
+      "table": "import_rows",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "DQIssue",
+      "table": "dq_issues",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "ReconciliationRun",
+      "table": "reconciliation_runs",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "ERPOrder",
+      "table": "erp_orders",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "ERPOrderLine",
+      "table": "erp_order_lines",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "CapacityRate",
+      "table": "capacity_rates",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "CapacityEstimate",
+      "table": "capacity_estimates",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "LogisticsPlan",
+      "table": "logistics_plans",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "LogisticsPlanVersion",
+      "table": "logistics_plan_versions",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "LogisticsPlacement",
+      "table": "logistics_placements",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "FXRate",
+      "table": "fx_rates",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "Payment",
+      "table": "payments",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "Cheque",
+      "table": "cheques",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "ReturnedScrapRequest",
+      "table": "returned_scrap_requests",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "ReturnedScrapItem",
+      "table": "returned_scrap_items",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "CompanyTarget",
+      "table": "company_targets",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "TargetAllocation",
+      "table": "target_allocations",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "Country",
+      "table": "countries",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "Continent",
+      "table": "continents",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "DocumentMetadata",
+      "table": "document_metadata",
+      "representation": "TABLE"
+    },
+    {
+      "logicalEntity": "AuditEvent",
+      "table": "audit_events",
+      "representation": "TECHNICAL EXISTING MODEL"
+    },
+    {
+      "logicalEntity": "OutboxMessage",
+      "table": "outbox_messages",
+      "representation": "TECHNICAL EXISTING MODEL"
+    },
+    {
+      "logicalEntity": "DurableJob",
+      "table": "durable_jobs",
+      "representation": "TECHNICAL EXISTING MODEL"
+    }
+  ]
+}

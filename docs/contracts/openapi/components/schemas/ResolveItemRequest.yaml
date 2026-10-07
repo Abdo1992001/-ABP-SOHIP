@@ -1,0 +1,43 @@
+type: object
+properties:
+  sourceSystemId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  sourceItemKey:
+    type:
+      - string
+      - 'null'
+  sku:
+    type:
+      - string
+      - 'null'
+  barcode:
+    type:
+      - string
+      - 'null'
+  description:
+    type:
+      - string
+      - 'null'
+  dimensions:
+    type: object
+    properties:
+      thicknessMm:
+        type:
+          - string
+          - 'null'
+        pattern: ^-?\d+(\.\d+)?$
+      widthMm:
+        type:
+          - string
+          - 'null'
+        pattern: ^-?\d+(\.\d+)?$
+      lengthMm:
+        type:
+          - string
+          - 'null'
+        pattern: ^-?\d+(\.\d+)?$
+    additionalProperties: false
+additionalProperties: false

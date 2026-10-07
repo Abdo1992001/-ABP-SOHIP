@@ -1,0 +1,22 @@
+get:
+  tags: [Identity]
+  summary: A colleague's profile, filtered by what they chose to show
+  operationId: get_users_by_userId_profile
+  security: [{ WebCookie: [] }, { DesktopOAuth: [] }]
+  parameters:
+    - { name: userId, in: path, required: true, schema: { type: string, format: uuid } }
+  responses:
+    '200': { description: Success, content: { application/json: { schema: { $ref: ../components/schemas/ColleagueProfileEnvelope.yaml } } } }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '404': { $ref: ../components/responses/Error404.yaml }
+  x-abp-module: Identity
+  x-abp-permission: authenticated
+  x-abp-scope-rule: Any authenticated colleague; hidden fields are omitted
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: none
+  x-abp-success-schema: ColleagueProfileEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

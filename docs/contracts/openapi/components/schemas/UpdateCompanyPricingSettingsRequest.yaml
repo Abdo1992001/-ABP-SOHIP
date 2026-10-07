@@ -1,0 +1,61 @@
+type: object
+properties:
+  standardPricePerKg:
+    type: [string, 'null']
+    pattern: ^-?\d+(\.\d+)?$
+    description: Exactly one of standardPricePerKg/standardBoardPrice may be set; the other is derived server-side.
+  standardBoardPrice:
+    type: [string, 'null']
+    pattern: ^-?\d+(\.\d+)?$
+  curvedPricePerKg:
+    type: [string, 'null']
+    pattern: ^-?\d+(\.\d+)?$
+  circularPricePerKg:
+    type: [string, 'null']
+    pattern: ^-?\d+(\.\d+)?$
+  defaultDensityKgM3:
+    type: [string, 'null']
+    pattern: ^-?\d+(\.\d+)?$
+  defaultThicknessMm:
+    type: [string, 'null']
+    pattern: ^-?\d+(\.\d+)?$
+  referenceBoardWidthMm:
+    type: [string, 'null']
+    pattern: ^-?\d+(\.\d+)?$
+  referenceBoardLengthMm:
+    type: [string, 'null']
+    pattern: ^-?\d+(\.\d+)?$
+  defaultDiscountPct:
+    type: [string, 'null']
+    pattern: ^-?\d+(\.\d+)?$
+  maxPanelWidthMm:
+    type: [string, 'null']
+    pattern: ^-?\d+(\.\d+)?$
+  maxPanelLengthMm:
+    type: [string, 'null']
+    pattern: ^-?\d+(\.\d+)?$
+  defaultColumnHeightMm:
+    type: [string, 'null']
+    pattern: ^-?\d+(\.\d+)?$
+  columnClosureAllowanceMm:
+    type: [string, 'null']
+    pattern: ^-?\d+(\.\d+)?$
+  documentDeliveryTerms:
+    type:
+      - string
+      - 'null'
+    maxLength: 500
+    description: The delivery wording every document carries.
+  documentDeliveryPoint:
+    type:
+      - string
+      - 'null'
+    maxLength: 500
+    description: The yard the goods leave from.
+  documentOfferValidity:
+    type:
+      - string
+      - 'null'
+    maxLength: 200
+    description: How long an offer stands.
+additionalProperties: false

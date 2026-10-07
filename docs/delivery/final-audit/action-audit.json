@@ -1,0 +1,6776 @@
+{
+  "generatedAt": "2026-09-13T07:43:24.509Z",
+  "runtime": {
+    "web": "http://127.0.0.1:5173",
+    "role": "uat.admin"
+  },
+  "totals": {
+    "controls": 1118,
+    "pass": 1073,
+    "skip": 45,
+    "fail": 0
+  },
+  "findings": [
+    {
+      "route": "/",
+      "kind": "button",
+      "label": "Collapse sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/",
+      "kind": "button",
+      "label": "Search Ctrl K Global Sales search null",
+      "result": "PASS"
+    },
+    {
+      "route": "/",
+      "kind": "button",
+      "label": "＋ Quick create Quick create null",
+      "result": "PASS"
+    },
+    {
+      "route": "/",
+      "kind": "button",
+      "label": "Use dark theme null",
+      "result": "PASS"
+    },
+    {
+      "route": "/",
+      "kind": "button",
+      "label": "العربية null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/",
+      "kind": "button",
+      "label": "↪ تسجيل الخروج null",
+      "result": "SKIP",
+      "reason": "destructive or mutation action requires domain data"
+    },
+    {
+      "route": "/",
+      "kind": "button",
+      "label": "تحديث null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/",
+      "kind": "button",
+      "label": "السابق null null",
+      "result": "SKIP",
+      "reason": "disabled by state"
+    },
+    {
+      "route": "/",
+      "kind": "button",
+      "label": "التالي null null",
+      "result": "SKIP",
+      "reason": "disabled by state"
+    },
+    {
+      "route": "/",
+      "kind": "button",
+      "label": "إنشاء null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/",
+      "kind": "button",
+      "label": "حفظ التغييرات null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/",
+      "kind": "button",
+      "label": "حفظ التغييرات null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/",
+      "kind": "button",
+      "label": "إنشاء null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/",
+      "kind": "button",
+      "label": "إنشاء null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/",
+      "kind": "button",
+      "label": "إنشاء null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/",
+      "kind": "field",
+      "label": "بحث في المستخدمون والصلاحيات",
+      "result": "PASS"
+    },
+    {
+      "route": "/search",
+      "kind": "button",
+      "label": "Expand sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/search",
+      "kind": "button",
+      "label": "نظرة عامة − null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/search",
+      "kind": "button",
+      "label": "المبيعات + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/search",
+      "kind": "button",
+      "label": "إدارة المبيعات + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/search",
+      "kind": "button",
+      "label": "التخطيط + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/search",
+      "kind": "button",
+      "label": "الأدوات المتكاملة + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/search",
+      "kind": "button",
+      "label": "بيانات ERP + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/search",
+      "kind": "button",
+      "label": "الذكاء والتحليلات + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/search",
+      "kind": "link",
+      "label": "نظرة عامة للمبيعات",
+      "result": "PASS"
+    },
+    {
+      "route": "/search",
+      "kind": "link",
+      "label": "قائمة الإجراءات",
+      "result": "PASS"
+    },
+    {
+      "route": "/search",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/search",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/search",
+      "kind": "field",
+      "label": "بحث في البحث الشامل",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "button",
+      "label": "Collapse sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "button",
+      "label": "بحث في التنقل Ctrl K البحث التجاري الشامل null",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "button",
+      "label": "＋ إضافة سريعة إضافة سريعة null",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "button",
+      "label": "تفعيل المظهر الفاتح null",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "button",
+      "label": "English null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "button",
+      "label": "↪ Sign out null",
+      "result": "SKIP",
+      "reason": "destructive or mutation action requires domain data"
+    },
+    {
+      "route": "/customers",
+      "kind": "button",
+      "label": "＋ New customer null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "button",
+      "label": "Previous null null",
+      "result": "SKIP",
+      "reason": "disabled by state"
+    },
+    {
+      "route": "/customers",
+      "kind": "button",
+      "label": "Next null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "C Cairo Customer",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "L Long Form Customer 1789282104318",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "L Long Form Customer 1789282519197",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "L Long Form Customer 1789282740339",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "L Long Form Customer 1789282916636",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "L Long Form Customer 1789282967822",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "L Long Form Customer 1789283031548",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "L Long Form Customer 1789283079082",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "L Long Form Customer 1789283140103",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "L Long Form Customer 1789283236385",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "L Long Form Customer 1789283316737",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "L Long Form Customer 1789283412690",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "L Long Form Customer 1789283548034",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "L Long Form Customer 1789283619068",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "L Long Form Customer 1789283668982",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "L Long Form Customer 1789283815539",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "L Long Form Customer 1789283888420",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "L Long Form Customer 1789284131788",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "M Merge Master",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "O Outside Customer",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "S Share Governance Fixture",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "T Transfer Fixture",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "U UAT Egypt — Explicitly Shared Account",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "U UAT Egypt — Private Manager Account",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "U UAT Egypt — Sales User Account",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "field",
+      "label": "Search customers",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "field",
+      "label": "Filter by country",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "field",
+      "label": "Customer category code",
+      "result": "PASS"
+    },
+    {
+      "route": "/customers",
+      "kind": "field",
+      "label": "Archive state",
+      "result": "PASS"
+    },
+    {
+      "route": "/contacts",
+      "kind": "button",
+      "label": "Expand sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/contacts",
+      "kind": "button",
+      "label": "OVERVIEW + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/contacts",
+      "kind": "button",
+      "label": "SALES − null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/contacts",
+      "kind": "button",
+      "label": "SALES MANAGEMENT + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/contacts",
+      "kind": "button",
+      "label": "PLANNING + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/contacts",
+      "kind": "button",
+      "label": "INTEGRATED TOOLS + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/contacts",
+      "kind": "button",
+      "label": "ERP & DATA + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/contacts",
+      "kind": "link",
+      "label": "Customers",
+      "result": "PASS"
+    },
+    {
+      "route": "/contacts",
+      "kind": "link",
+      "label": "Contacts",
+      "result": "PASS"
+    },
+    {
+      "route": "/contacts",
+      "kind": "link",
+      "label": "Opportunity pipeline",
+      "result": "PASS"
+    },
+    {
+      "route": "/contacts",
+      "kind": "link",
+      "label": "Activities / My work",
+      "result": "PASS"
+    },
+    {
+      "route": "/contacts",
+      "kind": "link",
+      "label": "Quotations",
+      "result": "PASS"
+    },
+    {
+      "route": "/contacts",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/contacts",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/contacts",
+      "kind": "link",
+      "label": "Open customers",
+      "result": "PASS"
+    },
+    {
+      "route": "/contacts",
+      "kind": "field",
+      "label": "Search contacts",
+      "result": "PASS"
+    },
+    {
+      "route": "/projects",
+      "kind": "button",
+      "label": "Collapse sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/projects",
+      "kind": "button",
+      "label": "Search Ctrl K Global Sales search null",
+      "result": "PASS"
+    },
+    {
+      "route": "/projects",
+      "kind": "button",
+      "label": "＋ Quick create Quick create null",
+      "result": "PASS"
+    },
+    {
+      "route": "/projects",
+      "kind": "button",
+      "label": "Use dark theme null",
+      "result": "PASS"
+    },
+    {
+      "route": "/projects",
+      "kind": "button",
+      "label": "العربية null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/projects",
+      "kind": "button",
+      "label": "↪ تسجيل الخروج null",
+      "result": "SKIP",
+      "reason": "destructive or mutation action requires domain data"
+    },
+    {
+      "route": "/projects",
+      "kind": "button",
+      "label": "New project null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/projects",
+      "kind": "button",
+      "label": "Previous null null",
+      "result": "SKIP",
+      "reason": "disabled by state"
+    },
+    {
+      "route": "/projects",
+      "kind": "button",
+      "label": "Next null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/projects",
+      "kind": "button",
+      "label": "UAT Project 08 PRJ-00000110 · Saudi Arabia ACTIVE null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/projects",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/projects",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/projects",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/projects",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/projects",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/projects",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/projects",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/projects",
+      "kind": "field",
+      "label": "Search projects",
+      "result": "PASS"
+    },
+    {
+      "route": "/projects",
+      "kind": "field",
+      "label": "Project country",
+      "result": "PASS"
+    },
+    {
+      "route": "/projects",
+      "kind": "field",
+      "label": "Project archive state",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "button",
+      "label": "Expand sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "button",
+      "label": "نظرة عامة + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "button",
+      "label": "المبيعات − null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "button",
+      "label": "إدارة المبيعات + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "button",
+      "label": "التخطيط + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "button",
+      "label": "الأدوات المتكاملة + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "button",
+      "label": "بيانات ERP + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "button",
+      "label": "الذكاء والتحليلات + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "button",
+      "label": "التواصل + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "link",
+      "label": "العملاء",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "link",
+      "label": "جهات الاتصال",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "link",
+      "label": "مسار الفرص",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "link",
+      "label": "الأنشطة / مهامي",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "link",
+      "label": "عروض الأسعار",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "link",
+      "label": "UAT-OPP-010",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "link",
+      "label": "UAT-OPP-009",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "link",
+      "label": "UAT-OPP-008",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "link",
+      "label": "UAT-OPP-007",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "link",
+      "label": "UAT-OPP-006",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "link",
+      "label": "UAT-OPP-005",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "link",
+      "label": "UAT-OPP-004",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "link",
+      "label": "UAT-OPP-003",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "link",
+      "label": "UAT-OPP-002",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "link",
+      "label": "UAT-OPP-001",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "link",
+      "label": "OPP-00000186",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "link",
+      "label": "OPP-00000185",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "link",
+      "label": "OPP-00000184",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "link",
+      "label": "OPP-00000183",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "link",
+      "label": "OPP-00000182",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "link",
+      "label": "OPP-00000181",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "link",
+      "label": "OPP-00000180",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "link",
+      "label": "OPP-00000179",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "link",
+      "label": "OPP-00000178",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "link",
+      "label": "OPP-00000027",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "link",
+      "label": "OPP-00000026",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "link",
+      "label": "OPP-00000025",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "link",
+      "label": "OPP-00000024",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "link",
+      "label": "OPP-00000023",
+      "result": "PASS"
+    },
+    {
+      "route": "/opportunities",
+      "kind": "link",
+      "label": "OPP-00000022",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities",
+      "kind": "button",
+      "label": "Collapse sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities",
+      "kind": "button",
+      "label": "بحث في التنقل Ctrl K البحث التجاري الشامل null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities",
+      "kind": "button",
+      "label": "＋ إضافة سريعة إضافة سريعة null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities",
+      "kind": "button",
+      "label": "تفعيل المظهر الفاتح null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities",
+      "kind": "button",
+      "label": "English null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities",
+      "kind": "button",
+      "label": "↪ Sign out null",
+      "result": "SKIP",
+      "reason": "destructive or mutation action requires domain data"
+    },
+    {
+      "route": "/activities",
+      "kind": "button",
+      "label": "+ Log activity null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities",
+      "kind": "button",
+      "label": "Previous null null",
+      "result": "SKIP",
+      "reason": "disabled by state"
+    },
+    {
+      "route": "/activities",
+      "kind": "button",
+      "label": "Next null null",
+      "result": "SKIP",
+      "reason": "disabled by state"
+    },
+    {
+      "route": "/activities",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "Expand sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "OVERVIEW + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "SALES + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "SALES MANAGEMENT + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "PLANNING − null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "INTEGRATED TOOLS + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "ERP & DATA + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "INTELLIGENCE & ANALYTICS + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "COMMUNICATION + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "ADMINISTRATION + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "Search Ctrl K Global Sales search null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "＋ Quick create Quick create null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "Use dark theme null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "العربية null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "↪ تسجيل الخروج null",
+      "result": "SKIP",
+      "reason": "destructive or mutation action requires domain data"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "‹ null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "› null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "30 null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "31 null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "1 null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "2 null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "3 null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "4 null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "5 null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "6 null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "7 null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "8 null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "9 null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "10 null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "11 null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "12 null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "13 null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "14 null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "15 null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "16 null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "17 null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "18 null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "19 null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "20 null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "21 null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "22 null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "23 null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "24 null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "25 null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "26 null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "27 null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "28 null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "29 null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "30 null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "1 null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "2 null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "button",
+      "label": "3 null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "link",
+      "label": "تقويم الأنشطة",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "link",
+      "label": "تقديرات الطاقة",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/activities/calendar",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/products",
+      "kind": "button",
+      "label": "Collapse sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/products",
+      "kind": "button",
+      "label": "بحث في التنقل Ctrl K البحث التجاري الشامل null",
+      "result": "PASS"
+    },
+    {
+      "route": "/products",
+      "kind": "button",
+      "label": "＋ إضافة سريعة إضافة سريعة null",
+      "result": "PASS"
+    },
+    {
+      "route": "/products",
+      "kind": "button",
+      "label": "تفعيل المظهر الفاتح null",
+      "result": "PASS"
+    },
+    {
+      "route": "/products",
+      "kind": "button",
+      "label": "English null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/products",
+      "kind": "button",
+      "label": "↪ Sign out null",
+      "result": "SKIP",
+      "reason": "destructive or mutation action requires domain data"
+    },
+    {
+      "route": "/products",
+      "kind": "button",
+      "label": "Previous null null",
+      "result": "SKIP",
+      "reason": "disabled by state"
+    },
+    {
+      "route": "/products",
+      "kind": "button",
+      "label": "Next null null",
+      "result": "SKIP",
+      "reason": "disabled by state"
+    },
+    {
+      "route": "/products",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/products",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/products",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/products",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/products",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/products",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/products",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/products",
+      "kind": "link",
+      "label": "PVC-110-3M · PVC Pipe 110mm × 3m",
+      "result": "PASS"
+    },
+    {
+      "route": "/products",
+      "kind": "link",
+      "label": "PVC-110-6M · PVC Pipe 110mm × 6m",
+      "result": "PASS"
+    },
+    {
+      "route": "/products",
+      "kind": "link",
+      "label": "PVC-160-3M · PVC Pipe 160mm × 3m",
+      "result": "PASS"
+    },
+    {
+      "route": "/products",
+      "kind": "link",
+      "label": "PVC-160-6M · PVC Pipe 160mm × 6m",
+      "result": "PASS"
+    },
+    {
+      "route": "/products",
+      "kind": "link",
+      "label": "PVC-200-6M · PVC Pipe 200mm × 6m",
+      "result": "PASS"
+    },
+    {
+      "route": "/products",
+      "kind": "link",
+      "label": "PVC-63-3M · PVC Pipe 63mm × 3m",
+      "result": "PASS"
+    },
+    {
+      "route": "/products",
+      "kind": "link",
+      "label": "PVC-63-6M · PVC Pipe 63mm × 6m",
+      "result": "PASS"
+    },
+    {
+      "route": "/products",
+      "kind": "link",
+      "label": "SCAF-BEAM-3M · Scaffolding Beam 3m",
+      "result": "PASS"
+    },
+    {
+      "route": "/products",
+      "kind": "link",
+      "label": "UAT-SKU-1 · UAT Board Product 1",
+      "result": "PASS"
+    },
+    {
+      "route": "/products",
+      "kind": "link",
+      "label": "UAT-SKU-2 · UAT Board Product 2",
+      "result": "PASS"
+    },
+    {
+      "route": "/products",
+      "kind": "link",
+      "label": "UAT-SKU-3 · UAT Board Product 3",
+      "result": "PASS"
+    },
+    {
+      "route": "/products",
+      "kind": "link",
+      "label": "UAT-SKU-4 · UAT Board Product 4",
+      "result": "PASS"
+    },
+    {
+      "route": "/products",
+      "kind": "link",
+      "label": "ACRO-PROP-2.4M · UAT Product 1789282131461",
+      "result": "PASS"
+    },
+    {
+      "route": "/products",
+      "kind": "link",
+      "label": "ACRO-PROP-3.6M · UAT Product 1789282548002",
+      "result": "PASS"
+    },
+    {
+      "route": "/products",
+      "kind": "link",
+      "label": "ACRO-PROP-4.8M · UAT Product 1789282769227",
+      "result": "PASS"
+    },
+    {
+      "route": "/products",
+      "kind": "link",
+      "label": "SCAF-JACK-ADJ · UAT Product 1789284022588",
+      "result": "PASS"
+    },
+    {
+      "route": "/products",
+      "kind": "link",
+      "label": "FORM-PLY-18 · UAT Product 1789284188535",
+      "result": "PASS"
+    },
+    {
+      "route": "/products",
+      "kind": "field",
+      "label": "Search products",
+      "result": "PASS"
+    },
+    {
+      "route": "/quotations",
+      "kind": "button",
+      "label": "Expand sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/quotations",
+      "kind": "button",
+      "label": "OVERVIEW + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/quotations",
+      "kind": "button",
+      "label": "SALES − null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/quotations",
+      "kind": "button",
+      "label": "SALES MANAGEMENT + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/quotations",
+      "kind": "button",
+      "label": "PLANNING + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/quotations",
+      "kind": "button",
+      "label": "INTEGRATED TOOLS + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/quotations",
+      "kind": "button",
+      "label": "ERP & DATA + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/quotations",
+      "kind": "button",
+      "label": "INTELLIGENCE & ANALYTICS + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/quotations",
+      "kind": "button",
+      "label": "COMMUNICATION + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/quotations",
+      "kind": "button",
+      "label": "ADMINISTRATION + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/quotations",
+      "kind": "link",
+      "label": "Customers",
+      "result": "PASS"
+    },
+    {
+      "route": "/quotations",
+      "kind": "link",
+      "label": "Contacts",
+      "result": "PASS"
+    },
+    {
+      "route": "/quotations",
+      "kind": "link",
+      "label": "Opportunity pipeline",
+      "result": "PASS"
+    },
+    {
+      "route": "/quotations",
+      "kind": "link",
+      "label": "Activities / My work",
+      "result": "PASS"
+    },
+    {
+      "route": "/quotations",
+      "kind": "link",
+      "label": "Quotations",
+      "result": "PASS"
+    },
+    {
+      "route": "/quotations",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/quotations",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/quotations",
+      "kind": "field",
+      "label": "Search quotation reference",
+      "result": "PASS"
+    },
+    {
+      "route": "/orders",
+      "kind": "button",
+      "label": "Collapse sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/orders",
+      "kind": "button",
+      "label": "Search Ctrl K Global Sales search null",
+      "result": "PASS"
+    },
+    {
+      "route": "/orders",
+      "kind": "button",
+      "label": "＋ Quick create Quick create null",
+      "result": "PASS"
+    },
+    {
+      "route": "/orders",
+      "kind": "button",
+      "label": "Use dark theme null",
+      "result": "PASS"
+    },
+    {
+      "route": "/orders",
+      "kind": "button",
+      "label": "العربية null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/orders",
+      "kind": "button",
+      "label": "↪ تسجيل الخروج null",
+      "result": "SKIP",
+      "reason": "destructive or mutation action requires domain data"
+    },
+    {
+      "route": "/orders",
+      "kind": "button",
+      "label": "تحديث null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/orders",
+      "kind": "button",
+      "label": "السابق null null",
+      "result": "SKIP",
+      "reason": "disabled by state"
+    },
+    {
+      "route": "/orders",
+      "kind": "button",
+      "label": "التالي null null",
+      "result": "SKIP",
+      "reason": "disabled by state"
+    },
+    {
+      "route": "/orders",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/orders",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/orders",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/orders",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/orders",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/orders",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/orders",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/orders",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/orders",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/orders",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/orders",
+      "kind": "field",
+      "label": "بحث في أوامر مبيعات ERP",
+      "result": "PASS"
+    },
+    {
+      "route": "/capacity",
+      "kind": "button",
+      "label": "Expand sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/capacity",
+      "kind": "button",
+      "label": "نظرة عامة + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/capacity",
+      "kind": "button",
+      "label": "المبيعات + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/capacity",
+      "kind": "button",
+      "label": "إدارة المبيعات + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/capacity",
+      "kind": "button",
+      "label": "التخطيط − null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/capacity",
+      "kind": "button",
+      "label": "الأدوات المتكاملة + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/capacity",
+      "kind": "button",
+      "label": "بيانات ERP + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/capacity",
+      "kind": "button",
+      "label": "الذكاء والتحليلات + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/capacity",
+      "kind": "button",
+      "label": "التواصل + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/capacity",
+      "kind": "button",
+      "label": "الإدارة + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/capacity",
+      "kind": "button",
+      "label": "بحث في التنقل Ctrl K البحث التجاري الشامل null",
+      "result": "PASS"
+    },
+    {
+      "route": "/capacity",
+      "kind": "link",
+      "label": "تقويم الأنشطة",
+      "result": "PASS"
+    },
+    {
+      "route": "/capacity",
+      "kind": "link",
+      "label": "تقديرات الطاقة",
+      "result": "PASS"
+    },
+    {
+      "route": "/capacity",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/capacity",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/capacity",
+      "kind": "field",
+      "label": "بحث في تقديرات الطاقة",
+      "result": "PASS"
+    },
+    {
+      "route": "/logistics/plans",
+      "kind": "button",
+      "label": "Collapse sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/logistics/plans",
+      "kind": "button",
+      "label": "بحث في التنقل Ctrl K البحث التجاري الشامل null",
+      "result": "PASS"
+    },
+    {
+      "route": "/logistics/plans",
+      "kind": "button",
+      "label": "＋ إضافة سريعة إضافة سريعة null",
+      "result": "PASS"
+    },
+    {
+      "route": "/logistics/plans",
+      "kind": "button",
+      "label": "تفعيل المظهر الفاتح null",
+      "result": "PASS"
+    },
+    {
+      "route": "/logistics/plans",
+      "kind": "button",
+      "label": "English null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/logistics/plans",
+      "kind": "button",
+      "label": "↪ Sign out null",
+      "result": "SKIP",
+      "reason": "destructive or mutation action requires domain data"
+    },
+    {
+      "route": "/logistics/plans",
+      "kind": "button",
+      "label": "Refresh null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/logistics/plans",
+      "kind": "button",
+      "label": "Previous null null",
+      "result": "SKIP",
+      "reason": "disabled by state"
+    },
+    {
+      "route": "/logistics/plans",
+      "kind": "button",
+      "label": "Next null null",
+      "result": "SKIP",
+      "reason": "disabled by state"
+    },
+    {
+      "route": "/logistics/plans",
+      "kind": "button",
+      "label": "Create null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/logistics/plans",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/logistics/plans",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/logistics/plans",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/logistics/plans",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/logistics/plans",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/logistics/plans",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/logistics/plans",
+      "kind": "field",
+      "label": "Search logistics plans",
+      "result": "PASS"
+    },
+    {
+      "route": "/finance/fx",
+      "kind": "button",
+      "label": "Expand sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/finance/fx",
+      "kind": "button",
+      "label": "OVERVIEW + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/finance/fx",
+      "kind": "button",
+      "label": "SALES + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/finance/fx",
+      "kind": "button",
+      "label": "SALES MANAGEMENT + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/finance/fx",
+      "kind": "button",
+      "label": "PLANNING + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/finance/fx",
+      "kind": "button",
+      "label": "INTEGRATED TOOLS + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/finance/fx",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/finance/fx",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/finance/payments",
+      "kind": "button",
+      "label": "Collapse sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/finance/payments",
+      "kind": "button",
+      "label": "Search Ctrl K Global Sales search null",
+      "result": "PASS"
+    },
+    {
+      "route": "/finance/payments",
+      "kind": "button",
+      "label": "＋ Quick create Quick create null",
+      "result": "PASS"
+    },
+    {
+      "route": "/finance/payments",
+      "kind": "button",
+      "label": "Use dark theme null",
+      "result": "PASS"
+    },
+    {
+      "route": "/finance/payments",
+      "kind": "button",
+      "label": "العربية null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/finance/payments",
+      "kind": "button",
+      "label": "↪ تسجيل الخروج null",
+      "result": "SKIP",
+      "reason": "destructive or mutation action requires domain data"
+    },
+    {
+      "route": "/finance/payments",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/finance/payments",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/finance/cheques",
+      "kind": "button",
+      "label": "Expand sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/finance/cheques",
+      "kind": "button",
+      "label": "نظرة عامة + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/finance/cheques",
+      "kind": "button",
+      "label": "المبيعات + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/finance/cheques",
+      "kind": "button",
+      "label": "إدارة المبيعات + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/finance/cheques",
+      "kind": "button",
+      "label": "التخطيط + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/finance/cheques",
+      "kind": "button",
+      "label": "الأدوات المتكاملة + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/finance/cheques",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/finance/cheques",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/returns",
+      "kind": "button",
+      "label": "Collapse sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/returns",
+      "kind": "button",
+      "label": "بحث في التنقل Ctrl K البحث التجاري الشامل null",
+      "result": "PASS"
+    },
+    {
+      "route": "/returns",
+      "kind": "button",
+      "label": "＋ إضافة سريعة إضافة سريعة null",
+      "result": "PASS"
+    },
+    {
+      "route": "/returns",
+      "kind": "button",
+      "label": "تفعيل المظهر الفاتح null",
+      "result": "PASS"
+    },
+    {
+      "route": "/returns",
+      "kind": "button",
+      "label": "English null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/returns",
+      "kind": "button",
+      "label": "↪ Sign out null",
+      "result": "SKIP",
+      "reason": "destructive or mutation action requires domain data"
+    },
+    {
+      "route": "/returns",
+      "kind": "button",
+      "label": "Refresh null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/returns",
+      "kind": "button",
+      "label": "Create null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/returns",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/returns",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/returns",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/returns",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/returns",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/returns",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/returns",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/returns",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/returns",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/returns",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/returns",
+      "kind": "field",
+      "label": "Search returned scrap",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/imports",
+      "kind": "button",
+      "label": "Expand sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/imports",
+      "kind": "button",
+      "label": "OVERVIEW + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/imports",
+      "kind": "button",
+      "label": "SALES + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/imports",
+      "kind": "button",
+      "label": "SALES MANAGEMENT + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/imports",
+      "kind": "button",
+      "label": "PLANNING + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/imports",
+      "kind": "button",
+      "label": "INTEGRATED TOOLS + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/imports",
+      "kind": "button",
+      "label": "ERP & DATA − null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/imports",
+      "kind": "link",
+      "label": "ERP sales orders",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/imports",
+      "kind": "link",
+      "label": "Returned scrap",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/imports",
+      "kind": "link",
+      "label": "Import center",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/imports",
+      "kind": "link",
+      "label": "Data quality",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/imports",
+      "kind": "link",
+      "label": "Reconciliation",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/imports",
+      "kind": "link",
+      "label": "Document center",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/imports",
+      "kind": "link",
+      "label": "Complaints",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/imports",
+      "kind": "link",
+      "label": "Shipment tracking",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/imports",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/imports",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/imports",
+      "kind": "field",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/imports",
+      "kind": "field",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/imports",
+      "kind": "field",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/imports",
+      "kind": "field",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/quality",
+      "kind": "button",
+      "label": "Collapse sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/quality",
+      "kind": "button",
+      "label": "Search Ctrl K Global Sales search null",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/quality",
+      "kind": "button",
+      "label": "＋ Quick create Quick create null",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/quality",
+      "kind": "button",
+      "label": "Use dark theme null",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/quality",
+      "kind": "button",
+      "label": "العربية null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/quality",
+      "kind": "button",
+      "label": "↪ تسجيل الخروج null",
+      "result": "SKIP",
+      "reason": "destructive or mutation action requires domain data"
+    },
+    {
+      "route": "/data/quality",
+      "kind": "button",
+      "label": "تحديث null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/quality",
+      "kind": "button",
+      "label": "إعادة المحاولة null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/quality",
+      "kind": "button",
+      "label": "إنشاء null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/quality",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/quality",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/quality",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/quality",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/quality",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/quality",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/quality",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/quality",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/quality",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/quality",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/quality",
+      "kind": "field",
+      "label": "بحث في جودة البيانات",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/reconciliation",
+      "kind": "button",
+      "label": "Expand sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/reconciliation",
+      "kind": "button",
+      "label": "نظرة عامة + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/reconciliation",
+      "kind": "button",
+      "label": "المبيعات + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/reconciliation",
+      "kind": "button",
+      "label": "إدارة المبيعات + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/reconciliation",
+      "kind": "button",
+      "label": "التخطيط + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/reconciliation",
+      "kind": "button",
+      "label": "الأدوات المتكاملة + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/reconciliation",
+      "kind": "link",
+      "label": "أوامر مبيعات ERP",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/reconciliation",
+      "kind": "link",
+      "label": "المرتجعات والخردة",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/reconciliation",
+      "kind": "link",
+      "label": "مركز الاستيراد",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/reconciliation",
+      "kind": "link",
+      "label": "جودة البيانات",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/reconciliation",
+      "kind": "link",
+      "label": "المطابقة",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/reconciliation",
+      "kind": "link",
+      "label": "مركز المستندات",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/reconciliation",
+      "kind": "link",
+      "label": "الشكاوى",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/reconciliation",
+      "kind": "link",
+      "label": "متابعة الشحنات",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/reconciliation",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/reconciliation",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/data/reconciliation",
+      "kind": "field",
+      "label": "بحث في المطابقة",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "button",
+      "label": "Collapse sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "button",
+      "label": "بحث في التنقل Ctrl K البحث التجاري الشامل null",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "button",
+      "label": "＋ إضافة سريعة إضافة سريعة null",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "button",
+      "label": "تفعيل المظهر الفاتح null",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "button",
+      "label": "English null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "button",
+      "label": "↪ Sign out null",
+      "result": "SKIP",
+      "reason": "destructive or mutation action requires domain data"
+    },
+    {
+      "route": "/documents",
+      "kind": "button",
+      "label": "Refresh null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "button",
+      "label": "Create null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "button",
+      "label": "Next null null",
+      "result": "SKIP",
+      "reason": "disabled by state"
+    },
+    {
+      "route": "/documents",
+      "kind": "button",
+      "label": "Create null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/documents",
+      "kind": "field",
+      "label": "Search document center",
+      "result": "PASS"
+    },
+    {
+      "route": "/notifications",
+      "kind": "button",
+      "label": "Expand sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/notifications",
+      "kind": "button",
+      "label": "OVERVIEW + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/notifications",
+      "kind": "button",
+      "label": "SALES + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/notifications",
+      "kind": "button",
+      "label": "SALES MANAGEMENT + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/notifications",
+      "kind": "button",
+      "label": "PLANNING + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/notifications",
+      "kind": "button",
+      "label": "INTEGRATED TOOLS + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/notifications",
+      "kind": "button",
+      "label": "ERP & DATA + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/notifications",
+      "kind": "button",
+      "label": "INTELLIGENCE & ANALYTICS + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/notifications",
+      "kind": "button",
+      "label": "COMMUNICATION − null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/notifications",
+      "kind": "link",
+      "label": "Notifications",
+      "result": "PASS"
+    },
+    {
+      "route": "/notifications",
+      "kind": "link",
+      "label": "Messages",
+      "result": "PASS"
+    },
+    {
+      "route": "/notifications",
+      "kind": "link",
+      "label": "My preferences",
+      "result": "PASS"
+    },
+    {
+      "route": "/notifications",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/notifications",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/actions",
+      "kind": "button",
+      "label": "Collapse sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/actions",
+      "kind": "button",
+      "label": "Search Ctrl K Global Sales search null",
+      "result": "PASS"
+    },
+    {
+      "route": "/actions",
+      "kind": "button",
+      "label": "＋ Quick create Quick create null",
+      "result": "PASS"
+    },
+    {
+      "route": "/actions",
+      "kind": "button",
+      "label": "Use dark theme null",
+      "result": "PASS"
+    },
+    {
+      "route": "/actions",
+      "kind": "button",
+      "label": "العربية null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/actions",
+      "kind": "button",
+      "label": "↪ تسجيل الخروج null",
+      "result": "SKIP",
+      "reason": "destructive or mutation action requires domain data"
+    },
+    {
+      "route": "/actions",
+      "kind": "button",
+      "label": "تحديث null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/actions",
+      "kind": "button",
+      "label": "السابق null null",
+      "result": "SKIP",
+      "reason": "disabled by state"
+    },
+    {
+      "route": "/actions",
+      "kind": "button",
+      "label": "التالي null null",
+      "result": "SKIP",
+      "reason": "disabled by state"
+    },
+    {
+      "route": "/actions",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/actions",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/actions",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/actions",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/actions",
+      "kind": "field",
+      "label": "بحث في قائمة الإجراءات",
+      "result": "PASS"
+    },
+    {
+      "route": "/reports",
+      "kind": "button",
+      "label": "Expand sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/reports",
+      "kind": "button",
+      "label": "نظرة عامة + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/reports",
+      "kind": "button",
+      "label": "المبيعات + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/reports",
+      "kind": "button",
+      "label": "إدارة المبيعات − null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/reports",
+      "kind": "button",
+      "label": "التخطيط + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/reports",
+      "kind": "button",
+      "label": "الأدوات المتكاملة + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/reports",
+      "kind": "button",
+      "label": "بيانات ERP + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/reports",
+      "kind": "button",
+      "label": "الذكاء والتحليلات + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/reports",
+      "kind": "button",
+      "label": "التواصل + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/reports",
+      "kind": "button",
+      "label": "الإدارة + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/reports",
+      "kind": "button",
+      "label": "بحث في التنقل Ctrl K البحث التجاري الشامل null",
+      "result": "PASS"
+    },
+    {
+      "route": "/reports",
+      "kind": "button",
+      "label": "＋ إضافة سريعة إضافة سريعة null",
+      "result": "PASS"
+    },
+    {
+      "route": "/reports",
+      "kind": "button",
+      "label": "تفعيل المظهر الفاتح null",
+      "result": "PASS"
+    },
+    {
+      "route": "/reports",
+      "kind": "button",
+      "label": "English null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/reports",
+      "kind": "button",
+      "label": "↪ Sign out null",
+      "result": "SKIP",
+      "reason": "destructive or mutation action requires domain data"
+    },
+    {
+      "route": "/reports",
+      "kind": "button",
+      "label": "Executive Performance Pack null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/reports",
+      "kind": "button",
+      "label": "Global Client Geography null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/reports",
+      "kind": "button",
+      "label": "ACROW / AICS Group Network null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/reports",
+      "kind": "button",
+      "label": "Sales Pipeline & Quotation null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/reports",
+      "kind": "button",
+      "label": "Customer Intelligence null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/reports",
+      "kind": "button",
+      "label": "ERP Sales History null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/reports",
+      "kind": "button",
+      "label": "Customer Segment & Price Intelligence null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/reports",
+      "kind": "button",
+      "label": "Logistics Planning Intelligence null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/reports",
+      "kind": "button",
+      "label": "Operations & Capacity Intelligence null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/reports",
+      "kind": "link",
+      "label": "Projects",
+      "result": "PASS"
+    },
+    {
+      "route": "/reports",
+      "kind": "link",
+      "label": "Product / SKU search",
+      "result": "PASS"
+    },
+    {
+      "route": "/reports",
+      "kind": "link",
+      "label": "Reports",
+      "result": "PASS"
+    },
+    {
+      "route": "/reports",
+      "kind": "link",
+      "label": "Company targets",
+      "result": "PASS"
+    },
+    {
+      "route": "/reports",
+      "kind": "link",
+      "label": "Repeat business requests",
+      "result": "PASS"
+    },
+    {
+      "route": "/reports",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/reports",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/reports",
+      "kind": "field",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/reports",
+      "kind": "field",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/targets",
+      "kind": "button",
+      "label": "Collapse sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/targets",
+      "kind": "button",
+      "label": "Search Ctrl K Global Sales search null",
+      "result": "PASS"
+    },
+    {
+      "route": "/targets",
+      "kind": "button",
+      "label": "＋ Quick create Quick create null",
+      "result": "PASS"
+    },
+    {
+      "route": "/targets",
+      "kind": "button",
+      "label": "Use dark theme null",
+      "result": "PASS"
+    },
+    {
+      "route": "/targets",
+      "kind": "button",
+      "label": "العربية null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/targets",
+      "kind": "button",
+      "label": "↪ تسجيل الخروج null",
+      "result": "SKIP",
+      "reason": "destructive or mutation action requires domain data"
+    },
+    {
+      "route": "/targets",
+      "kind": "button",
+      "label": "تحديث null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/targets",
+      "kind": "button",
+      "label": "Company targets null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/targets",
+      "kind": "button",
+      "label": "Company targets / year performance null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/targets",
+      "kind": "button",
+      "label": "إعادة المحاولة null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/targets",
+      "kind": "button",
+      "label": "حفظ التغييرات null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/targets",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/targets",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/targets",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/targets",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/targets",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/targets",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/targets",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/ai/brief",
+      "kind": "button",
+      "label": "Expand sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/ai/brief",
+      "kind": "button",
+      "label": "نظرة عامة + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/ai/brief",
+      "kind": "button",
+      "label": "المبيعات + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/ai/brief",
+      "kind": "button",
+      "label": "إدارة المبيعات + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/ai/brief",
+      "kind": "button",
+      "label": "التخطيط + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/ai/brief",
+      "kind": "button",
+      "label": "الأدوات المتكاملة − null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/ai/brief",
+      "kind": "button",
+      "label": "بيانات ERP + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/ai/brief",
+      "kind": "button",
+      "label": "الذكاء والتحليلات + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/ai/brief",
+      "kind": "button",
+      "label": "التواصل + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/ai/brief",
+      "kind": "link",
+      "label": "خطط اللوجستيات",
+      "result": "PASS"
+    },
+    {
+      "route": "/ai/brief",
+      "kind": "link",
+      "label": "الموجز الاستشاري الذكي",
+      "result": "PASS"
+    },
+    {
+      "route": "/ai/brief",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/ai/brief",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/ai/brief",
+      "kind": "field",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/ai/brief",
+      "kind": "field",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/market-signals",
+      "kind": "button",
+      "label": "Collapse sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/market-signals",
+      "kind": "button",
+      "label": "بحث في التنقل Ctrl K البحث التجاري الشامل null",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/market-signals",
+      "kind": "button",
+      "label": "＋ إضافة سريعة إضافة سريعة null",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/market-signals",
+      "kind": "button",
+      "label": "تفعيل المظهر الفاتح null",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/market-signals",
+      "kind": "button",
+      "label": "English null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/market-signals",
+      "kind": "button",
+      "label": "↪ Sign out null",
+      "result": "SKIP",
+      "reason": "destructive or mutation action requires domain data"
+    },
+    {
+      "route": "/intelligence/market-signals",
+      "kind": "button",
+      "label": "Refresh null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/market-signals",
+      "kind": "button",
+      "label": "Create null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/market-signals",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/market-signals",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/market-signals",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/market-signals",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/market-signals",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/market-signals",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/market-signals",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/market-signals",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/market-signals",
+      "kind": "field",
+      "label": "Search market signals",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/target-markets",
+      "kind": "button",
+      "label": "Expand sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/target-markets",
+      "kind": "button",
+      "label": "OVERVIEW + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/target-markets",
+      "kind": "button",
+      "label": "SALES + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/target-markets",
+      "kind": "button",
+      "label": "SALES MANAGEMENT + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/target-markets",
+      "kind": "button",
+      "label": "PLANNING + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/target-markets",
+      "kind": "button",
+      "label": "INTEGRATED TOOLS + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/target-markets",
+      "kind": "button",
+      "label": "ERP & DATA + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/target-markets",
+      "kind": "button",
+      "label": "INTELLIGENCE & ANALYTICS − null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/target-markets",
+      "kind": "link",
+      "label": "Market signals",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/target-markets",
+      "kind": "link",
+      "label": "Target markets",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/target-markets",
+      "kind": "link",
+      "label": "Target accounts",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/target-markets",
+      "kind": "link",
+      "label": "Competitors",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/target-markets",
+      "kind": "link",
+      "label": "Commercial watchlist",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/target-markets",
+      "kind": "link",
+      "label": "R&D intelligence",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/target-markets",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/target-markets",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/target-markets",
+      "kind": "field",
+      "label": "Search target markets",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/target-accounts",
+      "kind": "button",
+      "label": "Collapse sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/target-accounts",
+      "kind": "button",
+      "label": "Search Ctrl K Global Sales search null",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/target-accounts",
+      "kind": "button",
+      "label": "＋ Quick create Quick create null",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/target-accounts",
+      "kind": "button",
+      "label": "Use dark theme null",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/target-accounts",
+      "kind": "button",
+      "label": "العربية null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/target-accounts",
+      "kind": "button",
+      "label": "↪ تسجيل الخروج null",
+      "result": "SKIP",
+      "reason": "destructive or mutation action requires domain data"
+    },
+    {
+      "route": "/intelligence/target-accounts",
+      "kind": "button",
+      "label": "تحديث null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/target-accounts",
+      "kind": "button",
+      "label": "إنشاء null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/target-accounts",
+      "kind": "button",
+      "label": "تجهيز مسودة عميل null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/target-accounts",
+      "kind": "button",
+      "label": "تجهيز مسودة فرصة null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/target-accounts",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/target-accounts",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/target-accounts",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/target-accounts",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/target-accounts",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/target-accounts",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/target-accounts",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/target-accounts",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/target-accounts",
+      "kind": "field",
+      "label": "بحث في الحسابات المستهدفة",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/competitors",
+      "kind": "button",
+      "label": "Expand sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/competitors",
+      "kind": "button",
+      "label": "نظرة عامة + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/competitors",
+      "kind": "button",
+      "label": "المبيعات + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/competitors",
+      "kind": "button",
+      "label": "إدارة المبيعات + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/competitors",
+      "kind": "button",
+      "label": "التخطيط + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/competitors",
+      "kind": "button",
+      "label": "الأدوات المتكاملة + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/competitors",
+      "kind": "button",
+      "label": "بيانات ERP + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/competitors",
+      "kind": "button",
+      "label": "الذكاء والتحليلات − null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/competitors",
+      "kind": "link",
+      "label": "إشارات السوق",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/competitors",
+      "kind": "link",
+      "label": "الأسواق المستهدفة",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/competitors",
+      "kind": "link",
+      "label": "الحسابات المستهدفة",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/competitors",
+      "kind": "link",
+      "label": "المنافسون",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/competitors",
+      "kind": "link",
+      "label": "قائمة المتابعة التجارية",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/competitors",
+      "kind": "link",
+      "label": "رؤى البحث والتطوير",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/competitors",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/competitors",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/competitors",
+      "kind": "field",
+      "label": "بحث في المنافسون",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/watchlist",
+      "kind": "button",
+      "label": "Collapse sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/watchlist",
+      "kind": "button",
+      "label": "بحث في التنقل Ctrl K البحث التجاري الشامل null",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/watchlist",
+      "kind": "button",
+      "label": "＋ إضافة سريعة إضافة سريعة null",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/watchlist",
+      "kind": "button",
+      "label": "تفعيل المظهر الفاتح null",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/watchlist",
+      "kind": "button",
+      "label": "English null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/watchlist",
+      "kind": "button",
+      "label": "↪ Sign out null",
+      "result": "SKIP",
+      "reason": "destructive or mutation action requires domain data"
+    },
+    {
+      "route": "/intelligence/watchlist",
+      "kind": "button",
+      "label": "Refresh null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/watchlist",
+      "kind": "button",
+      "label": "Create null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/watchlist",
+      "kind": "button",
+      "label": "Remove null null",
+      "result": "SKIP",
+      "reason": "destructive or mutation action requires domain data"
+    },
+    {
+      "route": "/intelligence/watchlist",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/watchlist",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/watchlist",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/watchlist",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/watchlist",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/watchlist",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/watchlist",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/watchlist",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/intelligence/watchlist",
+      "kind": "field",
+      "label": "Search commercial watchlist",
+      "result": "PASS"
+    },
+    {
+      "route": "/repeat-business",
+      "kind": "button",
+      "label": "Expand sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/repeat-business",
+      "kind": "button",
+      "label": "OVERVIEW + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/repeat-business",
+      "kind": "button",
+      "label": "SALES + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/repeat-business",
+      "kind": "button",
+      "label": "SALES MANAGEMENT − null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/repeat-business",
+      "kind": "button",
+      "label": "PLANNING + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/repeat-business",
+      "kind": "button",
+      "label": "INTEGRATED TOOLS + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/repeat-business",
+      "kind": "button",
+      "label": "ERP & DATA + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/repeat-business",
+      "kind": "button",
+      "label": "INTELLIGENCE & ANALYTICS + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/repeat-business",
+      "kind": "button",
+      "label": "COMMUNICATION + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/repeat-business",
+      "kind": "link",
+      "label": "Projects",
+      "result": "PASS"
+    },
+    {
+      "route": "/repeat-business",
+      "kind": "link",
+      "label": "Product / SKU search",
+      "result": "PASS"
+    },
+    {
+      "route": "/repeat-business",
+      "kind": "link",
+      "label": "Reports",
+      "result": "PASS"
+    },
+    {
+      "route": "/repeat-business",
+      "kind": "link",
+      "label": "Company targets",
+      "result": "PASS"
+    },
+    {
+      "route": "/repeat-business",
+      "kind": "link",
+      "label": "Repeat business requests",
+      "result": "PASS"
+    },
+    {
+      "route": "/repeat-business",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/repeat-business",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/repeat-business",
+      "kind": "field",
+      "label": "Search repeat business requests",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/users",
+      "kind": "button",
+      "label": "Collapse sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/users",
+      "kind": "button",
+      "label": "Search Ctrl K Global Sales search null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/users",
+      "kind": "button",
+      "label": "＋ Quick create Quick create null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/users",
+      "kind": "button",
+      "label": "Use dark theme null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/users",
+      "kind": "button",
+      "label": "العربية null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/users",
+      "kind": "button",
+      "label": "↪ تسجيل الخروج null",
+      "result": "SKIP",
+      "reason": "destructive or mutation action requires domain data"
+    },
+    {
+      "route": "/admin/users",
+      "kind": "button",
+      "label": "تحديث null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/users",
+      "kind": "button",
+      "label": "السابق null null",
+      "result": "SKIP",
+      "reason": "disabled by state"
+    },
+    {
+      "route": "/admin/users",
+      "kind": "button",
+      "label": "التالي null null",
+      "result": "SKIP",
+      "reason": "disabled by state"
+    },
+    {
+      "route": "/admin/users",
+      "kind": "button",
+      "label": "إنشاء null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/users",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/users",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/users",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/users",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/users",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/users",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/users",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/users",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/users",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/users",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/users",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/users",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/users",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/users",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/users",
+      "kind": "field",
+      "label": "بحث في المستخدمون والصلاحيات",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/roles",
+      "kind": "button",
+      "label": "Expand sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/roles",
+      "kind": "button",
+      "label": "نظرة عامة + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/roles",
+      "kind": "button",
+      "label": "المبيعات + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/roles",
+      "kind": "button",
+      "label": "إدارة المبيعات + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/roles",
+      "kind": "button",
+      "label": "التخطيط + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/roles",
+      "kind": "button",
+      "label": "الأدوات المتكاملة + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/roles",
+      "kind": "button",
+      "label": "بيانات ERP + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/roles",
+      "kind": "button",
+      "label": "الذكاء والتحليلات + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/roles",
+      "kind": "button",
+      "label": "التواصل + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/roles",
+      "kind": "button",
+      "label": "الإدارة − null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/roles",
+      "kind": "button",
+      "label": "بحث في التنقل Ctrl K البحث التجاري الشامل null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/roles",
+      "kind": "button",
+      "label": "＋ إضافة سريعة إضافة سريعة null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/roles",
+      "kind": "button",
+      "label": "تفعيل المظهر الفاتح null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/roles",
+      "kind": "link",
+      "label": "المستخدمون والصلاحيات",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/roles",
+      "kind": "link",
+      "label": "الأدوار والصلاحيات",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/roles",
+      "kind": "link",
+      "label": "صلاحيات الدول",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/roles",
+      "kind": "link",
+      "label": "السياسات التجارية",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/roles",
+      "kind": "link",
+      "label": "إدارة التسعير",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/roles",
+      "kind": "link",
+      "label": "إدارة الطاقة",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/roles",
+      "kind": "link",
+      "label": "مصادر الاستيراد",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/roles",
+      "kind": "link",
+      "label": "قواعد وربط جودة البيانات",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/roles",
+      "kind": "link",
+      "label": "قوالب المستندات",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/roles",
+      "kind": "link",
+      "label": "التدقيق وأحداث الأمان",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/roles",
+      "kind": "link",
+      "label": "شرائح العملاء",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/roles",
+      "kind": "link",
+      "label": "صلاحيات بوابة العملاء",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/roles",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/roles",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/roles",
+      "kind": "field",
+      "label": "بحث في الأدوار والصلاحيات",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/countries",
+      "kind": "button",
+      "label": "Collapse sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/countries",
+      "kind": "button",
+      "label": "بحث في التنقل Ctrl K البحث التجاري الشامل null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/countries",
+      "kind": "button",
+      "label": "＋ إضافة سريعة إضافة سريعة null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/countries",
+      "kind": "button",
+      "label": "تفعيل المظهر الداكن null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/countries",
+      "kind": "button",
+      "label": "English null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/countries",
+      "kind": "button",
+      "label": "↪ Sign out null",
+      "result": "SKIP",
+      "reason": "destructive or mutation action requires domain data"
+    },
+    {
+      "route": "/admin/countries",
+      "kind": "button",
+      "label": "Refresh null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/countries",
+      "kind": "button",
+      "label": "Reference countries null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/countries",
+      "kind": "button",
+      "label": "Admin users null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/countries",
+      "kind": "button",
+      "label": "Save changes null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/countries",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/countries",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/countries",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/countries",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/countries",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/countries",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/countries",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/countries",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/countries",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/countries",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/countries",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/countries",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/countries",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/countries",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/countries",
+      "kind": "field",
+      "label": "Search country access",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/policies",
+      "kind": "button",
+      "label": "Expand sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/policies",
+      "kind": "button",
+      "label": "OVERVIEW + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/policies",
+      "kind": "button",
+      "label": "SALES + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/policies",
+      "kind": "button",
+      "label": "SALES MANAGEMENT + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/policies",
+      "kind": "button",
+      "label": "PLANNING + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/policies",
+      "kind": "button",
+      "label": "INTEGRATED TOOLS + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/policies",
+      "kind": "button",
+      "label": "ERP & DATA + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/policies",
+      "kind": "button",
+      "label": "INTELLIGENCE & ANALYTICS + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/policies",
+      "kind": "button",
+      "label": "COMMUNICATION + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/policies",
+      "kind": "button",
+      "label": "ADMINISTRATION − null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/policies",
+      "kind": "button",
+      "label": "Search Ctrl K Global Sales search null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/policies",
+      "kind": "link",
+      "label": "Users & access",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/policies",
+      "kind": "link",
+      "label": "Roles & permissions",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/policies",
+      "kind": "link",
+      "label": "Country access",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/policies",
+      "kind": "link",
+      "label": "Commercial policies",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/policies",
+      "kind": "link",
+      "label": "Pricing administration",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/policies",
+      "kind": "link",
+      "label": "Capacity administration",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/policies",
+      "kind": "link",
+      "label": "Import sources",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/policies",
+      "kind": "link",
+      "label": "DQ rules & mappings",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/policies",
+      "kind": "link",
+      "label": "Document templates",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/policies",
+      "kind": "link",
+      "label": "Audit & security events",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/policies",
+      "kind": "link",
+      "label": "Customer segments",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/policies",
+      "kind": "link",
+      "label": "Client portal access",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/policies",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/policies",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/policies",
+      "kind": "field",
+      "label": "Search commercial policies",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/pricing",
+      "kind": "button",
+      "label": "Collapse sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/pricing",
+      "kind": "button",
+      "label": "Search Ctrl K Global Sales search null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/pricing",
+      "kind": "button",
+      "label": "＋ Quick create Quick create null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/pricing",
+      "kind": "button",
+      "label": "Use light theme null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/pricing",
+      "kind": "button",
+      "label": "العربية null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/pricing",
+      "kind": "button",
+      "label": "↪ تسجيل الخروج null",
+      "result": "SKIP",
+      "reason": "destructive or mutation action requires domain data"
+    },
+    {
+      "route": "/admin/pricing",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/pricing",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/pricing",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/pricing",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/pricing",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/pricing",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/pricing",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/pricing",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/pricing",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/pricing",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/pricing",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/pricing",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/pricing",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/pricing",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/pricing",
+      "kind": "field",
+      "label": "بحث في إدارة التسعير",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/capacity",
+      "kind": "button",
+      "label": "Expand sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/capacity",
+      "kind": "button",
+      "label": "نظرة عامة + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/capacity",
+      "kind": "button",
+      "label": "المبيعات + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/capacity",
+      "kind": "button",
+      "label": "إدارة المبيعات + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/capacity",
+      "kind": "button",
+      "label": "التخطيط + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/capacity",
+      "kind": "button",
+      "label": "الأدوات المتكاملة + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/capacity",
+      "kind": "button",
+      "label": "بيانات ERP + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/capacity",
+      "kind": "button",
+      "label": "الذكاء والتحليلات + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/capacity",
+      "kind": "link",
+      "label": "المستخدمون والصلاحيات",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/capacity",
+      "kind": "link",
+      "label": "الأدوار والصلاحيات",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/capacity",
+      "kind": "link",
+      "label": "صلاحيات الدول",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/capacity",
+      "kind": "link",
+      "label": "السياسات التجارية",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/capacity",
+      "kind": "link",
+      "label": "إدارة التسعير",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/capacity",
+      "kind": "link",
+      "label": "إدارة الطاقة",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/capacity",
+      "kind": "link",
+      "label": "مصادر الاستيراد",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/capacity",
+      "kind": "link",
+      "label": "قواعد وربط جودة البيانات",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/capacity",
+      "kind": "link",
+      "label": "قوالب المستندات",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/capacity",
+      "kind": "link",
+      "label": "التدقيق وأحداث الأمان",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/capacity",
+      "kind": "link",
+      "label": "شرائح العملاء",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/capacity",
+      "kind": "link",
+      "label": "صلاحيات بوابة العملاء",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/capacity",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/capacity",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/capacity",
+      "kind": "field",
+      "label": "بحث في إدارة الطاقة",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/import-sources",
+      "kind": "button",
+      "label": "Collapse sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/import-sources",
+      "kind": "button",
+      "label": "بحث في التنقل Ctrl K البحث التجاري الشامل null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/import-sources",
+      "kind": "button",
+      "label": "＋ إضافة سريعة إضافة سريعة null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/import-sources",
+      "kind": "button",
+      "label": "تفعيل المظهر الداكن null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/import-sources",
+      "kind": "button",
+      "label": "English null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/import-sources",
+      "kind": "button",
+      "label": "↪ Sign out null",
+      "result": "SKIP",
+      "reason": "destructive or mutation action requires domain data"
+    },
+    {
+      "route": "/admin/import-sources",
+      "kind": "button",
+      "label": "Refresh null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/import-sources",
+      "kind": "button",
+      "label": "Retry null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/import-sources",
+      "kind": "button",
+      "label": "Create null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/import-sources",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/import-sources",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/import-sources",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/import-sources",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/import-sources",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/import-sources",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/import-sources",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/import-sources",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/import-sources",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/import-sources",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/import-sources",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/import-sources",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/import-sources",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/import-sources",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/import-sources",
+      "kind": "field",
+      "label": "Search import sources",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/data-quality",
+      "kind": "button",
+      "label": "Expand sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/data-quality",
+      "kind": "button",
+      "label": "OVERVIEW + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/data-quality",
+      "kind": "button",
+      "label": "SALES + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/data-quality",
+      "kind": "button",
+      "label": "SALES MANAGEMENT + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/data-quality",
+      "kind": "button",
+      "label": "PLANNING + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/data-quality",
+      "kind": "button",
+      "label": "INTEGRATED TOOLS + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/data-quality",
+      "kind": "link",
+      "label": "Users & access",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/data-quality",
+      "kind": "link",
+      "label": "Roles & permissions",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/data-quality",
+      "kind": "link",
+      "label": "Country access",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/data-quality",
+      "kind": "link",
+      "label": "Commercial policies",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/data-quality",
+      "kind": "link",
+      "label": "Pricing administration",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/data-quality",
+      "kind": "link",
+      "label": "Capacity administration",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/data-quality",
+      "kind": "link",
+      "label": "Import sources",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/data-quality",
+      "kind": "link",
+      "label": "DQ rules & mappings",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/data-quality",
+      "kind": "link",
+      "label": "Document templates",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/data-quality",
+      "kind": "link",
+      "label": "Audit & security events",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/data-quality",
+      "kind": "link",
+      "label": "Customer segments",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/data-quality",
+      "kind": "link",
+      "label": "Client portal access",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/data-quality",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/data-quality",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/templates",
+      "kind": "button",
+      "label": "Collapse sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/templates",
+      "kind": "button",
+      "label": "Search Ctrl K Global Sales search null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/templates",
+      "kind": "button",
+      "label": "＋ Quick create Quick create null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/templates",
+      "kind": "button",
+      "label": "Use light theme null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/templates",
+      "kind": "button",
+      "label": "العربية null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/templates",
+      "kind": "button",
+      "label": "↪ تسجيل الخروج null",
+      "result": "SKIP",
+      "reason": "destructive or mutation action requires domain data"
+    },
+    {
+      "route": "/admin/templates",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/templates",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/templates",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/templates",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/templates",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/templates",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/templates",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/templates",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/templates",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/templates",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/templates",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/templates",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/templates",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/templates",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/templates",
+      "kind": "field",
+      "label": "بحث في قوالب المستندات",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/audit",
+      "kind": "button",
+      "label": "Expand sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/audit",
+      "kind": "button",
+      "label": "نظرة عامة + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/audit",
+      "kind": "button",
+      "label": "المبيعات + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/audit",
+      "kind": "button",
+      "label": "إدارة المبيعات + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/audit",
+      "kind": "button",
+      "label": "التخطيط + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/audit",
+      "kind": "button",
+      "label": "الأدوات المتكاملة + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/audit",
+      "kind": "button",
+      "label": "بيانات ERP + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/audit",
+      "kind": "button",
+      "label": "الذكاء والتحليلات + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/audit",
+      "kind": "button",
+      "label": "التواصل + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/audit",
+      "kind": "button",
+      "label": "الإدارة − null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/audit",
+      "kind": "link",
+      "label": "المستخدمون والصلاحيات",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/audit",
+      "kind": "link",
+      "label": "الأدوار والصلاحيات",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/audit",
+      "kind": "link",
+      "label": "صلاحيات الدول",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/audit",
+      "kind": "link",
+      "label": "السياسات التجارية",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/audit",
+      "kind": "link",
+      "label": "إدارة التسعير",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/audit",
+      "kind": "link",
+      "label": "إدارة الطاقة",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/audit",
+      "kind": "link",
+      "label": "مصادر الاستيراد",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/audit",
+      "kind": "link",
+      "label": "قواعد وربط جودة البيانات",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/audit",
+      "kind": "link",
+      "label": "قوالب المستندات",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/audit",
+      "kind": "link",
+      "label": "التدقيق وأحداث الأمان",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/audit",
+      "kind": "link",
+      "label": "شرائح العملاء",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/audit",
+      "kind": "link",
+      "label": "صلاحيات بوابة العملاء",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/audit",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/audit",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/audit",
+      "kind": "field",
+      "label": "بحث في التدقيق وأحداث الأمان",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "button",
+      "label": "Collapse sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "button",
+      "label": "بحث في التنقل Ctrl K البحث التجاري الشامل null",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "button",
+      "label": "＋ إضافة سريعة إضافة سريعة null",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "button",
+      "label": "تفعيل المظهر الداكن null",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "button",
+      "label": "English null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "button",
+      "label": "↪ Sign out null",
+      "result": "SKIP",
+      "reason": "destructive or mutation action requires domain data"
+    },
+    {
+      "route": "/complaints",
+      "kind": "button",
+      "label": "Refresh null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/complaints",
+      "kind": "field",
+      "label": "Search complaints",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "button",
+      "label": "Expand sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "button",
+      "label": "OVERVIEW + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "button",
+      "label": "SALES + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "button",
+      "label": "SALES MANAGEMENT + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "button",
+      "label": "PLANNING + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "button",
+      "label": "INTEGRATED TOOLS + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "button",
+      "label": "ERP & DATA − null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "button",
+      "label": "INTELLIGENCE & ANALYTICS + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "link",
+      "label": "ERP sales orders",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "link",
+      "label": "Returned scrap",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "link",
+      "label": "Import center",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "link",
+      "label": "Data quality",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "link",
+      "label": "Reconciliation",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "link",
+      "label": "Document center",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "link",
+      "label": "Complaints",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "link",
+      "label": "Shipment tracking",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "link",
+      "label": "→",
+      "result": "PASS"
+    },
+    {
+      "route": "/shipments",
+      "kind": "field",
+      "label": "Search shipment tracking",
+      "result": "PASS"
+    },
+    {
+      "route": "/research",
+      "kind": "button",
+      "label": "Collapse sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/research",
+      "kind": "button",
+      "label": "Search Ctrl K Global Sales search null",
+      "result": "PASS"
+    },
+    {
+      "route": "/research",
+      "kind": "button",
+      "label": "＋ Quick create Quick create null",
+      "result": "PASS"
+    },
+    {
+      "route": "/research",
+      "kind": "button",
+      "label": "Use light theme null",
+      "result": "PASS"
+    },
+    {
+      "route": "/research",
+      "kind": "button",
+      "label": "العربية null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/research",
+      "kind": "button",
+      "label": "↪ تسجيل الخروج null",
+      "result": "SKIP",
+      "reason": "destructive or mutation action requires domain data"
+    },
+    {
+      "route": "/research",
+      "kind": "button",
+      "label": "تحديث null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/research",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/research",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/research",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/research",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/research",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/research",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/research",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/research",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/research",
+      "kind": "field",
+      "label": "بحث في رؤى البحث والتطوير",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/customer-segments",
+      "kind": "button",
+      "label": "Expand sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/customer-segments",
+      "kind": "button",
+      "label": "نظرة عامة + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/customer-segments",
+      "kind": "button",
+      "label": "المبيعات + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/customer-segments",
+      "kind": "button",
+      "label": "إدارة المبيعات + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/customer-segments",
+      "kind": "button",
+      "label": "التخطيط + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/customer-segments",
+      "kind": "button",
+      "label": "الأدوات المتكاملة + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/customer-segments",
+      "kind": "button",
+      "label": "بيانات ERP + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/customer-segments",
+      "kind": "button",
+      "label": "الذكاء والتحليلات + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/customer-segments",
+      "kind": "button",
+      "label": "التواصل + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/customer-segments",
+      "kind": "link",
+      "label": "المستخدمون والصلاحيات",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/customer-segments",
+      "kind": "link",
+      "label": "الأدوار والصلاحيات",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/customer-segments",
+      "kind": "link",
+      "label": "صلاحيات الدول",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/customer-segments",
+      "kind": "link",
+      "label": "السياسات التجارية",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/customer-segments",
+      "kind": "link",
+      "label": "إدارة التسعير",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/customer-segments",
+      "kind": "link",
+      "label": "إدارة الطاقة",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/customer-segments",
+      "kind": "link",
+      "label": "مصادر الاستيراد",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/customer-segments",
+      "kind": "link",
+      "label": "قواعد وربط جودة البيانات",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/customer-segments",
+      "kind": "link",
+      "label": "قوالب المستندات",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/customer-segments",
+      "kind": "link",
+      "label": "التدقيق وأحداث الأمان",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/customer-segments",
+      "kind": "link",
+      "label": "شرائح العملاء",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/customer-segments",
+      "kind": "link",
+      "label": "صلاحيات بوابة العملاء",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/customer-segments",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/customer-segments",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/customer-segments",
+      "kind": "field",
+      "label": "بحث في شرائح العملاء",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/client-identities",
+      "kind": "button",
+      "label": "Collapse sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/client-identities",
+      "kind": "button",
+      "label": "بحث في التنقل Ctrl K البحث التجاري الشامل null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/client-identities",
+      "kind": "button",
+      "label": "＋ إضافة سريعة إضافة سريعة null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/client-identities",
+      "kind": "button",
+      "label": "تفعيل المظهر الداكن null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/client-identities",
+      "kind": "button",
+      "label": "English null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/client-identities",
+      "kind": "button",
+      "label": "↪ Sign out null",
+      "result": "SKIP",
+      "reason": "destructive or mutation action requires domain data"
+    },
+    {
+      "route": "/admin/client-identities",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/client-identities",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/client-identities",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/client-identities",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/client-identities",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/client-identities",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/client-identities",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/client-identities",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/client-identities",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/client-identities",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/client-identities",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/client-identities",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/client-identities",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/admin/client-identities",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/messages",
+      "kind": "button",
+      "label": "Expand sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/messages",
+      "kind": "button",
+      "label": "OVERVIEW + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/messages",
+      "kind": "button",
+      "label": "SALES + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/messages",
+      "kind": "button",
+      "label": "SALES MANAGEMENT + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/messages",
+      "kind": "button",
+      "label": "PLANNING + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/messages",
+      "kind": "button",
+      "label": "INTEGRATED TOOLS + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/messages",
+      "kind": "button",
+      "label": "ERP & DATA + null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/messages",
+      "kind": "link",
+      "label": "Notifications",
+      "result": "PASS"
+    },
+    {
+      "route": "/messages",
+      "kind": "link",
+      "label": "Messages",
+      "result": "PASS"
+    },
+    {
+      "route": "/messages",
+      "kind": "link",
+      "label": "My preferences",
+      "result": "PASS"
+    },
+    {
+      "route": "/messages",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/messages",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/messages",
+      "kind": "field",
+      "label": "Participant user ID",
+      "result": "PASS"
+    },
+    {
+      "route": "/messages",
+      "kind": "field",
+      "label": "Search messages",
+      "result": "PASS"
+    },
+    {
+      "route": "/settings",
+      "kind": "button",
+      "label": "Collapse sidebar null",
+      "result": "PASS"
+    },
+    {
+      "route": "/settings",
+      "kind": "button",
+      "label": "Search Ctrl K Global Sales search null",
+      "result": "PASS"
+    },
+    {
+      "route": "/settings",
+      "kind": "button",
+      "label": "＋ Quick create Quick create null",
+      "result": "PASS"
+    },
+    {
+      "route": "/settings",
+      "kind": "button",
+      "label": "Use light theme null",
+      "result": "PASS"
+    },
+    {
+      "route": "/settings",
+      "kind": "button",
+      "label": "العربية null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/settings",
+      "kind": "button",
+      "label": "↪ تسجيل الخروج null",
+      "result": "SKIP",
+      "reason": "destructive or mutation action requires domain data"
+    },
+    {
+      "route": "/settings",
+      "kind": "button",
+      "label": "الملف الشخصي null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/settings",
+      "kind": "button",
+      "label": "العرض null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/settings",
+      "kind": "button",
+      "label": "الإشعارات null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/settings",
+      "kind": "button",
+      "label": "الأمان null null",
+      "result": "PASS"
+    },
+    {
+      "route": "/settings",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/settings",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/settings",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/settings",
+      "kind": "link",
+      "label": "ABP",
+      "result": "PASS"
+    },
+    {
+      "route": "/settings",
+      "kind": "link",
+      "label": "",
+      "result": "PASS"
+    },
+    {
+      "route": "/settings",
+      "kind": "field",
+      "label": "",
+      "result": "PASS"
+    }
+  ],
+  "release": {
+    "rc": "v1.0.0-rc.1",
+    "commit": "1c94fc9",
+    "technicalRc": "FROZEN",
+    "exactTagProductionSmoke": "PASS",
+    "visualInteractionAcceptance": "PASS",
+    "roleUat": "PASS"
+  }
+}

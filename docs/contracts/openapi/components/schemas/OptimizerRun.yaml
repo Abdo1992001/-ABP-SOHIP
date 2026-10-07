@@ -1,0 +1,97 @@
+type: object
+properties:
+  optimizerRunId:
+    type: string
+    format: uuid
+    description: Optimizer execution.
+  planVersionId:
+    type: string
+    format: uuid
+    description: Target plan version.
+  algorithmCode:
+    type: string
+    description: Algorithm identifier.
+  algorithmVersion:
+    type: string
+    description: Algorithm version.
+  objectiveCode:
+    type: string
+    description: Optimization objective.
+  constraintsHash:
+    type:
+      - string
+      - 'null'
+    description: Constraint fingerprint.
+  inputSummaryJsonb:
+    type:
+      - object
+      - 'null'
+    additionalProperties:
+      $ref: ./DynamicJsonValue.yaml
+    description: Validated input summary.
+    maxProperties: 100
+  resultSummaryJsonb:
+    type:
+      - object
+      - 'null'
+    additionalProperties:
+      $ref: ./DynamicJsonValue.yaml
+    description: Result KPIs/summary.
+    maxProperties: 100
+  statusCode:
+    type: string
+    description: QUEUED/RUNNING/SUCCEEDED/FAILED/CANCELLED.
+  startedAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+    description: Start time.
+  finishedAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+    description: Finish time.
+  errorCode:
+    type:
+      - string
+      - 'null'
+    description: Safe failure code.
+  createdByUserId:
+    type: string
+    format: uuid
+    description: Actor.
+  createdAt:
+    type: string
+    format: date-time
+    description: Creation timestamp.
+  inputHash:
+    type: string
+  planRowVersionSnapshot:
+    type: integer
+    format: int64
+  invalidatedAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+  appliedAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+  statusUrl:
+    type:
+      - string
+      - 'null'
+additionalProperties: false
+required:
+  - algorithmCode
+  - algorithmVersion
+  - createdByUserId
+  - objectiveCode
+  - optimizerRunId
+  - planVersionId
+  - inputHash
+  - planRowVersionSnapshot

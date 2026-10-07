@@ -1,0 +1,13 @@
+type: object
+properties:
+  data:
+    type: array
+    maxItems: 200
+    items:
+      $ref: ReceivableInstallment.yaml
+  meta:
+    $ref: OffsetPaginationMeta.yaml
+additionalProperties: false
+required:
+  - data
+  - meta

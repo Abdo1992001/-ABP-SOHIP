@@ -1,0 +1,67 @@
+type: object
+properties:
+  accessRequestId:
+    type: string
+    format: uuid
+  fullName:
+    type: string
+  workEmail:
+    type: string
+    format: email
+  companyOrRole:
+    type:
+      - string
+      - 'null'
+  countryCode:
+    type:
+      - string
+      - 'null'
+  message:
+    type:
+      - string
+      - 'null'
+  statusCode:
+    type: string
+    enum:
+      - PENDING
+      - APPROVED
+      - REJECTED
+  reviewedByUserId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  reviewedAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+  rejectionReason:
+    type:
+      - string
+      - 'null'
+  createdUserId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  rowVersion:
+    $ref: ./RowVersion.yaml
+  createdAt:
+    type: string
+    format: date-time
+additionalProperties: false
+required:
+  - accessRequestId
+  - fullName
+  - workEmail
+  - companyOrRole
+  - countryCode
+  - message
+  - statusCode
+  - reviewedByUserId
+  - reviewedAt
+  - rejectionReason
+  - createdUserId
+  - rowVersion
+  - createdAt

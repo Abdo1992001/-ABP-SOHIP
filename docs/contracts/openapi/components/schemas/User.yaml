@@ -1,0 +1,64 @@
+type: object
+properties:
+  userId:
+    type: string
+    format: uuid
+  email:
+    type: string
+    format: email
+  displayName:
+    type: string
+  jobTitle:
+    type:
+      - string
+      - 'null'
+  photoUpdatedAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+    description: >-
+      Cache key for this user's avatar, null when they have no photo. The
+      client appends it to the avatar URL so a replaced photo is a new
+      resource and appears without a forced refresh.
+  managerUserId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  teamId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  authStatusCode:
+    type: string
+    enum:
+      - PENDING
+      - ACTIVE
+      - SUSPENDED
+      - DISABLED
+      - LOCKED
+  lastSignInAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+  rowVersion:
+    $ref: ./RowVersion.yaml
+  mustChangePassword:
+    type: boolean
+  mfaRequired:
+    type: boolean
+  mfaEnabled:
+    type: boolean
+additionalProperties: false
+required:
+  - userId
+  - email
+  - displayName
+  - authStatusCode
+  - rowVersion
+  - mustChangePassword
+  - mfaRequired
+  - mfaEnabled

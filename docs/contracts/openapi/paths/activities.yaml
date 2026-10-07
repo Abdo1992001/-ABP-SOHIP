@@ -1,0 +1,122 @@
+get:
+  tags:
+    - Activities
+  summary: Agenda/activity grid
+  operationId: get_activities
+  description: "Permission: activities.view. Scope: Country + linked resource scope. "
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    "200":
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ActivityListEnvelope.yaml
+    "400":
+      $ref: ../components/responses/Error400.yaml
+    "401":
+      $ref: ../components/responses/Error401.yaml
+    "403":
+      $ref: ../components/responses/Error403.yaml
+    "404":
+      $ref: ../components/responses/Error404.yaml
+    "409":
+      $ref: ../components/responses/Error409.yaml
+    "412":
+      $ref: ../components/responses/Error412.yaml
+    "422":
+      $ref: ../components/responses/Error422.yaml
+    "429":
+      $ref: ../components/responses/Error429.yaml
+    "500":
+      $ref: ../components/responses/Error500.yaml
+    "503":
+      $ref: ../components/responses/Error503.yaml
+  parameters:
+    - $ref: ../components/parameters/Page.yaml
+    - $ref: ../components/parameters/Offset.yaml
+    - $ref: ../components/parameters/Limit.yaml
+    - $ref: ../components/parameters/Sort.yaml
+    - $ref: ../components/parameters/Search.yaml
+    - name: dueFrom
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+    - name: dueTo
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+  x-abp-module: Activities
+  x-abp-permission: activities.view
+  x-abp-scope-rule: Country + linked resource scope
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: ActivityListQuery
+  x-abp-success-schema: ActivityListEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true
+  x-abp-pagination: OFFSET
+post:
+  tags:
+    - Activities
+  summary: Log call/meeting/follow-up/task
+  operationId: post_activities
+  description: "Permission: activities.create. Scope: Linked context access. "
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    "200":
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ActivityEnvelope.yaml
+    "400":
+      $ref: ../components/responses/Error400.yaml
+    "401":
+      $ref: ../components/responses/Error401.yaml
+    "403":
+      $ref: ../components/responses/Error403.yaml
+    "404":
+      $ref: ../components/responses/Error404.yaml
+    "409":
+      $ref: ../components/responses/Error409.yaml
+    "412":
+      $ref: ../components/responses/Error412.yaml
+    "422":
+      $ref: ../components/responses/Error422.yaml
+    "429":
+      $ref: ../components/responses/Error429.yaml
+    "500":
+      $ref: ../components/responses/Error500.yaml
+    "503":
+      $ref: ../components/responses/Error503.yaml
+  parameters:
+    - $ref: ../components/parameters/IdempotencyKey.yaml
+    - $ref: ../components/parameters/CsrfToken.yaml
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/CreateActivityRequest.yaml
+  x-abp-module: Activities
+  x-abp-permission: activities.create
+  x-abp-scope-rule: Linked context access
+  x-abp-concurrency: NONE
+  x-abp-idempotency: Required
+  x-abp-request-schema: CreateActivityRequest
+  x-abp-success-schema: ActivityEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

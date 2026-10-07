@@ -1,0 +1,26 @@
+type: object
+properties:
+  productId:
+    type: string
+    format: uuid
+  skuCode:
+    type:
+      - string
+      - 'null'
+  description:
+    type: string
+  mappingMethodCode:
+    type: string
+  confidencePct:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+  reason:
+    type: string
+additionalProperties: false
+required:
+  - productId
+  - description
+  - mappingMethodCode
+  - reason

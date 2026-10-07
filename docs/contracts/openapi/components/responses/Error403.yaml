@@ -1,0 +1,5 @@
+description: Authenticated caller is forbidden
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/ErrorEnvelope.yaml

@@ -1,0 +1,15 @@
+type: object
+properties:
+  expectedRowVersion:
+    $ref: ./RowVersion.yaml
+  reason:
+    type: string
+  successorUserId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+additionalProperties: false
+required:
+  - expectedRowVersion
+  - reason

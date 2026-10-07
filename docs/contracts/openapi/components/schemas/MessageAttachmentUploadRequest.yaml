@@ -1,0 +1,7 @@
+type: object
+additionalProperties: false
+required: [fileName, contentType, contentBase64]
+properties:
+  fileName: { type: string, minLength: 1, maxLength: 180 }
+  contentType: { type: string, minLength: 3, maxLength: 120 }
+  contentBase64: { type: string, format: byte, maxLength: 14000000 }

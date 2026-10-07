@@ -1,0 +1,47 @@
+type: object
+properties:
+  accountId:
+    type: string
+    format: uuid
+  salesOrderId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  paymentDate:
+    type: string
+    format: date
+  amount:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+  currencyCode:
+    type: string
+  paymentMethodCode:
+    type:
+      - string
+      - 'null'
+  sourceTypeCode:
+    type: string
+    enum:
+      - IMPORT
+      - MANUAL
+  sourcePaymentKey:
+    type:
+      - string
+      - 'null'
+  rawReference:
+    type:
+      - string
+      - 'null'
+  correctionOfPaymentId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+additionalProperties: false
+required:
+  - accountId
+  - paymentDate
+  - amount
+  - currencyCode
+  - sourceTypeCode

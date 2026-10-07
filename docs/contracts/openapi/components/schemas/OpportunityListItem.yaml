@@ -1,0 +1,37 @@
+type: object
+additionalProperties: false
+required: [opportunityId, opportunityRef, title, accountId, projectId, countryCode, ownerUserId, stageCode, probabilityPct, probabilitySourceCode, estimatedValue, currencyCode, expectedCloseDate]
+properties:
+  opportunityId: { $ref: ./UUID.yaml }
+  opportunityRef: { type: string }
+  title: { type: [string, 'null'] }
+  accountId: { $ref: ./UUID.yaml }
+  projectId:
+    oneOf: [ { $ref: ./UUID.yaml }, { type: 'null' } ]
+  countryCode: { $ref: ./CountryCode.yaml }
+  ownerUserId: { $ref: ./UUID.yaml }
+  cancelledAt:
+    type: [string, 'null']
+    format: date-time
+    description: >-
+      Set when the customer dropped the requirement. Distinct from stage LOST,
+      which means a competitor won it and carries a lost reason.
+  cancellationReason:
+    type: [string, 'null']
+  stageCode: { type: string }
+  probabilityPct:
+    oneOf: [ { $ref: ./Percentage.yaml }, { type: 'null' } ]
+  probabilitySourceCode: { type: string, enum: [STAGE_DEFAULT, MANUAL_OVERRIDE] }
+  estimatedValue:
+    oneOf: [ { $ref: ./Decimal.yaml }, { type: 'null' } ]
+  currencyCode:
+    oneOf: [ { $ref: ./CurrencyCode.yaml }, { type: 'null' } ]
+  # When the deal was opened, and when it last moved. A pipeline list without
+  # a date cannot answer "how long has this been sitting there", which is the
+  # first question anyone asks of it.
+  createdAt: { type: string, format: date-time }
+  updatedAt: { type: string, format: date-time }
+  expectedCloseDate:
+    type: [string, 'null']
+    format: date
+

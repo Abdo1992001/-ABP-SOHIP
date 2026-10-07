@@ -1,0 +1,7 @@
+type: object
+properties:
+  data:
+    $ref: ./DocumentSubject.yaml
+additionalProperties: false
+required:
+  - data

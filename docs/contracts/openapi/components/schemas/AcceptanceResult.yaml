@@ -1,0 +1,10 @@
+type: object
+properties:
+  acceptance:
+    $ref: ./Acceptance.yaml
+  opportunity:
+    $ref: ./Opportunity.yaml
+additionalProperties: false
+required:
+  - acceptance
+  - opportunity

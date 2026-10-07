@@ -1,0 +1,13 @@
+type: object
+properties:
+  data:
+    type: array
+    items:
+      $ref: ./AccessRequest.yaml
+  meta:
+    $ref: ./PaginationMeta.yaml
+  links:
+    $ref: ./Links.yaml
+additionalProperties: false
+required:
+  - data

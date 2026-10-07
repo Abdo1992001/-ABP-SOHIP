@@ -1,0 +1,27 @@
+type: object
+properties:
+  exportTypeCode:
+    type: string
+  resourceTypeCode:
+    type:
+      - string
+      - 'null'
+  filters:
+    type: object
+    additionalProperties:
+      type:
+        - string
+        - number
+        - integer
+        - boolean
+        - 'null'
+  formatCode:
+    type: string
+    enum:
+      - XLSX
+      - CSV
+      - PDF
+additionalProperties: false
+required:
+  - exportTypeCode
+  - formatCode

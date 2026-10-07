@@ -1,0 +1,11 @@
+{
+  "contractVersion": "1.2.0",
+  "openapiOperations": 177,
+  "inventoryOperations": 198,
+  "statusCounts": { "IMPLEMENTED": 177, "OUT_OF_SCOPE_V1": 21 },
+  "openapiSha256": "b1cdc2302814b9e94b2081d50bedf11d448599baeee6c15903426de11952a1d2",
+  "generatedClientSha256": "84a0d097b9a6fac211bb452a507b9c8a1097ff54f3bfcb07d8168f7701e1eafa",
+  "generatedClientPackage": "@abp/api-client@1.2.0",
+  "supersededBy": "CD-S9-001 / 1.3.0",
+  "immutable": true
+}

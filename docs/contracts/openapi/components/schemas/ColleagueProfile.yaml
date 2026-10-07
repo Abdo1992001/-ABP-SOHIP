@@ -1,0 +1,43 @@
+# A colleague as they have chosen to appear.
+#
+# A hidden field is absent, never blanked: there is no shape in which a hidden
+# phone number reaches a client. Name, email and role have no switch, because
+# the directory finds people by them and work is assigned by them.
+type: object
+additionalProperties: false
+required: [userId, displayName, email, roles, active]
+properties:
+  userId: { type: string, format: uuid }
+  displayName: { type: string }
+  email: { type: string }
+  jobTitle: { type: [string, 'null'] }
+  roles:
+    type: array
+    items: { type: string }
+  active:
+    type: boolean
+    description: >-
+      False for a deactivated colleague. They stay visible in the history they
+      are part of, marked rather than erased.
+  phone:
+    type: string
+    description: Present only when this colleague has chosen to show it.
+  photoUpdatedAt:
+    type: [string, 'null']
+    format: date-time
+    description: Null when they have no photo or have hidden it.
+  commercialPortfolio:
+    type: object
+    additionalProperties: false
+    description: >-
+      Aggregate commercial workload within the viewing colleague's country
+      scope. Omitted when the viewer cannot access customer records.
+    required: [customers, openOpportunities, wonThisYear, draftQuotations, sentQuotations, openActivities, overdueActivities]
+    properties:
+      customers: { type: integer }
+      openOpportunities: { type: integer }
+      wonThisYear: { type: integer }
+      draftQuotations: { type: integer }
+      sentQuotations: { type: integer }
+      openActivities: { type: integer }
+      overdueActivities: { type: integer }

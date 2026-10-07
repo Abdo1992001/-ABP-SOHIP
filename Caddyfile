@@ -1,0 +1,12 @@
+{
+  local_certs
+}
+
+abp-commercial.local {
+  encode gzip
+  tls internal
+
+  @api path /api/*
+  reverse_proxy @api api:3000
+  reverse_proxy web:8080
+}

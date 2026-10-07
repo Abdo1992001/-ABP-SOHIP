@@ -1,0 +1,52 @@
+type: object
+properties:
+  originalQuotationLineId:
+    type: string
+    format: uuid
+    description: Mandatory original purchased quote line.
+  originalPurchaseUnitPriceSnapshot:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+    description: Original purchase unit price snapshot.
+  benefitValueAmount:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+    description: 25% of eligible base amount.
+  returnedScrapLineId:
+    type: string
+    format: uuid
+    description: Returned Scrap item line.
+  caseId:
+    type: string
+    format: uuid
+    description: Parent case.
+  productId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    description: Canonical product snapshot link.
+  returnedQty:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+    description: Eligible returned quantity.
+  unitCode:
+    type:
+      - string
+      - 'null'
+    description: Quantity unit.
+  eligibleBaseAmount:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+    description: returned_qty × original purchase unit price.
+  createdAt:
+    type: string
+    format: date-time
+    description: Creation timestamp.
+additionalProperties: false
+required:
+  - caseId
+  - originalPurchaseUnitPriceSnapshot
+  - originalQuotationLineId
+  - returnedQty
+  - returnedScrapLineId

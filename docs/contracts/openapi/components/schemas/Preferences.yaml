@@ -1,0 +1,26 @@
+type: object
+properties:
+  userId:
+    type: string
+    format: uuid
+    description: Preference owner.
+  preferencesJsonb:
+    type: object
+    additionalProperties:
+      $ref: ./DynamicJsonValue.yaml
+    description: Validated UI preferences, saved views and favorites definitions.
+    maxProperties: 100
+  schemaVersion:
+    type: integer
+    format: int32
+    description: Preferences schema version.
+  updatedAt:
+    type: string
+    format: date-time
+    description: Last update.
+  rowVersion:
+    $ref: ./RowVersion.yaml
+    description: Concurrency.
+additionalProperties: false
+required:
+  - userId

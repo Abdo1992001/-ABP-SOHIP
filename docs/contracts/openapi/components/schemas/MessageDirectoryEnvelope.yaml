@@ -1,0 +1,27 @@
+type: object
+description: >-
+  Colleagues the current user may start a conversation with. Exists so that
+  starting a message does not require knowing someone's user UUID.
+properties:
+  data:
+    type: array
+    items:
+      type: object
+      properties:
+        userId:
+          type: string
+          format: uuid
+        displayName:
+          type: string
+        email:
+          type: string
+        photoUpdatedAt:
+          type: [string, 'null']
+          format: date-time
+          description: >-
+            Null when the colleague has no photo or has hidden it; the
+            directory draws their initials in both cases.
+      additionalProperties: false
+additionalProperties: false
+required:
+  - data

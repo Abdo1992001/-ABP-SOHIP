@@ -1,0 +1,13 @@
+type: object
+properties:
+  targetStageCode:
+    type: string
+    minLength: 1
+    maxLength: 100
+  lostReasonCode:
+    type:
+      - string
+      - 'null'
+additionalProperties: false
+required:
+  - targetStageCode

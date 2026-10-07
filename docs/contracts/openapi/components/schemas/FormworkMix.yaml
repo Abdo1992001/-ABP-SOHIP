@@ -1,0 +1,23 @@
+type: object
+additionalProperties: false
+required: [targetPct, month, year]
+properties:
+  targetPct: { type: number }
+  month:
+    $ref: '#/$defs/period'
+  year:
+    $ref: '#/$defs/period'
+$defs:
+  period:
+    type: object
+    additionalProperties: false
+    required: [from, to, formworkCustomers, otherCustomers, totalCustomers, sharePct, gapPct, statusCode]
+    properties:
+      from: { type: string, format: date }
+      to: { type: string, format: date }
+      formworkCustomers: { type: integer }
+      otherCustomers: { type: integer }
+      totalCustomers: { type: integer }
+      sharePct: { type: number }
+      gapPct: { type: number }
+      statusCode: { type: string, enum: [ON_TARGET, BELOW_TARGET, NO_DATA] }

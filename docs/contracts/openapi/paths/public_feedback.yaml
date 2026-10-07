@@ -1,0 +1,36 @@
+post:
+  tags: [Customer Feedback]
+  summary: Give feedback without an account
+  operationId: post_public_feedback
+  description: >-
+    Permission: public. A customer gives feedback with an order, quotation,
+    proforma or item reference and how to reach them. The answer is a
+    reference number only -- never what the reference matched. Critical
+    feedback, and problems rated two or fewer, open a complaint.
+  security: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema: { $ref: ../components/schemas/SubmitFeedbackRequest.yaml }
+  responses:
+    '201':
+      description: Received
+      content:
+        application/json:
+          schema: { $ref: ../components/schemas/FeedbackReceiptEnvelope.yaml }
+    '400': { $ref: ../components/responses/Error400.yaml }
+    '422': { $ref: ../components/responses/Error422.yaml }
+    '429': { $ref: ../components/responses/Error429.yaml }
+    '500': { $ref: ../components/responses/Error500.yaml }
+  x-abp-module: Customer Feedback
+  x-abp-permission: public
+  x-abp-scope-rule: Unauthenticated; rate-limited by source IP
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: SubmitFeedbackRequest
+  x-abp-success-schema: FeedbackReceiptEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

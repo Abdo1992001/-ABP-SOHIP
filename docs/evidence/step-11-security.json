@@ -1,0 +1,58 @@
+{
+  "verdict": "PASS",
+  "generatedAt": "2026-09-13T06:18:58.571Z",
+  "automatedTests": {
+    "passed": 7,
+    "failed": 0,
+    "skipped": 0,
+    "outputTail": [
+      "",
+      "{\"level\":\"info\",\"event\":\"http.request\",\"method\":\"GET\",\"path\":\"/\",\"status\":200,\"durationMs\":7.3,\"traceId\":\"2f777a47-5064-47e3-96b5-308949ba444e\",\"correlationId\":\"3cd0d861-3430-4b8b-90df-f7c9d04e0d2c\"}",
+      "{\"level\":\"info\",\"event\":\"http.request\",\"method\":\"GET\",\"path\":\"/\",\"status\":200,\"durationMs\":0.9,\"traceId\":\"0aff54b1-bb8e-44ae-a7b3-fe82ed07fcb6\",\"correlationId\":\"07931aa8-a263-4cd6-a236-0d4793a27d47\"}",
+      "",
+      " Test Files  2 passed (2)",
+      "      Tests  9 passed (9)",
+      "   Start at  09:18:53",
+      "   Duration  2.04s (transform 103ms, setup 0ms, import 613ms, tests 853ms, environment 0ms)"
+    ]
+  },
+  "dependencies": {
+    "info": 0,
+    "low": 0,
+    "moderate": 7,
+    "high": 2,
+    "critical": 0,
+    "productionRuntimeHighOrCritical": 0,
+    "acceptedMobileBuildAdvisories": [
+      {
+        "module": "image-size",
+        "severity": "high",
+        "title": "image-size: ICNS parser allows denial of service through an infinite loop",
+        "rationale": "All dependency paths are isolated to apps/mobile Metro build tooling; the self-hosted API/web/worker runtime does not include this package."
+      },
+      {
+        "module": "image-size",
+        "severity": "high",
+        "title": "image-size: JXL and HEIF parsers allow denial of service through infinite loops",
+        "rationale": "All dependency paths are isolated to apps/mobile Metro build tooling; the self-hosted API/web/worker runtime does not include this package."
+      }
+    ],
+    "acceptedResiduals": "Moderate/low advisories remain tracked; mobile-only Metro build advisories are excluded from the self-hosted runtime gate only when every dependency path proves that isolation."
+  },
+  "controls": {
+    "productionCookieSession": true,
+    "csrf": true,
+    "countryScopeAndDeny": "covered by proof:authorization and IDOR matrix",
+    "idorTests": 24,
+    "massAssignment": "ValidationPipe whitelist + forbidNonWhitelisted",
+    "auditAppendOnly": true,
+    "rateLimitPostgresql": true,
+    "secretScanFindings": 0,
+    "externalAiDefault": "disabled and production validator rejects enabled state"
+  },
+  "frameworkMapping": {
+    "OWASP-ASVS": "5.0 Level 2 plus selected Level 3",
+    "NIST-SSDF": "1.1",
+    "certificationClaimed": false
+  }
+}

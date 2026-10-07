@@ -1,0 +1,12 @@
+type: object
+maxProperties: 20
+propertyNames:
+  pattern: ^[A-Za-z][A-Za-z0-9_.-]{0,63}$
+additionalProperties:
+  oneOf:
+    - type: string
+      maxLength: 500
+    - type: number
+    - type: integer
+    - type: boolean
+    - type: 'null'

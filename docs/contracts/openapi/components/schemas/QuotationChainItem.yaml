@@ -1,0 +1,24 @@
+type: object
+properties:
+  quotationId:
+    type: string
+    format: uuid
+  quoteRef:
+    type: string
+  statusCode:
+    type: string
+  sentAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+  supersedesQuotationId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+additionalProperties: false
+required:
+  - quotationId
+  - quoteRef
+  - statusCode

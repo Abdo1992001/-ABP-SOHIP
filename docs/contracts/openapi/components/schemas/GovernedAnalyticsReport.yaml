@@ -1,0 +1,23 @@
+type: object
+properties:
+  reportId: { type: string, pattern: '^RPT-[0-9]{3}$' }
+  reportVersion: { type: string }
+  name: { type: string }
+  asOf: { type: string, format: date-time }
+  generatedAt: { type: string, format: date-time }
+  currency: { type: string, enum: [USD, EGP] }
+  scope:
+    type: object
+    properties:
+      countryCodes:
+        type: array
+        items: { $ref: ./CountryCode.yaml }
+    additionalProperties: false
+    required: [countryCodes]
+  filters: { $ref: ./AnalyticsFilterContext.yaml }
+  metrics:
+    type: array
+    items: { $ref: ./GovernedMetricResult.yaml }
+  dqContext: { $ref: ./AnalyticsDqContext.yaml }
+additionalProperties: false
+required: [reportId, reportVersion, name, asOf, generatedAt, currency, scope, filters, metrics, dqContext]

@@ -1,0 +1,23 @@
+type: object
+properties:
+  sourceItemId:
+    type: string
+    format: uuid
+  productId:
+    type: string
+    format: uuid
+  mappingMethodCode:
+    type: string
+  confidencePct:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+  rationale:
+    type: string
+additionalProperties: false
+required:
+  - sourceItemId
+  - productId
+  - mappingMethodCode
+  - rationale

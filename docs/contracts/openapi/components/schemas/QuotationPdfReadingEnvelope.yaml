@@ -1,0 +1,7 @@
+type: object
+properties:
+  data:
+    $ref: ./QuotationPdfReading.yaml
+additionalProperties: false
+required:
+  - data

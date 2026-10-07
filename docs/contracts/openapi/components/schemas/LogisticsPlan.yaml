@@ -1,0 +1,43 @@
+type: object
+properties:
+  logisticsPlanId:
+    type: string
+    format: uuid
+    description: Planning scenario.
+  planRef:
+    type: string
+    description: Human plan ref.
+  sourceTypeCode:
+    type: string
+    description: QUOTATION/SALES_ORDER/MANUAL_SCENARIO.
+  sourceResourceId:
+    type:
+      - string
+      - "null"
+    format: uuid
+    description: Source quote/order when applicable.
+  countryCode:
+    type: string
+    description: Scope country.
+  ownerUserId:
+    type: string
+    format: uuid
+    description: Plan owner.
+  statusCode:
+    type: string
+    description: Plan lifecycle.
+  selectedVersionId:
+    type:
+      - string
+      - "null"
+    format: uuid
+  versions:
+    type: array
+    items:
+      $ref: ./LogisticsPlanVersion.yaml
+additionalProperties: false
+required:
+  - countryCode
+  - logisticsPlanId
+  - ownerUserId
+  - sourceTypeCode

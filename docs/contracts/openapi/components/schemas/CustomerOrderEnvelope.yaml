@@ -1,0 +1,59 @@
+type: object
+properties:
+  data:
+    type: object
+    description: The order, its lines and its history.
+    properties:
+      customerOrderId:
+        type: string
+        format: uuid
+      orderRef:
+        type: string
+      quotationId:
+        type: string
+        format: uuid
+      quotationRef:
+        type: [string, 'null']
+      accountId:
+        type: string
+        format: uuid
+      accountName:
+        type: string
+      statusCode:
+        type: string
+        enum: [DRAFT, CONFIRMED, IN_PRODUCTION, READY, HANDED_OVER, CLOSED, CANCELLED]
+      currencyCode:
+        type: string
+      totalAmount:
+        type: string
+      rowVersion:
+        type: string
+      lines:
+        type: array
+        maxItems: 1000
+        items:
+          type: object
+          additionalProperties: true
+      events:
+        type: array
+        maxItems: 2000
+        items:
+          type: object
+          additionalProperties: true
+      allowedTransitions:
+        type: array
+        maxItems: 7
+        items:
+          type: string
+      canAmend:
+        type: boolean
+    additionalProperties: true
+    required:
+      - customerOrderId
+      - orderRef
+      - statusCode
+      - lines
+      - events
+additionalProperties: false
+required:
+  - data

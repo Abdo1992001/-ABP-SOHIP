@@ -1,0 +1,18 @@
+type: object
+additionalProperties: false
+required: [data]
+properties:
+  data:
+    type: object
+    additionalProperties: false
+    required: [from, to, today, events]
+    properties:
+      from: { type: string, format: date }
+      to: { type: string, format: date }
+      today: { type: string, format: date }
+      events:
+        type: array
+        maxItems: 10000
+        items:
+          type: object
+          additionalProperties: true

@@ -1,0 +1,21 @@
+type: object
+properties:
+  quotationId:
+    type: string
+    format: uuid
+  customerPoNumber:
+    type: string
+    maxLength: 120
+  requestedDeliveryDate:
+    type: string
+    format: date
+  notes:
+    type: string
+    maxLength: 2000
+  creditOverrideReason:
+    type: string
+    maxLength: 500
+    description: Why a customer with overdue payments may still order. Managers only.
+additionalProperties: false
+required:
+  - quotationId

@@ -1,0 +1,54 @@
+type: object
+properties:
+  guardrailId:
+    type: string
+    format: uuid
+    description: Guardrail version.
+  productId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    description: Product context.
+  productFamilyId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    description: Family context if no product.
+  minPrice:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+    description: Hard floor for Sales.
+  referencePrice:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+    description: Reference/advisory price.
+  maxPrice:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+    description: Above this = warning, still allowed.
+  currencyCode:
+    type: string
+    description: Currency.
+  effectiveFrom:
+    type: string
+    format: date-time
+    description: Start.
+  effectiveTo:
+    type:
+      - string
+      - 'null'
+    format: date-time
+    description: End.
+additionalProperties: false
+required:
+  - currencyCode
+  - effectiveFrom
+  - guardrailId

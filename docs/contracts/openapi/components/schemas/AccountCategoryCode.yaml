@@ -1,0 +1,7 @@
+type:
+  - string
+  - 'null'
+minLength: 1
+maxLength: 100
+pattern: ^[A-Z][A-Z0-9_]{0,99}$
+description: Existing governed Customer category code. Values come from reference authority; this contract does not invent an enum.

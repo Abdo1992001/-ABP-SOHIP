@@ -1,0 +1,11 @@
+type: object
+properties:
+  contactId:
+    type: string
+    format: uuid
+  roleCode:
+    type: string
+additionalProperties: false
+required:
+  - contactId
+  - roleCode

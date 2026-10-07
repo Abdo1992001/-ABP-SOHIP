@@ -1,0 +1,47 @@
+type: object
+properties:
+  expectedRowVersion:
+    $ref: ./RowVersion.yaml
+  channelCode:
+    type: string
+    enum: [EMAIL, MANUAL, EXTERNAL]
+    description: EMAIL sends it through the company mailbox with the PDF attached; MANUAL and EXTERNAL record that someone already sent it.
+  recipients:
+    type: array
+    items:
+      type: object
+      properties:
+        contactId:
+          type:
+            - string
+            - 'null'
+          format: uuid
+        name:
+          type:
+            - string
+            - 'null'
+        email:
+          type:
+            - string
+            - 'null'
+        isPrimary:
+          type: boolean
+      additionalProperties: false
+    minItems: 1
+  subject:
+    type: [string, 'null']
+    maxLength: 250
+  message:
+    type: [string, 'null']
+    maxLength: 5000
+  ccSelf:
+    type: boolean
+    description: Send a copy to the salesperson sending it.
+  languageCode:
+    type: string
+    enum: [en, ar]
+additionalProperties: false
+required:
+  - expectedRowVersion
+  - channelCode
+  - recipients

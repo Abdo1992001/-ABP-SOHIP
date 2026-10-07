@@ -1,0 +1,58 @@
+type: object
+properties:
+  sourceTypeCode:
+    type: string
+    enum:
+      - QUOTATION
+      - SALES_ORDER
+      - MANUAL_SCENARIO
+  sourceResourceId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  countryCode:
+    type:
+      - string
+      - 'null'
+  manualLines:
+    type: array
+    items:
+      type: object
+      properties:
+        productId:
+          type:
+            - string
+            - 'null'
+          format: uuid
+        qty:
+          type: string
+          pattern: ^-?\d+(\.\d+)?$
+        lengthMm:
+          type: string
+          pattern: ^-?\d+(\.\d+)?$
+        widthMm:
+          type: string
+          pattern: ^-?\d+(\.\d+)?$
+        thicknessMm:
+          type: string
+          pattern: ^-?\d+(\.\d+)?$
+        weightKg:
+          type:
+            - string
+            - 'null'
+          pattern: ^-?\d+(\.\d+)?$
+        orientationCode:
+          type: string
+          enum:
+            - FLAT_ON_FACE
+      additionalProperties: false
+      required:
+        - qty
+        - lengthMm
+        - widthMm
+        - thicknessMm
+        - orientationCode
+additionalProperties: false
+required:
+  - sourceTypeCode

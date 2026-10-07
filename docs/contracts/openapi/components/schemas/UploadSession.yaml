@@ -1,0 +1,109 @@
+type: object
+properties:
+  uploadSessionId:
+    type: string
+    format: uuid
+    description: Upload session.
+  requestedByUserId:
+    type: string
+    format: uuid
+    description: Uploader.
+  expectedMimeType:
+    type: string
+    description: Allowed requested MIME.
+  expectedSizeBytes:
+    type: integer
+    format: int64
+    description: Declared expected max/size.
+  storageKey:
+    type: string
+    description: Temporary object key.
+  statusCode:
+    type: string
+    enum:
+      - PENDING_UPLOAD
+      - UPLOADED
+      - VERIFYING
+      - SCANNING
+      - AVAILABLE
+      - REJECTED
+      - EXPIRED
+  malwareScanStatusCode:
+    type:
+      - string
+      - 'null'
+    description: PENDING/CLEAN/INFECTED/FAILED.
+  verifiedAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+    description: When size/hash/MIME/scan gates completed.
+  fileName:
+    type: string
+    description: Original client file name.
+  expectedSha256:
+    type:
+      - string
+      - 'null'
+    description: Optional client-declared hash to verify.
+  actualMimeType:
+    type:
+      - string
+      - 'null'
+    description: Server-detected MIME.
+  actualSizeBytes:
+    type:
+      - integer
+      - 'null'
+    format: int64
+    description: Observed object size.
+  actualSha256:
+    type:
+      - string
+      - 'null'
+    description: Server-computed integrity hash.
+  uploadedAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+    description: Object upload completion time.
+  failureCode:
+    type:
+      - string
+      - 'null'
+    description: Safe verification/scan failure code.
+  expiresAt:
+    type: string
+    format: date-time
+    description: Signed upload/session expiry.
+  documentVersionId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    description: Created document version after AVAILABLE.
+  scanStartedAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+  scanCompletedAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+  statusUrl:
+    type:
+      - string
+      - 'null'
+additionalProperties: false
+required:
+  - expectedMimeType
+  - expectedSizeBytes
+  - expiresAt
+  - fileName
+  - requestedByUserId
+  - storageKey
+  - uploadSessionId

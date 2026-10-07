@@ -1,0 +1,143 @@
+get:
+  tags:
+    - Customer Orders
+  summary: Customer orders
+  operationId: get_customer_orders
+  description: 'Permission: sales-orders.view. Orders booked from accepted quotations.'
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/CustomerOrderListEnvelope.yaml
+    '400':
+      $ref: ../components/responses/Error400.yaml
+    '401':
+      $ref: ../components/responses/Error401.yaml
+    '403':
+      $ref: ../components/responses/Error403.yaml
+    '404':
+      $ref: ../components/responses/Error404.yaml
+    '409':
+      $ref: ../components/responses/Error409.yaml
+    '412':
+      $ref: ../components/responses/Error412.yaml
+    '422':
+      $ref: ../components/responses/Error422.yaml
+    '429':
+      $ref: ../components/responses/Error429.yaml
+    '500':
+      $ref: ../components/responses/Error500.yaml
+    '503':
+      $ref: ../components/responses/Error503.yaml
+  parameters:
+    - name: page
+      in: query
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+    - name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 200
+    - name: status
+      in: query
+      required: false
+      schema:
+        type: string
+    - name: quotationId
+      in: query
+      required: false
+      schema:
+        type: string
+        format: uuid
+    - name: accountId
+      in: query
+      required: false
+      schema:
+        type: string
+        format: uuid
+    - name: search
+      in: query
+      required: false
+      schema:
+        type: string
+        maxLength: 200
+  x-abp-module: Customer Orders
+  x-abp-permission: sales-orders.view
+  x-abp-scope-rule: Account access within country scope
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: NONE
+  x-abp-success-schema: CustomerOrderListEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true
+post:
+  tags:
+    - Customer Orders
+  summary: Book an order from an accepted quotation
+  operationId: post_customer_orders
+  description: 'Permission: sales-orders.create. The quotation must carry a valid acceptance; one order per quotation.'
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    '201':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/CustomerOrderEnvelope.yaml
+      headers:
+        ETag:
+          $ref: ../components/headers/ETag.yaml
+    '400':
+      $ref: ../components/responses/Error400.yaml
+    '401':
+      $ref: ../components/responses/Error401.yaml
+    '403':
+      $ref: ../components/responses/Error403.yaml
+    '404':
+      $ref: ../components/responses/Error404.yaml
+    '409':
+      $ref: ../components/responses/Error409.yaml
+    '412':
+      $ref: ../components/responses/Error412.yaml
+    '422':
+      $ref: ../components/responses/Error422.yaml
+    '429':
+      $ref: ../components/responses/Error429.yaml
+    '500':
+      $ref: ../components/responses/Error500.yaml
+    '503':
+      $ref: ../components/responses/Error503.yaml
+  parameters:
+    - $ref: ../components/parameters/IdempotencyKey.yaml
+    - $ref: ../components/parameters/CsrfToken.yaml
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/CreateCustomerOrderRequest.yaml
+  x-abp-module: Customer Orders
+  x-abp-permission: sales-orders.create
+  x-abp-scope-rule: Account access within country scope
+  x-abp-concurrency: NONE
+  x-abp-idempotency: Required
+  x-abp-request-schema: CreateCustomerOrderRequest
+  x-abp-success-schema: CustomerOrderEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

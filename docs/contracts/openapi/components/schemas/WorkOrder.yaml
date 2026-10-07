@@ -1,0 +1,20 @@
+type: object
+description: A production run. The detail also carries allowedTransitions, canReschedule and events.
+additionalProperties: true
+required: [workOrderId, workOrderRef, customerOrderId, statusCode, plannedStartDate, plannedEndDate, rowVersion]
+properties:
+  workOrderId: { type: string, format: uuid }
+  workOrderRef: { type: string }
+  customerOrderId: { type: string, format: uuid }
+  orderRef: { type: string }
+  accountName: { type: string }
+  statusCode: { type: string, enum: [PLANNED, RELEASED, IN_PROGRESS, ON_HOLD, QC, COMPLETED, CANCELLED] }
+  productionLineCode: { type: string, enum: [LINE_1, LINE_2, LINE_3, CURVED_LINE] }
+  capacityCategoryCode: { type: string }
+  quantityPlanned: { type: string }
+  quantityProduced: { type: string }
+  plannedStartDate: { type: string, format: date }
+  plannedEndDate: { type: string, format: date }
+  requestedDeliveryDate: { type: [string, 'null'], format: date }
+  risk: { type: string, enum: [DONE, ON_TIME, LATE_FOR_CUSTOMER, OVERDUE] }
+  rowVersion: { type: string, pattern: '^\d+$' }

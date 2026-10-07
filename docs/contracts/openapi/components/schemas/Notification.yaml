@@ -1,0 +1,59 @@
+type: object
+properties:
+  notificationId:
+    type: string
+    format: uuid
+    description: Per-user in-app notification.
+  recipientUserId:
+    type: string
+    format: uuid
+    description: Recipient.
+  typeCode:
+    type: string
+    description: Notification type.
+  titleSafe:
+    type: string
+    description: Display-safe title.
+  bodySafe:
+    type:
+      - string
+      - 'null'
+    description: Display-safe body without hidden sensitive data.
+  resourceTypeCode:
+    type:
+      - string
+      - 'null'
+    description: Optional target resource type.
+  resourceId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    description: Optional target resource; auth rechecked on open.
+  actionCode:
+    type:
+      - string
+      - 'null'
+    description: Safe suggested action.
+  readAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+    description: Read time.
+  expiresAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+    description: Optional notification expiry.
+  createdAt:
+    type: string
+    format: date-time
+    description: Creation time.
+additionalProperties: false
+required:
+  - notificationId
+  - recipientUserId
+  - titleSafe
+  - typeCode

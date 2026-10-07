@@ -1,0 +1,8 @@
+type: object
+properties:
+  sourceAccountId:
+    type: string
+    format: uuid
+additionalProperties: false
+required:
+  - sourceAccountId

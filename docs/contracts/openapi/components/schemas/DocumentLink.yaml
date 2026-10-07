@@ -1,0 +1,34 @@
+type: object
+additionalProperties: false
+description: >-
+  An extra association between a document and a record, beyond the one it was
+  filed against. Creating and removing these has always been possible; nothing
+  returned them, so a link could be made and then never seen or undone.
+required:
+  - linkId
+  - documentId
+  - resourceTypeCode
+  - resourceId
+  - relationshipTypeCode
+  - createdAt
+properties:
+  linkId:
+    $ref: ./UUID.yaml
+  documentId:
+    $ref: ./UUID.yaml
+  resourceTypeCode:
+    type: string
+    description: What kind of record this document is linked to.
+  resourceId:
+    $ref: ./UUID.yaml
+  relationshipTypeCode:
+    type: string
+    description: Why it is linked — supporting evidence, source, attachment.
+  createdByUserId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  createdAt:
+    type: string
+    format: date-time

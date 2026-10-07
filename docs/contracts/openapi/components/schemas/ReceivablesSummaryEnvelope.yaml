@@ -1,0 +1,28 @@
+type: object
+properties:
+  data:
+    type: object
+    properties:
+      asOf:
+        type: string
+        format: date
+      currencies:
+        type: array
+        maxItems: 50
+        items:
+          type: object
+          additionalProperties: true
+      topOverdueAccounts:
+        type: array
+        maxItems: 20
+        items:
+          type: object
+          additionalProperties: true
+    additionalProperties: false
+    required:
+      - asOf
+      - currencies
+      - topOverdueAccounts
+additionalProperties: false
+required:
+  - data

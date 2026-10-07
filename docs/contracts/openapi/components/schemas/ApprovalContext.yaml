@@ -1,0 +1,41 @@
+type: object
+properties:
+  approvalRequest:
+    $ref: ./ApprovalRequest.yaml
+  quotation:
+    type: object
+    properties:
+      quotationId:
+        type: string
+        format: uuid
+      quoteRef:
+        type: string
+      statusCode:
+        type: string
+      currencyCode:
+        type: string
+      grandTotalAmount:
+        type: string
+        pattern: ^-?\d+(\.\d+)?$
+      customerDisplayName:
+        type: string
+      projectName:
+        type:
+          - string
+          - 'null'
+      pricingWarnings:
+        type: array
+        items:
+          $ref: ./PricingWarning.yaml
+    additionalProperties: false
+    required:
+      - quotationId
+      - quoteRef
+      - statusCode
+      - currencyCode
+      - grandTotalAmount
+      - customerDisplayName
+additionalProperties: false
+required:
+  - approvalRequest
+  - quotation

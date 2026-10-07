@@ -1,0 +1,125 @@
+get:
+  tags:
+    - CRM
+  summary: Scoped customer grid
+  operationId: get_accounts
+  description: >-
+    Permission: accounts.view. Scope: Country + owner/direct-manager/share.
+    Offset pagination only. Country Scope is evaluated before permission,
+    explicit DENY, and configured record context. Ownership, manager context,
+    or sharing never widens Country Scope. The backend returns the safe list
+    projection after field authorization.
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/AccountListEnvelope.yaml
+    '400':
+      $ref: ../components/responses/Error400.yaml
+    '401':
+      $ref: ../components/responses/Error401.yaml
+    '403':
+      $ref: ../components/responses/Error403.yaml
+    '404':
+      $ref: ../components/responses/Error404.yaml
+    '409':
+      $ref: ../components/responses/Error409.yaml
+    '412':
+      $ref: ../components/responses/Error412.yaml
+    '422':
+      $ref: ../components/responses/Error422.yaml
+    '429':
+      $ref: ../components/responses/Error429.yaml
+    '500':
+      $ref: ../components/responses/Error500.yaml
+    '503':
+      $ref: ../components/responses/Error503.yaml
+  parameters:
+    - $ref: ../components/parameters/Page.yaml
+    - $ref: ../components/parameters/Offset.yaml
+    - $ref: ../components/parameters/Limit.yaml
+    - $ref: ../components/parameters/AccountSort.yaml
+    - $ref: ../components/parameters/Search.yaml
+    - $ref: ../components/parameters/AccountArchiveState.yaml
+    - $ref: ../components/parameters/AccountCountryCode.yaml
+    - $ref: ../components/parameters/AccountCategoryCode.yaml
+    - $ref: ../components/parameters/AccountBusinessTypeCode.yaml
+  x-abp-module: CRM
+  x-abp-permission: accounts.view
+  x-abp-scope-rule: Country + owner/direct-manager/share
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: AccountListQuery
+  x-abp-success-schema: AccountListEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true
+  x-abp-pagination: OFFSET
+post:
+  tags:
+    - CRM
+  summary: Create customer
+  operationId: post_accounts
+  description: >-
+    Permission: accounts.create. Scope: Country. Owner defaults current user
+    unless privileged assignment. Country Scope and explicit DENY are enforced
+    before record context; the response is the safe AccountDetail projection.
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    '201':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/AccountDetailEnvelope.yaml
+      headers:
+        ETag:
+          $ref: ../components/headers/ETag.yaml
+    '400':
+      $ref: ../components/responses/Error400.yaml
+    '401':
+      $ref: ../components/responses/Error401.yaml
+    '403':
+      $ref: ../components/responses/Error403.yaml
+    '404':
+      $ref: ../components/responses/Error404.yaml
+    '409':
+      $ref: ../components/responses/Error409.yaml
+    '412':
+      $ref: ../components/responses/Error412.yaml
+    '422':
+      $ref: ../components/responses/Error422.yaml
+    '429':
+      $ref: ../components/responses/Error429.yaml
+    '500':
+      $ref: ../components/responses/Error500.yaml
+    '503':
+      $ref: ../components/responses/Error503.yaml
+  parameters:
+    - $ref: ../components/parameters/IdempotencyKey.yaml
+    - $ref: ../components/parameters/CsrfToken.yaml
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/CreateAccountRequest.yaml
+  x-abp-module: CRM
+  x-abp-permission: accounts.create
+  x-abp-scope-rule: Country
+  x-abp-concurrency: NONE
+  x-abp-idempotency: Required
+  x-abp-request-schema: CreateAccountRequest
+  x-abp-success-schema: AccountDetailEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

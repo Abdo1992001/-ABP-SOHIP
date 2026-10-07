@@ -1,0 +1,26 @@
+type: object
+properties:
+  expectedRowVersion:
+    type: string
+    pattern: ^\d+$
+  amount:
+    type: string
+    pattern: ^\d+(\.\d{1,2})?$
+  receivedOn:
+    type: string
+    format: date
+  methodCode:
+    type: string
+    enum: [CASH, TRANSFER, CHEQUE, CARD, OTHER]
+  reference:
+    type: string
+    maxLength: 200
+  note:
+    type: string
+    maxLength: 1000
+additionalProperties: false
+required:
+  - expectedRowVersion
+  - amount
+  - receivedOn
+  - methodCode

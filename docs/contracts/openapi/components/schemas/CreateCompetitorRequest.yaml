@@ -1,0 +1,9 @@
+type: object
+additionalProperties: false
+required: [name]
+properties:
+  name: { type: string, minLength: 2, maxLength: 300 }
+  countryCode: { type: string, minLength: 2, maxLength: 2 }
+  strengths: { type: string, maxLength: 4000 }
+  weaknesses: { type: string, maxLength: 4000 }
+  notes: { type: string, maxLength: 4000 }

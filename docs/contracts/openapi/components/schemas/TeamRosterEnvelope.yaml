@@ -1,0 +1,19 @@
+type: object
+properties:
+  data:
+    type: array
+    items:
+      type: object
+      properties:
+        userId:
+          type: string
+          format: uuid
+        displayName:
+          type: string
+      additionalProperties: false
+      required:
+        - userId
+        - displayName
+additionalProperties: false
+required:
+  - data

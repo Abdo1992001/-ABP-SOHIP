@@ -1,0 +1,25 @@
+type: object
+properties:
+  contactId:
+    type: string
+    format: uuid
+  accountId:
+    type: string
+    format: uuid
+  displayName:
+    type: string
+  jobTitle:
+    type:
+      - string
+      - 'null'
+  statusCode:
+    type: string
+  rowVersion:
+    $ref: ./RowVersion.yaml
+additionalProperties: false
+required:
+  - contactId
+  - accountId
+  - displayName
+  - statusCode
+  - rowVersion

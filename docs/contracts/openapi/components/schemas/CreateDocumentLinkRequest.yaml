@@ -1,0 +1,14 @@
+type: object
+properties:
+  resourceTypeCode:
+    type: string
+  resourceId:
+    type: string
+    format: uuid
+  relationshipTypeCode:
+    type: string
+additionalProperties: false
+required:
+  - resourceTypeCode
+  - resourceId
+  - relationshipTypeCode

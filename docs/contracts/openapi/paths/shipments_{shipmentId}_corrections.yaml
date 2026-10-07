@@ -1,0 +1,17 @@
+post:
+  tags: [Logistics]
+  summary: Append audited shipment correction
+  operationId: post_shipments_by_shipmentId_corrections
+  parameters: [{ name: shipmentId, in: path, required: true, schema: { type: string, format: uuid } }, { $ref: ../components/parameters/IdempotencyKey.yaml }]
+  requestBody:
+    required: true
+    content: { application/json: { schema: { type: object, additionalProperties: false, required: [reason, businessOccurredAt, expectedRowVersion], properties: { reason: { type: string }, businessOccurredAt: { type: string, format: date-time }, expectedRowVersion: { type: string, pattern: '^\d+$' }, blDate: { type: [string, 'null'], format: date }, portOfDischarge: { type: [string, 'null'] }, actualArrivalAt: { type: [string, 'null'], format: date-time } } } } }
+  responses: { '200': { description: Corrected, content: { application/json: { schema: { $ref: ../components/schemas/ShipmentEnvelope.yaml } } } }, '400': { $ref: ../components/responses/Error400.yaml } }
+  x-abp-module: Logistics
+  x-abp-permission: shipments.edit
+  x-abp-scope-rule: Country Scope; previous and new values remain auditable
+  x-abp-concurrency: expectedRowVersion
+  x-abp-execution-mode: SYNC
+  x-abp-job-dto: false
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

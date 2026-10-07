@@ -1,0 +1,46 @@
+type: object
+properties:
+  contactId:
+    type: string
+    format: uuid
+  accountId:
+    type: string
+    format: uuid
+  accountName:
+    type: string
+  accountRef:
+    type:
+      - string
+      - 'null'
+  displayName:
+    type: string
+  jobTitle:
+    type:
+      - string
+      - 'null'
+  statusCode:
+    type: string
+  rowVersion:
+    $ref: ./RowVersion.yaml
+  primaryChannel:
+    oneOf:
+      - type: 'null'
+      - type: object
+        properties:
+          channelTypeCode:
+            type: string
+          value:
+            type: string
+        required:
+          - channelTypeCode
+          - value
+        additionalProperties: false
+additionalProperties: false
+required:
+  - contactId
+  - accountId
+  - accountName
+  - displayName
+  - statusCode
+  - rowVersion
+  - primaryChannel

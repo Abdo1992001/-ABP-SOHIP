@@ -1,0 +1,5 @@
+type: string
+enum:
+  - ACTIVE
+  - ARCHIVED
+description: Customer master archive state; not a sales lifecycle state.

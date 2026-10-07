@@ -1,0 +1,61 @@
+post:
+  tags:
+    - Receivables
+  summary: Write off what is left
+  operationId: post_receivables_by_receivableInstallmentId_write_offs
+  description: 'Permission: payments.allocate. Writes off the outstanding balance of an installment, with a reason.'
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ReceivableInstallmentEnvelope.yaml
+    '400':
+      $ref: ../components/responses/Error400.yaml
+    '401':
+      $ref: ../components/responses/Error401.yaml
+    '403':
+      $ref: ../components/responses/Error403.yaml
+    '404':
+      $ref: ../components/responses/Error404.yaml
+    '409':
+      $ref: ../components/responses/Error409.yaml
+    '412':
+      $ref: ../components/responses/Error412.yaml
+    '422':
+      $ref: ../components/responses/Error422.yaml
+    '429':
+      $ref: ../components/responses/Error429.yaml
+    '500':
+      $ref: ../components/responses/Error500.yaml
+    '503':
+      $ref: ../components/responses/Error503.yaml
+  parameters:
+    - name: receivableInstallmentId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    - $ref: ../components/parameters/CsrfToken.yaml
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/WriteOffReceivableRequest.yaml
+  x-abp-module: Receivables
+  x-abp-permission: payments.allocate
+  x-abp-scope-rule: Account access within country scope
+  x-abp-concurrency: expectedRowVersion
+  x-abp-idempotency: NONE
+  x-abp-request-schema: WriteOffReceivableRequest
+  x-abp-success-schema: ReceivableInstallmentEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

@@ -1,0 +1,31 @@
+{
+  "generatedAt": "2026-08-24T14:58:12.477Z",
+  "result": "PASS",
+  "contractDelta": "CD-S9-001",
+  "openapiVersion": "1.4.0",
+  "openapiSha256": "7a7cb32a0df396e7bd4241ccfda4bbaf4f9eb891e2b35f17f43286f7515cbbba",
+  "generatedClientVersion": "1.4.0",
+  "generatedClientSha256": "442d295b60ad2a5d2191d4f27b1b00cfc7282364b30226b06b508f2be4443fe1",
+  "mandatoryRuntimeOperations": { "implemented": 198, "total": 198 },
+  "screens": { "implemented": 48, "mapped": 48, "total": 48 },
+  "productionActions": {
+    "mapped": 91,
+    "total": 91,
+    "dead": 0,
+    "fake": 0,
+    "unmapped": 0
+  },
+  "criticalE2e": { "passed": 8, "total": 8 },
+  "docker": {
+    "postgres": "PASS",
+    "api": "PASS",
+    "worker": "PASS",
+    "web": "PASS",
+    "spaDeepLinks": "PASS"
+  },
+  "generatedClientDrift": 0,
+  "ssotDeviations": [],
+  "screenRegistrySha256": "e72a4f9528e013e016f59a70e2abd57cbf304e2a82f4333999091c4170126d44",
+  "operationCatalogSha256": "1db16d666ee1ebd4833b5b3319b35a710f51fd9caa0925e5d4ad422e9146069c",
+  "evidenceScope": "PRE_CR_001_BASELINE_ONLY"
+}

@@ -1,0 +1,20 @@
+type: object
+properties:
+  roleId:
+    type: string
+    format: uuid
+    description: Role ID.
+  roleCode:
+    type: string
+    description: Immutable machine code.
+  name:
+    type: string
+    description: Display name.
+  isSystemProtected:
+    type: boolean
+    description: Prevents destructive admin edits.
+additionalProperties: false
+required:
+  - name
+  - roleCode
+  - roleId

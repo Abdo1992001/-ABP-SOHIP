@@ -1,0 +1,8 @@
+type: object
+additionalProperties: false
+required: [data, meta]
+properties:
+  data:
+    type: array
+    items: { $ref: ./DocumentTemplateVersion.yaml }
+  meta: { $ref: ./PaginationMeta.yaml }

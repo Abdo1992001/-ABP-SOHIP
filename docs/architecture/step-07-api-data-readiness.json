@@ -1,0 +1,7 @@
+{
+  "status": "DATA READY",
+  "contractedOperations": 133,
+  "ready": 133,
+  "notReady": 0,
+  "basis": "Step-6 physical tables, FKs, indexes, row versions, snapshots and source lineage are available; implementation remains Step 7."
+}

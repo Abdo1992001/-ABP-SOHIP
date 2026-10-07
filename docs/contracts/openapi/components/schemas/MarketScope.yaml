@@ -1,0 +1,6 @@
+type: string
+enum:
+  - LOCAL
+  - GLOBAL
+  - UNCLASSIFIED
+description: Server-authoritative market classification. Egypt is LOCAL, other resolved countries are GLOBAL, and missing/unresolved geography is UNCLASSIFIED with governed Data Quality handling.

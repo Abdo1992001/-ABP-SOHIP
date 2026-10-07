@@ -1,0 +1,64 @@
+type: object
+properties:
+  aiRuleOutputId:
+    type: string
+    format: uuid
+    description: Advisory output.
+  ruleCode:
+    type: string
+    description: Rule/model output code.
+  ruleVersion:
+    type: string
+    description: Version.
+  resourceTypeCode:
+    type: string
+    description: Subject type.
+  resourceId:
+    type: string
+    format: uuid
+    description: Subject ID.
+  outputTypeCode:
+    type: string
+    description: NEXT_ACTION/RISK/SCORE/etc.
+  scoreNumeric:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+    description: Optional score.
+  outputJsonb:
+    type: object
+    additionalProperties:
+      $ref: ./DynamicJsonValue.yaml
+    description: Advisory payload.
+    maxProperties: 100
+  explanationJsonb:
+    type:
+      - object
+      - 'null'
+    additionalProperties:
+      $ref: ./DynamicJsonValue.yaml
+    description: Explainability metadata.
+    maxProperties: 100
+  generatedAt:
+    type: string
+    format: date-time
+    description: Generation time.
+  validUntil:
+    type:
+      - string
+      - 'null'
+    format: date-time
+    description: Freshness window.
+  statusCode:
+    type: string
+    description: ACTIVE/STALE/DISMISSED.
+additionalProperties: false
+required:
+  - aiRuleOutputId
+  - outputJsonb
+  - outputTypeCode
+  - resourceId
+  - resourceTypeCode
+  - ruleCode
+  - ruleVersion

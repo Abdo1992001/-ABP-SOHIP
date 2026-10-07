@@ -1,0 +1,26 @@
+type: object
+properties:
+  user:
+    $ref: ./User.yaml
+  roles:
+    type: array
+    items:
+      $ref: ./Role.yaml
+  permissions:
+    type: array
+    items:
+      type: string
+  countryCodes:
+    type: array
+    items:
+      type: string
+  effectiveDenies:
+    type: array
+    items:
+      type: string
+additionalProperties: false
+required:
+  - user
+  - roles
+  - permissions
+  - countryCodes

@@ -1,0 +1,23 @@
+type: object
+properties:
+  quotationId:
+    type: string
+    format: uuid
+  quotationLineId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  expectedRowVersion:
+    $ref: ./RowVersion.yaml
+  requestedUnitPrice:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+  reason:
+    type: string
+additionalProperties: false
+required:
+  - quotationId
+  - expectedRowVersion
+  - requestedUnitPrice
+  - reason

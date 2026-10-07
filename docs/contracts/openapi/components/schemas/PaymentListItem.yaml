@@ -1,0 +1,17 @@
+type: object
+additionalProperties: false
+required: [paymentId, accountId, paymentDate, amount, currencyCode, statusCode, sourceTypeCode, createdAt, rowVersion]
+properties:
+  paymentId: { type: string, format: uuid }
+  accountId: { type: string, format: uuid }
+  accountName: { type: [string, 'null'] }
+  salesOrderId: { type: [string, 'null'], format: uuid }
+  paymentDate: { type: string, format: date }
+  amount: { type: string, pattern: '^-?\d+(\.\d+)?$' }
+  currencyCode: { type: string, minLength: 3, maxLength: 3 }
+  paymentMethodCode: { type: [string, 'null'] }
+  statusCode: { type: string, enum: [ACTIVE, VOID] }
+  sourceTypeCode: { type: string, enum: [IMPORT, MANUAL] }
+  createdAt: { type: string, format: date-time }
+  rowVersion: { $ref: ./RowVersion.yaml }
+  correctionOfPaymentId: { type: [string, 'null'], format: uuid }

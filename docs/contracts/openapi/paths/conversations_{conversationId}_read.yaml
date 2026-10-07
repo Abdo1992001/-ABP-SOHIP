@@ -1,0 +1,23 @@
+post:
+  tags: [Messages]
+  summary: Mark an authorized conversation read
+  operationId: post_conversations_by_conversationId_read
+  security: [{ WebCookie: [] }, { DesktopOAuth: [] }]
+  parameters:
+    - { name: conversationId, in: path, required: true, schema: { type: string, format: uuid } }
+    - { $ref: ../components/parameters/CsrfToken.yaml }
+  responses:
+    '200': { description: Success, content: { application/json: { schema: { $ref: ../components/schemas/CommandResult.yaml } } } }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '404': { $ref: ../components/responses/Error404.yaml }
+  x-abp-module: Messages
+  x-abp-permission: authenticated
+  x-abp-scope-rule: Active participant only
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: NONE
+  x-abp-success-schema: CommandResult
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

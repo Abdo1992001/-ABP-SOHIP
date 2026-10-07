@@ -1,0 +1,31 @@
+type: object
+properties:
+  potentialDuplicate:
+    type: boolean
+  action:
+    type: string
+    enum:
+      - CONTINUE
+      - REQUEST_REVIEW
+  accessibleMatches:
+    type: array
+    items:
+      type: object
+      properties:
+        accountId:
+          type: string
+          format: uuid
+        accountRef:
+          type: string
+        canonicalName:
+          type: string
+      additionalProperties: false
+      required:
+        - accountId
+        - accountRef
+        - canonicalName
+additionalProperties: false
+required:
+  - potentialDuplicate
+  - action
+  - accessibleMatches

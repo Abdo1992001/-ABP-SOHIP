@@ -1,0 +1,20 @@
+{
+  // The browser harness is a deliverable, and it was outside every check:
+  // `tsconfig.json` includes only `src`, so nothing type-checked the specs.
+  // Playwright transpiles them with esbuild, which strips types without
+  // verifying them — so a spec could reference a field that does not exist and
+  // fail at runtime, in the one place a failure looks like a real defect.
+  //
+  // Separate from the app's own config because the specs run in Node with
+  // Playwright's types, not in the DOM with Vite's.
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "types": ["node"],
+    "noEmit": true,
+    "allowImportingTsExtensions": true
+  },
+  "include": ["e2e/**/*.ts", "playwright.config.ts"]
+}

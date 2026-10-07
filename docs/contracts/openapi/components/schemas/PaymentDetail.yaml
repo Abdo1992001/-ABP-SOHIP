@@ -1,0 +1,14 @@
+allOf:
+  - $ref: ./Payment.yaml
+  - type: object
+    required: [source, allocations, correctionHistory]
+    properties:
+      # The detail screen heads its page with the customer, so the name
+      # travels with the record rather than only its id.
+      accountName: { type: [string, 'null'] }
+      source: { $ref: ./PaymentSource.yaml }
+      allocations:
+        type: array
+        items: { $ref: ./PaymentAllocation.yaml }
+      correctionHistory: { $ref: ./PaymentCorrectionHistory.yaml }
+unevaluatedProperties: false

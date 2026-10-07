@@ -1,0 +1,68 @@
+type: object
+additionalProperties: false
+required:
+  - projectId
+  - projectRef
+  - name
+  - geography
+  - city
+  - region
+  - addressText
+  - stageCode
+  - commercialOwnerUserId
+  - parties
+  - recordStatusCode
+  - archivedAt
+  - rowVersion
+properties:
+  projectId:
+    $ref: ./UUID.yaml
+  projectRef:
+    type: string
+    minLength: 1
+    maxLength: 100
+  name:
+    type: string
+    minLength: 1
+    maxLength: 300
+  geography:
+    $ref: ./ProjectGeography.yaml
+  city:
+    type:
+      - string
+      - 'null'
+    maxLength: 200
+  region:
+    type:
+      - string
+      - 'null'
+    maxLength: 200
+  addressText:
+    type:
+      - string
+      - 'null'
+    maxLength: 1000
+  stageCode:
+    type:
+      - string
+      - 'null'
+    maxLength: 100
+  commercialOwnerUserId:
+    $ref: ./UUID.yaml
+  parties:
+    type: array
+    maxItems: 200
+    items:
+      $ref: ./ProjectPartySummary.yaml
+  recordStatusCode:
+    type: string
+    enum: [ACTIVE, ARCHIVED]
+  archivedAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+  rowVersion:
+    $ref: ./RowVersion.yaml
+description: Authorized Project 360 base projection.
+

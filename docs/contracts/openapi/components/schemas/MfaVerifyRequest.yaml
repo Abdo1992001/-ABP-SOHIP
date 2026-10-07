@@ -1,0 +1,11 @@
+type: object
+additionalProperties: false
+required: [challengeToken, code]
+properties:
+  challengeToken:
+    type: string
+    minLength: 32
+    maxLength: 512
+  code:
+    type: string
+    pattern: '^\d{6}$'

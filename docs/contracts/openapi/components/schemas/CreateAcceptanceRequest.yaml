@@ -1,0 +1,20 @@
+type: object
+properties:
+  evidenceTypeCode:
+    type: string
+  documentId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  externalReference:
+    type:
+      - string
+      - 'null'
+  acceptedAt:
+    type: string
+    format: date-time
+additionalProperties: false
+required:
+  - evidenceTypeCode
+  - acceptedAt

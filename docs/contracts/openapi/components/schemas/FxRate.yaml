@@ -1,0 +1,59 @@
+type: object
+properties:
+  fxRateId:
+    type: string
+    format: uuid
+    description: FX rate.
+  baseCurrencyCode:
+    type: string
+    description: Base currency.
+  quoteCurrencyCode:
+    type: string
+    description: Quote currency.
+  rate:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+    description: Conversion rate.
+  effectiveAt:
+    type: string
+    format: date-time
+    description: Effective timestamp.
+  sourceCode:
+    type: string
+    description: Source.
+  changedByUserId:
+    type: string
+    format: uuid
+    description: Finance actor.
+  versionNo:
+    type: integer
+    format: int32
+    minimum: 1
+  supersedesFxRateId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  reason:
+    type: string
+  statusCode:
+    type: string
+    enum:
+      - APPROVED
+      - INACTIVE
+  createdAt:
+    type: string
+    format: date-time
+additionalProperties: false
+required:
+  - baseCurrencyCode
+  - changedByUserId
+  - effectiveAt
+  - fxRateId
+  - quoteCurrencyCode
+  - rate
+  - sourceCode
+  - versionNo
+  - reason
+  - statusCode
+  - createdAt

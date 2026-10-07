@@ -1,0 +1,29 @@
+get:
+  tags: [Overview]
+  summary: From order to cash
+  operationId: get_overview_order_to_cash
+  description: 'Orders by stage and their open value, what customers owe and how much is late, production runs at risk, deliveries due and late, complaints open and late, and customer satisfaction -- each counted over what the caller may see, and left out where they lack the permission for that area.'
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema: { $ref: ../components/schemas/OrderToCashEnvelope.yaml }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '403': { $ref: ../components/responses/Error403.yaml }
+    '429': { $ref: ../components/responses/Error429.yaml }
+    '500': { $ref: ../components/responses/Error500.yaml }
+  x-abp-module: Overview
+  x-abp-permission: sales-orders.view
+  x-abp-scope-rule: Each figure within the caller's own scope and permissions
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: NONE
+  x-abp-success-schema: OrderToCashEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

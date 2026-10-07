@@ -1,0 +1,30 @@
+{
+  "status": "ENGINEERING_EVIDENCE_ONLY_NOT_RG08_CERTIFICATION",
+  "database": "PostgreSQL 17 local Docker",
+  "plans": [
+    {
+      "operationId": "get_analytics_reports_by_reportId",
+      "reportArea": "opportunity pipeline",
+      "fixtureRows": 3,
+      "observedExecutionMs": 0.168,
+      "plan": "HashAggregate over sequential scan",
+      "buffersHit": 1,
+      "risk": "Sequential scan is correct for the tiny fixture; validate country/date selective plans at production-like scale.",
+      "existingIndex": "opportunities_country_stage_updated_idx",
+      "step11LoadTest": "country-scoped pipeline aggregation with production cardinality, concurrent dashboard and drilldown traffic"
+    },
+    {
+      "operationId": "get_analytics_reports_by_reportId",
+      "reportArea": "ERP booked/shipped/invoiced",
+      "fixtureRows": { "orders": 3, "lines": 2 },
+      "observedExecutionMs": 0.191,
+      "plan": "HashAggregate over hash join with explicit DATA_CONFLICT predicates",
+      "buffersHit": 2,
+      "risk": "DQ and date/country predicates need production-cardinality selectivity validation; large reports must remain async for export.",
+      "existingIndex": "erp_orders country/imported_at index and ERP line identity constraint",
+      "step11LoadTest": "large import history, multi-country scope, DQ conflict ratio, concurrent XLSX/PDF exports"
+    }
+  ],
+  "asyncExports": true,
+  "rg08": "OPEN — STEP 11 OWNS PERFORMANCE CERTIFICATION"
+}

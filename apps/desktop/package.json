@@ -1,0 +1,18 @@
+{
+  "name": "@abp/desktop",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit",
+    "package:dir": "node ../../scripts/step11/package-desktop.mjs --layout",
+    "package:msix": "node ../../scripts/step11/package-desktop.mjs --msix"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.0",
+    "electron": "41.10.7",
+    "typescript": "6.0.3"
+  }
+}

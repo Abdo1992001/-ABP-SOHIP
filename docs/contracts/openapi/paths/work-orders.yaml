@@ -1,0 +1,144 @@
+get:
+  tags:
+    - Operations
+  summary: Work orders
+  operationId: get_work_orders
+  description: 'Permission: work-orders.view. Production runs, earliest first.'
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/WorkOrderListEnvelope.yaml
+    '400':
+      $ref: ../components/responses/Error400.yaml
+    '401':
+      $ref: ../components/responses/Error401.yaml
+    '403':
+      $ref: ../components/responses/Error403.yaml
+    '404':
+      $ref: ../components/responses/Error404.yaml
+    '409':
+      $ref: ../components/responses/Error409.yaml
+    '412':
+      $ref: ../components/responses/Error412.yaml
+    '422':
+      $ref: ../components/responses/Error422.yaml
+    '429':
+      $ref: ../components/responses/Error429.yaml
+    '500':
+      $ref: ../components/responses/Error500.yaml
+    '503':
+      $ref: ../components/responses/Error503.yaml
+  parameters:
+    - name: page
+      in: query
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+    - name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 200
+    - name: status
+      in: query
+      required: false
+      schema:
+        type: string
+        enum: [PLANNED, RELEASED, IN_PROGRESS, ON_HOLD, QC, COMPLETED, CANCELLED]
+    - name: customerOrderId
+      in: query
+      required: false
+      schema:
+        type: string
+        format: uuid
+    - name: productionLineCode
+      in: query
+      required: false
+      schema:
+        type: string
+        enum: [LINE_1, LINE_2, LINE_3, CURVED_LINE]
+    - name: search
+      in: query
+      required: false
+      schema:
+        type: string
+        maxLength: 200
+  x-abp-module: Operations
+  x-abp-permission: work-orders.view
+  x-abp-scope-rule: Account access within country scope
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: NONE
+  x-abp-success-schema: WorkOrderListEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true
+post:
+  tags:
+    - Operations
+  summary: Plan a work order for a customer order
+  operationId: post_work_orders
+  description: 'Permission: work-orders.manage. The order must be confirmed or in production. The planned end defaults to what the capacity rate of the board category gives.'
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    '201':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/WorkOrderEnvelope.yaml
+      headers:
+        ETag:
+          $ref: ../components/headers/ETag.yaml
+    '400':
+      $ref: ../components/responses/Error400.yaml
+    '401':
+      $ref: ../components/responses/Error401.yaml
+    '403':
+      $ref: ../components/responses/Error403.yaml
+    '404':
+      $ref: ../components/responses/Error404.yaml
+    '409':
+      $ref: ../components/responses/Error409.yaml
+    '412':
+      $ref: ../components/responses/Error412.yaml
+    '422':
+      $ref: ../components/responses/Error422.yaml
+    '429':
+      $ref: ../components/responses/Error429.yaml
+    '500':
+      $ref: ../components/responses/Error500.yaml
+    '503':
+      $ref: ../components/responses/Error503.yaml
+  parameters:
+    - $ref: ../components/parameters/IdempotencyKey.yaml
+    - $ref: ../components/parameters/CsrfToken.yaml
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/CreateWorkOrderRequest.yaml
+  x-abp-module: Operations
+  x-abp-permission: work-orders.manage
+  x-abp-scope-rule: Account access within country scope
+  x-abp-concurrency: NONE
+  x-abp-idempotency: Required
+  x-abp-request-schema: CreateWorkOrderRequest
+  x-abp-success-schema: WorkOrderEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

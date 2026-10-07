@@ -1,0 +1,62 @@
+post:
+  tags:
+    - Receivables
+  summary: Record a collection
+  operationId: post_receivables_by_receivableInstallmentId_collections
+  description: 'Permission: payments.create. Writes a payment (and a cheque when paid by cheque) and settles the installment by that amount.'
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    '201':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ReceivableInstallmentEnvelope.yaml
+    '400':
+      $ref: ../components/responses/Error400.yaml
+    '401':
+      $ref: ../components/responses/Error401.yaml
+    '403':
+      $ref: ../components/responses/Error403.yaml
+    '404':
+      $ref: ../components/responses/Error404.yaml
+    '409':
+      $ref: ../components/responses/Error409.yaml
+    '412':
+      $ref: ../components/responses/Error412.yaml
+    '422':
+      $ref: ../components/responses/Error422.yaml
+    '429':
+      $ref: ../components/responses/Error429.yaml
+    '500':
+      $ref: ../components/responses/Error500.yaml
+    '503':
+      $ref: ../components/responses/Error503.yaml
+  parameters:
+    - name: receivableInstallmentId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    - $ref: ../components/parameters/IdempotencyKey.yaml
+    - $ref: ../components/parameters/CsrfToken.yaml
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/RecordReceivableCollectionRequest.yaml
+  x-abp-module: Receivables
+  x-abp-permission: payments.create
+  x-abp-scope-rule: Account access within country scope
+  x-abp-concurrency: expectedRowVersion
+  x-abp-idempotency: Required
+  x-abp-request-schema: RecordReceivableCollectionRequest
+  x-abp-success-schema: ReceivableInstallmentEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

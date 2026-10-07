@@ -1,0 +1,12 @@
+type: object
+additionalProperties: false
+required: [customerOrderId, productionLineCode, capacityCategoryCode, plannedStartDate]
+properties:
+  customerOrderId: { type: string, format: uuid }
+  productionLineCode: { type: string, enum: [LINE_1, LINE_2, LINE_3, CURVED_LINE] }
+  capacityCategoryCode: { type: string, maxLength: 50 }
+  quantityPlanned: { type: string, pattern: '^\d+(\.\d{1,4})?$' }
+  plannedStartDate: { type: string, format: date }
+  plannedEndDate: { type: string, format: date }
+  priorityCode: { type: string, enum: [LOW, NORMAL, HIGH, URGENT] }
+  notes: { type: string, maxLength: 2000 }

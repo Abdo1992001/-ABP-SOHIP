@@ -1,0 +1,15 @@
+type: object
+additionalProperties: false
+required: [data]
+properties:
+  data:
+    type: object
+    additionalProperties: false
+    required: [from, to, today, lines, capacity, workOrders]
+    properties:
+      from: { type: string, format: date }
+      to: { type: string, format: date }
+      today: { type: string, format: date }
+      lines: { type: array, maxItems: 50, items: { type: string } }
+      capacity: { type: array, maxItems: 50, items: { type: object, additionalProperties: true } }
+      workOrders: { type: array, maxItems: 1000, items: { type: object, additionalProperties: true } }

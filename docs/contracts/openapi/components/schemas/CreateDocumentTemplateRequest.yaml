@@ -1,0 +1,9 @@
+type: object
+additionalProperties: false
+required: [code, name, documentTypeCode, languageCode, brandCode]
+properties:
+  code: { type: string, pattern: '^[A-Z0-9_-]{2,80}$' }
+  name: { type: string, maxLength: 200 }
+  documentTypeCode: { type: string, pattern: '^[A-Z0-9_-]{2,50}$' }
+  languageCode: { type: string, pattern: '^[a-z]{2}(?:-[A-Z]{2})?$' }
+  brandCode: { type: string, pattern: '^[A-Z0-9_-]{2,50}$' }

@@ -1,0 +1,11 @@
+type: object
+additionalProperties: false
+required:
+  - amount
+  - currency
+properties:
+  amount:
+    $ref: ./Decimal.yaml
+  currency:
+    $ref: ./CurrencyCode.yaml
+description: Authoritative decimal amount transported as a string plus ISO currency.

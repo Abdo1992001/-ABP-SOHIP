@@ -1,0 +1,16 @@
+get:
+  tags: [Analytics]
+  summary: R&D view-only official quotation demand by canonical size
+  operationId: get_research_most_requested_sizes
+  parameters: [{ $ref: ../components/parameters/Offset.yaml }, { $ref: ../components/parameters/Limit.yaml }, { name: asOf, in: query, schema: { type: string, format: date-time } }]
+  responses:
+    '200': { description: Success, content: { application/json: { schema: { type: object, additionalProperties: false, required: [data, meta], properties: { data: { type: array, items: { $ref: ../components/schemas/ResearchSizeDemand.yaml } }, meta: { type: object, additionalProperties: false, required: [offset, limit, asOf, countryCodes, customerIdentityOmitted], properties: { offset: { type: integer }, limit: { type: integer }, asOf: { type: string, format: date-time }, countryCodes: { type: array, items: { type: string } }, customerIdentityOmitted: { type: boolean, const: true } } } } } } } }
+    '400': { $ref: ../components/responses/Error400.yaml }
+  x-abp-module: R&D
+  x-abp-permission: research.view
+  x-abp-scope-rule: Country Scope before aggregation; customer identity and commercial fields omitted
+  x-abp-concurrency: NONE
+  x-abp-execution-mode: SYNC
+  x-abp-job-dto: false
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

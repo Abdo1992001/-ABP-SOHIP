@@ -1,0 +1,25 @@
+type: object
+properties:
+  data:
+    type: object
+    properties:
+      target:
+        $ref: ./CompanyTarget.yaml
+      periods:
+        type: array
+        items:
+          $ref: ./CompanyTargetPeriod.yaml
+    additionalProperties: false
+    required:
+      - target
+      - periods
+  meta:
+    $ref: ./PaginationMeta.yaml
+  links:
+    $ref: ./Links.yaml
+  analyticsMetadata:
+    $ref: ./AnalyticsResponseMetadata.yaml
+additionalProperties: false
+required:
+  - data
+  - analyticsMetadata

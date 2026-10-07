@@ -1,0 +1,16 @@
+# Extends gitleaks' default rules with this repository's known non-secrets.
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Content hashes and the documented local-only MFA key"
+regexTarget = "line"
+# SHA-256 digests of the OpenAPI contract and generated client, which the
+# generic-api-key rule mistakes for keys.
+regexes = [
+  '''canonical OpenAPI SHA-256: [0-9a-f]{64}''',
+  '''"(openapiSha256|generatedClientSha256)": "[0-9a-f]{64}"''',
+]
+# docker-compose.yml is the local development stack; its fixed MFA key is
+# marked LOCAL/DEV ONLY and production sets its own (.env.production.example).
+paths = ['''^docker-compose\.yml$''']

@@ -1,0 +1,64 @@
+post:
+  tags:
+    - Imports
+  summary: Start/retry validation with explicit parser and mapping versions
+  operationId: post_import_jobs_by_jobId_validate
+  description: >-
+    Permission: imports.manage. Scope: Job permission. Creates documented
+    attempt.
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    '202':
+      description: Accepted
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ImportJobEnvelope.yaml
+    '400':
+      $ref: ../components/responses/Error400.yaml
+    '401':
+      $ref: ../components/responses/Error401.yaml
+    '403':
+      $ref: ../components/responses/Error403.yaml
+    '404':
+      $ref: ../components/responses/Error404.yaml
+    '409':
+      $ref: ../components/responses/Error409.yaml
+    '412':
+      $ref: ../components/responses/Error412.yaml
+    '422':
+      $ref: ../components/responses/Error422.yaml
+    '429':
+      $ref: ../components/responses/Error429.yaml
+    '500':
+      $ref: ../components/responses/Error500.yaml
+    '503':
+      $ref: ../components/responses/Error503.yaml
+  parameters:
+    - name: jobId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    - $ref: ../components/parameters/IdempotencyKey.yaml
+    - $ref: ../components/parameters/CsrfToken.yaml
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/ValidateImportRequest.yaml
+  x-abp-module: Imports
+  x-abp-permission: imports.manage
+  x-abp-scope-rule: Job permission
+  x-abp-concurrency: NONE
+  x-abp-idempotency: Required
+  x-abp-request-schema: ValidateImportRequest
+  x-abp-success-schema: ImportJobEnvelope
+  x-abp-job-dto: true
+  x-abp-execution-mode: ASYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

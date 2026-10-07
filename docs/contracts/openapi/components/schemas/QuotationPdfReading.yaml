@@ -1,0 +1,92 @@
+type: object
+description: >-
+  What a past quotation PDF was read to contain. This is a reading, not a
+  quotation: nothing is written until a person accepts it.
+properties:
+  quoteRef:
+    type: [string, 'null']
+    maxLength: 120
+  quoteDate:
+    type: [string, 'null']
+    description: Exactly as printed on the document, not parsed into a date.
+    maxLength: 120
+  clientName:
+    type: [string, 'null']
+    maxLength: 300
+  projectName:
+    type: [string, 'null']
+    maxLength: 300
+  attention:
+    type: [string, 'null']
+    maxLength: 300
+  salesEngineer:
+    type: [string, 'null']
+    maxLength: 300
+  subject:
+    type: [string, 'null']
+    maxLength: 300
+  lines:
+    type: array
+    items:
+      $ref: ./QuotationPdfLine.yaml
+  subtotal:
+    type: number
+    description: The sum of the lines that were read.
+  unreconciledRows:
+    type: array
+    description: >-
+      Rows inside the price table that carried figures and did not reconcile.
+      Returned verbatim so a person decides, rather than being guessed at.
+    items:
+      type: string
+      maxLength: 500
+  printedTotals:
+    type: array
+    description: The totals the document itself printed, as printed.
+    items:
+      type: object
+      properties:
+        label:
+          type: string
+          maxLength: 120
+        value:
+          type: number
+      additionalProperties: false
+      required:
+        - label
+        - value
+  terms:
+    type: array
+    items:
+      type: object
+      properties:
+        label:
+          type: string
+          maxLength: 120
+        value:
+          type: string
+          maxLength: 500
+      additionalProperties: false
+      required:
+        - label
+        - value
+  reconciled:
+    type: [boolean, 'null']
+    description: >-
+      Whether the lines read add up to the total the document printed. Null
+      when the document printed no total to check against.
+additionalProperties: false
+required:
+  - quoteRef
+  - quoteDate
+  - clientName
+  - projectName
+  - attention
+  - salesEngineer
+  - subject
+  - lines
+  - subtotal
+  - unreconciledRows
+  - printedTotals
+  - terms
+  - reconciled

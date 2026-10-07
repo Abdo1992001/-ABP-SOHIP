@@ -1,0 +1,7 @@
+type: object
+additionalProperties: false
+required: [content]
+properties:
+  content: { type: string, maxLength: 100000 }
+  languageCode: { type: string, pattern: '^[a-z]{2}(?:-[A-Z]{2})?$' }
+  brandCode: { type: string, pattern: '^[A-Z0-9_-]{2,50}$' }

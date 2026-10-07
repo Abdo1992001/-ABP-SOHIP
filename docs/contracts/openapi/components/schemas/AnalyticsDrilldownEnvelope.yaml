@@ -1,0 +1,23 @@
+type: object
+properties:
+  data:
+    type: array
+    items:
+      $ref: ./DynamicJsonValue.yaml
+  meta:
+    type: object
+    properties:
+      offset: { type: integer, minimum: 0 }
+      limit: { type: integer, minimum: 1, maximum: 200 }
+      total: { type: integer, minimum: 0 }
+      hasNext: { type: boolean }
+      reportId: { type: string }
+      reportVersion: { type: string }
+      asOf: { type: string, format: date-time }
+      countryCodes:
+        type: array
+        items: { $ref: ./CountryCode.yaml }
+    additionalProperties: false
+    required: [offset, limit, total, hasNext, reportId, reportVersion, asOf, countryCodes]
+additionalProperties: false
+required: [data, meta]

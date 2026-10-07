@@ -1,0 +1,9 @@
+type: object
+properties:
+  expectedRowVersion:
+    $ref: ./RowVersion.yaml
+  copyRecipients:
+    type: boolean
+additionalProperties: false
+required:
+  - expectedRowVersion

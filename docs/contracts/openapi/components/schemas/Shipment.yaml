@@ -1,0 +1,36 @@
+type: object
+description: >-
+  A shipment of an ERP export order or of a CRM customer order. List and
+  detail rows also carry orderRef, accountName and quotationId; the detail
+  carries nextAction (the step the caller can take next) and history.
+additionalProperties: true
+required: [shipmentId, shipmentRef, countryCode, milestoneCode, transportModeCode, rowVersion, createdAt, updatedAt]
+properties:
+  shipmentId: { type: string, format: uuid }
+  shipmentRef: { type: string }
+  erpOrderId: { type: [string, 'null'], format: uuid }
+  customerOrderId: { type: [string, 'null'], format: uuid }
+  countryCode: { type: string, minLength: 2, maxLength: 2 }
+  transportModeCode: { type: string, enum: [LOCAL_TRUCK, SEA_CONTAINER] }
+  milestoneCode: { type: string, enum: [READY_FOR_DELIVERY, SHIPPED, VESSEL_DEPARTED, ARRIVED_AT_PORT_OF_DISCHARGE, DELIVERED, POD_RECEIVED] }
+  plannedDispatchDate: { type: [string, 'null'], format: date }
+  expectedDeliveryDate: { type: [string, 'null'], format: date }
+  vehicleRef: { type: [string, 'null'] }
+  containerNo: { type: [string, 'null'] }
+  sealNo: { type: [string, 'null'] }
+  driverName: { type: [string, 'null'] }
+  driverPhone: { type: [string, 'null'] }
+  dispatchedAt: { type: [string, 'null'], format: date-time }
+  blDate: { type: [string, 'null'], format: date }
+  portOfDischarge: { type: [string, 'null'] }
+  actualArrivalAt: { type: [string, 'null'], format: date-time }
+  deliveredAt: { type: [string, 'null'], format: date-time }
+  receivedByName: { type: [string, 'null'] }
+  deliveryConditionCode: { type: [string, 'null'], enum: [GOOD, DAMAGED, SHORT, REFUSED, null] }
+  deliveryNotes: { type: [string, 'null'] }
+  podReceivedAt: { type: [string, 'null'], format: date-time }
+  podReference: { type: [string, 'null'] }
+  podDocumentId: { type: [string, 'null'], format: uuid }
+  rowVersion: { type: string, pattern: '^\d+$' }
+  createdAt: { type: string, format: date-time }
+  updatedAt: { type: string, format: date-time }

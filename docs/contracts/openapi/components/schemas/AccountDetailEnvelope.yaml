@@ -1,0 +1,9 @@
+type: object
+additionalProperties: false
+required:
+  - data
+properties:
+  data:
+    $ref: ./AccountDetail.yaml
+  links:
+    $ref: ./Links.yaml

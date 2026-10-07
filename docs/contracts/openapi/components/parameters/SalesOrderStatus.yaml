@@ -1,0 +1,7 @@
+name: statusCode
+in: query
+required: false
+description: Filter by canonical order status (BOOKED, CLOSED, CANCELLED).
+schema:
+  type: string
+  maxLength: 40

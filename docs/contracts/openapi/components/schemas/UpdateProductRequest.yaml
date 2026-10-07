@@ -1,0 +1,44 @@
+type: object
+properties:
+  skuCode:
+    type:
+      - string
+      - 'null'
+  barcode:
+    type:
+      - string
+      - 'null'
+  canonicalDescription:
+    type:
+      - string
+      - 'null'
+  thicknessMm:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+  widthMm:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+  lengthMm:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+  weightKg:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+  densityKgM3:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+  statusCode:
+    type:
+      - string
+      - 'null'
+additionalProperties: false

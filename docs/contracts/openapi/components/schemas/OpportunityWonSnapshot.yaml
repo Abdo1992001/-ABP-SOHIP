@@ -1,0 +1,10 @@
+type: object
+additionalProperties: false
+required: [wonSnapshotId, wonAt, value, currencyCode, stageTransitionId]
+properties:
+  wonSnapshotId: { $ref: ./UUID.yaml }
+  wonAt: { $ref: ./DateTime.yaml }
+  value: { $ref: ./Decimal.yaml }
+  currencyCode: { $ref: ./CurrencyCode.yaml }
+  stageTransitionId: { $ref: ./UUID.yaml }
+

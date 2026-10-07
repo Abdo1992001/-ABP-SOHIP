@@ -1,0 +1,12 @@
+type: object
+additionalProperties: false
+required: [stageCode, defaultProbabilityPct, effectiveFrom, effectiveTo, statusCode]
+properties:
+  stageCode: { type: string, minLength: 1, maxLength: 100 }
+  defaultProbabilityPct: { $ref: ./Percentage.yaml }
+  effectiveFrom: { $ref: ./DateTime.yaml }
+  effectiveTo:
+    type: [string, 'null']
+    format: date-time
+  statusCode: { type: string, enum: [ACTIVE, INACTIVE] }
+

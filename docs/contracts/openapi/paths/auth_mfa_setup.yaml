@@ -1,0 +1,27 @@
+post:
+  tags: [Identity]
+  summary: Start local TOTP enrollment
+  operationId: post_auth_mfa_setup
+  security: [{ WebCookie: [] }]
+  parameters: [{ $ref: ../components/parameters/CsrfToken.yaml }]
+  responses:
+    '201':
+      description: Provisioning secret shown once
+      content:
+        application/json:
+          schema: { $ref: ../components/schemas/MfaSetupEnvelope.yaml }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '403': { $ref: ../components/responses/Error403.yaml }
+    '409': { $ref: ../components/responses/Error409.yaml }
+    '500': { $ref: ../components/responses/Error500.yaml }
+  x-abp-module: Identity
+  x-abp-permission: authenticated
+  x-abp-scope-rule: Self
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: NONE
+  x-abp-success-schema: MfaSetupEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

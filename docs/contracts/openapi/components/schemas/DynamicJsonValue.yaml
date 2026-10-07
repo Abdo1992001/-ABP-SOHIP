@@ -1,0 +1,38 @@
+oneOf:
+  - type: string
+    maxLength: 4000
+  - type: number
+  - type: boolean
+  - type: 'null'
+  - type: array
+    maxItems: 100
+    items:
+      oneOf:
+        - type: string
+          maxLength: 4000
+        - type: number
+        - type: boolean
+        - type: 'null'
+  - type: object
+    maxProperties: 100
+    propertyNames:
+      pattern: ^[A-Za-z][A-Za-z0-9_.-]{0,99}$
+    additionalProperties:
+      oneOf:
+        - type: string
+          maxLength: 4000
+        - type: number
+        - type: boolean
+        - type: 'null'
+        - type: array
+          maxItems: 100
+          items:
+            oneOf:
+              - type: string
+                maxLength: 4000
+              - type: number
+              - type: boolean
+              - type: 'null'
+description: >-
+  Bounded schemaless source/snapshot metadata with finite nesting; never an
+  authoritative business DTO.

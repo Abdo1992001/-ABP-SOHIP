@@ -1,0 +1,14 @@
+type: object
+additionalProperties: false
+required: [data]
+properties:
+  data:
+    type: object
+    additionalProperties: false
+    required: [accounts, projects, places, canPinAccounts, canPinProjects]
+    properties:
+      accounts: { type: array, maxItems: 5000, items: { type: object, additionalProperties: true } }
+      projects: { type: array, maxItems: 5000, items: { type: object, additionalProperties: true } }
+      places: { type: array, maxItems: 500, items: { type: object, additionalProperties: true } }
+      canPinAccounts: { type: boolean }
+      canPinProjects: { type: boolean }

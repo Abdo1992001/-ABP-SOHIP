@@ -1,0 +1,233 @@
+{
+  "verdict": "PASS",
+  "productionReady": false,
+  "generatedAt": "2026-08-24T15:14:29.722Z",
+  "gates": [
+    {
+      "gateId": "RG-01",
+      "name": "Final SSOT reconciliation",
+      "technicalStatus": "EVIDENCE GENERATED — AWAITING SIGNOFF",
+      "evidenceStatus": "EVIDENCE GENERATED — AWAITING SIGNOFF",
+      "blockingGoLive": true,
+      "externalDependency": "DEP-004",
+      "evidenceArtifacts": ["docs/delivery/step-11-security-qa-devops.md"],
+      "verdict": "EVIDENCE GENERATED — AWAITING SIGNOFF"
+    },
+    {
+      "gateId": "RG-02",
+      "name": "Typed OpenAPI",
+      "technicalStatus": "TECHNICAL EVIDENCE GENERATED — PENDING FORMAL GATE REVIEW",
+      "evidenceStatus": "TECHNICAL EVIDENCE GENERATED — PENDING FORMAL GATE REVIEW",
+      "blockingGoLive": true,
+      "externalDependency": null,
+      "evidenceArtifacts": ["docs/delivery/step-11-security-qa-devops.md"],
+      "verdict": "TECHNICAL EVIDENCE GENERATED — PENDING FORMAL GATE REVIEW"
+    },
+    {
+      "gateId": "RG-03",
+      "name": "Semantic BI contracts",
+      "technicalStatus": "TECHNICAL EVIDENCE GENERATED — PENDING FORMAL GATE REVIEW",
+      "evidenceStatus": "TECHNICAL EVIDENCE GENERATED — PENDING FORMAL GATE REVIEW",
+      "blockingGoLive": true,
+      "externalDependency": null,
+      "evidenceArtifacts": ["docs/delivery/step-11-security-qa-devops.md"],
+      "verdict": "TECHNICAL EVIDENCE GENERATED — PENDING FORMAL GATE REVIEW"
+    },
+    {
+      "gateId": "RG-04",
+      "name": "Security",
+      "technicalStatus": "TECHNICAL EVIDENCE GENERATED — PENDING LIVE EXTERNAL CONTROLS",
+      "evidenceStatus": "TECHNICAL EVIDENCE GENERATED — PENDING LIVE EXTERNAL CONTROLS",
+      "blockingGoLive": true,
+      "externalDependency": "DEP-001/DEP-002",
+      "evidenceArtifacts": ["docs/delivery/step-11-security-qa-devops.md"],
+      "verdict": "TECHNICAL EVIDENCE GENERATED — PENDING LIVE EXTERNAL CONTROLS"
+    },
+    {
+      "gateId": "RG-05",
+      "name": "Authorization and IDOR",
+      "technicalStatus": "TECHNICAL EVIDENCE GENERATED — PENDING FORMAL GATE REVIEW",
+      "evidenceStatus": "TECHNICAL EVIDENCE GENERATED — PENDING FORMAL GATE REVIEW",
+      "blockingGoLive": true,
+      "externalDependency": null,
+      "evidenceArtifacts": ["docs/delivery/step-11-security-qa-devops.md"],
+      "verdict": "TECHNICAL EVIDENCE GENERATED — PENDING FORMAL GATE REVIEW"
+    },
+    {
+      "gateId": "RG-06",
+      "name": "Data integrity and concurrency",
+      "technicalStatus": "TECHNICAL EVIDENCE GENERATED — PENDING FORMAL GATE REVIEW",
+      "evidenceStatus": "TECHNICAL EVIDENCE GENERATED — PENDING FORMAL GATE REVIEW",
+      "blockingGoLive": true,
+      "externalDependency": null,
+      "evidenceArtifacts": ["docs/delivery/step-11-security-qa-devops.md"],
+      "verdict": "TECHNICAL EVIDENCE GENERATED — PENDING FORMAL GATE REVIEW"
+    },
+    {
+      "gateId": "RG-07",
+      "name": "Migrations",
+      "technicalStatus": "TECHNICAL EVIDENCE GENERATED — PENDING FORMAL GATE REVIEW",
+      "evidenceStatus": "TECHNICAL EVIDENCE GENERATED — PENDING FORMAL GATE REVIEW",
+      "blockingGoLive": true,
+      "externalDependency": null,
+      "evidenceArtifacts": ["docs/delivery/step-11-security-qa-devops.md"],
+      "verdict": "TECHNICAL EVIDENCE GENERATED — PENDING FORMAL GATE REVIEW"
+    },
+    {
+      "gateId": "RG-08",
+      "name": "Performance",
+      "technicalStatus": "ENGINEERING BASELINE PASS — PENDING DEP-006",
+      "evidenceStatus": "ENGINEERING BASELINE PASS — PENDING DEP-006",
+      "blockingGoLive": true,
+      "externalDependency": "DEP-006",
+      "evidenceArtifacts": ["docs/delivery/step-11-security-qa-devops.md"],
+      "verdict": "ENGINEERING BASELINE PASS — PENDING DEP-006"
+    },
+    {
+      "gateId": "RG-09",
+      "name": "Backup and DR",
+      "technicalStatus": "LOCAL RESTORE PASS — PENDING AZURE/DEP-003",
+      "evidenceStatus": "LOCAL RESTORE PASS — PENDING AZURE/DEP-003",
+      "blockingGoLive": true,
+      "externalDependency": "DEP-002/DEP-003",
+      "evidenceArtifacts": ["docs/delivery/step-11-security-qa-devops.md"],
+      "verdict": "LOCAL RESTORE PASS — PENDING AZURE/DEP-003"
+    },
+    {
+      "gateId": "RG-10",
+      "name": "Monitoring",
+      "technicalStatus": "LOCAL CONFIGURATION PASS — PENDING LIVE AZURE",
+      "evidenceStatus": "LOCAL CONFIGURATION PASS — PENDING LIVE AZURE",
+      "blockingGoLive": true,
+      "externalDependency": "DEP-002",
+      "evidenceArtifacts": ["docs/delivery/step-11-security-qa-devops.md"],
+      "verdict": "LOCAL CONFIGURATION PASS — PENDING LIVE AZURE"
+    },
+    {
+      "gateId": "RG-11",
+      "name": "UAT",
+      "technicalStatus": "PENDING EXTERNAL",
+      "evidenceStatus": "PENDING EXTERNAL",
+      "blockingGoLive": true,
+      "externalDependency": "DEP-008",
+      "evidenceArtifacts": ["docs/delivery/step-11-security-qa-devops.md"],
+      "verdict": "PENDING EXTERNAL"
+    },
+    {
+      "gateId": "RG-12",
+      "name": "Access certification",
+      "technicalStatus": "PENDING EXTERNAL",
+      "evidenceStatus": "PENDING EXTERNAL",
+      "blockingGoLive": true,
+      "externalDependency": "DEP-008",
+      "evidenceArtifacts": ["docs/delivery/step-11-security-qa-devops.md"],
+      "verdict": "PENDING EXTERNAL"
+    },
+    {
+      "gateId": "RG-13",
+      "name": "Training",
+      "technicalStatus": "PENDING EXTERNAL",
+      "evidenceStatus": "PENDING EXTERNAL",
+      "blockingGoLive": true,
+      "externalDependency": "DEP-004",
+      "evidenceArtifacts": ["docs/delivery/step-11-security-qa-devops.md"],
+      "verdict": "PENDING EXTERNAL"
+    },
+    {
+      "gateId": "RG-14",
+      "name": "Cutover dry run",
+      "technicalStatus": "PENDING EXTERNAL",
+      "evidenceStatus": "PENDING EXTERNAL",
+      "blockingGoLive": true,
+      "externalDependency": "DEP-002/DEP-005",
+      "evidenceArtifacts": ["docs/delivery/step-11-security-qa-devops.md"],
+      "verdict": "PENDING EXTERNAL"
+    },
+    {
+      "gateId": "RG-15",
+      "name": "Rollback",
+      "technicalStatus": "TECHNICAL RUNBOOK PASS — PENDING STAGING EVIDENCE",
+      "evidenceStatus": "TECHNICAL RUNBOOK PASS — PENDING STAGING EVIDENCE",
+      "blockingGoLive": true,
+      "externalDependency": "DEP-002/DEP-005",
+      "evidenceArtifacts": ["docs/delivery/step-11-security-qa-devops.md"],
+      "verdict": "TECHNICAL RUNBOOK PASS — PENDING STAGING EVIDENCE"
+    },
+    {
+      "gateId": "RG-16",
+      "name": "Go / No-Go",
+      "technicalStatus": "NOT STARTED — STEP 12 ONLY",
+      "evidenceStatus": "NOT STARTED — STEP 12 ONLY",
+      "blockingGoLive": true,
+      "externalDependency": "STEP-12",
+      "evidenceArtifacts": [],
+      "verdict": "NOT STARTED — STEP 12 ONLY"
+    }
+  ],
+  "dependencies": [
+    {
+      "id": "DEP-001",
+      "subject": "Entra tenant/app registrations/CA/MFA/licenses",
+      "status": "PENDING EXTERNAL",
+      "owner": null,
+      "nextAction": "Assign accountable owner after CR-001 baseline reconciliation and before Step 12",
+      "blockingGoLive": true
+    },
+    {
+      "id": "DEP-002",
+      "subject": "Azure subscription/budget/policy/connectivity",
+      "status": "PENDING EXTERNAL",
+      "owner": null,
+      "nextAction": "Assign accountable owner after CR-001 baseline reconciliation and before Step 12",
+      "blockingGoLive": true
+    },
+    {
+      "id": "DEP-003",
+      "subject": "UAE Central DR malware-scanning capability",
+      "status": "PENDING EXTERNAL",
+      "owner": null,
+      "nextAction": "Assign accountable owner after CR-001 baseline reconciliation and before Step 12",
+      "blockingGoLive": true
+    },
+    {
+      "id": "DEP-004",
+      "subject": "Owners and staffing",
+      "status": "PENDING EXTERNAL",
+      "owner": null,
+      "nextAction": "Assign accountable owner after CR-001 baseline reconciliation and before Step 12",
+      "blockingGoLive": true
+    },
+    {
+      "id": "DEP-005",
+      "subject": "Cutover source register",
+      "status": "PENDING EXTERNAL",
+      "owner": null,
+      "nextAction": "Assign accountable owner after CR-001 baseline reconciliation and before Step 12",
+      "blockingGoLive": true
+    },
+    {
+      "id": "DEP-006",
+      "subject": "Approved workload profile",
+      "status": "ENGINEERING BASELINE / PENDING GOVERNANCE",
+      "owner": null,
+      "nextAction": "Assign accountable owner after CR-001 baseline reconciliation and before Step 12",
+      "blockingGoLive": true
+    },
+    {
+      "id": "DEP-007",
+      "subject": "Formal retention approval",
+      "status": "PENDING EXTERNAL",
+      "owner": null,
+      "nextAction": "Assign accountable owner after CR-001 baseline reconciliation and before Step 12",
+      "blockingGoLive": true
+    },
+    {
+      "id": "DEP-008",
+      "subject": "Production access and UAT rosters",
+      "status": "PENDING EXTERNAL",
+      "owner": null,
+      "nextAction": "Assign accountable owner after CR-001 baseline reconciliation and before Step 12",
+      "blockingGoLive": true
+    }
+  ]
+}

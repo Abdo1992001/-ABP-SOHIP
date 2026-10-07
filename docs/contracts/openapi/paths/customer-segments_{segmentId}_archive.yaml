@@ -1,0 +1,17 @@
+post:
+  tags: [Administration]
+  summary: Archive a customer segment code
+  operationId: post_customer_segments_by_segmentId_archive
+  parameters: [{ name: segmentId, in: path, required: true, schema: { type: string, format: uuid } }]
+  requestBody:
+    required: true
+    content: { application/json: { schema: { type: object, additionalProperties: false, required: [expectedRowVersion], properties: { expectedRowVersion: { type: string, pattern: '^\d+$' } } } } }
+  responses: { '200': { description: Archived, content: { application/json: { schema: { $ref: ../components/schemas/CustomerSegmentEnvelope.yaml } } } }, '400': { $ref: ../components/responses/Error400.yaml } }
+  x-abp-module: Administration
+  x-abp-permission: customer-segments.manage
+  x-abp-scope-rule: Stable codes are archived and never recycled
+  x-abp-concurrency: expectedRowVersion
+  x-abp-execution-mode: SYNC
+  x-abp-job-dto: false
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

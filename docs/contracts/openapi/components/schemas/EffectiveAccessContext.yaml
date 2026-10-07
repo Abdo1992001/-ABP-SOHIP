@@ -1,0 +1,27 @@
+type: object
+additionalProperties: false
+required:
+  - roles
+  - permissions
+  - countryScope
+  - workspaces
+  - policyVersion
+properties:
+  roles:
+    type: array
+    items:
+      $ref: ./RoleSummary.yaml
+  permissions:
+    type: array
+    uniqueItems: true
+    items:
+      $ref: ./PermissionCode.yaml
+  countryScope:
+    $ref: ./CountryScope.yaml
+  workspaces:
+    type: array
+    items:
+      $ref: ./WorkspaceAccess.yaml
+  policyVersion:
+    type: integer
+    minimum: 1

@@ -1,0 +1,63 @@
+type: object
+properties:
+  securityEventId:
+    type: string
+    format: uuid
+    description: Security event.
+  eventTypeCode:
+    type: string
+    description: LOGIN_SUCCESS/LOGIN_FAILURE/ROLE_CHANGE/SHARE_REVOKE/etc.
+  actorUserId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    description: Actor when known.
+  subjectUserId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    description: Affected user when relevant.
+  resourceTypeCode:
+    type:
+      - string
+      - 'null'
+    description: Affected resource type.
+  resourceId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    description: Affected resource ID if safe.
+  ipHash:
+    type:
+      - string
+      - 'null'
+    description: Hashed/truncated IP.
+  userAgent:
+    type:
+      - string
+      - 'null'
+    description: User-agent metadata.
+  metadataJsonb:
+    type:
+      - object
+      - 'null'
+    additionalProperties:
+      $ref: ./DynamicJsonValue.yaml
+    description: Redacted structured event context.
+    maxProperties: 100
+  traceId:
+    type:
+      - string
+      - 'null'
+    description: Correlation trace.
+  createdAt:
+    type: string
+    format: date-time
+    description: Event timestamp.
+additionalProperties: false
+required:
+  - eventTypeCode
+  - securityEventId

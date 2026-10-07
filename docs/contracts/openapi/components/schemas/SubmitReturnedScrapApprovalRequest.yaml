@@ -1,0 +1,11 @@
+type: object
+properties:
+  expectedRowVersion:
+    $ref: ./RowVersion.yaml
+  comment:
+    type:
+      - string
+      - 'null'
+additionalProperties: false
+required:
+  - expectedRowVersion

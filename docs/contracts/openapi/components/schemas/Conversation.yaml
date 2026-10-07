@@ -1,0 +1,33 @@
+type: object
+additionalProperties: false
+required: [conversationId, typeCode, createdAt, updatedAt, participants]
+properties:
+  conversationId: { type: string, format: uuid }
+  # RECORD is a thread attached to one commercial record. It has no invite
+  # step: anyone who may see the record may read it, and posting joins you.
+  typeCode: { type: string, enum: [DM, GROUP, RECORD] }
+  title: { type: [string, 'null'] }
+  businessContextType: { type: [string, 'null'] }
+  businessContextId: { type: [string, 'null'], format: uuid }
+  createdAt: { type: string, format: date-time }
+  updatedAt: { type: string, format: date-time }
+  participants:
+    type: array
+    items:
+      type: object
+      additionalProperties: false
+      required: [userId, displayName, email, roleCode]
+      properties:
+        userId: { type: string, format: uuid }
+        displayName: { type: string }
+        email: { type: string, format: email }
+        roleCode: { type: string }
+        lastReadAt: { type: [string, 'null'], format: date-time }
+        photoUpdatedAt: { type: [string, 'null'], format: date-time }
+  latestMessage:
+    anyOf:
+      - { $ref: ./Message.yaml }
+      - { type: 'null' }
+  messages:
+    type: array
+    items: { $ref: ./Message.yaml }

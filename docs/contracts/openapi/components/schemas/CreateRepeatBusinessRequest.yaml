@@ -1,0 +1,7 @@
+type: object
+additionalProperties: false
+required: [accountId, subject, description]
+properties:
+  accountId: { type: string, format: uuid }
+  subject: { type: string, minLength: 2, maxLength: 300 }
+  description: { type: string, minLength: 3, maxLength: 10000 }

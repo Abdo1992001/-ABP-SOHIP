@@ -1,0 +1,6 @@
+name: If-Match
+in: header
+required: true
+description: Exact strong ETag/rowVersion returned by the prior representation. A stale value produces the canonical typed 412 concurrency response.
+schema:
+  $ref: ../schemas/RowVersion.yaml

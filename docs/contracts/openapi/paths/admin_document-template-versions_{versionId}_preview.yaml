@@ -1,0 +1,24 @@
+parameters:
+  - { name: versionId, in: path, required: true, schema: { type: string, format: uuid } }
+get:
+  tags: [Administration]
+  summary: Render the governed deterministic sample preview
+  operationId: get_admin_document_template_versions_by_versionId_preview
+  security: [{ WebCookie: [] }, { DesktopOAuth: [] }]
+  responses:
+    '200': { description: Success, content: { application/json: { schema: { $ref: ../components/schemas/TemplatePreviewEnvelope.yaml } } } }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '403': { $ref: ../components/responses/Error403.yaml }
+    '404': { $ref: ../components/responses/Error404.yaml }
+    '500': { $ref: ../components/responses/Error500.yaml }
+  x-abp-module: Administration
+  x-abp-permission: documents.view
+  x-abp-scope-rule: ADMIN workspace + Permission + DENY; deterministic non-production sample only
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: TemplateVersionIdPath
+  x-abp-success-schema: TemplatePreviewEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

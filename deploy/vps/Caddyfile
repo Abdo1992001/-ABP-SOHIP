@@ -1,0 +1,9 @@
+# HTTPS for the online server. Caddy fetches a free Let's Encrypt certificate
+# for ABP_DOMAIN on first start and renews it on its own.
+{$ABP_DOMAIN} {
+  encode gzip
+
+  @api path /api/*
+  reverse_proxy @api api:3000
+  reverse_proxy web:8080
+}

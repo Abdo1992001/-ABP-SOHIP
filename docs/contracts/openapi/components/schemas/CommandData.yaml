@@ -1,0 +1,21 @@
+type: object
+properties:
+  success:
+    type: boolean
+  resourceId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  statusCode:
+    type:
+      - string
+      - 'null'
+  jobId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+additionalProperties: false
+required:
+  - success

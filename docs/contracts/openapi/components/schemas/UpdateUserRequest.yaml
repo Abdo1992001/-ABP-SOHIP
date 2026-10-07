@@ -1,0 +1,21 @@
+type: object
+properties:
+  displayName:
+    type:
+      - string
+      - 'null'
+  jobTitle:
+    type:
+      - string
+      - 'null'
+  managerUserId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  teamId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+additionalProperties: false

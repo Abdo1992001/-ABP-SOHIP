@@ -1,0 +1,28 @@
+type: object
+properties:
+  benefitTypeCode:
+    type: string
+    enum:
+      - CREDIT
+      - REPLACEMENT
+  receivedAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+  lines:
+    type: array
+    items:
+      type: object
+      properties:
+        originalQuotationLineId:
+          type: string
+          format: uuid
+        returnedQty:
+          type: string
+          pattern: ^-?\d+(\.\d+)?$
+      additionalProperties: false
+      required:
+        - originalQuotationLineId
+        - returnedQty
+additionalProperties: false

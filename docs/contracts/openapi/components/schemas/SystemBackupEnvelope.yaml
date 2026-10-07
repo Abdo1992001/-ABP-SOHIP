@@ -1,0 +1,10 @@
+type: object
+additionalProperties: false
+required: [data]
+properties:
+  data:
+    type: object
+    additionalProperties: true
+    required: [configured]
+    properties:
+      configured: { type: boolean }

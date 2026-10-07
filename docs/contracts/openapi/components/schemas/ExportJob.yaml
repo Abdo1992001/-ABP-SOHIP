@@ -1,0 +1,65 @@
+type: object
+properties:
+  exportEventId:
+    type: string
+    format: uuid
+    description: Export audit/job record.
+  userId:
+    type: string
+    format: uuid
+    description: Requester.
+  exportTypeCode:
+    type: string
+    description: EXPORT type/template.
+  resourceTypeCode:
+    type:
+      - string
+      - 'null'
+    description: Source module/resource.
+  filterSummaryJsonb:
+    type:
+      - object
+      - 'null'
+    additionalProperties:
+      $ref: ./DynamicJsonValue.yaml
+    description: Scoped filter snapshot.
+    maxProperties: 100
+  rowCount:
+    type:
+      - integer
+      - 'null'
+    format: int64
+    description: Generated row count.
+  documentId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    description: Generated export document.
+  statusCode:
+    type: string
+    description: PENDING/RUNNING/COMPLETED/FAILED.
+  failureCode:
+    type:
+      - string
+      - 'null'
+    description: Safe failure code.
+  createdAt:
+    type: string
+    format: date-time
+    description: Requested time.
+  completedAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+    description: Completion time.
+  statusUrl:
+    type:
+      - string
+      - 'null'
+additionalProperties: false
+required:
+  - exportEventId
+  - exportTypeCode
+  - userId

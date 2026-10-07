@@ -1,0 +1,17 @@
+post:
+  tags: [Administration]
+  summary: Revoke client-customer binding
+  operationId: post_admin_client_customer_bindings_by_bindingId_revoke
+  parameters: [{ name: bindingId, in: path, required: true, schema: { type: string, format: uuid } }, { $ref: ../components/parameters/IfMatch.yaml }]
+  requestBody: { required: true, content: { application/json: { schema: { type: object, additionalProperties: false, properties: {} } } } }
+  responses:
+    '200': { description: Revoked, content: { application/json: { schema: { type: object, additionalProperties: false, required: [data], properties: { data: { type: object, additionalProperties: false, required: [bindingId, clientIdentityId, accountId, statusCode, validFrom, rowVersion], properties: { bindingId: { type: string, format: uuid }, clientIdentityId: { type: string, format: uuid }, accountId: { type: string, format: uuid }, statusCode: { type: string, enum: [REVOKED] }, validFrom: { type: string, format: date-time }, validTo: { type: [string, 'null'], format: date-time }, rowVersion: { type: string } } } } } } } }
+    '400': { $ref: ../components/responses/Error400.yaml }
+  x-abp-module: Administration
+  x-abp-permission: users.manage
+  x-abp-scope-rule: Explicit binding only; revocation removes portal visibility
+  x-abp-concurrency: If-Match
+  x-abp-execution-mode: SYNC
+  x-abp-job-dto: false
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

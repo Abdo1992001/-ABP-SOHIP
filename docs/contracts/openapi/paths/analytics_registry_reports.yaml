@@ -1,0 +1,25 @@
+get:
+  tags: [Analytics]
+  summary: List governed report definitions projected by permission
+  operationId: get_analytics_registry_reports
+  security: [{ WebCookie: [] }, { DesktopOAuth: [] }]
+  responses:
+    '200':
+      description: Permission-projected report registry
+      content:
+        application/json:
+          schema: { $ref: ../components/schemas/ReportDefinitionListEnvelope.yaml }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '403': { $ref: ../components/responses/Error403.yaml }
+    '500': { $ref: ../components/responses/Error500.yaml }
+  x-abp-module: Analytics
+  x-abp-permission: reports.commercial
+  x-abp-scope-rule: Permission projection; no report values
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: AnalyticsRegistryQuery
+  x-abp-success-schema: ReportDefinitionListEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

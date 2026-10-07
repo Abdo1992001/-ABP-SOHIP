@@ -1,0 +1,19 @@
+type: object
+additionalProperties: false
+required: [recipients]
+properties:
+  recipients:
+    type: array
+    minItems: 1
+    maxItems: 20
+    items:
+      type: object
+      additionalProperties: false
+      required: [email]
+      properties:
+        contactId: { type: string, format: uuid }
+        name: { type: string, maxLength: 300 }
+        email: { type: string, format: email }
+  message: { type: string, maxLength: 5000 }
+  ccSelf: { type: boolean }
+  languageCode: { type: string, enum: [en, ar] }

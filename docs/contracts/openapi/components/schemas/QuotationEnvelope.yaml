@@ -1,0 +1,296 @@
+type: object
+properties:
+  data:
+    type: object
+    properties:
+      quotationId:
+        type: string
+        format: uuid
+        description: Standalone quotation.
+      quoteRef:
+        type: string
+        description: Unique human quote number.
+      supersedesQuotationId:
+        type:
+          - string
+          - "null"
+        format: uuid
+        description: Previous SENT quote replaced by this new quote.
+      opportunityId:
+        type: string
+        format: uuid
+        description: Opportunity.
+      accountId:
+        type: string
+        format: uuid
+        description: Customer.
+      projectId:
+        type:
+          - string
+          - "null"
+        format: uuid
+        description: Project if applicable.
+      contactId:
+        type:
+          - string
+          - "null"
+        format: uuid
+        description: Contact person at the customer this quotation was discussed with.
+      countryCode:
+        type: string
+        description: Scope country snapshot.
+      ownerUserId:
+        type: string
+        format: uuid
+        description: Quote owner.
+      ownerDisplayName:
+        type: string
+        description: Human-readable name of the quote owner.
+      statusCode:
+        type: string
+        description: >-
+          Document lifecycle, not commercial outcome:
+          DRAFT/READY/SENT/SUPERSEDED/EXPIRED/CANCELLED. Won and lost belong to
+          the opportunity, never to the document.
+      piNumber:
+        type: [string, 'null']
+        description: Proforma invoice number, issued when the document is sent.
+      piIssuedAt:
+        type: [string, 'null']
+        format: date-time
+      subject:
+        type: [string, 'null']
+        description: What the offer is for, printed under the header.
+      customerPoNumber:
+        type: [string, 'null']
+        description: The customer's own purchase-order number.
+      leadTime:
+        type: [string, 'null']
+        description: How long after the order the goods ship.
+      freightAmount:
+        type: [string, 'null']
+        pattern: ^-?\d+(\.\d+)?$
+        description: Freight and insurance. EX-WORKS plus this is CIF.
+      deliveryAddress:
+        type: [string, 'null']
+        description: Used when the incoterm is DDP.
+      portOfLoading:
+        type: [string, 'null']
+        description: Used when the incoterm is FOB.
+      portOfDischarge:
+        type: [string, 'null']
+        description: Used when the incoterm is CIF.
+      cancelledAt:
+        type: [string, 'null']
+        format: date-time
+      cancellationReason:
+        type: [string, 'null']
+      supersededAt:
+        type: [string, 'null']
+        format: date-time
+      documentTypeCode:
+        type: string
+        enum:
+          - QUOTATION
+          - PROFORMA_INVOICE
+        description: Which official document template/numbering this quote renders as.
+      incotermCode:
+        type:
+          - string
+          - "null"
+        enum:
+          - DDP
+          - CIF
+          - FOB
+          - null
+        description: Delivery terms, drives the delivery address shown on the official document.
+      commercialState:
+        type: string
+        enum:
+          - NOT_SUBMITTED
+          - SUBMITTED
+          - UNDER_NEGOTIATION
+        description: Commercial progression, independent from immutable document state.
+      firstSubmittedAt:
+        type:
+          - string
+          - "null"
+        format: date-time
+        description: First official-send submission timestamp.
+      currencyCode:
+        type: string
+        description: Quote currency.
+      fxRateId:
+        type:
+          - string
+          - "null"
+        format: uuid
+        description: Applied FX source at send if needed.
+      fxRateSnapshot:
+        type:
+          - string
+          - "null"
+        pattern: ^-?\d+(\.\d+)?$
+        description: Immutable applied rate snapshot.
+      calculationVersion:
+        type: string
+        description: Pricing/calculation engine version.
+      validFrom:
+        type:
+          - string
+          - "null"
+        format: date
+        description: Validity start.
+      expiresOn:
+        type:
+          - string
+          - "null"
+        format: date
+        description: Expiry date.
+      paymentTermsSnapshot:
+        type:
+          - string
+          - "null"
+        description: Client-facing terms snapshot.
+      paymentScheduleJson:
+        type:
+          - object
+          - "null"
+        additionalProperties:
+          $ref: ./DynamicJsonValue.yaml
+        maxProperties: 100
+        description: Computed advance + installments payment schedule (rows, due dates, prose), when paymentScheduleCode was set on save.
+      standardPricePerKgOverride:
+        type:
+          - string
+          - "null"
+        pattern: ^-?\d+(\.\d+)?$
+      curvedPricePerKgOverride:
+        type:
+          - string
+          - "null"
+        pattern: ^-?\d+(\.\d+)?$
+      circularPricePerKgOverride:
+        type:
+          - string
+          - "null"
+        pattern: ^-?\d+(\.\d+)?$
+      densityOverrideKgM3:
+        type:
+          - string
+          - "null"
+        pattern: ^-?\d+(\.\d+)?$
+      subtotalAmount:
+        type: string
+        pattern: ^-?\d+(\.\d+)?$
+        description: Subtotal.
+      discountAmount:
+        type: string
+        pattern: ^-?\d+(\.\d+)?$
+        description: Total quote discount.
+      taxAmount:
+        type: string
+        pattern: ^-?\d+(\.\d+)?$
+        description: Tax.
+      grandTotalAmount:
+        type: string
+        pattern: ^-?\d+(\.\d+)?$
+        description: Final total.
+      sentAt:
+        type:
+          - string
+          - "null"
+        format: date-time
+        description: When quotation becomes immutable.
+      rowVersion:
+        $ref: ./RowVersion.yaml
+        description: DRAFT concurrency.
+      fxEffectiveAtSnapshot:
+        type:
+          - string
+          - "null"
+        format: date-time
+        description: Effective timestamp of applied FX rate captured at SENT.
+      paymentTermsCode: &a1
+        type:
+          - string
+          - "null"
+      customPaymentTerms: *a1
+      lines:
+        type: array
+        items:
+          type: object
+          additionalProperties: false
+          properties:
+            quotationLineId:
+              type: string
+              format: uuid
+            productId:
+              type:
+                - string
+                - "null"
+              format: uuid
+            sectionLabel:
+              type:
+                - string
+                - "null"
+            description:
+              type: string
+            qty:
+              type: string
+            unitCode:
+              type: string
+            unitPrice:
+              type: string
+            discountAmount:
+              type: string
+            lineTotal:
+              type: string
+            priceRuleId:
+              type:
+                - string
+                - "null"
+              format: uuid
+            priceSnapshot:
+              type:
+                - object
+                - "null"
+              additionalProperties:
+                $ref: ./DynamicJsonValue.yaml
+              maxProperties: 100
+      adjustments:
+        type: array
+        items:
+          type: object
+          additionalProperties: false
+          properties:
+            typeCode:
+              type: string
+            modeCode:
+              type: string
+            value:
+              type: string
+            label: *a1
+    additionalProperties: false
+    required:
+      - accountId
+      - calculationVersion
+      - commercialState
+      - countryCode
+      - currencyCode
+      - documentTypeCode
+      - incotermCode
+      - firstSubmittedAt
+      - opportunityId
+      - ownerUserId
+      - ownerDisplayName
+      - quotationId
+      - rowVersion
+      - statusCode
+  meta:
+    $ref: ./PaginationMeta.yaml
+  links:
+    $ref: ./Links.yaml
+additionalProperties: false
+required:
+  - data

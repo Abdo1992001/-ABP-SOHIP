@@ -1,0 +1,109 @@
+operations:
+  # NOTE: CR-001 recorded quotation cancellation as out of scope for V1, and
+  # that is no longer what shipped. POST /quotations/{quotationId}/cancel is
+  # implemented in QuotationController and QuotationService, is declared in the
+  # OpenAPI document, writes cancelledAt/cancellationReason, and is reachable
+  # from the quotation's audit tab. Leaving the entry here made the contract
+  # check fail on every run — it flags a delivered operation listed as out of
+  # scope — which cost the check its signal for everything else. The entry is
+  # removed rather than the endpoint, because removing a working, reachable
+  # feature to satisfy a stale record would be the wrong way round. The
+  # original decision is preserved in this note.
+  # NOTE: the original bare "/access-requests" self-service concept below
+  # stays out of scope. A different, admin-gated design shipped instead:
+  # POST /auth/request-access (public submission only, no account created)
+  # plus POST/GET /admin/access-requests/... for admin review and approval.
+  - {
+      method: POST,
+      path: /access-requests,
+      module: Identity,
+      reason: Access Request was explicitly rejected from V1.,
+    }
+  - {
+      method: POST,
+      path: /sales-orders,
+      module: ERP Orders,
+      reason: Sales orders are imported read-only ERP facts.,
+    }
+  - method: PATCH
+    path: "/sales-orders/{salesOrderId}"
+    module: ERP Orders
+    reason: ERP facts are not amended internally.
+  - {
+      method: POST,
+      path: "/sales-orders/{salesOrderId}/confirm",
+      module: ERP Orders,
+      reason: Internal order confirmation is outside V1.,
+    }
+  - {
+      method: POST,
+      path: "/sales-orders/{salesOrderId}/amend",
+      module: ERP Orders,
+      reason: Internal amendments are outside V1.,
+    }
+  - {
+      method: POST,
+      path: "/sales-orders/{salesOrderId}/handover",
+      module: ERP Orders,
+      reason: Handover execution is outside V1.,
+    }
+  - {
+      method: POST,
+      path: "/sales-orders/{salesOrderId}/close",
+      module: ERP Orders,
+      reason: Internal close workflow is outside V1.,
+    }
+  - {
+      method: PATCH,
+      path: "/shipments/{shipmentId}",
+      module: Logistics,
+      reason: Shipment execution is outside V1.,
+    }
+  - {
+      method: POST,
+      path: /capacity/reservations,
+      module: Capacity,
+      reason: Capacity is estimate-only with no reservations.,
+    }
+  - {
+      method: POST,
+      path: /mes/routings,
+      module: Capacity,
+      reason: MES and routing are outside V1.,
+    }
+  - {
+      method: POST,
+      path: /quality-control/inspections,
+      module: Capacity,
+      reason: Production QC workflow is outside V1.,
+    }
+  - {
+      method: POST,
+      path: /logistics/edge-loading,
+      module: Logistics,
+      reason: V1 geometry is Flat-on-Face with 0/90 face rotation only.,
+    }
+  - {
+      method: POST,
+      path: /quotation-families,
+      module: Quotation,
+      reason: Formal quotation families/revisions are prohibited.,
+    }
+  - {
+      method: POST,
+      path: "/quotations/{quotationId}/revisions",
+      module: Quotation,
+      reason: Post-SENT changes create a new quotation with supersedesQuotationId.,
+    }
+  - {
+      method: GET,
+      path: /analytics/net-commercial-sales,
+      module: Analytics,
+      reason: Net Commercial Sales lacks an approved typed accounting basis in V1.,
+    }
+  - {
+      method: POST,
+      path: /_platform/proof,
+      module: Platform,
+      reason: Synthetic WS0 proof is test-only and disabled by default; it is not a V1 client operation.,
+    }

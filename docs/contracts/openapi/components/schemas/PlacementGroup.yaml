@@ -1,0 +1,62 @@
+type: object
+properties:
+  placementId:
+    type: string
+    format: uuid
+    description: Placement group/stack.
+  planTransportUnitId:
+    type: string
+    format: uuid
+    description: Vehicle/container instance.
+  planLineId:
+    type: string
+    format: uuid
+    description: Planned item.
+  xMm:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+    description: X coordinate.
+  yMm:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+    description: Y coordinate.
+  zMm:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+    description: Z coordinate.
+  lengthMm:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+    description: Occupied length for the placement group.
+  widthMm:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+    description: Occupied width for the placement group.
+  heightMm:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+    description: Occupied stacked height for the placement group.
+  rotationCode:
+    type: string
+    description: Only 0 or 90 in V1.
+  stackQty:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+    description: Grouped placement quantity.
+  requestedQty:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+    description: Requested quantity for the source plan line.
+  boardWeightKg:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+    description: Weight of one board in the placement group.
+additionalProperties: false
+required:
+  - placementId
+  - planLineId
+  - planTransportUnitId

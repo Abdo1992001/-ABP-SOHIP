@@ -1,0 +1,30 @@
+type: object
+properties:
+  title:
+    type: string
+    minLength: 3
+    maxLength: 200
+  projectId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  estimatedValue:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+  currencyCode:
+    type:
+      - string
+      - 'null'
+  expectedCloseDate:
+    type:
+      - string
+      - 'null'
+    format: date
+  noProjectReasonCode:
+    type:
+      - string
+      - 'null'
+additionalProperties: false

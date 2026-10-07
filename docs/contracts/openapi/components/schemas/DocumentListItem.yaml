@@ -1,0 +1,15 @@
+type: object
+additionalProperties: false
+required: [documentId, resourceTypeCode, resourceId, documentTypeCode, version, statusCode, official, immutable, createdByUserId, createdAt]
+properties:
+  documentId: { type: string, format: uuid }
+  resourceTypeCode: { type: string }
+  resourceId: { type: string, format: uuid }
+  documentTypeCode: { type: string }
+  displayName: { type: [string, 'null'] }
+  version: { type: integer, minimum: 1 }
+  statusCode: { type: string }
+  official: { type: boolean }
+  immutable: { type: boolean }
+  createdByUserId: { type: string, format: uuid }
+  createdAt: { type: string, format: date-time }

@@ -1,0 +1,8 @@
+type: object
+additionalProperties: false
+required: [data, analyticsMetadata]
+properties:
+  data:
+    $ref: ./FormworkMix.yaml
+  analyticsMetadata:
+    $ref: ./AnalyticsResponseMetadata.yaml

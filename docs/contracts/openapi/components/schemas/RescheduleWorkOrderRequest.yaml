@@ -1,0 +1,11 @@
+type: object
+additionalProperties: false
+required: [expectedRowVersion, reason]
+properties:
+  expectedRowVersion: { type: string, pattern: '^\d+$' }
+  productionLineCode: { type: string, enum: [LINE_1, LINE_2, LINE_3, CURVED_LINE] }
+  plannedStartDate: { type: string, format: date }
+  plannedEndDate: { type: string, format: date }
+  priorityCode: { type: string, enum: [LOW, NORMAL, HIGH, URGENT] }
+  notes: { type: string, maxLength: 2000 }
+  reason: { type: string, maxLength: 500 }

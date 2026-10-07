@@ -1,0 +1,232 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: abp
+      POSTGRES_USER: abp
+      POSTGRES_PASSWORD: abp
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U abp -d abp"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    volumes:
+      - abp_pgdata:/var/lib/postgresql/data
+      - ./scripts/docker/init-test-db.sql:/docker-entrypoint-initdb.d/10-create-test-db.sql:ro
+
+  migrate:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    command:
+      [
+        "node",
+        "packages/database/node_modules/prisma/build/index.js",
+        "migrate",
+        "deploy",
+        "--config",
+        "packages/database/prisma.config.ts",
+      ]
+    environment:
+      DATABASE_URL: postgresql://abp:abp@db:5432/abp?schema=public
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: "no"
+
+  object-storage-init:
+    image: alpine:3.22
+    command: ["sh", "-c", "chown -R 1000:1000 /data && chmod 0770 /data"]
+    volumes:
+      - abp-objects:/data
+    restart: "no"
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    environment:
+      NODE_ENV: development
+      PORT: "3000"
+      DATABASE_URL: postgresql://abp:abp@db:5432/abp?schema=public
+      ABP_ALLOWED_ORIGINS: http://localhost:8080
+      # LOCAL/DEV ONLY fixed key so MFA enrollment works out of the box.
+      # Production must set its own 32-byte base64 secret (see .env.production.example).
+      ABP_MFA_MASTER_KEY: "wMpHGeCgfQKQMZL7LOc9gUs0iIJWY1gWjo9N6cVAtws="
+      ABP_PLATFORM_PROOF_ENABLED: "true"
+      ABP_TEST_AUTH_ENABLED: "true"
+      # This local/self-hosted Compose stack serves the web app over plain
+      # HTTP (no TLS reverse proxy in front of it). The session cookie
+      # defaults to Secure + __Host- prefixed, which browsers silently
+      # refuse to store over HTTP — login POSTs 200, but every following
+      # request looks logged-out with no visible error (App.tsx just falls
+      # back to the login screen). Production behind real HTTPS must NOT
+      # set this to "false".
+      ABP_SESSION_COOKIE_SECURE: "false"
+      # Uploaded files (product photos, message attachments) must land on the
+      # abp-objects volume mounted below. Without this they default to a path
+      # inside the image, and every redeploy silently deletes them.
+      ABP_LOCAL_OBJECT_ROOT: /workspace/.tmp/object-storage
+      # Email. Locally everything goes to Mailpit (http://localhost:8025) and
+      # never leaves this machine. For Outlook set these in a .env file next
+      # to this one -- see docs/guides/email-and-backups.md.
+      ABP_MAIL_PROVIDER: ${ABP_MAIL_PROVIDER:-SMTP}
+      ABP_MAIL_SENDER: ${ABP_MAIL_SENDER:-crm@acrow.local}
+      ABP_MAIL_FROM_NAME: ${ABP_MAIL_FROM_NAME:-ACROW Building Products}
+      ABP_MAIL_SMTP_HOST: ${ABP_MAIL_SMTP_HOST:-mailpit}
+      ABP_MAIL_SMTP_PORT: ${ABP_MAIL_SMTP_PORT:-1025}
+      ABP_MAIL_SMTP_SECURE: ${ABP_MAIL_SMTP_SECURE:-false}
+      ABP_MAIL_SMTP_USER: ${ABP_MAIL_SMTP_USER:-}
+      ABP_MAIL_SMTP_PASSWORD: ${ABP_MAIL_SMTP_PASSWORD:-}
+      ABP_MAIL_GRAPH_TENANT_ID: ${ABP_MAIL_GRAPH_TENANT_ID:-}
+      ABP_MAIL_GRAPH_CLIENT_ID: ${ABP_MAIL_GRAPH_CLIENT_ID:-}
+      ABP_MAIL_GRAPH_CLIENT_SECRET: ${ABP_MAIL_GRAPH_CLIENT_SECRET:-}
+      ABP_PUBLIC_APP_URL: ${ABP_PUBLIC_APP_URL:-http://localhost:8080}
+      ABP_BACKUP_STATUS_FILE: /backup-status/latest.json
+    ports:
+      - "3000:3000"
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:3000/api/v1/health/ready').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    volumes:
+      - abp-objects:/workspace/.tmp/object-storage
+      - abp-backup-status:/backup-status:ro
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      object-storage-init:
+        condition: service_completed_successfully
+
+  worker:
+    build:
+      context: .
+      dockerfile: apps/worker/Dockerfile
+    environment:
+      NODE_ENV: development
+      DATABASE_URL: postgresql://abp:abp@db:5432/abp?schema=public
+      ABP_WORKER_ID: local-docker-worker
+      ABP_WORKER_BATCH_SIZE: "10"
+      ABP_WORKER_POLL_DELAY_MS: "1000"
+      ABP_WORKER_LEASE_SECONDS: "30"
+      ABP_WORKER_RETRY_BASE_MS: "1000"
+      ABP_WORKER_RETRY_MAX_MS: "60000"
+      ABP_WORKER_HEALTH_PORT: "3001"
+      ABP_ERP_SYNC_SCAN_INTERVAL_MS: "5000"
+      ABP_ERP_SYNC_BATCH_SIZE: "25"
+      # The worker writes the generated quotation PDFs. It must use the same
+      # object root as the API, or the API serves 404s for documents that were
+      # written somewhere else inside the worker's own container.
+      ABP_LOCAL_OBJECT_ROOT: /workspace/.tmp/object-storage
+      # Where the rendered document points when it embeds a product photo.
+      ABP_PUBLIC_BASE_URL: http://web:8080
+      ABP_BACKUP_STATUS_FILE: /backup-status/latest.json
+      # Email. Locally everything goes to Mailpit (http://localhost:8025) and
+      # never leaves this machine. For Outlook set these in a .env file next
+      # to this one -- see docs/guides/email-and-backups.md.
+      ABP_MAIL_PROVIDER: ${ABP_MAIL_PROVIDER:-SMTP}
+      ABP_MAIL_SENDER: ${ABP_MAIL_SENDER:-crm@acrow.local}
+      ABP_MAIL_FROM_NAME: ${ABP_MAIL_FROM_NAME:-ACROW Building Products}
+      ABP_MAIL_SMTP_HOST: ${ABP_MAIL_SMTP_HOST:-mailpit}
+      ABP_MAIL_SMTP_PORT: ${ABP_MAIL_SMTP_PORT:-1025}
+      ABP_MAIL_SMTP_SECURE: ${ABP_MAIL_SMTP_SECURE:-false}
+      ABP_MAIL_SMTP_USER: ${ABP_MAIL_SMTP_USER:-}
+      ABP_MAIL_SMTP_PASSWORD: ${ABP_MAIL_SMTP_PASSWORD:-}
+      ABP_MAIL_GRAPH_TENANT_ID: ${ABP_MAIL_GRAPH_TENANT_ID:-}
+      ABP_MAIL_GRAPH_CLIENT_ID: ${ABP_MAIL_GRAPH_CLIENT_ID:-}
+      ABP_MAIL_GRAPH_CLIENT_SECRET: ${ABP_MAIL_GRAPH_CLIENT_SECRET:-}
+      ABP_PUBLIC_APP_URL: ${ABP_PUBLIC_APP_URL:-http://localhost:8080}
+    ports:
+      - "3001:3001"
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:3001/health/ready').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    volumes:
+      - abp-objects:/workspace/.tmp/object-storage
+      - abp-backup-status:/backup-status:ro
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      object-storage-init:
+        condition: service_completed_successfully
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    environment:
+      PORT: "8080"
+      # Relative path: nginx proxies /api/ to the api container internally, so
+      # the browser only ever talks to origin :8080. Pointing this at an
+      # absolute http://localhost:3000 URL made every API call cross-origin,
+      # which made the session cookie unreliable (login 200, then every
+      # following request looked logged-out).
+      ABP_API_BASE_URL: /api/v1
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:8080/"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+    depends_on:
+      api:
+        condition: service_started
+
+  # Catches every email locally: open http://localhost:8025 to read them.
+  mailpit:
+    image: axllent/mailpit:v1.27
+    ports:
+      - "8025:8025"
+    environment:
+      MP_MAX_MESSAGES: "500"
+    restart: unless-stopped
+
+  # Nightly backup of the database and every document, each one restored
+  # into a scratch database before it counts. Backups land in ./backups.
+  backup:
+    image: postgres:16-alpine
+    entrypoint: ["/bin/sh", "/scripts/backup.sh"]
+    command: ["service"]
+    environment:
+      PGHOST: db
+      PGUSER: abp
+      PGPASSWORD: abp
+      PGDATABASE: abp
+      TZ: Africa/Cairo
+      ABP_BACKUP_HOUR: ${ABP_BACKUP_HOUR:-2}
+      ABP_BACKUP_KEEP_DAILY: ${ABP_BACKUP_KEEP_DAILY:-14}
+      ABP_BACKUP_KEEP_MONTHLY: ${ABP_BACKUP_KEEP_MONTHLY:-6}
+    volumes:
+      - ./scripts/docker/backup:/scripts:ro
+      - ${ABP_BACKUP_DIR:-./backups}:/backups
+      - abp-objects:/objects
+      - abp-backup-status:/status
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  abp_pgdata:
+  abp-objects:
+  abp-backup-status:

@@ -1,0 +1,58 @@
+name: build-promote-deploy
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        options: [staging, production]
+        required: true
+permissions:
+  contents: read
+  id-token: write
+  packages: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      digest: ${{ steps.build.outputs.digest }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      - uses: azure/docker-login@v2
+        with:
+          login-server: ${{ vars.ACR_LOGIN_SERVER }}
+          username: ${{ secrets.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
+      - id: build
+        run: |
+          docker buildx build --file apps/api/Dockerfile --tag "${{ vars.ACR_LOGIN_SERVER }}/abp-api:${GITHUB_SHA}" --push --metadata-file api-metadata.json .
+          DIGEST=$(jq -r '.["containerimage.digest"]' api-metadata.json)
+          echo "digest=$DIGEST" >> "$GITHUB_OUTPUT"
+      - uses: actions/upload-artifact@v4
+        with: { name: immutable-build-metadata, path: api-metadata.json }
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      - name: What-if then deploy immutable digest
+        run: |
+          az deployment sub what-if --location uaenorth --template-file infra/main.bicep --parameters environment=${{ inputs.environment }} apiImage=${{ vars.ACR_LOGIN_SERVER }}/abp-api@${{ needs.build.outputs.digest }} workerImage=${{ vars.WORKER_IMAGE_DIGEST }} postgresAdministratorLogin=${{ secrets.POSTGRES_ADMIN_LOGIN }} postgresAdministratorPassword=${{ secrets.POSTGRES_ADMIN_PASSWORD }}
+          az deployment sub create --location uaenorth --template-file infra/main.bicep --parameters environment=${{ inputs.environment }} apiImage=${{ vars.ACR_LOGIN_SERVER }}/abp-api@${{ needs.build.outputs.digest }} workerImage=${{ vars.WORKER_IMAGE_DIGEST }} postgresAdministratorLogin=${{ secrets.POSTGRES_ADMIN_LOGIN }} postgresAdministratorPassword=${{ secrets.POSTGRES_ADMIN_PASSWORD }}
+      - name: Record rollback target
+        run: echo "${{ needs.build.outputs.digest }}" > deployed-digest.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: deployment-${{ inputs.environment }}
+          path: deployed-digest.txt

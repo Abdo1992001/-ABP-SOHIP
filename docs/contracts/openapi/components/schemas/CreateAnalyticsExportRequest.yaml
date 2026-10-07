@@ -1,0 +1,10 @@
+type: object
+properties:
+  formatCode: { type: string, enum: [CSV, XLSX, PDF] }
+  asOf: { type: string, format: date-time }
+  from: { type: string, format: date-time }
+  to: { type: string, format: date-time }
+  currency: { type: string, enum: [USD, EGP], default: USD }
+  countryCode: { $ref: ./CountryCode.yaml }
+additionalProperties: false
+required: [formatCode]

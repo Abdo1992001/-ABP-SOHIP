@@ -1,0 +1,75 @@
+get:
+  tags: [Catalog]
+  summary: Product images
+  operationId: get_products_by_productId_images
+  description: 'Permission: catalog.view. Scope: Catalog read.'
+  security: [{ WebCookie: [] }, { DesktopOAuth: [] }]
+  parameters:
+    - name: productId
+      in: path
+      required: true
+      schema: { type: string, format: uuid }
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ProductImageListEnvelope.yaml
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '403': { $ref: ../components/responses/Error403.yaml }
+    '404': { $ref: ../components/responses/Error404.yaml }
+  x-abp-module: Catalog
+  x-abp-permission: catalog.view
+  x-abp-scope-rule: Catalog read
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: ProductListQuery
+  x-abp-success-schema: ProductImageListEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true
+post:
+  tags: [Catalog]
+  summary: Upload a product image
+  operationId: post_products_by_productId_images
+  description: >-
+    Permission: catalog.manage. Scope: Catalog write. Replaces the primary image;
+    the previous one is demoted, not deleted, so documents already issued with it
+    keep rendering.
+  security: [{ WebCookie: [] }, { DesktopOAuth: [] }]
+  parameters:
+    - name: productId
+      in: path
+      required: true
+      schema: { type: string, format: uuid }
+    - $ref: ../components/parameters/CsrfToken.yaml
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/ProductImageUploadRequest.yaml
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ProductImageEnvelope.yaml
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '403': { $ref: ../components/responses/Error403.yaml }
+    '404': { $ref: ../components/responses/Error404.yaml }
+    '422': { $ref: ../components/responses/Error422.yaml }
+  x-abp-module: Catalog
+  x-abp-permission: catalog.manage
+  x-abp-scope-rule: Catalog write
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: ProductImageUploadRequest
+  x-abp-success-schema: ProductImageEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

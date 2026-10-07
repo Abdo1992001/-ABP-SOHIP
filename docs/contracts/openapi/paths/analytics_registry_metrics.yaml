@@ -1,0 +1,25 @@
+get:
+  tags: [Analytics]
+  summary: List governed metric definitions projected by permission
+  operationId: get_analytics_registry_metrics
+  security: [{ WebCookie: [] }, { DesktopOAuth: [] }]
+  responses:
+    '200':
+      description: Permission-projected metric registry
+      content:
+        application/json:
+          schema: { $ref: ../components/schemas/MetricDefinitionListEnvelope.yaml }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '403': { $ref: ../components/responses/Error403.yaml }
+    '500': { $ref: ../components/responses/Error500.yaml }
+  x-abp-module: Analytics
+  x-abp-permission: reports.commercial
+  x-abp-scope-rule: Permission projection; no metric values
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: AnalyticsRegistryQuery
+  x-abp-success-schema: MetricDefinitionListEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

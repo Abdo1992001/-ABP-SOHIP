@@ -1,0 +1,102 @@
+type: object
+properties:
+  year:
+    type: integer
+  baseCurrencyCode:
+    type: string
+    const: USD
+  targetAmount:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+  wonAmount:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+  remainingAmount:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+  achievementPct:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+  # Realised sales taken from the ERP order history, reported beside the WON
+  # figure rather than merged into it: one is what the pipeline closed, the
+  # other is what the company actually invoiced.
+  realisedAmount:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+  realisedAmountEgp:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+  realisedAchievementPct:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+  realisedRemainingAmount:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+  # The USD/EGP rate the conversion used, and the day it took effect.
+  fxRate:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+  fxEffectiveAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+  fxSourceCode:
+    type:
+      - string
+      - 'null'
+  periods:
+    type: array
+    items:
+      type: object
+      properties:
+        periodStart:
+          type: string
+          format: date
+        periodEnd:
+          type: string
+          format: date
+        targetAmount:
+          type: string
+          pattern: ^-?\d+(\.\d+)?$
+        wonAmount:
+          type: string
+          pattern: ^-?\d+(\.\d+)?$
+        remainingAmount:
+          type: string
+          pattern: ^-?\d+(\.\d+)?$
+        achievementPct:
+          type:
+            - string
+            - 'null'
+          pattern: ^-?\d+(\.\d+)?$
+        realisedAmount:
+          type: string
+          pattern: ^-?\d+(\.\d+)?$
+        realisedAmountEgp:
+          type: string
+          pattern: ^-?\d+(\.\d+)?$
+        realisedAchievementPct:
+          type:
+            - string
+            - 'null'
+          pattern: ^-?\d+(\.\d+)?$
+      additionalProperties: false
+      required:
+        - periodStart
+        - periodEnd
+        - targetAmount
+        - wonAmount
+        - remainingAmount
+additionalProperties: false
+required:
+  - year
+  - baseCurrencyCode
+  - targetAmount
+  - wonAmount
+  - remainingAmount
+  - periods

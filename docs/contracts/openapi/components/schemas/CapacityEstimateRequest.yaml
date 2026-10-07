@@ -1,0 +1,41 @@
+type: object
+properties:
+  sourceTypeCode:
+    type: string
+    enum:
+      - QUOTATION
+      - SALES_ORDER
+      - MANUAL
+  sourceResourceId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  startAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+  items:
+    type: array
+    items:
+      type: object
+      properties:
+        categoryCode:
+          type: string
+          enum:
+            - STANDARD
+            - ORDINARY
+            - CURVED
+        quantityBoards:
+          type: string
+          pattern: ^-?\d+(\.\d+)?$
+      additionalProperties: false
+      required:
+        - categoryCode
+        - quantityBoards
+    minItems: 1
+additionalProperties: false
+required:
+  - sourceTypeCode
+  - items

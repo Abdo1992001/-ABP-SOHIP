@@ -1,0 +1,26 @@
+type: object
+properties:
+  recipientUserId:
+    type: string
+    format: uuid
+  shareScopeCode:
+    type: string
+    enum:
+      - CONTACT_ONLY
+      - CUSTOMER_CONTACTS
+      - COMMERCIAL_WORKSPACE
+  accessLevelCode:
+    type: string
+    enum:
+      - VIEW
+      - COLLABORATE_EDIT
+  expiresAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+additionalProperties: false
+required:
+  - recipientUserId
+  - shareScopeCode
+  - accessLevelCode

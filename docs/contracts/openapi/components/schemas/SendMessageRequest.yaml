@@ -1,0 +1,11 @@
+type: object
+additionalProperties: false
+required: [body]
+properties:
+  body: { type: string, minLength: 1, maxLength: 10000 }
+  replyToMessageId: { type: string, format: uuid }
+  attachmentIds:
+    type: array
+    maxItems: 10
+    uniqueItems: true
+    items: { type: string, format: uuid }

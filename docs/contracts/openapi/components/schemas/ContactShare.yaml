@@ -1,0 +1,43 @@
+type: object
+properties:
+  contactShareId:
+    type: string
+    format: uuid
+    description: Contact share header.
+  accountId:
+    type: string
+    format: uuid
+    description: Owning account.
+  recipientUserId:
+    type: string
+    format: uuid
+    description: Recipient.
+  contactIds:
+    type: array
+    items:
+      type: string
+      format: uuid
+    minItems: 1
+    description: Selected contacts governed by this share header.
+  accessLevelCode:
+    type: string
+    description: VIEW/EDIT subject to base permissions.
+  expiresAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+    description: Expiry.
+  statusCode:
+    type: string
+    description: Lifecycle.
+  rowVersion:
+    $ref: ./RowVersion.yaml
+    description: Concurrency token used for revocation.
+additionalProperties: false
+required:
+  - accountId
+  - contactShareId
+  - recipientUserId
+  - contactIds
+  - rowVersion

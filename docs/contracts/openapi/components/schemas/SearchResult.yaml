@@ -1,0 +1,22 @@
+type: object
+properties:
+  resourceTypeCode:
+    type: string
+  resourceId:
+    type: string
+    format: uuid
+  primaryText:
+    type: string
+  secondaryText:
+    type:
+      - string
+      - 'null'
+  badgeCode:
+    type:
+      - string
+      - 'null'
+additionalProperties: false
+required:
+  - resourceTypeCode
+  - resourceId
+  - primaryText

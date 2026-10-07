@@ -1,0 +1,8 @@
+name: X-CSRF-Token
+in: header
+required: false
+schema:
+  type: string
+description: >-
+  Required for state-changing Web/PWA cookie-auth requests according to
+  deployment CSRF strategy.

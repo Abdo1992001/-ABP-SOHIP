@@ -1,0 +1,31 @@
+parameters:
+  - name: exportId
+    in: path
+    required: true
+    schema: { $ref: ../components/schemas/UUID.yaml }
+get:
+  tags: [Analytics, Exports]
+  summary: Get the requesting user's analytics export status
+  operationId: get_analytics_exports_by_exportId
+  security: [{ WebCookie: [] }, { DesktopOAuth: [] }]
+  responses:
+    '200':
+      description: Analytics export status
+      content:
+        application/json:
+          schema: { $ref: ../components/schemas/AnalyticsExportEnvelope.yaml }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '403': { $ref: ../components/responses/Error403.yaml }
+    '404': { $ref: ../components/responses/Error404.yaml }
+    '500': { $ref: ../components/responses/Error500.yaml }
+  x-abp-module: Analytics
+  x-abp-permission: exports.view
+  x-abp-scope-rule: Requesting user only; no export IDOR
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: AnalyticsExportStatusQuery
+  x-abp-success-schema: AnalyticsExportEnvelope
+  x-abp-job-dto: true
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

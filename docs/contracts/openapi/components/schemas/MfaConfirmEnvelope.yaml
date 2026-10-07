@@ -1,0 +1,15 @@
+type: object
+additionalProperties: false
+required: [data]
+properties:
+  data:
+    type: object
+    additionalProperties: false
+    required: [enabled, recoveryCodes]
+    properties:
+      enabled: { type: boolean }
+      recoveryCodes:
+        type: array
+        minItems: 10
+        maxItems: 10
+        items: { type: string }

@@ -1,0 +1,16 @@
+get:
+  security: [{ ExternalBffAssertion: [] }]
+  tags: [Identity]
+  summary: Authorized client customer contexts
+  operationId: get_portal_customer_contexts
+  responses:
+    '200': { description: Success, content: { application/json: { schema: { type: object, additionalProperties: false, required: [data], properties: { data: { type: array, items: { $ref: ../components/schemas/ClientPortalContext.yaml } } } } } } }
+    '400': { $ref: ../components/responses/Error400.yaml }
+  x-abp-module: Client Portal
+  x-abp-permission: external.active-binding
+  x-abp-scope-rule: Entra subject to active explicit customer bindings only
+  x-abp-concurrency: NONE
+  x-abp-execution-mode: SYNC
+  x-abp-job-dto: false
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

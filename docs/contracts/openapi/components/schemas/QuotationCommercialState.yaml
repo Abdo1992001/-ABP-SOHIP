@@ -1,0 +1,10 @@
+type: object
+additionalProperties: false
+required: [quotationId, quotationRef, documentState, commercialState, rowVersion]
+properties:
+  quotationId: { type: string, format: uuid }
+  quotationRef: { type: string }
+  documentState: { type: string, enum: [DRAFT, SENT] }
+  commercialState: { type: string, enum: [NOT_SUBMITTED, SUBMITTED, UNDER_NEGOTIATION] }
+  firstSubmittedAt: { type: [string, 'null'], format: date-time }
+  rowVersion: { type: string, pattern: '^\d+$' }

@@ -1,0 +1,30 @@
+type: object
+properties:
+  documentSubjectId:
+    type: string
+    format: uuid
+    description: The subject line, on the company-wide list.
+  subjectText:
+    type: string
+    description: What the offer is for, as it is printed on the document.
+  isDefault:
+    type: boolean
+    description: Pre-selected on a new quotation. Exactly one subject is.
+  isActive:
+    type: boolean
+    description: Offered on the picker. A retired subject stays on old documents.
+  sortOrder:
+    type: integer
+    description: Where it sits on the picker; ties break alphabetically.
+  createdAt:
+    type: string
+    format: date-time
+    description: Creation timestamp.
+additionalProperties: false
+required:
+  - documentSubjectId
+  - subjectText
+  - isDefault
+  - isActive
+  - sortOrder
+  - createdAt

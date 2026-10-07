@@ -1,0 +1,23 @@
+{
+  "verdict": "PASS",
+  "environment": "isolated local PostgreSQL 17.11 restore database in Docker",
+  "durationSeconds": 4.16,
+  "verification": {
+    "serverVersion": "17.11",
+    "tables": 118,
+    "migrations": 41,
+    "audit": 40
+  },
+  "destructiveTargetControl": {
+    "exactDatabase": "abp_step11_restore_1789280654217",
+    "productionTouched": false
+  },
+  "design": {
+    "rpoMinutes": 15,
+    "rtoHours": 4,
+    "pitrDays": 14,
+    "dailyRetentionDays": 35,
+    "monthlyRetentionMonths": 12
+  },
+  "liveAzureEvidence": "PENDING EXTERNAL"
+}

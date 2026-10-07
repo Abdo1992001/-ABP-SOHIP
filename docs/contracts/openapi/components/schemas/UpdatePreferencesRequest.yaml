@@ -1,0 +1,66 @@
+type: object
+properties:
+  preferences:
+    type: object
+    properties:
+      theme:
+        type:
+          - string
+          - 'null'
+      language:
+        type:
+          - string
+          - 'null'
+      density:
+        type:
+          - string
+          - 'null'
+      savedViews:
+        type: object
+        additionalProperties:
+          type: object
+          properties:
+            filters:
+              type: object
+              additionalProperties:
+                type:
+                  - string
+                  - number
+                  - integer
+                  - boolean
+                  - 'null'
+            sort:
+              type: array
+              items:
+                type: object
+                properties:
+                  field:
+                    type: string
+                  direction:
+                    type: string
+                    enum:
+                      - asc
+                      - desc
+                additionalProperties: false
+                required:
+                  - field
+                  - direction
+          additionalProperties: false
+      favorites:
+        type: array
+        items:
+          type: object
+          properties:
+            resourceTypeCode:
+              type: string
+            resourceId:
+              type: string
+              format: uuid
+          additionalProperties: false
+          required:
+            - resourceTypeCode
+            - resourceId
+    additionalProperties: false
+additionalProperties: false
+required:
+  - preferences

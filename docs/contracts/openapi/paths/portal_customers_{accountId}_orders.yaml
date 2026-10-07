@@ -1,0 +1,17 @@
+get:
+  security: [{ ExternalBffAssertion: [] }]
+  tags: [ERP Orders]
+  summary: Client-safe own ERP orders and quantity lines
+  operationId: get_portal_customers_by_accountId_orders
+  parameters: [{ name: accountId, in: path, required: true, schema: { type: string, format: uuid } }, { $ref: ../components/parameters/Offset.yaml }, { $ref: ../components/parameters/Limit.yaml }]
+  responses:
+    '200': { description: Success, content: { application/json: { schema: { type: object, additionalProperties: false, required: [data, meta], properties: { data: { type: array, items: { type: object, additionalProperties: false, required: [erpOrderId, orderReference, statusCode, lines], properties: { erpOrderId: { type: string, format: uuid }, orderReference: { type: string }, orderDate: { type: [string, 'null'], format: date }, statusCode: { type: string }, countryCode: { type: [string, 'null'] }, lines: { type: array, items: { type: object, additionalProperties: false, required: [orderedQty, shippedQty], properties: { productId: { type: [string, 'null'], format: uuid }, orderedQty: { type: string }, shippedQty: { type: string }, remainingQty: { type: [string, 'null'] } } } } } } }, meta: { $ref: ../components/schemas/OffsetPageMeta.yaml } } } } } }
+    '400': { $ref: ../components/responses/Error400.yaml }
+  x-abp-module: Client Portal
+  x-abp-permission: external.active-binding
+  x-abp-scope-rule: Current explicit customer binding; no monetary or Finance fields
+  x-abp-concurrency: NONE
+  x-abp-execution-mode: SYNC
+  x-abp-job-dto: false
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

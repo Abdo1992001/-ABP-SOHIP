@@ -1,0 +1,77 @@
+type: object
+properties:
+  typeCode:
+    type: string
+  subject:
+    type:
+      - string
+      - 'null'
+  notes:
+    type:
+      - string
+      - 'null'
+  occurredAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+  scheduledAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+  dueAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+  links:
+    type: array
+    items:
+      type: object
+      properties:
+        resourceTypeCode:
+          type: string
+        resourceId:
+          type: string
+          format: uuid
+        isPrimary:
+          type: boolean
+      additionalProperties: false
+      required:
+        - resourceTypeCode
+        - resourceId
+  participants:
+    type: array
+    items:
+      type: object
+      properties:
+        participantTypeCode:
+          type: string
+        userId:
+          type:
+            - string
+            - 'null'
+          format: uuid
+        contactId:
+          type:
+            - string
+            - 'null'
+          format: uuid
+        externalName:
+          type:
+            - string
+            - 'null'
+        externalEmail:
+          type:
+            - string
+            - 'null'
+        externalPhone:
+          type:
+            - string
+            - 'null'
+      additionalProperties: false
+additionalProperties: false
+required:
+  - typeCode
+  - links

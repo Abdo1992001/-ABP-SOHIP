@@ -1,0 +1,27 @@
+post:
+  tags: [Pricing]
+  summary: Retire a pricing rule from the picker without deleting it
+  operationId: post_pricing_calculation_formulas_by_formulaKey_retire
+  parameters:
+    - name: formulaKey
+      in: path
+      required: true
+      schema: { type: string, maxLength: 80 }
+    - $ref: ../components/parameters/IdempotencyKey.yaml
+  responses:
+    '200':
+      description: Retired
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/CalculationFormulaEnvelope.yaml
+    '400': { $ref: ../components/responses/Error400.yaml }
+    '404': { $ref: ../components/responses/Error404.yaml }
+  x-abp-permission: pricing.policy.manage
+  x-abp-scope-rule: Quotations already priced by the rule keep their snapshot
+  x-abp-module: Pricing
+  x-abp-concurrency: NONE
+  x-abp-execution-mode: SYNC
+  x-abp-job-dto: false
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

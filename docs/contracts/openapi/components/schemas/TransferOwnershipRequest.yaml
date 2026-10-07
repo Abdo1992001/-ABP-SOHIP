@@ -1,0 +1,11 @@
+type: object
+properties:
+  targetUserId:
+    type: string
+    format: uuid
+  expectedRowVersion:
+    $ref: ./RowVersion.yaml
+additionalProperties: false
+required:
+  - targetUserId
+  - expectedRowVersion

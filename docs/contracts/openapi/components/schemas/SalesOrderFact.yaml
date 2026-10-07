@@ -1,0 +1,112 @@
+type: object
+properties:
+  salesOrderId:
+    type: string
+    format: uuid
+    description: Canonical imported order fact.
+  sourceSalesOrderId:
+    type: string
+    format: uuid
+    description: Raw source header.
+  sourceSystemId:
+    type: string
+    format: uuid
+    description: Source.
+  orderNumber:
+    type: string
+    description: Canonical/ERP order number.
+  accountId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    description: Resolved customer; can await reconciliation.
+  countryCode:
+    type:
+      - string
+      - 'null'
+    description: Resolved scope country.
+  orderDate:
+    type:
+      - string
+      - 'null'
+    format: date
+    description: Order date.
+  statusRaw:
+    type:
+      - string
+      - 'null'
+    description: Raw ERP status preserved.
+  statusCode:
+    type:
+      - string
+      - 'null'
+    description: Canonical normalized status.
+  currencyCode:
+    type:
+      - string
+      - 'null'
+    description: Currency.
+  totalAmount:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+    description: Canonical total.
+  shippedQtySummary:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+    description: Imported/derived shipped summary.
+  invoicedAmount:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+    description: Imported invoiced amount.
+  sourceUpdatedAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+    description: Source's update timestamp.
+  importedAt:
+    type: string
+    format: date-time
+    description: Last canonical upsert/import.
+  accountName:
+    type:
+      - string
+      - 'null'
+    description: Resolved customer's canonical name, so a list of orders is readable.
+  salesRep:
+    type:
+      - string
+      - 'null'
+  customerPoNumber:
+    type:
+      - string
+      - 'null'
+  orderTypeRaw:
+    type:
+      - string
+      - 'null'
+  lineCount:
+    type: integer
+    description: Number of order items on this order.
+  isIntercompany:
+    type: boolean
+    description: True when the customer is an ACROW group company, not an external customer.
+  totalAmountEgp:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+    description: Total converted to EGP, the only currency all orders share.
+additionalProperties: false
+required:
+  - orderNumber
+  - salesOrderId
+  - sourceSalesOrderId
+  - sourceSystemId

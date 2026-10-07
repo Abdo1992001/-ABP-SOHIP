@@ -1,0 +1,74 @@
+{
+  "status": "NO_GO",
+  "productionDeployment": "NOT_EXECUTED",
+  "productionReady": false,
+  "releaseGateEvidence": "docs/governance/step-12-release-gates.json",
+  "dependencies": [
+    {
+      "id": "DEP-001",
+      "status": "PENDING EXTERNAL",
+      "ownerRole": "Identity/Security Owner",
+      "requiredEvidence": "Entra tenant, app registrations, MFA, Conditional Access and BFF production evidence"
+    },
+    {
+      "id": "DEP-002",
+      "status": "PENDING EXTERNAL",
+      "ownerRole": "Technical Owner/Cloud Owner",
+      "requiredEvidence": "Azure subscription, approved resources, private networking, Key Vault, scanner, telemetry and deployment evidence"
+    },
+    {
+      "id": "DEP-003",
+      "status": "PENDING EXTERNAL",
+      "ownerRole": "Security/DR Owner",
+      "requiredEvidence": "Approved UAE Central scanning fallback or approved alternate DR region"
+    },
+    {
+      "id": "DEP-004",
+      "status": "PENDING EXTERNAL",
+      "ownerRole": "Business/Product Owner",
+      "requiredEvidence": "Three baseline signoffs, formal owners, staffing and training responsibility"
+    },
+    {
+      "id": "DEP-005",
+      "status": "PENDING EXTERNAL",
+      "ownerRole": "Data Migration Owner",
+      "requiredEvidence": "Completed source register with owners, counts, checksums and extracts"
+    },
+    {
+      "id": "DEP-006",
+      "status": "PENDING GOVERNANCE / EXTERNAL",
+      "ownerRole": "Business/Technical Owners",
+      "requiredEvidence": "Approved production workload profile and formal performance run"
+    },
+    {
+      "id": "DEP-007",
+      "status": "PENDING EXTERNAL",
+      "ownerRole": "Legal/Security Owner",
+      "requiredEvidence": "Formal retention/legal approval"
+    },
+    {
+      "id": "DEP-008",
+      "status": "PENDING EXTERNAL",
+      "ownerRole": "Business/Security Owners",
+      "requiredEvidence": "UAT and production access rosters, execution and certification signoffs"
+    }
+  ],
+  "liveEvidence": {
+    "ssotFormalSignoff": "PENDING",
+    "entraMfa": "PENDING",
+    "azure": "PENDING",
+    "oidc": "PENDING",
+    "telemetry": "PENDING",
+    "productionBackup": "PENDING",
+    "productionRestore": "PENDING",
+    "dr": "PENDING",
+    "uat": "PENDING",
+    "accessCertification": "PENDING",
+    "training": "PENDING",
+    "cutoverSourceRegister": "PENDING",
+    "cutoverDryRun": "PENDING",
+    "rollbackRehearsal": "PENDING",
+    "msixSigning": "PENDING",
+    "finalGoNoGo": "NO_GO"
+  }
+}

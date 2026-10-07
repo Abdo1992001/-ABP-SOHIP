@@ -1,0 +1,29 @@
+type: object
+properties:
+  contactId:
+    type: string
+    format: uuid
+    description: Contact.
+  accountId:
+    type: string
+    format: uuid
+    description: Owning account.
+  displayName:
+    type: string
+    description: Contact name.
+  jobTitle:
+    type:
+      - string
+      - 'null'
+    description: Company title.
+  statusCode:
+    type: string
+    description: Contact lifecycle.
+  rowVersion:
+    $ref: ./RowVersion.yaml
+    description: Concurrency.
+additionalProperties: false
+required:
+  - accountId
+  - contactId
+  - displayName

@@ -1,0 +1,8 @@
+{
+  "contractVersion": "1.1.0",
+  "openapiSha256": "0785cb995d5b316fd370c80b8bbb138cd3519cf6d684489cfd2f602ffb84e19d",
+  "generatedClientSha256": "ae24b157da00bd677954e46d38411590f49af5b74cb07b9b8dd1f4bf0742cf2e",
+  "generatedClientPackage": "@abp/api-client@1.1.0",
+  "status": "SUPERSEDED_BY_APPROVED_CONTRACT_DELTA_CD_WS2A_001",
+  "supersededByContractVersion": "1.2.0"
+}

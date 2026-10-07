@@ -1,0 +1,68 @@
+type: object
+properties:
+  productId:
+    type: string
+    format: uuid
+  currencyCode:
+    type: string
+  unitPrice:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+  minPrice:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+  referencePrice:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+  maxPrice:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+  fxRateId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  fxRate:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+  fxEffectiveAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+  calculationVersion:
+    type: string
+  warnings:
+    type: array
+    items:
+      $ref: ./PricingWarning.yaml
+  costAmount:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+  marginAmount:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+  marginPct:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+additionalProperties: false
+required:
+  - productId
+  - currencyCode
+  - unitPrice
+  - calculationVersion
+  - warnings

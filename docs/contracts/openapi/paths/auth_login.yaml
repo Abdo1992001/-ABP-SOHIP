@@ -1,0 +1,33 @@
+post:
+  tags: [Identity]
+  summary: Sign in with a local username or email and password
+  operationId: post_auth_login
+  security: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema: { $ref: ../components/schemas/LocalLoginRequest.yaml }
+  responses:
+    '200':
+      description: Authenticated or MFA challenge required
+      headers:
+        Set-Cookie: { schema: { type: string } }
+      content:
+        application/json:
+          schema: { $ref: ../components/schemas/LocalAuthEnvelope.yaml }
+    '400': { $ref: ../components/responses/Error400.yaml }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '429': { $ref: ../components/responses/Error429.yaml }
+    '500': { $ref: ../components/responses/Error500.yaml }
+  x-abp-module: Identity
+  x-abp-permission: public
+  x-abp-scope-rule: Local active user only; generic credential failures
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: LocalLoginRequest
+  x-abp-success-schema: LocalAuthEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

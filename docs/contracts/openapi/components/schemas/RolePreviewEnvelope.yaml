@@ -1,0 +1,28 @@
+type: object
+properties:
+  data:
+    type: object
+    properties:
+      roleCode:
+        type: string
+        description: The role previewed.
+      name:
+        type: string
+      workspace:
+        type: string
+        description: The workspace the role belongs to.
+      permissions:
+        type: array
+        maxItems: 400
+        items:
+          type: string
+        description: The permission codes the role grants, sorted.
+    additionalProperties: false
+    required:
+      - roleCode
+      - name
+      - workspace
+      - permissions
+additionalProperties: false
+required:
+  - data

@@ -1,0 +1,58 @@
+post:
+  tags:
+    - Quotations
+  summary: Read a past quotation PDF
+  operationId: post_quotations_read_pdf
+  description: >-
+    Reads a previously issued ACROW quotation PDF and returns what it was read
+    to contain: header, priced lines, the totals the document printed, and any
+    row inside the price table that carried figures but did not reconcile.
+    Nothing is written — this is a reading a person accepts or rejects. The
+    quantity on each line is the figure that satisfies quantity x unit price =
+    line total, because the price table appears with several different column
+    sets and position alone cannot tell them apart. Permission:
+    quotations.create.
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  parameters:
+    - $ref: ../components/parameters/CsrfToken.yaml
+  requestBody:
+    required: true
+    content:
+      application/pdf:
+        schema:
+          type: string
+          format: binary
+  responses:
+    '200':
+      description: The document was read
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/QuotationPdfReadingEnvelope.yaml
+    '400':
+      $ref: ../components/responses/Error400.yaml
+    '401':
+      $ref: ../components/responses/Error401.yaml
+    '403':
+      $ref: ../components/responses/Error403.yaml
+    '422':
+      $ref: ../components/responses/Error422.yaml
+    '429':
+      $ref: ../components/responses/Error429.yaml
+    '500':
+      $ref: ../components/responses/Error500.yaml
+    '503':
+      $ref: ../components/responses/Error503.yaml
+  x-abp-module: Quotation
+  x-abp-permission: quotations.create
+  x-abp-scope-rule: Actor country scope
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: QuotationPdfBinary
+  x-abp-success-schema: QuotationPdfReadingEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

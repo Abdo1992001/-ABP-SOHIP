@@ -1,0 +1,15 @@
+type: object
+properties:
+  self:
+    type:
+      - string
+      - 'null'
+  next:
+    type:
+      - string
+      - 'null'
+  download:
+    type:
+      - string
+      - 'null'
+additionalProperties: false

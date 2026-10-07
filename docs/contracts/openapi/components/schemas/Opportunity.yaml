@@ -1,0 +1,91 @@
+type: object
+properties:
+  opportunityId:
+    type: string
+    format: uuid
+    description: Opportunity.
+  opportunityRef:
+    type: string
+    description: Human ref.
+  title:
+    type:
+      - string
+      - 'null'
+    description: What the deal is called.
+  accountId:
+    type: string
+    format: uuid
+    description: Customer.
+  projectId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    description: Project; null only allowed by no-project rule.
+  countryCode:
+    type: string
+    description: Effective scope country.
+  ownerUserId:
+    type: string
+    format: uuid
+    description: Commercial owner.
+  stageCode:
+    type: string
+    description: NEW_LEAD/HOT_LEAD/UNDER_NEGOTIATION/WON/LOST.
+  probabilityPct:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+    description: Forecast probability.
+  probabilitySourceCode:
+    type: string
+    description: STAGE_DEFAULT or MANUAL_OVERRIDE.
+  estimatedValue:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+    description: Estimated opportunity value.
+  currencyCode:
+    type:
+      - string
+      - 'null'
+    description: Estimated value currency.
+  expectedCloseDate:
+    type:
+      - string
+      - 'null'
+    format: date
+    description: Forecast close date.
+  noProjectReasonCode:
+    type:
+      - string
+      - 'null'
+    description: Required if project_id null under allowed types.
+  lostReasonCode:
+    type:
+      - string
+      - 'null'
+    description: Mandatory on LOST.
+  wonAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+    description: Won timestamp.
+  wonValueSnapshot:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+    description: Value captured at WON.
+  rowVersion:
+    $ref: ./RowVersion.yaml
+additionalProperties: false
+required:
+  - accountId
+  - countryCode
+  - opportunityId
+  - ownerUserId
+  - rowVersion

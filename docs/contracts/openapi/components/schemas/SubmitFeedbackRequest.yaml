@@ -1,0 +1,20 @@
+type: object
+additionalProperties: false
+required: [kindCode, referenceTypeCode, referenceText, contactName, message]
+description: A phone number or an email is required.
+properties:
+  kindCode: { type: string, enum: [SATISFACTION, PROBLEM, SUGGESTION, QUESTION] }
+  topicCode: { type: string, enum: [PRODUCT_QUALITY, DELIVERY_DELAY, DAMAGED_GOODS, BILLING, SERVICE, OTHER] }
+  rating: { type: integer, minimum: 1, maximum: 5 }
+  isCritical: { type: boolean }
+  referenceTypeCode: { type: string, enum: [ORDER, QUOTATION, PROFORMA, ITEM_CODE, OTHER] }
+  referenceText: { type: string, minLength: 2, maxLength: 120 }
+  contactName: { type: string, minLength: 2, maxLength: 150 }
+  companyName: { type: string, maxLength: 200 }
+  jobTitle: { type: string, maxLength: 120 }
+  phone: { type: string, maxLength: 30 }
+  email: { type: string, format: email, maxLength: 254 }
+  preferredChannelCode: { type: string, enum: [PHONE, WHATSAPP, EMAIL] }
+  consentToContact: { type: boolean }
+  message: { type: string, minLength: 5, maxLength: 4000 }
+  website: { type: string, maxLength: 200, description: Left empty; a trap for bots. }

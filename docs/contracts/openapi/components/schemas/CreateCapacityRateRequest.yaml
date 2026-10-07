@@ -1,0 +1,27 @@
+type: object
+properties:
+  categoryCode:
+    type: string
+    enum:
+      - STANDARD
+      - ORDINARY
+      - CURVED
+  boardsPerDay:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+  effectiveFrom:
+    type: string
+    format: date-time
+  effectiveTo:
+    type:
+      - string
+      - 'null'
+    format: date-time
+  sourceCode:
+    type: string
+additionalProperties: false
+required:
+  - categoryCode
+  - boardsPerDay
+  - effectiveFrom
+  - sourceCode

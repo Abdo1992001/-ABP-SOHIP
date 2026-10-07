@@ -1,0 +1,64 @@
+type: object
+properties:
+  productId:
+    type: string
+    format: uuid
+    description: Canonical item.
+  skuCode:
+    type:
+      - string
+      - 'null'
+    description: Canonical SKU; nullable for custom template rows.
+  barcode:
+    type:
+      - string
+      - 'null'
+    description: Barcode if canonical.
+  productFamilyId:
+    type: string
+    format: uuid
+    description: Family.
+  productTypeCode:
+    type: string
+    description: STANDARD_SKU/CUSTOM_CONFIG.
+  canonicalDescription:
+    type: string
+    description: Canonical description.
+  thicknessMm:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+    description: Thickness; stack height in flat-on-face logistics.
+  widthMm:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+    description: Width.
+  lengthMm:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+    description: Length.
+  weightKg:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+    description: Weight snapshot basis.
+  densityKgM3:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+    description: Density.
+  statusCode:
+    type: string
+    description: Catalog lifecycle.
+additionalProperties: false
+required:
+  - canonicalDescription
+  - productFamilyId
+  - productId

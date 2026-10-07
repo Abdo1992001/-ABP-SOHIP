@@ -1,0 +1,24 @@
+get:
+  tags: [Messages]
+  summary: Read an authorized conversation and its messages
+  operationId: get_conversations_by_conversationId
+  security: [{ WebCookie: [] }, { DesktopOAuth: [] }]
+  parameters:
+    - { name: conversationId, in: path, required: true, schema: { type: string, format: uuid } }
+    - { $ref: ../components/parameters/Page.yaml }
+    - { $ref: ../components/parameters/Limit.yaml }
+  responses:
+    '200': { description: Success, content: { application/json: { schema: { $ref: ../components/schemas/ConversationEnvelope.yaml } } } }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '404': { $ref: ../components/responses/Error404.yaml }
+  x-abp-module: Messages
+  x-abp-permission: authenticated
+  x-abp-scope-rule: Active participant only; business context never grants access
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: MessageListQuery
+  x-abp-success-schema: ConversationEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

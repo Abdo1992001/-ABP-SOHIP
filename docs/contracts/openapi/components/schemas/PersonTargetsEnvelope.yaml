@@ -1,0 +1,59 @@
+type: object
+properties:
+  data:
+    type: array
+    maxItems: 500
+    items:
+      type: object
+      properties:
+        userId:
+          type: string
+          format: uuid
+        displayName:
+          type: string
+        targetEgp:
+          type: [string, 'null']
+          description: The person's annual target in EGP; null when none is set.
+        wonEgp:
+          type: string
+          description: Their opportunities won in the year, in EGP.
+        pipelineEgp:
+          type: string
+          description: Their open opportunities, value x probability, in EGP.
+        openOpportunities:
+          type: integer
+      additionalProperties: false
+      required:
+        - userId
+        - displayName
+        - targetEgp
+        - wonEgp
+        - pipelineEgp
+        - openOpportunities
+  meta:
+    type: object
+    properties:
+      year:
+        type: integer
+      from:
+        type: string
+        format: date-time
+      to:
+        type: string
+        format: date-time
+      fxRate:
+        type: string
+      fxEffectiveAt:
+        type: [string, 'null']
+        format: date-time
+    additionalProperties: false
+    required:
+      - year
+      - from
+      - to
+      - fxRate
+      - fxEffectiveAt
+additionalProperties: false
+required:
+  - data
+  - meta

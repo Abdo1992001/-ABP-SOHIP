@@ -1,0 +1,17 @@
+type: object
+properties:
+  exportId: { $ref: ./UUID.yaml }
+  reportId: { type: string, pattern: '^RPT-[0-9]{3}$' }
+  jobId: { $ref: ./UUID.yaml }
+  formatCode: { type: string, enum: [CSV, XLSX, PDF] }
+  status: { type: string, enum: [QUEUED, PENDING, RUNNING, COMPLETED, FAILED] }
+  asOf: { type: string, format: date-time }
+  documentId:
+    oneOf:
+      - $ref: ./UUID.yaml
+      - type: 'null'
+  failureCode: { type: [string, 'null'] }
+  createdAt: { type: string, format: date-time }
+  completedAt: { type: [string, 'null'], format: date-time }
+additionalProperties: false
+required: [exportId, reportId, jobId, status]

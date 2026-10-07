@@ -1,0 +1,19 @@
+type: object
+additionalProperties: false
+required:
+  - accountId
+  - accountRef
+  - canonicalName
+properties:
+  accountId:
+    $ref: ./UUID.yaml
+  accountRef:
+    type: string
+    minLength: 1
+    maxLength: 100
+  canonicalName:
+    type: string
+    minLength: 1
+    maxLength: 300
+description: Minimal Account identity safe inside an authorized Project projection.
+

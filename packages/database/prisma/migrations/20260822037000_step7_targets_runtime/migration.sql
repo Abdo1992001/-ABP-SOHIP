@@ -1,0 +1,18 @@
+DO $$ BEGIN IF EXISTS(SELECT 1 FROM company_targets) THEN RAISE EXCEPTION 'COMPANY_TARGET_AUTHORITATIVE_BACKFILL_REQUIRED'; END IF; END $$;
+ALTER TABLE company_targets ADD COLUMN target_year integer;
+ALTER TABLE company_targets ADD COLUMN company_code text NOT NULL DEFAULT 'ACROW';
+ALTER TABLE company_targets ADD COLUMN base_currency_code char(3) NOT NULL DEFAULT 'USD';
+ALTER TABLE company_targets ADD COLUMN created_by_user_id uuid REFERENCES app_users(id) ON DELETE RESTRICT;
+ALTER TABLE company_targets ADD COLUMN row_version bigint NOT NULL DEFAULT 1;
+ALTER TABLE company_targets ALTER COLUMN target_year SET NOT NULL;
+ALTER TABLE company_targets ALTER COLUMN created_by_user_id SET NOT NULL;
+ALTER TABLE company_targets ADD CONSTRAINT company_targets_locked_scope_check CHECK(company_code='ACROW' AND base_currency_code='USD');
+CREATE UNIQUE INDEX company_targets_year_version_idx ON company_targets(target_year,version);
+ALTER TABLE target_allocations ADD COLUMN version integer NOT NULL DEFAULT 1;
+ALTER TABLE target_allocations ADD COLUMN effective_from timestamptz(6);
+ALTER TABLE target_allocations ADD COLUMN effective_to timestamptz(6);
+ALTER TABLE target_allocations ADD COLUMN created_by_user_id uuid REFERENCES app_users(id) ON DELETE RESTRICT;
+ALTER TABLE target_allocations ALTER COLUMN effective_from SET NOT NULL;
+ALTER TABLE target_allocations ALTER COLUMN created_by_user_id SET NOT NULL;
+ALTER TABLE target_allocations DROP CONSTRAINT IF EXISTS target_allocations_company_target_id_allocation_type_code_period_key;
+ALTER TABLE target_allocations ADD CONSTRAINT target_allocations_versioned_key UNIQUE(company_target_id,allocation_type_code,period_start,version);

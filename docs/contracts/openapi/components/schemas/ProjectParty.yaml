@@ -1,0 +1,26 @@
+type: object
+properties:
+  projectPartyId:
+    type: string
+    format: uuid
+    description: Party relation.
+  projectId:
+    type: string
+    format: uuid
+    description: Project.
+  accountId:
+    type: string
+    format: uuid
+    description: Account party.
+  roleCode:
+    type: string
+    description: DEVELOPER/CONTRACTOR/CONSULTANT/etc.
+  primaryFlag:
+    type: boolean
+    description: Primary party marker.
+additionalProperties: false
+required:
+  - accountId
+  - projectId
+  - projectPartyId
+  - roleCode

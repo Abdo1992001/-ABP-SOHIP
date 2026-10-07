@@ -1,0 +1,47 @@
+type: object
+properties:
+  email:
+    type: string
+    format: email
+  displayName:
+    type: string
+    minLength: 1
+  username:
+    # The sign-in name the person uses instead of their email address. Optional
+    # because an account can still sign in by email; unique across the tenant
+    # when set.
+    type:
+      - string
+      - 'null'
+    minLength: 3
+    maxLength: 50
+    pattern: '^[a-zA-Z0-9][a-zA-Z0-9._-]{1,48}[a-zA-Z0-9]$'
+  jobTitle:
+    type:
+      - string
+      - 'null'
+  managerUserId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  teamId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  roleIds:
+    type: array
+    items:
+      type: string
+      format: uuid
+  countryCodes:
+    type: array
+    items:
+      type: string
+additionalProperties: false
+required:
+  - email
+  - displayName
+  - roleIds
+  - countryCodes

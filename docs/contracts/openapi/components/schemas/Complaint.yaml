@@ -1,0 +1,149 @@
+type: object
+description: >-
+  A complaint on its route. The detail call also carries accountName, the
+  names of the people involved, allowedTransitions (the moves the caller may
+  make now, each with the fields it requires) and events (its history).
+properties:
+  complaintId:
+    type: string
+    format: uuid
+    description: Complaint case.
+  complaintRef:
+    type: string
+    description: Human case ref.
+  accountId:
+    type: string
+    format: uuid
+    description: Customer.
+  projectId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    description: Optional project.
+  salesOrderId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    description: Optional ERP order link.
+  contactId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    description: Reporter/contact.
+  countryCode:
+    type: string
+    description: Scope country.
+  complaintTypeCode:
+    type: string
+    description: Complaint category.
+  channelCode:
+    type:
+      - string
+      - 'null'
+    enum:
+      - PHONE_CALL
+      - MESSAGE
+      - VISIT
+      - EMAIL
+      - null
+    description: How the complaint was reported.
+  severityCode:
+    type:
+      - string
+      - 'null'
+    description: Severity.
+  statusCode:
+    type: string
+    enum: [OPEN, OPERATIONS_REVIEW, QUALITY_REVIEW, SOLUTION, RESOLVED, CLOSED]
+    description: Stage of the complaint route.
+  ownerUserId:
+    type: string
+    format: uuid
+    description: Case owner.
+  description:
+    type: string
+    description: Complaint description.
+  resolution:
+    type:
+      - string
+      - 'null'
+    description: Final resolution.
+  customerOrderId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  productId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  assigneeUserId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    description: Who holds the complaint at its current stage.
+  operationsFindings:
+    type:
+      - string
+      - 'null'
+  rootCauseCode:
+    type:
+      - string
+      - 'null'
+  rootCauseDetail:
+    type:
+      - string
+      - 'null'
+  correctiveAction:
+    type:
+      - string
+      - 'null'
+  preventiveAction:
+    type:
+      - string
+      - 'null'
+  solutionOwnerUserId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  solutionDueDate:
+    type:
+      - string
+      - 'null'
+    format: date
+  stageEnteredAt:
+    type: string
+    format: date-time
+  stageDueAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+    description: When the current stage is due.
+  isOverdue:
+    type: boolean
+    description: The current stage is past its deadline.
+  resolvedAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+  closedAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+additionalProperties: true
+required:
+  - accountId
+  - complaintId
+  - complaintTypeCode
+  - countryCode
+  - description
+  - ownerUserId

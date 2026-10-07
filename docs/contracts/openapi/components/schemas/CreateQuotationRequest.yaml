@@ -1,0 +1,20 @@
+type: object
+properties:
+  opportunityId:
+    type: string
+    format: uuid
+  projectId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  currencyCode:
+    type:
+      - string
+      - 'null'
+  draft:
+    $ref: ./SaveQuotationDraftRequest.yaml
+additionalProperties: false
+required:
+  - opportunityId
+  - draft

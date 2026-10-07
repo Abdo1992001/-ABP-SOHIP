@@ -1,0 +1,11 @@
+type: object
+properties:
+  fileName: { type: string, maxLength: 255 }
+  contentType:
+    type: string
+    enum: [image/png, image/jpeg, image/webp, image/gif]
+  contentBase64:
+    type: string
+    description: The image bytes, base64 encoded. 10 MB maximum once decoded.
+additionalProperties: false
+required: [fileName, contentType, contentBase64]

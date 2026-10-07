@@ -1,0 +1,33 @@
+get:
+  tags: [Documents]
+  summary: List authorized document metadata
+  operationId: get_documents
+  security: [{ WebCookie: [] }, { DesktopOAuth: [] }]
+  parameters:
+    - $ref: ../components/parameters/Offset.yaml
+    - $ref: ../components/parameters/Limit.yaml
+    - $ref: ../components/parameters/Search.yaml
+    - { name: documentTypeCode, in: query, schema: { type: string } }
+    - { name: resourceTypeCode, in: query, schema: { type: string } }
+    - { name: resourceId, in: query, schema: { type: string, format: uuid } }
+    - { name: statusCode, in: query, schema: { type: string } }
+    - { name: official, in: query, schema: { type: string, enum: ['true', 'false'] } }
+  responses:
+    '200': { description: Success, content: { application/json: { schema: { $ref: ../components/schemas/DocumentListEnvelope.yaml } } } }
+    '400': { $ref: ../components/responses/Error400.yaml }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '403': { $ref: ../components/responses/Error403.yaml }
+    '429': { $ref: ../components/responses/Error429.yaml }
+    '500': { $ref: ../components/responses/Error500.yaml }
+  x-abp-module: Documents
+  x-abp-permission: documents.view
+  x-abp-scope-rule: Permission + resource Country Scope + DENY + safe metadata projection
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: DocumentListQuery
+  x-abp-success-schema: DocumentListEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true
+  x-abp-pagination: OFFSET

@@ -1,0 +1,18 @@
+type: object
+properties:
+  case:
+    $ref: ./ReturnedScrapCase.yaml
+  lines:
+    type: array
+    items:
+      $ref: ./ReturnedScrapLine.yaml
+  approvalRequired:
+    type: boolean
+  canFinalize:
+    type: boolean
+additionalProperties: false
+required:
+  - case
+  - lines
+  - approvalRequired
+  - canFinalize

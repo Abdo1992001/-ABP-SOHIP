@@ -1,0 +1,76 @@
+type: object
+properties:
+  reconciliationRunId:
+    type: string
+    format: uuid
+    description: Reconciliation execution.
+  reconciliationTypeCode:
+    type: string
+    description: CUSTOMER/ITEM/ORDER/GROUP/etc.
+  sourceSystemId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    description: Source system when applicable.
+  statusCode:
+    type: string
+    description: PENDING/RUNNING/COMPLETED/FAILED/CANCELLED.
+  filterJsonb:
+    type:
+      - object
+      - 'null'
+    additionalProperties:
+      $ref: ./DynamicJsonValue.yaml
+    description: Validated run filters/input scope.
+    maxProperties: 100
+  summaryJsonb:
+    type:
+      - object
+      - 'null'
+    description: >-
+      What the completed run found. Typed rather than free-form: while this was
+      an open bag, the UI bound columns to comparedCount/mismatchCount/
+      matchedCount/missingCount, none of which the run has ever written, and
+      the screen showed four columns of dashes that no test could catch.
+    properties:
+      openDataQualityIssues:
+        type: integer
+        minimum: 0
+        description: Data-quality issues still open when the run finished.
+      mutationMode:
+        type: string
+        enum:
+          - NONE
+        description: >-
+          Reconciliation reports; it does not write. NONE is the only value.
+    additionalProperties: false
+  createdByUserId:
+    type: string
+    format: uuid
+    description: Actor.
+  startedAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+    description: Run start.
+  finishedAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+    description: Run finish.
+  createdAt:
+    type: string
+    format: date-time
+    description: Creation timestamp.
+  statusUrl:
+    type:
+      - string
+      - 'null'
+additionalProperties: false
+required:
+  - createdByUserId
+  - reconciliationRunId
+  - reconciliationTypeCode

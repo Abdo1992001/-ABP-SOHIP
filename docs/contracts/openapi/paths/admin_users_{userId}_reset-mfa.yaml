@@ -1,0 +1,31 @@
+post:
+  tags: [Identity]
+  summary: Reset local MFA and revoke active sessions
+  operationId: post_admin_users_by_userId_reset_mfa
+  parameters:
+    - name: userId
+      in: path
+      required: true
+      schema: { type: string, format: uuid }
+    - $ref: ../components/parameters/CsrfToken.yaml
+  responses:
+    '201':
+      description: MFA reset
+      content:
+        application/json:
+          schema: { $ref: ../components/schemas/LocalResetEnvelope.yaml }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '403': { $ref: ../components/responses/Error403.yaml }
+    '404': { $ref: ../components/responses/Error404.yaml }
+    '500': { $ref: ../components/responses/Error500.yaml }
+  x-abp-module: Identity
+  x-abp-permission: users.manage
+  x-abp-scope-rule: ADMIN workspace and explicit permission
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: NONE
+  x-abp-success-schema: LocalResetEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

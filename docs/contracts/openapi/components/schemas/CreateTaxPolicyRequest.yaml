@@ -1,0 +1,20 @@
+type: object
+properties:
+  taxCode:
+    type: string
+  taxRatePct:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+  effectiveFrom:
+    type: string
+    format: date-time
+  effectiveTo:
+    type:
+      - string
+      - 'null'
+    format: date-time
+additionalProperties: false
+required:
+  - taxCode
+  - taxRatePct
+  - effectiveFrom

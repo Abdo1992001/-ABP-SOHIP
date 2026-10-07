@@ -1,0 +1,11 @@
+type: object
+additionalProperties: false
+required: [contentBase64]
+properties:
+  contentBase64:
+    type: string
+    minLength: 4
+    maxLength: 6000000
+    description: >-
+      PNG, JPEG, GIF or WebP. The server decides the type from the file's own
+      magic number rather than a declared one, and refuses anything else.

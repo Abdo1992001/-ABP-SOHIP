@@ -1,0 +1,47 @@
+{
+  "name": "@abp/web",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "typecheck": "tsc --noEmit",
+    "typecheck:e2e": "tsc --noEmit -p tsconfig.e2e.json",
+    "test": "vitest run src",
+    "e2e": "playwright test",
+    "e2e:ui": "playwright test --ui",
+    "e2e:update": "playwright test --update-snapshots",
+    "e2e:record": "playwright test --project=light-en record"
+  },
+  "dependencies": {
+    "@abp/api-client": "workspace:*",
+    "@abp/contracts": "workspace:*",
+    "@react-three/drei": "^10.7.8",
+    "@react-three/fiber": "^9.7.0",
+    "@tanstack/react-query": "^5.90.5",
+    "docx": "^9.7.2",
+    "exceljs": "4.4.0",
+    "leaflet": "1.9.4",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-router": "^7.9.4",
+    "recharts": "2.15.0",
+    "three": "0.172.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.55.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/leaflet": "1.9.20",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "@types/three": "0.172.0",
+    "@vitejs/plugin-react": "^5.0.4",
+    "jsdom": "^27.0.1",
+    "typescript": "6.0.3",
+    "vite": "^8.2.2",
+    "vitest": "^4.0.2"
+  }
+}

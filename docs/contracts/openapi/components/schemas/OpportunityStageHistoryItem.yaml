@@ -1,0 +1,14 @@
+type: object
+additionalProperties: false
+required: [transitionId, fromStageCode, toStageCode, occurredAt, actorUserId, eventCode]
+properties:
+  transitionId: { $ref: ./UUID.yaml }
+  fromStageCode:
+    type: [string, 'null']
+  toStageCode: { type: string }
+  lostReasonCode:
+    type: [string, 'null']
+  occurredAt: { $ref: ./DateTime.yaml }
+  actorUserId: { $ref: ./UUID.yaml }
+  eventCode: { type: string, enum: [STAGE_CHANGED, WON_REVERSED] }
+

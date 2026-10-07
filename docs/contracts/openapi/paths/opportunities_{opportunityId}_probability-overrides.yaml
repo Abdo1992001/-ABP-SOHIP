@@ -1,0 +1,43 @@
+post:
+  tags: [Pipeline]
+  summary: Authoritative manual probability override
+  operationId: post_opportunities_by_opportunityId_probability_overrides
+  security: [{ WebCookie: [] }, { DesktopOAuth: [] }]
+  responses:
+    '200':
+      description: Updated Opportunity
+      content:
+        application/json:
+          schema: { $ref: ../components/schemas/OpportunityEnvelope.yaml }
+      headers:
+        ETag: { $ref: ../components/headers/ETag.yaml }
+    '400': { $ref: ../components/responses/Error400.yaml }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '403': { $ref: ../components/responses/Error403.yaml }
+    '404': { $ref: ../components/responses/Error404.yaml }
+    '409': { $ref: ../components/responses/Error409.yaml }
+    '412': { $ref: ../components/responses/Error412.yaml }
+    '422': { $ref: ../components/responses/Error422.yaml }
+  parameters:
+    - name: opportunityId
+      in: path
+      required: true
+      schema: { $ref: ../components/schemas/UUID.yaml }
+    - $ref: ../components/parameters/IfMatch.yaml
+    - $ref: ../components/parameters/IdempotencyKey.yaml
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema: { $ref: ../components/schemas/ProbabilityOverrideRequest.yaml }
+  x-abp-module: Pipeline
+  x-abp-permission: opportunities.probability.override
+  x-abp-scope-rule: Effective Opportunity country then Account context
+  x-abp-concurrency: If-Match
+  x-abp-idempotency: Required
+  x-abp-request-schema: ProbabilityOverrideRequest
+  x-abp-success-schema: OpportunityEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

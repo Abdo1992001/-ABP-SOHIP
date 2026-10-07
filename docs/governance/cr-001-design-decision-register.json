@@ -1,0 +1,159 @@
+{
+  "changeRequestId": "CR-001",
+  "status": "BUSINESS_APPROVED_IMPLEMENTED",
+  "generatedAt": "2026-08-25T04:15:00.000+03:00",
+  "authorityPolicy": "Locked SSOT and approved CR-001 text only; conflicting/quarantined branches are excluded and missing business behavior is never inferred.",
+  "summary": {
+    "closed": 10,
+    "blocked": 0,
+    "total": 10
+  },
+  "gates": [
+    {
+      "id": "CR001-DG-01",
+      "status": "CLOSED_BUSINESS_APPROVED",
+      "subject": "Customer Segment taxonomy, source authority, ownership, and effective dating",
+      "findings": [
+        "Step 10 B-031 recognizes multi-select Formwork and Loose Boards segments and future configurability/history.",
+        "No locked source defines assignment ownership, import/mapping authority, canonical codes, or effective membership mutation rules.",
+        "The existing account category and pricing customer_segment fields are not interchangeable with canonical customer membership."
+      ],
+      "requiredDecision": "Approve the canonical segment reference codes, assignment/import authority, who may change membership, effective dating rules, and historical reclassification behavior."
+    },
+    {
+      "id": "CR001-DG-02",
+      "status": "CLOSED",
+      "subject": "Top-value basis and deterministic ranking",
+      "decision": {
+        "metricBasis": "Booked Commercial Value",
+        "source": "ERP orders booked_amount",
+        "currency": "USD only",
+        "dateBasis": "imported_at within the selected semantic window",
+        "exclusions": [
+          "DQ status other than VALID",
+          "facts outside Country Scope",
+          "permission DENY"
+        ],
+        "ranking": "descending summed value, then stable canonical key",
+        "presentation": "first 5, then More reveals the remaining authorized server-ranked result"
+      },
+      "authority": [
+        "Step 10 MET-CUST-003/MET-CUST-004",
+        "Step 10 MET-GEO-004",
+        "Step 10 RPT-001/RPT-002",
+        "Existing typed semantic analytics contract"
+      ]
+    },
+    {
+      "id": "CR001-DG-03",
+      "status": "CLOSED",
+      "subject": "Opportunity lifecycle",
+      "decision": {
+        "stages": ["NEW_LEAD", "HOT_LEAD", "UNDER_NEGOTIATION", "WON", "LOST"],
+        "lostReasonRequired": true,
+        "wonSnapshotRequired": true,
+        "targetAchievement": "Opportunity WON only",
+        "quotationConflationForbidden": true
+      },
+      "authority": [
+        "Step 6 SD-049/CR-006",
+        "Step 7 BAK-070",
+        "Step 8 locked opportunity workflow"
+      ]
+    },
+    {
+      "id": "CR001-DG-04",
+      "status": "CLOSED_BUSINESS_APPROVED",
+      "subject": "Quotation Submitted and Under Negotiation transition graph",
+      "findings": [
+        "Current locked quotation states and Step 8 workflow do not contain the requested exact transition graph.",
+        "Older branches contain conflicting states and cannot be used as authority.",
+        "SENT immutability, no formal revisions, supersedes_quotation_id, and no Cancel remain locked."
+      ],
+      "requiredDecision": "Approve exact transitions, actors, approval relation, prerequisites, retries, ETag/idempotency behavior, and treatment of APPROVED versus quotation status."
+    },
+    {
+      "id": "CR001-DG-05",
+      "status": "CLOSED_BUSINESS_APPROVED",
+      "subject": "Shipment aggregate and milestone workflow",
+      "findings": [
+        "CR-001 supplies milestone labels and minimum context but not aggregate cardinality, actors, evidence, amendments, backdating, or transition guards.",
+        "Pre-final shipment/POD/internal-order models conflict with the locked baseline and are not authority.",
+        "No Dispatch, Delivery confirmation, POD, carrier integration, or internal ERP order lifecycle is authorized."
+      ],
+      "requiredDecision": "Approve shipment identity/cardinality, ERP relation, milestone actors/guards/evidence, date correction/backdating, amendment rules, permissions, and audit contract."
+    },
+    {
+      "id": "CR001-DG-06",
+      "status": "CLOSED",
+      "subject": "Standalone Complaints Management",
+      "decision": {
+        "states": ["OPEN", "IN_REVIEW", "RESOLVED", "CLOSED"],
+        "closePermission": "complaint.close or Manager",
+        "ownershipBoundary": "case access only; never widens Customer 360",
+        "history": "append-only complaint events and structured audit",
+        "noInventedSla": true
+      },
+      "authority": [
+        "Step 6 complaints and complaint_events",
+        "Step 7 BAK-066 and final complaint API catalog",
+        "Step 8 WF-039",
+        "Step 9 complaint queue/Customer 360 projection",
+        "Step 10 MET-CMP-001/MET-CMP-002"
+      ]
+    },
+    {
+      "id": "CR001-DG-07",
+      "status": "CLOSED_BUSINESS_APPROVED",
+      "subject": "External client identity",
+      "findings": [
+        "No authoritative external-client identity, invitation, provisioning, customer binding, MFA/session, revocation, recovery, or support model exists in locked Steps 2-10."
+      ],
+      "requiredDecision": "Approve the external identity lifecycle and customer-binding authority before any portal account, route, API, or permission is created."
+    },
+    {
+      "id": "CR001-DG-08",
+      "status": "CLOSED_BUSINESS_APPROVED",
+      "subject": "Client Portal permissions and projections",
+      "findings": [
+        "No locked portal projection defines permitted order fields, shipment fields, complaint ownership, documents, downloads, exports, or attachments.",
+        "Internal Sales authorization cannot be reused as an external-client grant."
+      ],
+      "requiredDecision": "Approve server-side tenant/customer isolation and the exact list/detail/action projections for orders, shipments, complaints, documents, export, and attachments."
+    },
+    {
+      "id": "CR001-DG-09",
+      "status": "CLOSED_BUSINESS_APPROVED",
+      "subject": "R&D datasets and read-only projection",
+      "findings": [
+        "No authoritative R&D role, Most Requested Sizes definition, source measure, minimum cohort, field projection, drilldown, export, audit, or retention contract exists in locked Steps 2-10."
+      ],
+      "requiredDecision": "Approve the exact datasets/measures and privacy-safe read-only projection; pricing, cost, margin, finance, writes, approvals, and commercial administration stay denied."
+    },
+    {
+      "id": "CR001-DG-10",
+      "status": "CLOSED_BUSINESS_APPROVED",
+      "subject": "Local/Global historical and effective-dating semantics",
+      "implementedCurrentRule": {
+        "local": ["EG", "LY", "SA", "AE"],
+        "global": "all other known countries",
+        "unclassified": "missing country truth",
+        "authorizationUse": "FORBIDDEN"
+      },
+      "requiredDecision": "Approve the effective date and whether historical dashboards reclassify using the current rule or retain a dated/snapshotted classification."
+    }
+  ],
+  "finalBusinessApproval": {
+    "effectiveAt": "2026-08-25T00:00:00+03:00",
+    "approvalScope": "CR-001 only; additive and controlled",
+    "decisions": {
+      "CR001-DG-01": "Admin-configurable canonical Customer Segment definitions and effective-dated account assignments; existing account-edit authority may assign; unknown import code creates DQ and never auto-creates a segment.",
+      "CR001-DG-04": "Quotation document state DRAFT/SENT is independent from commercial state NOT_SUBMITTED/SUBMITTED/UNDER_NEGOTIATION; official send atomically sets SENT and SUBMITTED; SENT content is immutable; material change creates a new DRAFT with supersedes_quotation_id; Cancel stays out of V1.",
+      "CR001-DG-05": "A Shipment belongs to exactly one imported ERP order and an order may have many shipments; Logistics owns append-only milestone and correction writes; Sales gets a read-only projection; no Dispatch/Delivery/POD/GPS/customs execution.",
+      "CR001-DG-07": "Entra External ID/CIAM with MFA and BFF sessions only; no local password, self-registration, or social identity; customer bindings are explicit, multi-customer, auditable, and immediately revocable.",
+      "CR001-DG-08": "The Client Portal exposes only explicitly bound customer order quantity/status, shipment milestone, and complaint projections; quotations, prices, Finance, contacts, exports, and unrestricted downloads are denied.",
+      "CR001-DG-09": "R&D receives country-scoped, read-only Most Requested Sizes based only on official customer-facing quotation lines, with requested quantity and distinct quotation count separated; customer identity, pricing, Finance, writes, and exports are omitted/denied.",
+      "CR001-DG-10": "Versioned Local/Global classification is effective from 2026-08-25 Africa/Cairo: EG/LY/SA/AE Local, other known countries Global, missing country Unclassified; historical reporting uses the rule valid as-of and classification never grants access."
+    }
+  }
+}

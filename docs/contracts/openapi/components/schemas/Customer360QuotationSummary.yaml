@@ -1,0 +1,38 @@
+type: object
+additionalProperties: false
+required:
+  - quotationId
+  - quotationRef
+  - opportunityId
+  - accountId
+  - statusCode
+  - commercialStateCode
+  - currencyCode
+  - totalAmount
+  - sentAt
+  - rowVersion
+properties:
+  quotationId:
+    $ref: ./UUID.yaml
+  quotationRef:
+    type: string
+    minLength: 1
+  opportunityId:
+    $ref: ./UUID.yaml
+  accountId:
+    $ref: ./UUID.yaml
+  statusCode:
+    type: string
+  commercialStateCode:
+    type: string
+  currencyCode:
+    oneOf:
+      - $ref: ./CurrencyCode.yaml
+      - type: 'null'
+  totalAmount:
+    $ref: ./Decimal.yaml
+  sentAt:
+    type: [string, 'null']
+    format: date-time
+  rowVersion:
+    $ref: ./RowVersion.yaml

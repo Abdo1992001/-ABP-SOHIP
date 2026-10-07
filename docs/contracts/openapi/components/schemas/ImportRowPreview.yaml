@@ -1,0 +1,28 @@
+type: object
+properties:
+  rowNo:
+    type: integer
+    format: int64
+  naturalKey:
+    type:
+      - string
+      - 'null'
+  statusCode:
+    type: string
+  issueCount:
+    type: integer
+    format: int64
+  normalizedFields:
+    type: object
+    additionalProperties:
+      type:
+        - string
+        - number
+        - boolean
+        - 'null'
+additionalProperties: false
+required:
+  - rowNo
+  - statusCode
+  - issueCount
+  - normalizedFields

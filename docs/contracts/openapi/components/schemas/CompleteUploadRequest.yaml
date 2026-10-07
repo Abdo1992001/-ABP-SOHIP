@@ -1,0 +1,8 @@
+type: object
+properties:
+  actualSha256:
+    type:
+      - string
+      - 'null'
+additionalProperties: false
+description: Server independently verifies object size, MIME, hash and malware state.

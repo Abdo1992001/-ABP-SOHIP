@@ -1,0 +1,65 @@
+type: object
+properties:
+  reconciliationIssueId:
+    type: string
+    format: uuid
+    description: Reconciliation mismatch/candidate.
+  runId:
+    type: string
+    format: uuid
+    description: Parent run.
+  issueCode:
+    type: string
+    description: Machine issue code.
+  severityCode:
+    type: string
+    description: INFO/WARN/ERROR/BLOCKER.
+  sourceKey:
+    type:
+      - string
+      - 'null'
+    description: Source natural key.
+  resourceTypeCode:
+    type:
+      - string
+      - 'null'
+    description: Canonical resource type.
+  resourceId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    description: Canonical resource candidate.
+  detailsJsonb:
+    type: object
+    additionalProperties:
+      $ref: ./DynamicJsonValue.yaml
+    description: Mismatch/candidate details.
+    maxProperties: 100
+  statusCode:
+    type: string
+    description: OPEN/RESOLVED/WAIVED.
+  resolutionCode:
+    type:
+      - string
+      - 'null'
+    description: Resolution method.
+  resolvedByUserId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    description: Resolver.
+  resolvedAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+    description: Resolution time.
+additionalProperties: false
+required:
+  - detailsJsonb
+  - issueCode
+  - reconciliationIssueId
+  - runId
+  - severityCode

@@ -1,0 +1,307 @@
+{
+  "verdict": "PASS",
+  "evidenceScope": "STEP_12_FORMAL_ASSESSMENT",
+  "productionReady": false,
+  "releaseGatesPassed": 5,
+  "releaseGatesTotal": 16,
+  "generatedAt": "2026-10-03T12:37:21.393Z",
+  "postBaselineChangeRequest": {
+    "id": "CR-001",
+    "status": "PASS",
+    "implementedChanges": {
+      "implemented": 10,
+      "total": 10
+    },
+    "designDecisionGates": {
+      "closed": 10,
+      "blocked": 0,
+      "total": 10
+    },
+    "implementationAuthorized": false,
+    "step12Allowed": true
+  },
+  "gates": [
+    {
+      "gateId": "RG-01",
+      "name": "Final SSOT reconciliation",
+      "technicalStatus": "BLOCKED_BY_DEP_004",
+      "evidenceStatus": "BLOCKED_BY_DEP_004",
+      "blockingGoLive": true,
+      "externalDependency": "DEP-004",
+      "evidenceArtifacts": [
+        "docs/governance/step-12-release-gates.json",
+        "docs/delivery/step-12-go-live.md"
+      ],
+      "verdict": "BLOCKED_BY_DEP_004"
+    },
+    {
+      "gateId": "RG-02",
+      "name": "Typed OpenAPI",
+      "technicalStatus": "PASS",
+      "evidenceStatus": "PASS",
+      "blockingGoLive": false,
+      "externalDependency": null,
+      "evidenceArtifacts": [
+        "docs/governance/step-12-release-gates.json",
+        "docs/delivery/step-12-go-live.md"
+      ],
+      "verdict": "PASS"
+    },
+    {
+      "gateId": "RG-03",
+      "name": "Semantic BI contracts",
+      "technicalStatus": "PASS",
+      "evidenceStatus": "PASS",
+      "blockingGoLive": false,
+      "externalDependency": null,
+      "evidenceArtifacts": [
+        "docs/governance/step-12-release-gates.json",
+        "docs/delivery/step-12-go-live.md"
+      ],
+      "verdict": "PASS"
+    },
+    {
+      "gateId": "RG-04",
+      "name": "Security",
+      "technicalStatus": "BLOCKED_BY_DEP_001_DEP_002",
+      "evidenceStatus": "BLOCKED_BY_DEP_001_DEP_002",
+      "blockingGoLive": true,
+      "externalDependency": "DEP-001/DEP-002",
+      "evidenceArtifacts": [
+        "docs/governance/step-12-release-gates.json",
+        "docs/delivery/step-12-go-live.md"
+      ],
+      "verdict": "BLOCKED_BY_DEP_001_DEP_002"
+    },
+    {
+      "gateId": "RG-05",
+      "name": "Authorization and IDOR",
+      "technicalStatus": "PASS",
+      "evidenceStatus": "PASS",
+      "blockingGoLive": false,
+      "externalDependency": null,
+      "evidenceArtifacts": [
+        "docs/governance/step-12-release-gates.json",
+        "docs/delivery/step-12-go-live.md"
+      ],
+      "verdict": "PASS"
+    },
+    {
+      "gateId": "RG-06",
+      "name": "Data integrity and concurrency",
+      "technicalStatus": "PASS",
+      "evidenceStatus": "PASS",
+      "blockingGoLive": false,
+      "externalDependency": null,
+      "evidenceArtifacts": [
+        "docs/governance/step-12-release-gates.json",
+        "docs/delivery/step-12-go-live.md"
+      ],
+      "verdict": "PASS"
+    },
+    {
+      "gateId": "RG-07",
+      "name": "Migrations",
+      "technicalStatus": "PASS",
+      "evidenceStatus": "PASS",
+      "blockingGoLive": false,
+      "externalDependency": null,
+      "evidenceArtifacts": [
+        "docs/governance/step-12-release-gates.json",
+        "docs/delivery/step-12-go-live.md"
+      ],
+      "verdict": "PASS"
+    },
+    {
+      "gateId": "RG-08",
+      "name": "Performance",
+      "technicalStatus": "BLOCKED_BY_DEP_006",
+      "evidenceStatus": "BLOCKED_BY_DEP_006",
+      "blockingGoLive": true,
+      "externalDependency": "DEP-006",
+      "evidenceArtifacts": [
+        "docs/governance/step-12-release-gates.json",
+        "docs/delivery/step-12-go-live.md"
+      ],
+      "verdict": "BLOCKED_BY_DEP_006"
+    },
+    {
+      "gateId": "RG-09",
+      "name": "Backup and DR",
+      "technicalStatus": "BLOCKED_BY_DEP_002_DEP_003_DEP_007",
+      "evidenceStatus": "BLOCKED_BY_DEP_002_DEP_003_DEP_007",
+      "blockingGoLive": true,
+      "externalDependency": "DEP-002/DEP-003/DEP-007",
+      "evidenceArtifacts": [
+        "docs/governance/step-12-release-gates.json",
+        "docs/delivery/step-12-go-live.md"
+      ],
+      "verdict": "BLOCKED_BY_DEP_002_DEP_003_DEP_007"
+    },
+    {
+      "gateId": "RG-10",
+      "name": "Monitoring",
+      "technicalStatus": "BLOCKED_BY_DEP_002",
+      "evidenceStatus": "BLOCKED_BY_DEP_002",
+      "blockingGoLive": true,
+      "externalDependency": "DEP-002",
+      "evidenceArtifacts": [
+        "docs/governance/step-12-release-gates.json",
+        "docs/delivery/step-12-go-live.md"
+      ],
+      "verdict": "BLOCKED_BY_DEP_002"
+    },
+    {
+      "gateId": "RG-11",
+      "name": "UAT",
+      "technicalStatus": "BLOCKED_BY_DEP_008",
+      "evidenceStatus": "BLOCKED_BY_DEP_008",
+      "blockingGoLive": true,
+      "externalDependency": "DEP-008",
+      "evidenceArtifacts": [
+        "docs/governance/step-12-release-gates.json",
+        "docs/delivery/step-12-go-live.md"
+      ],
+      "verdict": "BLOCKED_BY_DEP_008"
+    },
+    {
+      "gateId": "RG-12",
+      "name": "Access certification",
+      "technicalStatus": "BLOCKED_BY_DEP_008",
+      "evidenceStatus": "BLOCKED_BY_DEP_008",
+      "blockingGoLive": true,
+      "externalDependency": "DEP-008",
+      "evidenceArtifacts": [
+        "docs/governance/step-12-release-gates.json",
+        "docs/delivery/step-12-go-live.md"
+      ],
+      "verdict": "BLOCKED_BY_DEP_008"
+    },
+    {
+      "gateId": "RG-13",
+      "name": "Training",
+      "technicalStatus": "BLOCKED_BY_DEP_004",
+      "evidenceStatus": "BLOCKED_BY_DEP_004",
+      "blockingGoLive": true,
+      "externalDependency": "DEP-004",
+      "evidenceArtifacts": [
+        "docs/governance/step-12-release-gates.json",
+        "docs/delivery/step-12-go-live.md"
+      ],
+      "verdict": "BLOCKED_BY_DEP_004"
+    },
+    {
+      "gateId": "RG-14",
+      "name": "Cutover dry run",
+      "technicalStatus": "BLOCKED_BY_DEP_002_DEP_005",
+      "evidenceStatus": "BLOCKED_BY_DEP_002_DEP_005",
+      "blockingGoLive": true,
+      "externalDependency": "DEP-002/DEP-005",
+      "evidenceArtifacts": [
+        "docs/governance/step-12-release-gates.json",
+        "docs/delivery/step-12-go-live.md"
+      ],
+      "verdict": "BLOCKED_BY_DEP_002_DEP_005"
+    },
+    {
+      "gateId": "RG-15",
+      "name": "Rollback",
+      "technicalStatus": "BLOCKED_PENDING_REHEARSAL",
+      "evidenceStatus": "BLOCKED_PENDING_REHEARSAL",
+      "blockingGoLive": true,
+      "externalDependency": "DEP-002/DEP-005",
+      "evidenceArtifacts": [
+        "docs/governance/step-12-release-gates.json",
+        "docs/delivery/step-12-go-live.md"
+      ],
+      "verdict": "BLOCKED_PENDING_REHEARSAL"
+    },
+    {
+      "gateId": "RG-16",
+      "name": "Go / No-Go",
+      "technicalStatus": "NO_GO_BLOCKED",
+      "evidenceStatus": "NO_GO_BLOCKED",
+      "blockingGoLive": true,
+      "externalDependency": "DEP-001..DEP-008",
+      "evidenceArtifacts": [
+        "docs/governance/step-12-release-gates.json",
+        "docs/delivery/step-12-go-live.md"
+      ],
+      "verdict": "NO_GO_BLOCKED"
+    }
+  ],
+  "dependencies": [
+    {
+      "id": "DEP-001",
+      "subject": "Entra tenant/app registrations/CA/MFA/licenses",
+      "status": "PENDING EXTERNAL",
+      "owner": null,
+      "ownerRole": "Identity/Security Owner",
+      "nextAction": "Provide authoritative evidence and formal approval.",
+      "blockingGoLive": true
+    },
+    {
+      "id": "DEP-002",
+      "subject": "Azure subscription/budget/policy/connectivity",
+      "status": "PENDING EXTERNAL",
+      "owner": null,
+      "ownerRole": "Technical Owner/Cloud Owner",
+      "nextAction": "Provide authoritative evidence and formal approval.",
+      "blockingGoLive": true
+    },
+    {
+      "id": "DEP-003",
+      "subject": "UAE Central DR malware-scanning capability",
+      "status": "PENDING EXTERNAL",
+      "owner": null,
+      "ownerRole": "Security/DR Owner",
+      "nextAction": "Provide authoritative evidence and formal approval.",
+      "blockingGoLive": true
+    },
+    {
+      "id": "DEP-004",
+      "subject": "Owners, staffing, signatures and training responsibility",
+      "status": "PENDING EXTERNAL",
+      "owner": null,
+      "ownerRole": "Business/Product Owner",
+      "nextAction": "Provide authoritative evidence and formal approval.",
+      "blockingGoLive": true
+    },
+    {
+      "id": "DEP-005",
+      "subject": "Cutover source register",
+      "status": "PENDING EXTERNAL",
+      "owner": null,
+      "ownerRole": "Data Migration Owner",
+      "nextAction": "Provide authoritative evidence and formal approval.",
+      "blockingGoLive": true
+    },
+    {
+      "id": "DEP-006",
+      "subject": "Approved workload profile",
+      "status": "PENDING GOVERNANCE / EXTERNAL",
+      "owner": null,
+      "ownerRole": "Business/Technical Owners",
+      "nextAction": "Provide authoritative evidence and formal approval.",
+      "blockingGoLive": true
+    },
+    {
+      "id": "DEP-007",
+      "subject": "Formal retention approval",
+      "status": "PENDING EXTERNAL",
+      "owner": null,
+      "ownerRole": "Legal/Security Owner",
+      "nextAction": "Provide authoritative evidence and formal approval.",
+      "blockingGoLive": true
+    },
+    {
+      "id": "DEP-008",
+      "subject": "Production access and UAT rosters",
+      "status": "PENDING EXTERNAL",
+      "owner": null,
+      "ownerRole": "Business/Security Owners",
+      "nextAction": "Provide authoritative evidence and formal approval.",
+      "blockingGoLive": true
+    }
+  ]
+}

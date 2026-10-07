@@ -1,0 +1,12 @@
+type: object
+additionalProperties: false
+required: [data]
+properties:
+  data:
+    type: object
+    additionalProperties: false
+    required: [manualSecret, provisioningUri, qrCodeDataUrl]
+    properties:
+      manualSecret: { type: string }
+      provisioningUri: { type: string }
+      qrCodeDataUrl: { type: string }

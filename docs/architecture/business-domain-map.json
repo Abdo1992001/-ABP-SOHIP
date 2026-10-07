@@ -1,0 +1,188 @@
+{
+  "version": 1,
+  "authority": "ABP locked SSOT",
+  "workspaceModel": {
+    "core": "sales",
+    "salesSubareas": ["sales-management", "sales-support"],
+    "isolatedSupportingWorkspaces": ["logistics", "operations", "finance"]
+  },
+  "domains": [
+    {
+      "name": "Customer",
+      "workspace": "sales",
+      "status": "IMPLEMENTED",
+      "writer": "CustomerService",
+      "reads": ["sales", "authorized projections"],
+      "forbiddenDependencies": ["application-user-as-customer"]
+    },
+    {
+      "name": "Contact",
+      "workspace": "sales",
+      "status": "IMPLEMENTED",
+      "writer": "ContactService",
+      "reads": ["sales"],
+      "forbiddenDependencies": ["standalone-access-universe"]
+    },
+    {
+      "name": "Project",
+      "workspace": "sales",
+      "status": "IMPLEMENTED",
+      "writer": "ProjectService",
+      "reads": ["sales", "authorized operations context"],
+      "forbiddenDependencies": [
+        "customer-hq-country-as-project-country",
+        "work-order-execution"
+      ]
+    },
+    {
+      "name": "Opportunity",
+      "workspace": "sales",
+      "status": "IMPLEMENTED",
+      "writer": "OpportunityService",
+      "reads": ["sales", "targets projection"],
+      "forbiddenDependencies": [
+        "erp-order-target-achievement",
+        "payment-target-achievement"
+      ]
+    },
+    {
+      "name": "Activity",
+      "workspace": "sales",
+      "status": "IMPLEMENTED",
+      "writer": "ActivityService",
+      "reads": ["sales"],
+      "forbiddenDependencies": ["mandatory-provider-execution"]
+    },
+    {
+      "name": "Product Catalog",
+      "workspace": "sales",
+      "status": "IMPLEMENTED",
+      "writer": "ProductService",
+      "reads": ["pricing", "quotation", "logistics"],
+      "forbiddenDependencies": ["mutable-pricing-in-product"]
+    },
+    {
+      "name": "Pricing",
+      "workspace": "sales",
+      "status": "PARTIALLY_IMPLEMENTED",
+      "writer": "Pricing application service",
+      "reads": ["quotation"],
+      "forbiddenDependencies": ["frontend-pricing-authority"]
+    },
+    {
+      "name": "Quotation",
+      "workspace": "sales",
+      "status": "PARTIALLY_IMPLEMENTED",
+      "writer": "Quotation application service",
+      "reads": ["sales", "documents"],
+      "forbiddenDependencies": ["formal-revision-aggregate"]
+    },
+    {
+      "name": "ERP Import and DQ",
+      "workspace": "shared",
+      "status": "CONTRACTED",
+      "writer": "Import pipeline only",
+      "reads": ["sales", "capacity", "analytics"],
+      "forbiddenDependencies": ["manual-erp-order-lifecycle"]
+    },
+    {
+      "name": "ERP Sales Order Facts",
+      "workspace": "shared",
+      "status": "CONTRACTED",
+      "writer": "Import pipeline only",
+      "reads": ["sales", "capacity", "analytics"],
+      "forbiddenDependencies": ["create-confirm-amend-handover-close"]
+    },
+    {
+      "name": "Capacity Intelligence",
+      "workspace": "operations",
+      "status": "CONTRACTED",
+      "writer": "Capacity calculation service",
+      "reads": ["operations", "sales projection"],
+      "forbiddenDependencies": ["reservations", "mes", "qc", "routing"]
+    },
+    {
+      "name": "Logistics Planning",
+      "workspace": "logistics",
+      "status": "CONTRACTED",
+      "writer": "Logistics planning service",
+      "reads": ["authorized sales demand projection"],
+      "forbiddenDependencies": [
+        "shipment",
+        "dispatch",
+        "delivery",
+        "pod",
+        "edge-loading"
+      ]
+    },
+    {
+      "name": "Finance FX",
+      "workspace": "finance",
+      "status": "CONTRACTED",
+      "writer": "Finance FX service",
+      "reads": ["authorized commercial references"],
+      "forbiddenDependencies": ["broad-customer-crm-ownership"]
+    },
+    {
+      "name": "Payments and Cheques",
+      "workspace": "finance",
+      "status": "CONTRACTED",
+      "writer": "Finance service",
+      "reads": ["authorized commercial references"],
+      "forbiddenDependencies": ["untrusted-ar-or-balance"]
+    },
+    {
+      "name": "Returned Scrap",
+      "workspace": "finance",
+      "status": "CONTRACTED",
+      "writer": "Returned scrap service",
+      "reads": ["original quotation and item history"],
+      "forbiddenDependencies": ["current-price-benefit", "net-sales-impact"]
+    },
+    {
+      "name": "Reference Data",
+      "workspace": "shared",
+      "status": "PARTIALLY_IMPLEMENTED",
+      "writer": "Reference data authority",
+      "reads": ["all authorized domains"],
+      "forbiddenDependencies": ["duplicate-hardcoded-selectors"]
+    },
+    {
+      "name": "Documents",
+      "workspace": "shared",
+      "status": "CONTRACTED",
+      "writer": "Document capability",
+      "reads": ["quotation owner context"],
+      "forbiddenDependencies": ["quotation-business-ownership"]
+    },
+    {
+      "name": "Notifications",
+      "workspace": "shared",
+      "status": "CONTRACTED",
+      "writer": "Notification delivery",
+      "reads": ["authorized domain events"],
+      "forbiddenDependencies": ["business-truth-ownership"]
+    },
+    {
+      "name": "Analytics",
+      "workspace": "shared",
+      "status": "OUT_OF_CURRENT_STEP_2_IMPLEMENTATION",
+      "writer": "None; consumes governed projections later",
+      "reads": ["governed projections"],
+      "forbiddenDependencies": ["transactional-truth-ownership"]
+    },
+    {
+      "name": "AI Advisory",
+      "workspace": "shared",
+      "status": "CONTRACTED",
+      "writer": "None; advisory only",
+      "reads": ["authorized projections"],
+      "forbiddenDependencies": [
+        "business-state-write",
+        "pricing-authority",
+        "target-authority",
+        "default-finance-access"
+      ]
+    }
+  ]
+}

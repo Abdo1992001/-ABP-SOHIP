@@ -1,0 +1,125 @@
+type: object
+description: >-
+  Commercial history derived from imported ERP sales orders. External and
+  intercompany (ACROW group) figures are reported separately so that "sales"
+  never silently includes sales to ourselves.
+properties:
+  currencyCode:
+    type: string
+  asOf:
+    type: string
+    format: date-time
+  totals:
+    type: object
+    properties:
+      externalValue:
+        type: string
+      groupValue:
+        type: string
+      orderCount:
+        type: integer
+      customerCount:
+        type: integer
+      itemCount:
+        type: integer
+    additionalProperties: false
+  topCountries:
+    type: array
+    items:
+      type: object
+      properties:
+        countryCode:
+          type: string
+        countryName:
+          type: string
+        value:
+          type: string
+        orderCount:
+          type: integer
+      additionalProperties: false
+  topCustomers:
+    type: array
+    items:
+      type: object
+      properties:
+        accountId:
+          type: string
+        name:
+          type: string
+        countryCode:
+          type: string
+        relationshipTypeCode:
+          type: string
+        value:
+          type: string
+        orderCount:
+          type: integer
+        lastOrderDate:
+          type: string
+      additionalProperties: false
+  topProducts:
+    type: array
+    items:
+      type: object
+      properties:
+        productId:
+          type: string
+        description:
+          type: string
+        quantity:
+          type: string
+        value:
+          type: string
+      additionalProperties: false
+  recentOrders:
+    type: array
+    items:
+      type: object
+      properties:
+        orderId:
+          type: string
+        orderNumber:
+          type: string
+        accountId:
+          type: string
+        accountName:
+          type: string
+        countryCode:
+          type: string
+        orderDate:
+          type: string
+        statusCode:
+          type: string
+        currencyCode:
+          type: string
+        value:
+          type: string
+        lineCount:
+          type: integer
+        isIntercompany:
+          type: boolean
+      additionalProperties: false
+  monthly:
+    type: array
+    items:
+      type: object
+      properties:
+        period:
+          type: string
+        externalValue:
+          type: string
+        groupValue:
+          type: string
+        orderCount:
+          type: integer
+      additionalProperties: false
+additionalProperties: false
+required:
+  - currencyCode
+  - asOf
+  - totals
+  - topCountries
+  - topCustomers
+  - topProducts
+  - recentOrders
+  - monthly

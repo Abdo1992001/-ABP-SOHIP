@@ -1,0 +1,18 @@
+type: object
+properties:
+  expectedRowVersion:
+    type: string
+    pattern: ^\d+$
+  targetStatusCode:
+    type: string
+    enum: [DRAFT, CONFIRMED, IN_PRODUCTION, READY, HANDED_OVER, CLOSED, CANCELLED]
+  note:
+    type: string
+    maxLength: 1000
+  reason:
+    type: string
+    maxLength: 500
+additionalProperties: false
+required:
+  - expectedRowVersion
+  - targetStatusCode

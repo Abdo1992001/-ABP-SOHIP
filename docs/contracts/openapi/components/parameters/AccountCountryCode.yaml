@@ -1,0 +1,6 @@
+name: countryCode
+in: query
+required: false
+description: Canonical country-code filter. It narrows results and never widens effective Country Scope.
+schema:
+  $ref: ../schemas/CountryCode.yaml

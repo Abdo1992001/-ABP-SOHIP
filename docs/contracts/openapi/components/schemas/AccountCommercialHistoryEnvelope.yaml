@@ -1,0 +1,10 @@
+type: object
+properties:
+  data:
+    $ref: ./AccountCommercialHistory.yaml
+  analyticsMetadata:
+    $ref: ./AnalyticsResponseMetadata.yaml
+additionalProperties: false
+required:
+  - data
+  - analyticsMetadata

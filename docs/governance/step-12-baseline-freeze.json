@@ -1,0 +1,55 @@
+{
+  "status": "RECORDED_NOT_RELEASE_CANDIDATE",
+  "capturedAt": "2026-08-26T09:30:00+03:00",
+  "git": {
+    "commit": "a23753b33d9c91a133c93dbfcd48b40feb878226",
+    "branch": "main",
+    "dirty": true,
+    "startingDirtyPathCount": 247,
+    "releaseCandidateImmutable": false
+  },
+  "contract": {
+    "openApiVersion": "1.6.0",
+    "openApiSha256": "f1d00e39cc0151e40f2166f7dae67885a007d622199d1d4a4705c112fc317053",
+    "generatedClientVersion": "1.6.0",
+    "generatedClientSha256": "fd5b0797605ffbd18210d8681c82d8ca1f9d49d385962efcf6b0d202b19b0f90",
+    "generatedClientDrift": 0,
+    "mandatoryRuntime": 217,
+    "outOfScopeV1": 21
+  },
+  "database": {
+    "postgresVersion": "17.11",
+    "migrationCount": 35,
+    "freshMigration": "PASS",
+    "existingDatabaseUpgrade": "PASS",
+    "schemaDrift": 0,
+    "cr001Migrations": [
+      "20260825010000_cr001_business_decisions",
+      "20260825011000_cr001_quotation_state_guard"
+    ]
+  },
+  "frontend": {
+    "screens": "55/55",
+    "productionActions": "195/195",
+    "deadActions": 0,
+    "fakeUi": 0
+  },
+  "analytics": { "metrics": 72, "reports": 18 },
+  "verification": {
+    "packageLockIntegrity": "PASS",
+    "dockerRuntime": "PASS",
+    "apiContract": "PASS",
+    "frontendProductionBuild": "PASS",
+    "electronBuild": "PASS",
+    "msixPackaging": "UNSIGNED_LAYOUT_READY_MAKEAPPX_NOT_INSTALLED",
+    "steps1Through11": "PASS",
+    "cr001": "PASS",
+    "corepackPnpmVerify": "PASS"
+  },
+  "sourceLineage": {
+    "dockerImageSourceCommit": "UNFREEZABLE_DIRTY_WORKTREE",
+    "bicepSourceCommit": "UNFREEZABLE_DIRTY_WORKTREE",
+    "ciWorkflowSourceCommit": "UNFREEZABLE_DIRTY_WORKTREE"
+  },
+  "blocker": "Commit and tag a clean reviewed release candidate before production deployment."
+}

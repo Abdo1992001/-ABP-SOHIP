@@ -1,0 +1,14 @@
+type: object
+additionalProperties: false
+required: [assignmentId, accountId, segmentId, effectiveFrom, sourceCode]
+properties:
+  assignmentId: { type: string, format: uuid }
+  accountId: { type: string, format: uuid }
+  segmentId: { type: string, format: uuid }
+  segmentCode: { type: [string, 'null'] }
+  displayNameEn: { type: [string, 'null'] }
+  displayNameAr: { type: [string, 'null'] }
+  effectiveFrom: { type: string, format: date-time }
+  effectiveTo: { type: [string, 'null'], format: date-time }
+  sourceCode: { type: string }
+  sourceReference: { type: [string, 'null'] }

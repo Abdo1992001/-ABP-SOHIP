@@ -1,0 +1,35 @@
+type: object
+properties:
+  quotationId:
+    type: string
+    format: uuid
+  ready:
+    type: boolean
+  statusCode:
+    type: string
+  blockers:
+    type: array
+    items:
+      $ref: ./PricingWarning.yaml
+  approvalRequestId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  documentJobId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  statusUrl:
+    type:
+      - string
+      - 'null'
+additionalProperties: false
+required:
+  - quotationId
+  - ready
+  - statusCode
+  - blockers
+  - documentJobId
+  - statusUrl

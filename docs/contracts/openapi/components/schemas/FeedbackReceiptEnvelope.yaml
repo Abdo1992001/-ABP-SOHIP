@@ -1,0 +1,13 @@
+type: object
+additionalProperties: false
+required: [data]
+properties:
+  data:
+    type: object
+    additionalProperties: true
+    required: [feedbackRef, receivedAt]
+    properties:
+      feedbackRef: { type: string }
+      receivedAt: { type: string, format: date-time }
+      followUp: { type: boolean }
+      escalated: { type: boolean }

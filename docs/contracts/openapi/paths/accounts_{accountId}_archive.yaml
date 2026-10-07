@@ -1,0 +1,69 @@
+post:
+  tags:
+    - CRM
+  summary: Archive account
+  operationId: post_accounts_by_accountId_archive
+  description: >-
+    Permission: accounts.archive. Scope: Country then permission, explicit
+    DENY, and configured record context. No hard delete. Requires the exact
+    prior ETag/rowVersion in If-Match; stale values return typed 412.
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/AccountDetailEnvelope.yaml
+      headers:
+        ETag:
+          $ref: ../components/headers/ETag.yaml
+    '400':
+      $ref: ../components/responses/Error400.yaml
+    '401':
+      $ref: ../components/responses/Error401.yaml
+    '403':
+      $ref: ../components/responses/Error403.yaml
+    '404':
+      $ref: ../components/responses/Error404.yaml
+    '409':
+      $ref: ../components/responses/Error409.yaml
+    '412':
+      $ref: ../components/responses/Error412.yaml
+    '422':
+      $ref: ../components/responses/Error422.yaml
+    '429':
+      $ref: ../components/responses/Error429.yaml
+    '500':
+      $ref: ../components/responses/Error500.yaml
+    '503':
+      $ref: ../components/responses/Error503.yaml
+  parameters:
+    - name: accountId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    - $ref: ../components/parameters/IfMatch.yaml
+    - $ref: ../components/parameters/IdempotencyKey.yaml
+    - $ref: ../components/parameters/CsrfToken.yaml
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/ArchiveAccountRequest.yaml
+  x-abp-module: CRM
+  x-abp-permission: accounts.archive
+  x-abp-scope-rule: Record policy
+  x-abp-concurrency: If-Match
+  x-abp-idempotency: Required
+  x-abp-request-schema: ArchiveAccountRequest
+  x-abp-success-schema: AccountDetailEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

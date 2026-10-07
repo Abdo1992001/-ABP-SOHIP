@@ -1,0 +1,15 @@
+type: object
+properties:
+  data:
+    type: array
+    maxItems: 200
+    items:
+      $ref: ./DocumentSubject.yaml
+  meta:
+    $ref: ./PaginationMeta.yaml
+  links:
+    $ref: ./Links.yaml
+additionalProperties: false
+required:
+  - data
+  - meta

@@ -1,0 +1,12 @@
+type: object
+additionalProperties: false
+required: [challengeToken, recoveryCode]
+properties:
+  challengeToken:
+    type: string
+    minLength: 32
+    maxLength: 512
+  recoveryCode:
+    type: string
+    minLength: 8
+    maxLength: 64

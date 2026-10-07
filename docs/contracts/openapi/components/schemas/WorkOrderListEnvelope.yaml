@@ -1,0 +1,11 @@
+type: object
+additionalProperties: false
+required: [data, meta]
+properties:
+  data:
+    type: array
+    maxItems: 200
+    items:
+      $ref: WorkOrder.yaml
+  meta:
+    $ref: OffsetPaginationMeta.yaml

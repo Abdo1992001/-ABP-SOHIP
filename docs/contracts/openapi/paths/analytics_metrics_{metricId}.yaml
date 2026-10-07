@@ -1,0 +1,39 @@
+parameters:
+  - name: metricId
+    in: path
+    required: true
+    schema: { type: string, pattern: '^MET-[A-Z]+-[0-9]{3}$' }
+get:
+  tags: [Analytics]
+  summary: Resolve one governed metric using server semantic authority
+  operationId: get_analytics_metrics_by_metricId
+  security: [{ WebCookie: [] }, { DesktopOAuth: [] }]
+  parameters:
+    - { name: asOf, in: query, schema: { type: string, format: date-time } }
+    - { name: from, in: query, schema: { type: string, format: date-time } }
+    - { name: to, in: query, schema: { type: string, format: date-time } }
+    - { name: currency, in: query, schema: { type: string, enum: [USD, EGP], default: USD } }
+    - { name: countryCode, in: query, schema: { $ref: ../components/schemas/CountryCode.yaml } }
+  responses:
+    '200':
+      description: Governed metric value and semantic metadata
+      content:
+        application/json:
+          schema: { $ref: ../components/schemas/GovernedMetricResultEnvelope.yaml }
+    '400': { $ref: ../components/responses/Error400.yaml }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '403': { $ref: ../components/responses/Error403.yaml }
+    '404': { $ref: ../components/responses/Error404.yaml }
+    '422': { $ref: ../components/responses/Error422.yaml }
+    '500': { $ref: ../components/responses/Error500.yaml }
+  x-abp-module: Analytics
+  x-abp-permission: Registry-defined metric view permission
+  x-abp-scope-rule: Country Scope and DENY applied before aggregation
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: AnalyticsMetricQuery
+  x-abp-success-schema: GovernedMetricResultEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

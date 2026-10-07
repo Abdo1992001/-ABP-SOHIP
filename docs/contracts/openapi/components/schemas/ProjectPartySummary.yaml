@@ -1,0 +1,27 @@
+type: object
+additionalProperties: false
+required:
+  - projectPartyId
+  - account
+  - roleCode
+  - primaryFlag
+  - rowVersion
+properties:
+  projectPartyId:
+    $ref: ./UUID.yaml
+  account:
+    $ref: ./ProjectAccountReference.yaml
+  roleCode:
+    type: string
+    minLength: 1
+    maxLength: 100
+  primaryFlag:
+    type: boolean
+  # Concurrency token for this party relation. DELETE
+  # /project-parties/{partyId} takes it in If-Match; the project has its own
+  # separate counter, which that endpoint rejects. Without this the delete
+  # cannot be called correctly by any client.
+  rowVersion:
+    $ref: ./RowVersion.yaml
+description: Safe Project party projection; source and restricted Customer fields are omitted.
+

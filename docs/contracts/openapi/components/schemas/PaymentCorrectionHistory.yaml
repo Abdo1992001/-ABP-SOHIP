@@ -1,0 +1,11 @@
+type: object
+additionalProperties: false
+required: [correctedBy]
+properties:
+  corrects:
+    oneOf:
+      - $ref: ./PaymentListItem.yaml
+      - type: 'null'
+  correctedBy:
+    type: array
+    items: { $ref: ./PaymentListItem.yaml }

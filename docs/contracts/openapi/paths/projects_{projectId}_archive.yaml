@@ -1,0 +1,68 @@
+post:
+  tags:
+    - Projects
+  summary: Soft-archive project
+  operationId: post_projects_by_projectId_archive
+  description: >-
+    Permission: projects.archive. Project Country Scope is enforced before
+    record context. Exact If-Match, idempotency, active-work validation, and
+    structured audit are required. The Project is never hard-deleted.
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    '200':
+      description: Archived Project
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ProjectEnvelope.yaml
+      headers:
+        ETag:
+          $ref: ../components/headers/ETag.yaml
+    '400':
+      $ref: ../components/responses/Error400.yaml
+    '401':
+      $ref: ../components/responses/Error401.yaml
+    '403':
+      $ref: ../components/responses/Error403.yaml
+    '404':
+      $ref: ../components/responses/Error404.yaml
+    '409':
+      $ref: ../components/responses/Error409.yaml
+    '412':
+      $ref: ../components/responses/Error412.yaml
+    '422':
+      $ref: ../components/responses/Error422.yaml
+    '429':
+      $ref: ../components/responses/Error429.yaml
+    '500':
+      $ref: ../components/responses/Error500.yaml
+    '503':
+      $ref: ../components/responses/Error503.yaml
+  parameters:
+    - name: projectId
+      in: path
+      required: true
+      schema:
+        $ref: ../components/schemas/UUID.yaml
+    - $ref: ../components/parameters/IfMatch.yaml
+    - $ref: ../components/parameters/IdempotencyKey.yaml
+    - $ref: ../components/parameters/CsrfToken.yaml
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/ArchiveProjectRequest.yaml
+  x-abp-module: Projects
+  x-abp-permission: projects.archive
+  x-abp-scope-rule: Project country then record context
+  x-abp-concurrency: If-Match
+  x-abp-idempotency: Required
+  x-abp-request-schema: ArchiveProjectRequest
+  x-abp-success-schema: ProjectEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

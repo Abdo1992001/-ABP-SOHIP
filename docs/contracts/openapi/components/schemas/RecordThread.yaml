@@ -1,0 +1,30 @@
+# The conversation about one commercial record, addressed by what it is about
+# rather than by a conversation id. conversationId is null when nobody has
+# posted yet, so a screen can render the empty thread without creating one.
+type: object
+additionalProperties: false
+required: [conversationId, businessContextType, businessContextId, participants, messages]
+properties:
+  conversationId: { type: [string, 'null'], format: uuid }
+  typeCode: { type: string, enum: [DM, GROUP, RECORD] }
+  title: { type: [string, 'null'] }
+  businessContextType: { type: string }
+  businessContextId: { type: string, format: uuid }
+  createdAt: { type: string, format: date-time }
+  updatedAt: { type: string, format: date-time }
+  participants:
+    type: array
+    items:
+      type: object
+      additionalProperties: false
+      required: [userId, displayName, email, roleCode]
+      properties:
+        userId: { type: string, format: uuid }
+        displayName: { type: string }
+        email: { type: string, format: email }
+        roleCode: { type: string }
+        lastReadAt: { type: [string, 'null'], format: date-time }
+        photoUpdatedAt: { type: [string, 'null'], format: date-time }
+  messages:
+    type: array
+    items: { $ref: ./Message.yaml }

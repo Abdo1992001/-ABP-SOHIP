@@ -1,0 +1,7 @@
+type: object
+additionalProperties: false
+required: [expectedRowVersion, targetStatusCode]
+properties:
+  expectedRowVersion: { type: string, pattern: '^\d+$' }
+  targetStatusCode: { type: string, enum: [NEW, ACKNOWLEDGED, CONTACTED, CLOSED] }
+  note: { type: string, maxLength: 2000 }

@@ -1,0 +1,104 @@
+{
+  "version": "1.0.0",
+  "authority": "ABP Step 8 LOCKED v1.0 + step-08-workflow-handoff.json",
+  "workflows": [
+    {
+      "operationId": "post_quotations_by_quotationId_approval_requests",
+      "source": ["DRAFT"],
+      "queued": "PENDING",
+      "terminal": ["APPROVED", "REJECTED", "CHANGES_REQUESTED", "INVALIDATED"],
+      "executor": "QuotationApprovalWorkflow"
+    },
+    {
+      "operationId": "post_returned_scrap_cases_by_caseId_submit_approval",
+      "source": ["DRAFT"],
+      "queued": "PENDING_APPROVAL",
+      "terminal": ["APPROVED", "REJECTED", "CANCELLED"],
+      "executor": "ReturnedScrapApprovalWorkflow"
+    },
+    {
+      "operationId": "post_quotations_by_quotationId_prepare",
+      "source": ["DRAFT", "APPROVED"],
+      "queued": "REQUESTED",
+      "terminal": ["AVAILABLE", "FAILED"],
+      "executor": "QuotationPdfWorkflow"
+    },
+    {
+      "operationId": "post_quotations_by_quotationId_send",
+      "source": ["READY"],
+      "queued": "QUEUED",
+      "terminal": ["SENT", "FAILED"],
+      "executor": "QuotationSendWorkflow"
+    },
+    {
+      "operationId": "post_import_jobs_by_jobId_validate",
+      "source": ["UPLOADED", "FAILED"],
+      "queued": "VALIDATING",
+      "terminal": ["PREVIEWED", "FAILED"],
+      "executor": "ErpImportWorkflow"
+    },
+    {
+      "operationId": "post_import_jobs_by_jobId_commit",
+      "source": ["PREVIEWED"],
+      "queued": "COMMIT_REQUESTED",
+      "terminal": ["COMMITTED", "FAILED"],
+      "executor": "ErpImportWorkflow"
+    },
+    {
+      "operationId": "post_import_jobs_by_jobId_retry",
+      "source": ["FAILED"],
+      "queued": "QUEUED",
+      "terminal": ["PREVIEWED", "COMMITTED", "ROLLED_BACK", "FAILED"],
+      "executor": "ErpImportWorkflow"
+    },
+    {
+      "operationId": "post_import_jobs_by_jobId_rollback",
+      "source": ["COMMITTED"],
+      "queued": "ROLLBACK_REQUESTED",
+      "terminal": ["ROLLED_BACK", "FAILED"],
+      "executor": "ErpImportWorkflow"
+    },
+    {
+      "operationId": "post_reconciliation_runs",
+      "source": ["SOURCE_READY"],
+      "queued": "PENDING",
+      "terminal": ["COMPLETED", "FAILED"],
+      "executor": "ErpReconciliationWorkflow"
+    },
+    {
+      "operationId": "post_logistics_plan_versions_by_versionId_optimize",
+      "source": ["DRAFT"],
+      "queued": "QUEUED",
+      "terminal": ["SUCCEEDED", "STALE", "FAILED"],
+      "executor": "LogisticsOptimizerWorkflow"
+    },
+    {
+      "operationId": "post_logistics_plan_versions_by_versionId_exports",
+      "source": ["DRAFT", "VALIDATED"],
+      "queued": "QUEUED",
+      "terminal": ["COMPLETED", "FAILED"],
+      "executor": "LogisticsExportWorkflow"
+    },
+    {
+      "operationId": "post_documents_uploads_by_uploadSessionId_complete",
+      "source": ["PENDING_UPLOAD"],
+      "queued": "SCANNING",
+      "terminal": ["AVAILABLE", "REJECTED"],
+      "executor": "MalwareScanWorkflow"
+    },
+    {
+      "operationId": "post_exports",
+      "source": ["AUTHORIZED_SOURCE"],
+      "queued": "QUEUED",
+      "terminal": ["COMPLETED", "FAILED"],
+      "executor": "DataExportWorkflow"
+    },
+    {
+      "operationId": "post_admin_users_by_userId_invite",
+      "source": ["PENDING"],
+      "queued": "QUEUED",
+      "terminal": ["MANUAL_READY", "DELIVERED", "FAILED"],
+      "executor": "UserInviteWorkflow"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+name: relationship
+in: query
+required: false
+description: EXTERNAL or GROUP. Keeps intercompany orders out of an external-sales view.
+schema:
+  type: string
+  enum: [EXTERNAL, GROUP]

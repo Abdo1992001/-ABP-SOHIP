@@ -1,0 +1,21 @@
+type: object
+properties:
+  sourceSystemCode:
+    type: string
+  importTypeCode:
+    type: string
+  fileName:
+    type: string
+  expectedSizeBytes:
+    type: integer
+    format: int64
+    minimum: 1
+  mimeType:
+    type: string
+additionalProperties: false
+required:
+  - sourceSystemCode
+  - importTypeCode
+  - fileName
+  - expectedSizeBytes
+  - mimeType

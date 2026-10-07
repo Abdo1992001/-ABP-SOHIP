@@ -1,0 +1,126 @@
+{
+  "version": "1.0.0",
+  "scope": "contract handoff only; no Step 9 implementation",
+  "defaults": {
+    "pollSeconds": 2,
+    "etagRequiredForMutations": true,
+    "jobStatusOperation": "get_jobs_by_jobId",
+    "documentResultOperation": "get_documents_by_documentId",
+    "restrictedFields": "server-omitted"
+  },
+  "actions": [
+    {
+      "operationId": "post_quotations_by_quotationId_approval_requests",
+      "action": "Request approval",
+      "sourceStates": ["DRAFT"],
+      "queuedStates": ["PENDING"],
+      "terminalStates": [
+        "APPROVED",
+        "REJECTED",
+        "CHANGES_REQUESTED",
+        "INVALIDATED"
+      ],
+      "errors": [
+        "APPROVAL_ALREADY_PENDING",
+        "QUOTATION_NOT_READY",
+        "PRECONDITION_FAILED"
+      ],
+      "permission": "quotations.request_approval",
+      "after": ["refresh quotation", "open approval context"]
+    },
+    {
+      "operationId": "post_quotations_by_quotationId_prepare",
+      "action": "Prepare official document",
+      "sourceStates": ["DRAFT", "APPROVED"],
+      "queuedStates": ["REQUESTED"],
+      "terminalStates": ["AVAILABLE", "FAILED"],
+      "errors": ["QUOTATION_NOT_READY", "PDF_ARTIFACT_INVALID"],
+      "permission": "quotations.edit",
+      "after": ["open authorized document", "retry"]
+    },
+    {
+      "operationId": "post_quotations_by_quotationId_send",
+      "action": "Send quotation",
+      "sourceStates": ["READY"],
+      "queuedStates": ["QUEUED", "PROCESSING"],
+      "terminalStates": ["SENT", "FAILED"],
+      "errors": [
+        "SEND_CANDIDATE_MISMATCH",
+        "QUOTATION_APPROVAL_REQUIRED",
+        "SEND_PROVIDER_UNAVAILABLE_USE_MANUAL_EXTERNAL"
+      ],
+      "permission": "quotations.send",
+      "after": [
+        "refresh quotation",
+        "open official PDF",
+        "retry with governed manual/external evidence"
+      ]
+    },
+    {
+      "operationId": "post_returned_scrap_cases_by_caseId_submit_approval",
+      "action": "Submit returned scrap",
+      "sourceStates": ["DRAFT"],
+      "queuedStates": ["PENDING_APPROVAL"],
+      "terminalStates": ["APPROVED", "REJECTED", "CANCELLED", "FINALIZED"],
+      "errors": [
+        "RETURNED_SCRAP_CUMULATIVE_QTY_EXCEEDED",
+        "RETURNED_SCRAP_STATE_CONFLICT"
+      ],
+      "permission": "returns.edit",
+      "after": ["refresh case", "open manager approval"]
+    },
+    {
+      "operationId": "post_import_jobs_by_jobId_validate",
+      "action": "Validate import",
+      "sourceStates": ["UPLOADED", "FAILED"],
+      "queuedStates": ["VALIDATING"],
+      "terminalStates": ["PREVIEWED", "FAILED"],
+      "errors": ["IMPORT_VALIDATION_ROWS_REQUIRED"],
+      "permission": "imports.manage",
+      "after": ["open DQ preview", "retry"]
+    },
+    {
+      "operationId": "post_import_jobs_by_jobId_commit",
+      "action": "Commit import",
+      "sourceStates": ["PREVIEWED"],
+      "queuedStates": ["COMMIT_REQUESTED"],
+      "terminalStates": ["COMMITTED", "FAILED"],
+      "errors": [
+        "IMPORT_DQ_BLOCKERS_OPEN",
+        "IMPORT_PREVIEW_FINGERPRINT_MISMATCH"
+      ],
+      "permission": "imports.commit",
+      "after": ["open reconciliation", "view imported facts"]
+    },
+    {
+      "operationId": "post_logistics_plan_versions_by_versionId_optimize",
+      "action": "Optimize plan",
+      "sourceStates": ["DRAFT"],
+      "queuedStates": ["QUEUED", "RUNNING"],
+      "terminalStates": ["SUCCEEDED", "STALE", "FAILED"],
+      "errors": ["OPTIMIZER_HASH_MISMATCH", "LOGISTICS_INPUT_INCOMPLETE"],
+      "permission": "logistics.optimize",
+      "after": ["refresh version", "validate", "retry stale run"]
+    },
+    {
+      "operationId": "post_documents_uploads_by_uploadSessionId_complete",
+      "action": "Verify upload",
+      "sourceStates": ["PENDING_UPLOAD"],
+      "queuedStates": ["SCANNING"],
+      "terminalStates": ["AVAILABLE", "REJECTED"],
+      "errors": ["MALWARE_DETECTED", "UPLOAD_HASH_MISMATCH"],
+      "permission": "documents.create",
+      "after": ["open document", "upload replacement"]
+    },
+    {
+      "operationId": "post_exports",
+      "action": "Create export",
+      "sourceStates": ["AUTHORIZED_SOURCE"],
+      "queuedStates": ["QUEUED", "PROCESSING"],
+      "terminalStates": ["COMPLETED", "FAILED"],
+      "errors": ["FORBIDDEN", "EXPORT_EVENT_NOT_FOUND"],
+      "permission": "data.export",
+      "after": ["download authorized result", "retry"]
+    }
+  ]
+}

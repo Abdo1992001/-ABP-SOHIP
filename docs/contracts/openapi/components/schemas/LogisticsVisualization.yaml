@@ -1,0 +1,18 @@
+type: object
+properties:
+  planVersionId:
+    type: string
+    format: uuid
+  transportUnits:
+    type: array
+    items:
+      $ref: ./PlanTransportUnit.yaml
+  placements:
+    type: array
+    items:
+      $ref: ./PlacementGroup.yaml
+additionalProperties: false
+required:
+  - planVersionId
+  - transportUnits
+  - placements

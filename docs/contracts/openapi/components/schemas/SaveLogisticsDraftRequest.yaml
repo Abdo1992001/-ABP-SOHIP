@@ -1,0 +1,71 @@
+type: object
+properties:
+  lines:
+    type: array
+    items:
+      type: object
+      properties:
+        planLineId:
+          type:
+            - string
+            - 'null'
+          format: uuid
+        productId:
+          type:
+            - string
+            - 'null'
+          format: uuid
+        qty:
+          type: string
+          pattern: ^-?\d+(\.\d+)?$
+        lengthMm:
+          type: string
+          pattern: ^-?\d+(\.\d+)?$
+        widthMm:
+          type: string
+          pattern: ^-?\d+(\.\d+)?$
+        thicknessMm:
+          type: string
+          pattern: ^-?\d+(\.\d+)?$
+        weightKg:
+          type:
+            - string
+            - 'null'
+          pattern: ^-?\d+(\.\d+)?$
+        orientationCode:
+          type: string
+          enum:
+            - FLAT_ON_FACE
+      additionalProperties: false
+      required:
+        - qty
+        - lengthMm
+        - widthMm
+        - thicknessMm
+        - orientationCode
+  transportUnits:
+    type: array
+    items:
+      type: object
+      properties:
+        templateId:
+          type:
+            - string
+            - 'null'
+          format: uuid
+        instanceNo:
+          type: integer
+          format: int64
+          minimum: 1
+      additionalProperties: false
+      required:
+        - instanceNo
+  completenessMode:
+    type: string
+    enum:
+      - COMPLETE
+      - PARTIAL
+additionalProperties: false
+required:
+  - lines
+  - completenessMode

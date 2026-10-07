@@ -1,0 +1,71 @@
+type: object
+properties:
+  pricingOverrideId:
+    type: string
+    format: uuid
+  quotationId:
+    type: string
+    format: uuid
+  quotationLineId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  requestedBelowMinPrice:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+  minPriceSnapshot:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+  currencyCode:
+    type: string
+  reason:
+    type: string
+  statusCode:
+    type: string
+    enum:
+      - PENDING
+      - APPROVED
+      - REJECTED
+      - APPLIED
+      - CANCELLED
+  approvalRequestId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  requestedByUserId:
+    type: string
+    format: uuid
+  requestedAt:
+    type: string
+    format: date-time
+  approvedByUserId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  approvedAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+  appliedAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+  rowVersion:
+    $ref: ./RowVersion.yaml
+additionalProperties: false
+required:
+  - pricingOverrideId
+  - quotationId
+  - requestedBelowMinPrice
+  - minPriceSnapshot
+  - currencyCode
+  - reason
+  - statusCode
+  - requestedByUserId
+  - requestedAt
+  - rowVersion

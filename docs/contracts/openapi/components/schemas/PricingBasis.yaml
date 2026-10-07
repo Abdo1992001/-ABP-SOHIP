@@ -1,0 +1,103 @@
+type: object
+properties:
+  pricingBaseConfigId:
+    type: string
+    format: uuid
+  standardBoardPrice:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+  currencyCode:
+    type: string
+  standardWeightKg:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+  derivedKgRate:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+  standardPricePerKg:
+    type: [string, 'null']
+    pattern: ^-?\d+(\.\d+)?$
+  curvedPricePerKg:
+    type: [string, 'null']
+    pattern: ^-?\d+(\.\d+)?$
+  circularPricePerKg:
+    type: [string, 'null']
+    pattern: ^-?\d+(\.\d+)?$
+  defaultDensityKgM3:
+    type: [string, 'null']
+    pattern: ^-?\d+(\.\d+)?$
+  defaultThicknessMm:
+    type: [string, 'null']
+    pattern: ^-?\d+(\.\d+)?$
+  referenceBoardWidthMm:
+    type: [string, 'null']
+    pattern: ^-?\d+(\.\d+)?$
+  referenceBoardLengthMm:
+    type: [string, 'null']
+    pattern: ^-?\d+(\.\d+)?$
+  defaultDiscountPct:
+    type: [string, 'null']
+    pattern: ^-?\d+(\.\d+)?$
+  maxPanelWidthMm:
+    type: [string, 'null']
+    pattern: ^-?\d+(\.\d+)?$
+  maxPanelLengthMm:
+    type: [string, 'null']
+    pattern: ^-?\d+(\.\d+)?$
+  defaultColumnHeightMm:
+    type: [string, 'null']
+    pattern: ^-?\d+(\.\d+)?$
+  columnClosureAllowanceMm:
+    type: [string, 'null']
+    pattern: ^-?\d+(\.\d+)?$
+  # The active pricing rules that are stored as data rather than code, so the
+  # quotation studio can offer them without a second round trip.
+  calculationFormulas:
+    type: array
+    maxItems: 200
+    items:
+      type: object
+      properties:
+        formulaKey:
+          type: string
+        displayName:
+          type: string
+        arabicLabel:
+          type: [string, 'null']
+        expression:
+          type: string
+        description:
+          type: [string, 'null']
+        rateUnitLabel:
+          type: [string, 'null']
+      additionalProperties: false
+      required:
+        - formulaKey
+        - displayName
+        - expression
+  documentSalesEngineer:
+    type: [string, 'null']
+    description: Sales engineer printed on the company's documents.
+  documentMobile:
+    type: [string, 'null']
+    description: Mobile number printed on the company's documents.
+  documentDeliveryTerms:
+    type: [string, 'null']
+    description: Delivery wording printed on the company's documents.
+  documentDeliveryPoint:
+    type: [string, 'null']
+    description: Delivery point printed on the company's documents.
+  documentOfferValidity:
+    type: [string, 'null']
+    description: Offer validity printed on the company's documents.
+  effectiveAt:
+    type: string
+    format: date-time
+additionalProperties: false
+required:
+  - pricingBaseConfigId
+  - standardBoardPrice
+  - currencyCode
+  - standardWeightKg
+  - derivedKgRate
+  - effectiveAt

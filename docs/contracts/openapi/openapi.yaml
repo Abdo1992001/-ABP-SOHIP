@@ -1,0 +1,839 @@
+openapi: 3.1.0
+info:
+  title: ABP Commercial System API
+  version: 1.6.0
+  description: Authoritative OpenAPI 3.1 contract derived from the 171-operation
+    Step 7 LOCKED v1.1 catalog. Contracted domain operations are not
+    runtime-enabled until their implementation slice is delivered.
+  license:
+    name: Proprietary — internal ABP use only
+    identifier: LicenseRef-ABP-Proprietary
+servers:
+  - url: /api/v1
+    description: Relative application API base
+security:
+  - WebCookie: []
+  - DesktopOAuth: []
+tags:
+  - name: Identity
+    description: Identity V1 contract operations.
+  - name: Preferences
+    description: Preferences V1 contract operations.
+  - name: CRM
+    description: CRM V1 contract operations.
+  - name: CRM Service
+    description: CRM Service V1 contract operations.
+  - name: Projects
+    description: Projects V1 contract operations.
+  - name: Pipeline
+    description: Pipeline V1 contract operations.
+  - name: Activities
+    description: Activities V1 contract operations.
+  - name: Targets
+    description: Targets V1 contract operations.
+  - name: Analytics
+    description: Analytics V1 contract operations.
+  - name: Catalog
+    description: Catalog V1 contract operations.
+  - name: Pricing
+    description: Pricing V1 contract operations.
+  - name: Finance FX
+    description: Finance FX V1 contract operations.
+  - name: Quotation
+    description: Quotation V1 contract operations.
+  - name: Approval
+    description: Approval V1 contract operations.
+  - name: ERP Orders
+    description: ERP Orders V1 contract operations.
+  - name: Payments
+    description: Payments V1 contract operations.
+  - name: Cheques
+    description: Cheques V1 contract operations.
+  - name: Returns
+    description: Returns V1 contract operations.
+  - name: Capacity
+    description: Capacity V1 contract operations.
+  - name: Logistics
+    description: Logistics V1 contract operations.
+  - name: Imports
+    description: Imports V1 contract operations.
+  - name: Data Quality
+    description: Data Quality V1 contract operations.
+  - name: Reconciliation
+    description: Reconciliation V1 contract operations.
+  - name: Documents
+    description: Documents V1 contract operations.
+  - name: Exports
+    description: Exports V1 contract operations.
+  - name: Notifications
+    description: Notifications V1 contract operations.
+  - name: Dashboard
+    description: Dashboard V1 contract operations.
+  - name: Search
+    description: Search V1 contract operations.
+  - name: Audit
+    description: Audit V1 contract operations.
+  - name: AI
+    description: AI V1 contract operations.
+  - name: Commercial Intelligence
+    description: Evidence-backed market research, prospects, competitors, watchlists, and repeat business workflows.
+  - name: Platform
+    description: Platform V1 contract operations.
+  - name: Platform Reference
+    description: Canonical typed reference data shared by authorized applications;
+      never a business-data visibility grant.
+  - name: Administration
+    description: Administration V1 contract operations.
+paths:
+  /me/profile:
+    $ref: paths/me_profile.yaml
+  /me/profile/photo:
+    $ref: paths/me_profile_photo.yaml
+  /receivables:
+    $ref: paths/receivables.yaml
+  /receivables/summary:
+    $ref: paths/receivables_summary.yaml
+  /receivables/{receivableInstallmentId}/collections:
+    $ref: paths/receivables_{receivableInstallmentId}_collections.yaml
+  /receivables/{receivableInstallmentId}/write-offs:
+    $ref: paths/receivables_{receivableInstallmentId}_write-offs.yaml
+  /users/{userId}/profile:
+    $ref: paths/users_{userId}_profile.yaml
+  /users/{userId}/avatar:
+    $ref: paths/users_{userId}_avatar.yaml
+  /me:
+    $ref: paths/me.yaml
+  /me/role-preview/{roleCode}:
+    $ref: paths/me_role-preview_{roleCode}.yaml
+  /auth/logout:
+    $ref: paths/auth_logout.yaml
+  /auth/login:
+    $ref: paths/auth_login.yaml
+  /auth/change-password:
+    $ref: paths/auth_change-password.yaml
+  /auth/mfa/setup:
+    $ref: paths/auth_mfa_setup.yaml
+  /auth/mfa/confirm:
+    $ref: paths/auth_mfa_confirm.yaml
+  /auth/mfa/verify:
+    $ref: paths/auth_mfa_verify.yaml
+  /auth/mfa/recovery:
+    $ref: paths/auth_mfa_recovery.yaml
+  /auth/mfa/disable:
+    $ref: paths/auth_mfa_disable.yaml
+  /auth/request-access:
+    $ref: paths/auth_request-access.yaml
+  /admin/access-requests:
+    $ref: paths/admin_access-requests.yaml
+  /admin/access-requests/{requestId}/approve:
+    $ref: paths/admin_access-requests_{requestId}_approve.yaml
+  /admin/access-requests/{requestId}/reject:
+    $ref: paths/admin_access-requests_{requestId}_reject.yaml
+  /team/roster:
+    $ref: paths/team_roster.yaml
+  /admin/users:
+    $ref: paths/admin_users.yaml
+  /admin/users/{userId}/invite:
+    $ref: paths/admin_users_{userId}_invite.yaml
+  /admin/users/{userId}:
+    $ref: paths/admin_users_{userId}.yaml
+  /admin/users/{userId}/activate:
+    $ref: paths/admin_users_{userId}_activate.yaml
+  /admin/users/{userId}/suspend:
+    $ref: paths/admin_users_{userId}_suspend.yaml
+  /admin/users/{userId}/disable:
+    $ref: paths/admin_users_{userId}_disable.yaml
+  /admin/users/{userId}/revoke-sessions:
+    $ref: paths/admin_users_{userId}_revoke-sessions.yaml
+  /admin/users/{userId}/reset-password:
+    $ref: paths/admin_users_{userId}_reset-password.yaml
+  /admin/users/{userId}/reset-mfa:
+    $ref: paths/admin_users_{userId}_reset-mfa.yaml
+  /admin/roles:
+    $ref: paths/admin_roles.yaml
+  /admin/roles/{roleId}:
+    $ref: paths/admin_roles_{roleId}.yaml
+  /admin/permissions:
+    $ref: paths/admin_permissions.yaml
+  /admin/users/{userId}/roles:
+    $ref: paths/admin_users_{userId}_roles.yaml
+  /admin/users/{userId}/country-access:
+    $ref: paths/admin_users_{userId}_country-access.yaml
+  /preferences:
+    $ref: paths/preferences.yaml
+  /accounts:
+    $ref: paths/accounts.yaml
+  /accounts/duplicate-check:
+    $ref: paths/accounts_duplicate-check.yaml
+  /accounts/{accountId}:
+    $ref: paths/accounts_{accountId}.yaml
+  /accounts/{accountId}/archive:
+    $ref: paths/accounts_{accountId}_archive.yaml
+  /accounts/{accountId}/transfer-ownership:
+    $ref: paths/accounts_{accountId}_transfer-ownership.yaml
+  /accounts/{accountId}/shares:
+    $ref: paths/accounts_{accountId}_shares.yaml
+  /customer-shares/{shareId}:
+    $ref: paths/customer-shares_{shareId}.yaml
+  /accounts/{accountId}/contact-shares:
+    $ref: paths/accounts_{accountId}_contact-shares.yaml
+  /contact-shares/{shareId}:
+    $ref: paths/contact-shares_{shareId}.yaml
+  /accounts/{accountId}/contacts:
+    $ref: paths/accounts_{accountId}_contacts.yaml
+  /accounts/{accountId}/commercial-history:
+    $ref: paths/accounts_{accountId}_commercial-history.yaml
+  /accounts/formwork-mix:
+    $ref: paths/accounts_formwork-mix.yaml
+  /system/mail-status:
+    $ref: paths/system_mail-status.yaml
+  /system/mail-test:
+    $ref: paths/system_mail-test.yaml
+  /system/emails:
+    $ref: paths/system_emails.yaml
+  /system/backup-status:
+    $ref: paths/system_backup-status.yaml
+  /contacts:
+    $ref: paths/contacts.yaml
+  /contacts/{contactId}:
+    $ref: paths/contacts_{contactId}.yaml
+  /contacts/{contactId}/channels:
+    $ref: paths/contacts_{contactId}_channels.yaml
+  /contact-channels/{channelId}:
+    $ref: paths/contact-channels_{channelId}.yaml
+  /group-networks:
+    $ref: paths/group-networks.yaml
+  /group-networks/{groupId}/memberships:
+    $ref: paths/group-networks_{groupId}_memberships.yaml
+  /group-memberships/{membershipId}:
+    $ref: paths/group-memberships_{membershipId}.yaml
+  /accounts/{accountId}/merge-preview:
+    $ref: paths/accounts_{accountId}_merge-preview.yaml
+  /accounts/{accountId}/merge:
+    $ref: paths/accounts_{accountId}_merge.yaml
+  /complaints:
+    $ref: paths/complaints.yaml
+  /complaints/{complaintId}:
+    $ref: paths/complaints_{complaintId}.yaml
+  /complaints/{complaintId}/status-transitions:
+    $ref: paths/complaints_{complaintId}_status-transitions.yaml
+  /customer-segments:
+    $ref: paths/customer-segments.yaml
+  /customer-segments/{segmentId}/archive:
+    $ref: paths/customer-segments_{segmentId}_archive.yaml
+  /accounts/{accountId}/segment-assignments:
+    $ref: paths/accounts_{accountId}_segment-assignments.yaml
+  /projects:
+    $ref: paths/projects.yaml
+  /projects/{projectId}:
+    $ref: paths/projects_{projectId}.yaml
+  /projects/{projectId}/archive:
+    $ref: paths/projects_{projectId}_archive.yaml
+  /projects/{projectId}/parties:
+    $ref: paths/projects_{projectId}_parties.yaml
+  /project-parties/{partyId}:
+    $ref: paths/project-parties_{partyId}.yaml
+  /project-parties/{partyId}/contact-roles:
+    $ref: paths/project-parties_{partyId}_contact-roles.yaml
+  /opportunities:
+    $ref: paths/opportunities.yaml
+  /opportunities/{opportunityId}:
+    $ref: paths/opportunities_{opportunityId}.yaml
+  /opportunities/{opportunityId}/stage-transitions:
+    $ref: paths/opportunities_{opportunityId}_stage-transitions.yaml
+  /opportunities/{opportunityId}/cancel:
+    $ref: paths/opportunities_{opportunityId}_cancel.yaml
+  /opportunities/{opportunityId}/probability-overrides:
+    $ref: paths/opportunities_{opportunityId}_probability-overrides.yaml
+  /activities:
+    $ref: paths/activities.yaml
+  /activities/{activityId}:
+    $ref: paths/activities_{activityId}.yaml
+  /activities/{activityId}/complete:
+    $ref: paths/activities_{activityId}_complete.yaml
+  /activities/{activityId}/cancel:
+    $ref: paths/activities_{activityId}_cancel.yaml
+  /activities/{activityId}/reschedule:
+    $ref: paths/activities_{activityId}_reschedule.yaml
+  /work-orders:
+    $ref: paths/work-orders.yaml
+  /work-orders/{workOrderId}:
+    $ref: paths/work-orders_{workOrderId}.yaml
+  /work-orders/{workOrderId}/transitions:
+    $ref: paths/work-orders_{workOrderId}_transitions.yaml
+  /operations/production-schedule:
+    $ref: paths/operations_production-schedule.yaml
+  /customer-feedback:
+    $ref: paths/customer-feedback.yaml
+  /customer-feedback/summary:
+    $ref: paths/customer-feedback_summary.yaml
+  /customer-feedback/{feedbackId}:
+    $ref: paths/customer-feedback_{feedbackId}.yaml
+  /customer-feedback/{feedbackId}/follow-ups:
+    $ref: paths/customer-feedback_{feedbackId}_follow-ups.yaml
+  /customer-feedback/{feedbackId}/link:
+    $ref: paths/customer-feedback_{feedbackId}_link.yaml
+  /public/feedback:
+    $ref: paths/public_feedback.yaml
+  /map/places:
+    $ref: paths/map_places.yaml
+  /map/locations:
+    $ref: paths/map_locations.yaml
+  /overview/order-to-cash:
+    $ref: paths/overview_order-to-cash.yaml
+  /customer-orders:
+    $ref: paths/customer-orders.yaml
+  /customer-orders/bookable:
+    $ref: paths/customer-orders_bookable.yaml
+  /customer-orders/{customerOrderId}:
+    $ref: paths/customer-orders_{customerOrderId}.yaml
+  /customer-orders/{customerOrderId}/confirmation-emails:
+    $ref: paths/customer-orders_{customerOrderId}_confirmation-emails.yaml
+  /customer-orders/{customerOrderId}/transitions:
+    $ref: paths/customer-orders_{customerOrderId}_transitions.yaml
+  /company-targets:
+    $ref: paths/company-targets.yaml
+  /company-targets/{year}:
+    $ref: paths/company-targets_{year}.yaml
+  /company-targets/{year}/periods:
+    $ref: paths/company-targets_{year}_periods.yaml
+  /company-targets/{year}/performance:
+    $ref: paths/company-targets_{year}_performance.yaml
+  /targets/{year}/people:
+    $ref: paths/targets_{year}_people.yaml
+  /targets/{year}/people/{userId}:
+    $ref: paths/targets_{year}_people_{userId}.yaml
+  /metrics/commercial:
+    $ref: paths/metrics_commercial.yaml
+  /analytics/registry/metrics:
+    $ref: paths/analytics_registry_metrics.yaml
+  /analytics/registry/reports:
+    $ref: paths/analytics_registry_reports.yaml
+  /analytics/metrics/{metricId}:
+    $ref: paths/analytics_metrics_{metricId}.yaml
+  /analytics/reports/{reportId}:
+    $ref: paths/analytics_reports_{reportId}.yaml
+  /analytics/reports/{reportId}/drilldown:
+    $ref: paths/analytics_reports_{reportId}_drilldown.yaml
+  /analytics/reports/{reportId}/exports:
+    $ref: paths/analytics_reports_{reportId}_exports.yaml
+  /analytics/exports/{exportId}:
+    $ref: paths/analytics_exports_{exportId}.yaml
+  /products:
+    $ref: paths/products.yaml
+  /products/search:
+    $ref: paths/products_search.yaml
+  /products/{productId}:
+    $ref: paths/products_{productId}.yaml
+  /products/{productId}/images:
+    $ref: paths/products_{productId}_images.yaml
+  /item-resolver/resolve:
+    $ref: paths/item-resolver_resolve.yaml
+  /item-resolver/mappings:
+    $ref: paths/item-resolver_mappings.yaml
+  /pricing/resolve:
+    $ref: paths/pricing_resolve.yaml
+  /pricing/standard-board-basis:
+    $ref: paths/pricing_standard-board-basis.yaml
+  /pricing/calculation-formulas:
+    $ref: paths/pricing_calculation-formulas.yaml
+  /pricing/calculation-formulas/{formulaKey}/retire:
+    $ref: 'paths/pricing_calculation-formulas_{formulaKey}_retire.yaml'
+  /pricing/guardrails:
+    $ref: paths/pricing_guardrails.yaml
+  /pricing/manager-overrides:
+    $ref: paths/pricing_manager-overrides.yaml
+  /finance/fx-rates:
+    $ref: paths/finance_fx-rates.yaml
+  /finance/fx-rates/resolve:
+    $ref: paths/finance_fx-rates_resolve.yaml
+  /tax-policies:
+    $ref: paths/tax-policies.yaml
+  /payment-terms:
+    $ref: paths/payment-terms.yaml
+  /document-subjects:
+    $ref: paths/document-subjects.yaml
+  /quotations:
+    $ref: paths/quotations.yaml
+  /quotations/read-pdf:
+    $ref: paths/quotations_read-pdf.yaml
+  /quotations/{quotationId}:
+    $ref: paths/quotations_{quotationId}.yaml
+  /quotations/{quotationId}/draft-content:
+    $ref: paths/quotations_{quotationId}_draft-content.yaml
+  /quotations/{quotationId}/prepare:
+    $ref: paths/quotations_{quotationId}_prepare.yaml
+  /quotations/{quotationId}/approval-requests:
+    $ref: paths/quotations_{quotationId}_approval-requests.yaml
+  /approval-requests:
+    $ref: paths/approval-requests.yaml
+  /approval-requests/{requestId}:
+    $ref: paths/approval-requests_{requestId}.yaml
+  /approval-requests/{requestId}/decisions:
+    $ref: paths/approval-requests_{requestId}_decisions.yaml
+  /quotations/{quotationId}/preview:
+    $ref: paths/quotations_{quotationId}_preview.yaml
+  /quotations/{quotationId}/send:
+    $ref: paths/quotations_{quotationId}_send.yaml
+  /quotations/{quotationId}/supersede:
+    $ref: paths/quotations_{quotationId}_supersede.yaml
+  /quotations/{quotationId}/cancel:
+    $ref: paths/quotations_{quotationId}_cancel.yaml
+  /quotations/{quotationId}/acceptances:
+    $ref: paths/quotations_{quotationId}_acceptances.yaml
+  /quotations/{quotationId}/supersession-chain:
+    $ref: paths/quotations_{quotationId}_supersession-chain.yaml
+  /quotations/{quotationId}/commercial-state-transitions:
+    $ref: paths/quotations_{quotationId}_commercial-state-transitions.yaml
+  /shipments:
+    $ref: paths/shipments.yaml
+  /shipments/{shipmentId}:
+    $ref: paths/shipments_{shipmentId}.yaml
+  /shipments/{shipmentId}/milestones:
+    $ref: paths/shipments_{shipmentId}_milestones.yaml
+  /shipments/{shipmentId}/corrections:
+    $ref: paths/shipments_{shipmentId}_corrections.yaml
+  /shipments/{shipmentId}/dispatch:
+    $ref: paths/shipments_{shipmentId}_dispatch.yaml
+  /shipments/{shipmentId}/deliver:
+    $ref: paths/shipments_{shipmentId}_deliver.yaml
+  /shipments/{shipmentId}/pod:
+    $ref: paths/shipments_{shipmentId}_pod.yaml
+  /logistics/delivery-calendar:
+    $ref: paths/logistics_delivery-calendar.yaml
+  /admin/client-identities:
+    $ref: paths/admin_client-identities.yaml
+  /admin/client-identities/{clientId}/customer-bindings:
+    $ref: paths/admin_client-identities_{clientId}_customer-bindings.yaml
+  /admin/client-customer-bindings/{bindingId}/revoke:
+    $ref: paths/admin_client-customer-bindings_{bindingId}_revoke.yaml
+  /portal/customer-contexts:
+    $ref: paths/portal_customer-contexts.yaml
+  /portal/customers/{accountId}/orders:
+    $ref: paths/portal_customers_{accountId}_orders.yaml
+  /portal/customers/{accountId}/shipments:
+    $ref: paths/portal_customers_{accountId}_shipments.yaml
+  /portal/customers/{accountId}/complaints:
+    $ref: paths/portal_customers_{accountId}_complaints.yaml
+  /research/most-requested-sizes:
+    $ref: paths/research_most-requested-sizes.yaml
+  /quotations/{quotationId}/documents:
+    $ref: paths/quotations_{quotationId}_documents.yaml
+  /sales-orders:
+    $ref: paths/sales-orders.yaml
+  /sales-orders/{salesOrderId}:
+    $ref: paths/sales-orders_{salesOrderId}.yaml
+  /sales-orders/{salesOrderId}/source:
+    $ref: paths/sales-orders_{salesOrderId}_source.yaml
+  /sales-orders/{salesOrderId}/lines:
+    $ref: paths/sales-orders_{salesOrderId}_lines.yaml
+  /finance/payments:
+    $ref: paths/finance_payments.yaml
+  /finance/payments/{paymentId}:
+    $ref: paths/finance_payments_{paymentId}.yaml
+  /finance/payment-allocations:
+    $ref: paths/finance_payment-allocations.yaml
+  /finance/cheques:
+    $ref: paths/finance_cheques.yaml
+  /finance/cheques/{chequeId}/status-transitions:
+    $ref: paths/finance_cheques_{chequeId}_status-transitions.yaml
+  /returned-scrap-cases:
+    $ref: paths/returned-scrap-cases.yaml
+  /returned-scrap-cases/{caseId}:
+    $ref: paths/returned-scrap-cases_{caseId}.yaml
+  /returned-scrap-cases/{caseId}/submit-approval:
+    $ref: paths/returned-scrap-cases_{caseId}_submit-approval.yaml
+  /returned-scrap-cases/{caseId}/approve:
+    $ref: paths/returned-scrap-cases_{caseId}_approve.yaml
+  /returned-scrap-cases/{caseId}/finalize:
+    $ref: paths/returned-scrap-cases_{caseId}_finalize.yaml
+  /capacity/rates:
+    $ref: paths/capacity_rates.yaml
+  /capacity/rates/resolve:
+    $ref: paths/capacity_rates_resolve.yaml
+  /capacity/estimates:
+    $ref: paths/capacity_estimates.yaml
+  /capacity/estimates/{estimateId}:
+    $ref: paths/capacity_estimates_{estimateId}.yaml
+  /logistics/plans:
+    $ref: paths/logistics_plans.yaml
+  /logistics/plans/{planId}:
+    $ref: paths/logistics_plans_{planId}.yaml
+  /logistics/plans/{planId}/versions:
+    $ref: paths/logistics_plans_{planId}_versions.yaml
+  /logistics/plan-versions/{versionId}/draft-content:
+    $ref: paths/logistics_plan-versions_{versionId}_draft-content.yaml
+  /logistics/plan-versions/{versionId}/optimize:
+    $ref: paths/logistics_plan-versions_{versionId}_optimize.yaml
+  /logistics/optimizer-runs/{runId}:
+    $ref: paths/logistics_optimizer-runs_{runId}.yaml
+  /logistics/plan-versions/{versionId}/validate:
+    $ref: paths/logistics_plan-versions_{versionId}_validate.yaml
+  /logistics/compare:
+    $ref: paths/logistics_compare.yaml
+  /logistics/plan-versions/{versionId}/visualization:
+    $ref: paths/logistics_plan-versions_{versionId}_visualization.yaml
+  /logistics/plan-versions/{versionId}/exports:
+    $ref: paths/logistics_plan-versions_{versionId}_exports.yaml
+  /import-jobs:
+    $ref: paths/import-jobs.yaml
+  /import-jobs/{jobId}/file:
+    $ref: paths/import-jobs_{jobId}_file.yaml
+  /import-jobs/{jobId}:
+    $ref: paths/import-jobs_{jobId}.yaml
+  /import-jobs/{jobId}/validate:
+    $ref: paths/import-jobs_{jobId}_validate.yaml
+  /import-jobs/{jobId}/rows:
+    $ref: paths/import-jobs_{jobId}_rows.yaml
+  /import-jobs/{jobId}/issues:
+    $ref: paths/import-jobs_{jobId}_issues.yaml
+  /import-jobs/{jobId}/commit:
+    $ref: paths/import-jobs_{jobId}_commit.yaml
+  /import-jobs/{jobId}/retry:
+    $ref: paths/import-jobs_{jobId}_retry.yaml
+  /import-jobs/{jobId}/rollback:
+    $ref: paths/import-jobs_{jobId}_rollback.yaml
+  /data-quality/issues:
+    $ref: paths/data-quality_issues.yaml
+  /data-quality/issues/{issueId}/resolve:
+    $ref: paths/data-quality_issues_{issueId}_resolve.yaml
+  /reconciliation-runs:
+    $ref: paths/reconciliation-runs.yaml
+  /reconciliation-runs/{runId}:
+    $ref: paths/reconciliation-runs_{runId}.yaml
+  /reconciliation-runs/{runId}/issues:
+    $ref: paths/reconciliation-runs_{runId}_issues.yaml
+  /reconciliation-issues/{issueId}/resolve:
+    $ref: paths/reconciliation-issues_{issueId}_resolve.yaml
+  /documents:
+    $ref: paths/documents.yaml
+  /documents/uploads:
+    $ref: paths/documents_uploads.yaml
+  /documents/uploads/{uploadSessionId}:
+    $ref: paths/documents_uploads_{uploadSessionId}.yaml
+  /documents/uploads/{uploadSessionId}/content:
+    $ref: paths/documents_uploads_{uploadSessionId}_content.yaml
+  /documents/uploads/{uploadSessionId}/complete:
+    $ref: paths/documents_uploads_{uploadSessionId}_complete.yaml
+  /documents/{documentId}:
+    $ref: paths/documents_{documentId}.yaml
+  /documents/{documentId}/versions:
+    $ref: paths/documents_{documentId}_versions.yaml
+  /documents/{documentId}/download:
+    $ref: paths/documents_{documentId}_download.yaml
+  /documents/{documentId}/links:
+    $ref: paths/documents_{documentId}_links.yaml
+  /document-links/{linkId}:
+    $ref: paths/document-links_{linkId}.yaml
+  /exports:
+    $ref: paths/exports.yaml
+  /exports/{exportId}:
+    $ref: paths/exports_{exportId}.yaml
+  /jobs/{jobId}:
+    $ref: paths/jobs_{jobId}.yaml
+  /admin/document-templates:
+    $ref: paths/admin_document-templates.yaml
+  /admin/document-templates/{templateId}:
+    $ref: paths/admin_document-templates_{templateId}.yaml
+  /admin/document-templates/{templateId}/versions:
+    $ref: paths/admin_document-templates_{templateId}_versions.yaml
+  /admin/document-template-versions/{versionId}:
+    $ref: paths/admin_document-template-versions_{versionId}.yaml
+  /admin/document-template-versions/{versionId}/status-transitions:
+    $ref: paths/admin_document-template-versions_{versionId}_status-transitions.yaml
+  /admin/document-template-versions/{versionId}/preview:
+    $ref: paths/admin_document-template-versions_{versionId}_preview.yaml
+  /notifications:
+    $ref: paths/notifications.yaml
+  /notifications/{notificationId}/read:
+    $ref: paths/notifications_{notificationId}_read.yaml
+  /notifications/read-all:
+    $ref: paths/notifications_read-all.yaml
+  /messages/directory:
+    $ref: paths/messages_directory.yaml
+  /conversations:
+    $ref: paths/conversations.yaml
+  /conversations/{conversationId}:
+    $ref: paths/conversations_{conversationId}.yaml
+  /conversations/{conversationId}/messages:
+    $ref: paths/conversations_{conversationId}_messages.yaml
+  /record-conversations/{contextType}/{contextId}:
+    $ref: paths/record-conversations_{contextType}_{contextId}.yaml
+  /record-conversations/{contextType}/{contextId}/messages:
+    $ref: paths/record-conversations_{contextType}_{contextId}_messages.yaml
+  /conversations/{conversationId}/read:
+    $ref: paths/conversations_{conversationId}_read.yaml
+  /conversations/{conversationId}/attachments:
+    $ref: paths/conversations_{conversationId}_attachments.yaml
+  /messages/search:
+    $ref: paths/messages_search.yaml
+  /messages/{messageId}:
+    $ref: paths/messages_{messageId}.yaml
+  /messages/{messageId}/reactions:
+    $ref: paths/messages_{messageId}_reactions.yaml
+  /message-attachments/{attachmentId}/download:
+    $ref: paths/message-attachments_{attachmentId}_download.yaml
+  /action-queue:
+    $ref: paths/action-queue.yaml
+  /search:
+    $ref: paths/search.yaml
+  /audit:
+    $ref: paths/audit.yaml
+  /security-events:
+    $ref: paths/security-events.yaml
+  /reports/pipeline:
+    $ref: paths/reports_pipeline.yaml
+  /reports/quotations:
+    $ref: paths/reports_quotations.yaml
+  /reports/orders:
+    $ref: paths/reports_orders.yaml
+  /reports/sales-history:
+    $ref: paths/reports_sales-history.yaml
+  /reports/finance:
+    $ref: paths/reports_finance.yaml
+  /ai/advisories:
+    $ref: paths/ai_advisories.yaml
+  /ai/advisories/generate:
+    $ref: paths/ai_advisories_generate.yaml
+  /ai/advisories/{advisoryId}/dismiss:
+    $ref: paths/ai_advisories_{advisoryId}_dismiss.yaml
+  /market-signals:
+    $ref: paths/market-signals.yaml
+  /target-markets:
+    $ref: paths/target-markets.yaml
+  /target-accounts:
+    $ref: paths/target-accounts.yaml
+  /target-accounts/{targetAccountId}/prepare-customer:
+    $ref: paths/target-accounts_{targetAccountId}_prepare-customer.yaml
+  /target-accounts/{targetAccountId}/prepare-opportunity:
+    $ref: paths/target-accounts_{targetAccountId}_prepare-opportunity.yaml
+  /competitors:
+    $ref: paths/competitors.yaml
+  /watchlist:
+    $ref: paths/watchlist.yaml
+  /watchlist/{watchlistEntryId}:
+    $ref: paths/watchlist_{watchlistEntryId}.yaml
+  /repeat-business-requests:
+    $ref: paths/repeat-business-requests.yaml
+  /repeat-business-requests/{requestId}:
+    $ref: paths/repeat-business-requests_{requestId}.yaml
+  /reference/countries:
+    $ref: paths/reference_countries.yaml
+  /reference/opportunity-stage-policies:
+    $ref: paths/reference_opportunity-stage-policies.yaml
+  /reference/opportunity-lost-reasons:
+    $ref: paths/reference_opportunity-lost-reasons.yaml
+  /health/live:
+    $ref: paths/health_live.yaml
+  /health/ready:
+    $ref: paths/health_ready.yaml
+  /documents/{documentId}/content:
+    $ref: ./paths/documents_{documentId}_content.yaml
+components:
+  schemas:
+    UUID:
+      $ref: components/schemas/UUID.yaml
+    Date:
+      $ref: components/schemas/Date.yaml
+    DateTime:
+      $ref: components/schemas/DateTime.yaml
+    CurrencyCode:
+      $ref: components/schemas/CurrencyCode.yaml
+    Money:
+      $ref: components/schemas/Money.yaml
+    Decimal:
+      $ref: components/schemas/Decimal.yaml
+    Percentage:
+      $ref: components/schemas/Percentage.yaml
+    CountryCode:
+      $ref: components/schemas/CountryCode.yaml
+    TraceId:
+      $ref: components/schemas/TraceId.yaml
+    CorrelationId:
+      $ref: components/schemas/CorrelationId.yaml
+    RowVersion:
+      $ref: components/schemas/RowVersion.yaml
+    ResourceReference:
+      $ref: components/schemas/ResourceReference.yaml
+    DynamicJsonValue:
+      $ref: components/schemas/DynamicJsonValue.yaml
+    ErrorEnvelope:
+      $ref: components/schemas/ErrorEnvelope.yaml
+    PermissionCode:
+      $ref: components/schemas/PermissionCode.yaml
+    RoleSummary:
+      $ref: components/schemas/RoleSummary.yaml
+    WorkspaceCode:
+      $ref: components/schemas/WorkspaceCode.yaml
+    CountryScope:
+      $ref: components/schemas/CountryScope.yaml
+    SessionSummary:
+      $ref: components/schemas/SessionSummary.yaml
+    EffectiveAccessContext:
+      $ref: components/schemas/EffectiveAccessContext.yaml
+    Me:
+      $ref: components/schemas/Me.yaml
+    JobStatus:
+      $ref: components/schemas/JobStatus.yaml
+    Job:
+      $ref: components/schemas/Job.yaml
+    AnalyticsResponseMetadata:
+      $ref: components/schemas/AnalyticsResponseMetadata.yaml
+    HealthEnvelope:
+      $ref: components/schemas/HealthEnvelope.yaml
+    ContinentCode:
+      $ref: components/schemas/ContinentCode.yaml
+    MarketScope:
+      $ref: components/schemas/MarketScope.yaml
+    CountryReference:
+      $ref: components/schemas/CountryReference.yaml
+    AccountListItem:
+      $ref: components/schemas/AccountListItem.yaml
+    AccountDetail:
+      $ref: components/schemas/AccountDetail.yaml
+    Customer360QuotationSummary:
+      $ref: components/schemas/Customer360QuotationSummary.yaml
+    ErpSyncStatus:
+      $ref: components/schemas/ErpSyncStatus.yaml
+    ProjectListItem:
+      $ref: components/schemas/ProjectListItem.yaml
+    ProjectDetail:
+      $ref: components/schemas/ProjectDetail.yaml
+    OpportunityListItem:
+      $ref: components/schemas/OpportunityListItem.yaml
+    OpportunityDetail:
+      $ref: components/schemas/OpportunityDetail.yaml
+    OffsetPageMeta:
+      $ref: components/schemas/OffsetPageMeta.yaml
+    CustomerSegment:
+      $ref: components/schemas/CustomerSegment.yaml
+    CustomerSegmentListEnvelope:
+      $ref: components/schemas/CustomerSegmentListEnvelope.yaml
+    CustomerSegmentEnvelope:
+      $ref: components/schemas/CustomerSegmentEnvelope.yaml
+    CustomerSegmentAssignment:
+      $ref: components/schemas/CustomerSegmentAssignment.yaml
+    QuotationCommercialState:
+      $ref: components/schemas/QuotationCommercialState.yaml
+    Shipment:
+      $ref: components/schemas/Shipment.yaml
+    ShipmentMilestoneEvent:
+      $ref: components/schemas/ShipmentMilestoneEvent.yaml
+    ShipmentEnvelope:
+      $ref: components/schemas/ShipmentEnvelope.yaml
+    ShipmentListEnvelope:
+      $ref: components/schemas/ShipmentListEnvelope.yaml
+    ClientPortalContext:
+      $ref: components/schemas/ClientPortalContext.yaml
+    ResearchSizeDemand:
+      $ref: components/schemas/ResearchSizeDemand.yaml
+    LocalLoginRequest:
+      $ref: components/schemas/LocalLoginRequest.yaml
+    LocalAuthEnvelope:
+      $ref: components/schemas/LocalAuthEnvelope.yaml
+    MfaVerifyRequest:
+      $ref: components/schemas/MfaVerifyRequest.yaml
+    MfaRecoveryRequest:
+      $ref: components/schemas/MfaRecoveryRequest.yaml
+    MfaCodeRequest:
+      $ref: components/schemas/MfaCodeRequest.yaml
+    MfaSetupEnvelope:
+      $ref: components/schemas/MfaSetupEnvelope.yaml
+    MfaConfirmEnvelope:
+      $ref: components/schemas/MfaConfirmEnvelope.yaml
+    ResetPasswordRequest:
+      $ref: components/schemas/ResetPasswordRequest.yaml
+    LocalResetEnvelope:
+      $ref: components/schemas/LocalResetEnvelope.yaml
+    MessageAttachment:
+      $ref: components/schemas/MessageAttachment.yaml
+    Message:
+      $ref: components/schemas/Message.yaml
+    Conversation:
+      $ref: components/schemas/Conversation.yaml
+    ConversationEnvelope:
+      $ref: components/schemas/ConversationEnvelope.yaml
+    ConversationListEnvelope:
+      $ref: components/schemas/ConversationListEnvelope.yaml
+    MessageEnvelope:
+      $ref: components/schemas/MessageEnvelope.yaml
+    MessageListEnvelope:
+      $ref: components/schemas/MessageListEnvelope.yaml
+    CreateConversationRequest:
+      $ref: components/schemas/CreateConversationRequest.yaml
+    SendMessageRequest:
+      $ref: components/schemas/SendMessageRequest.yaml
+    MessageReactionRequest:
+      $ref: components/schemas/MessageReactionRequest.yaml
+    MessageAttachmentUploadRequest:
+      $ref: components/schemas/MessageAttachmentUploadRequest.yaml
+    MessageAttachmentEnvelope:
+      $ref: components/schemas/MessageAttachmentEnvelope.yaml
+    CommercialIntelligenceRecord:
+      $ref: components/schemas/CommercialIntelligenceRecord.yaml
+    CommercialIntelligenceEnvelope:
+      $ref: components/schemas/CommercialIntelligenceEnvelope.yaml
+    CommercialIntelligenceListEnvelope:
+      $ref: components/schemas/CommercialIntelligenceListEnvelope.yaml
+    CreateMarketSignalRequest:
+      $ref: components/schemas/CreateMarketSignalRequest.yaml
+    CreateTargetMarketRequest:
+      $ref: components/schemas/CreateTargetMarketRequest.yaml
+    CreateTargetAccountRequest:
+      $ref: components/schemas/CreateTargetAccountRequest.yaml
+    CreateCompetitorRequest:
+      $ref: components/schemas/CreateCompetitorRequest.yaml
+    CreateWatchlistEntryRequest:
+      $ref: components/schemas/CreateWatchlistEntryRequest.yaml
+    CreateRepeatBusinessRequest:
+      $ref: components/schemas/CreateRepeatBusinessRequest.yaml
+    UpdateRepeatBusinessRequest:
+      $ref: components/schemas/UpdateRepeatBusinessRequest.yaml
+    PreparationEnvelope:
+      $ref: components/schemas/PreparationEnvelope.yaml
+  securitySchemes:
+    WebCookie:
+      type: apiKey
+      in: cookie
+      name: __Host-abp_session
+      description: Secure HttpOnly SameSite cookie. State-changing browser requests
+        also require CSRF protection.
+    DesktopOAuth:
+      type: oauth2
+      description: Desktop OAuth 2.1 Authorization Code + PKCE through the system
+        browser; token stored in OS secure credential store.
+      flows:
+        authorizationCode:
+          authorizationUrl: /oauth/authorize
+          tokenUrl: /oauth/token
+          scopes: {}
+    ExternalBffAssertion:
+      type: apiKey
+      in: header
+      name: x-abp-bff-assertion
+      description: Short-lived assertion issued only by the trusted BFF after
+        Microsoft Entra External ID authentication. Issuer, subject and
+        timestamp are signed; the application never accepts local portal
+        passwords.
+jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema
+x-abp-authorization-invariant:
+  evaluationOrder:
+    - ACTIVE_IDENTITY_SESSION
+    - COUNTRY_SCOPE
+    - RBAC_WORKSPACE_PERMISSION
+    - EXPLICIT_DENY
+    - RESOURCE_CONTEXT
+    - FIELD_PROJECTION
+    - WORKFLOW_STATE_RULES
+  resourceContextMechanisms:
+    - OWNERSHIP
+    - CONFIGURED_DIRECT_MANAGER
+    - EXPLICIT_SHARE
+    - APPROVED_CONTEXT
+  countryScopeCanBeWidened: false
+  denyWins: true
+  managerRelationshipRequired: true
+  description: Ownership, manager relationships, sharing, and context are grants
+    only inside already-effective Country Scope. Missing manager configuration
+    never grants access. The backend omits unauthorized fields before
+    serialization.

@@ -1,0 +1,84 @@
+type: object
+description: One item on an imported ERP sales order.
+properties:
+  salesOrderLineId:
+    type: string
+    format: uuid
+  lineNo:
+    type:
+      - integer
+      - 'null'
+  orderedItem:
+    type:
+      - string
+      - 'null'
+    description: The item code as it appears in the ERP export.
+  description:
+    type:
+      - string
+      - 'null'
+  productId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    description: Set only when the ordered item resolved to a catalogue product.
+  productDescription:
+    type:
+      - string
+      - 'null'
+  matchStatusCode:
+    type: string
+    description: MATCHED_BARCODE, MATCHED_DESCRIPTION or UNMATCHED.
+  itemClassificationCode:
+    type: string
+    description: SELLABLE_PRODUCT, SERVICE, LOGISTICS_CHARGE, MISCELLANEOUS or UNKNOWN.
+  uomCode:
+    type:
+      - string
+      - 'null'
+  qtyOrdered:
+    type:
+      - string
+      - 'null'
+  qtyShipped:
+    type:
+      - string
+      - 'null'
+  qtyRemaining:
+    type:
+      - string
+      - 'null'
+  unitSellingPrice:
+    type:
+      - string
+      - 'null'
+  lineAmount:
+    type:
+      - string
+      - 'null'
+  lineAmountEgp:
+    type:
+      - string
+      - 'null'
+  currencyCode:
+    type:
+      - string
+      - 'null'
+  lineStatusRaw:
+    type:
+      - string
+      - 'null'
+  bookedDate:
+    type:
+      - string
+      - 'null'
+  actualShipmentDate:
+    type:
+      - string
+      - 'null'
+additionalProperties: false
+required:
+  - salesOrderLineId
+  - matchStatusCode
+  - itemClassificationCode

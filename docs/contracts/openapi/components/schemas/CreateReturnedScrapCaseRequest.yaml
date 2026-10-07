@@ -1,0 +1,35 @@
+type: object
+properties:
+  accountId:
+    type: string
+    format: uuid
+  originalQuotationId:
+    type: string
+    format: uuid
+  benefitTypeCode:
+    type: string
+    enum:
+      - CREDIT
+      - REPLACEMENT
+  lines:
+    type: array
+    items:
+      type: object
+      properties:
+        originalQuotationLineId:
+          type: string
+          format: uuid
+        returnedQty:
+          type: string
+          pattern: ^-?\d+(\.\d+)?$
+      additionalProperties: false
+      required:
+        - originalQuotationLineId
+        - returnedQty
+    minItems: 1
+additionalProperties: false
+required:
+  - accountId
+  - originalQuotationId
+  - benefitTypeCode
+  - lines

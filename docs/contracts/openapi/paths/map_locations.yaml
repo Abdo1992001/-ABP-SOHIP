@@ -1,0 +1,39 @@
+put:
+  tags: [Customer Map]
+  summary: Pin a customer or a project on the map
+  operationId: put_map_locations
+  description: 'Permission: accounts.edit for a customer, projects.edit for a project. Null coordinates take the pin away.'
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  parameters:
+    - $ref: ../components/parameters/CsrfToken.yaml
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema: { $ref: ../components/schemas/PinLocationRequest.yaml }
+  responses:
+    '200':
+      description: Pinned
+      content:
+        application/json:
+          schema: { $ref: ../components/schemas/PinLocationEnvelope.yaml }
+    '400': { $ref: ../components/responses/Error400.yaml }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '403': { $ref: ../components/responses/Error403.yaml }
+    '404': { $ref: ../components/responses/Error404.yaml }
+    '422': { $ref: ../components/responses/Error422.yaml }
+    '429': { $ref: ../components/responses/Error429.yaml }
+    '500': { $ref: ../components/responses/Error500.yaml }
+  x-abp-module: Customer Map
+  x-abp-permission: accounts.edit
+  x-abp-scope-rule: Editable customer or project within country scope
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: PinLocationRequest
+  x-abp-success-schema: PinLocationEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

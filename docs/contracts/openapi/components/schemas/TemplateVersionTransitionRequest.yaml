@@ -1,0 +1,6 @@
+type: object
+additionalProperties: false
+required: [targetStatusCode, reason]
+properties:
+  targetStatusCode: { type: string, enum: [ACTIVATE, ARCHIVE] }
+  reason: { type: string, maxLength: 500 }

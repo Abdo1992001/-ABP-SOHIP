@@ -1,0 +1,30 @@
+name: container-build
+
+on:
+  pull_request:
+    paths:
+      [
+        apps/**,
+        packages/**,
+        pnpm-lock.yaml,
+        .github/workflows/container-build.yml,
+      ]
+
+permissions:
+  contents: read
+
+jobs:
+  build-only:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        app: [api, worker, web]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: apps/${{ matrix.app }}/Dockerfile
+          push: false
+          tags: abp-${{ matrix.app }}:ci

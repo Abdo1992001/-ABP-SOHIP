@@ -1,0 +1,67 @@
+post:
+  tags:
+    - Returns
+  summary: Finalize approved CREDIT or REPLACEMENT entitlement
+  operationId: post_returned_scrap_cases_by_caseId_finalize
+  description: >-
+    Permission: returns.finalize. Scope: Approved case scope. 25% original
+    purchase unit price; no partial/expiry.
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ReturnedScrapCaseEnvelope.yaml
+      headers:
+        ETag:
+          $ref: ../components/headers/ETag.yaml
+    '400':
+      $ref: ../components/responses/Error400.yaml
+    '401':
+      $ref: ../components/responses/Error401.yaml
+    '403':
+      $ref: ../components/responses/Error403.yaml
+    '404':
+      $ref: ../components/responses/Error404.yaml
+    '409':
+      $ref: ../components/responses/Error409.yaml
+    '412':
+      $ref: ../components/responses/Error412.yaml
+    '422':
+      $ref: ../components/responses/Error422.yaml
+    '429':
+      $ref: ../components/responses/Error429.yaml
+    '500':
+      $ref: ../components/responses/Error500.yaml
+    '503':
+      $ref: ../components/responses/Error503.yaml
+  parameters:
+    - name: caseId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    - $ref: ../components/parameters/IdempotencyKey.yaml
+    - $ref: ../components/parameters/CsrfToken.yaml
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/FinalizeReturnedScrapRequest.yaml
+  x-abp-module: Returns
+  x-abp-permission: returns.finalize
+  x-abp-scope-rule: Approved case scope
+  x-abp-concurrency: expectedRowVersion
+  x-abp-idempotency: Required
+  x-abp-request-schema: FinalizeReturnedScrapRequest
+  x-abp-success-schema: ReturnedScrapCaseEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

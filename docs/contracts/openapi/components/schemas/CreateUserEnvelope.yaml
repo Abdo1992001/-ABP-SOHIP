@@ -1,0 +1,17 @@
+type: object
+properties:
+  data:
+    $ref: ./User.yaml
+  tempPassword:
+    description: >-
+      Server-generated temporary password, returned exactly once on the
+      response that created the account. Never persisted in plaintext and
+      never returned again — the admin must communicate it to the new user
+      out of band.
+    type:
+      - string
+      - 'null'
+additionalProperties: false
+required:
+  - data
+  - tempPassword

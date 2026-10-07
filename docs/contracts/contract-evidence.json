@@ -1,0 +1,12 @@
+{
+  "contractVersion": "1.6.0",
+  "openapiOperations": 326,
+  "inventoryOperations": 342,
+  "statusCounts": {
+    "IMPLEMENTED": 326,
+    "OUT_OF_SCOPE_V1": 16
+  },
+  "openapiSha256": "6ef2eed8829ef308a0421db3781135c73afd329f06e6166145f04bfd3ad5207e",
+  "generatedClientSha256": "4c63062b7fab05aadf7e9ea8ab41b040930d160178682b5324284f7df8da9d4d",
+  "generatedClientPackage": "@abp/api-client@1.6.0"
+}

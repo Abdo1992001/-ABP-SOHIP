@@ -1,0 +1,26 @@
+post:
+  tags: [Messages]
+  summary: React to an authorized message
+  operationId: post_messages_by_messageId_reactions
+  security: [{ WebCookie: [] }, { DesktopOAuth: [] }]
+  parameters:
+    - { name: messageId, in: path, required: true, schema: { type: string, format: uuid } }
+    - { $ref: ../components/parameters/CsrfToken.yaml }
+  requestBody:
+    required: true
+    content: { application/json: { schema: { $ref: ../components/schemas/MessageReactionRequest.yaml } } }
+  responses:
+    '200': { description: Success, content: { application/json: { schema: { $ref: ../components/schemas/CommandResult.yaml } } } }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '404': { $ref: ../components/responses/Error404.yaml }
+  x-abp-module: Messages
+  x-abp-permission: authenticated
+  x-abp-scope-rule: Active participant only
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: MessageReactionRequest
+  x-abp-success-schema: CommandResult
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

@@ -1,0 +1,51 @@
+parameters:
+  - { name: templateId, in: path, required: true, schema: { type: string, format: uuid } }
+get:
+  tags: [Administration]
+  summary: List persisted template versions
+  operationId: get_admin_document_templates_by_templateId_versions
+  security: [{ WebCookie: [] }, { DesktopOAuth: [] }]
+  responses:
+    '200': { description: Success, content: { application/json: { schema: { $ref: ../components/schemas/DocumentTemplateVersionListEnvelope.yaml } } } }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '403': { $ref: ../components/responses/Error403.yaml }
+    '404': { $ref: ../components/responses/Error404.yaml }
+    '500': { $ref: ../components/responses/Error500.yaml }
+  x-abp-module: Administration
+  x-abp-permission: documents.view
+  x-abp-scope-rule: ADMIN workspace + Permission + DENY
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: TemplateIdPath
+  x-abp-success-schema: DocumentTemplateVersionListEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true
+post:
+  tags: [Administration]
+  summary: Create a new mutable draft version
+  operationId: post_admin_document_templates_by_templateId_versions
+  security: [{ WebCookie: [] }, { DesktopOAuth: [] }]
+  parameters: [{ $ref: ../components/parameters/IdempotencyKey.yaml }, { $ref: ../components/parameters/CsrfToken.yaml }]
+  requestBody: { required: true, content: { application/json: { schema: { $ref: ../components/schemas/CreateDocumentTemplateVersionRequest.yaml } } } }
+  responses:
+    '201': { description: Created, content: { application/json: { schema: { $ref: ../components/schemas/DocumentTemplateVersionEnvelope.yaml } } } }
+    '400': { $ref: ../components/responses/Error400.yaml }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '403': { $ref: ../components/responses/Error403.yaml }
+    '404': { $ref: ../components/responses/Error404.yaml }
+    '409': { $ref: ../components/responses/Error409.yaml }
+    '422': { $ref: ../components/responses/Error422.yaml }
+    '500': { $ref: ../components/responses/Error500.yaml }
+  x-abp-module: Administration
+  x-abp-permission: documents.create
+  x-abp-scope-rule: ADMIN workspace + Permission + DENY + audit
+  x-abp-concurrency: NONE
+  x-abp-idempotency: Required
+  x-abp-request-schema: CreateDocumentTemplateVersionRequest
+  x-abp-success-schema: DocumentTemplateVersionEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

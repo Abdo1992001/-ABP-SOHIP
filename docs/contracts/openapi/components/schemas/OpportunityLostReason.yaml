@@ -1,0 +1,12 @@
+type: object
+additionalProperties: false
+required: [lostReasonCode, displayName, effectiveFrom, effectiveTo, statusCode]
+properties:
+  lostReasonCode: { type: string, minLength: 1, maxLength: 100 }
+  displayName: { type: string, minLength: 1, maxLength: 300 }
+  effectiveFrom: { $ref: ./DateTime.yaml }
+  effectiveTo:
+    type: [string, 'null']
+    format: date-time
+  statusCode: { type: string, enum: [ACTIVE, INACTIVE] }
+

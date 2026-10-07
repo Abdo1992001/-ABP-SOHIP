@@ -1,0 +1,18 @@
+type: object
+properties:
+  permissionId:
+    type: string
+    format: uuid
+    description: Permission ID.
+  permissionCode:
+    type: string
+    description: Immutable e.g. quotation.send.
+  description:
+    type:
+      - string
+      - 'null'
+    description: Permission description.
+additionalProperties: false
+required:
+  - permissionCode
+  - permissionId

@@ -1,0 +1,26 @@
+parameters:
+  - $ref: ../components/parameters/JobId.yaml
+get:
+  tags: [Platform]
+  summary: Get an authorized durable job status projection
+  operationId: get_jobs_by_jobId
+  security: [{ WebCookie: [] }, { DesktopOAuth: [] }]
+  responses:
+    '200': { description: Success, content: { application/json: { schema: { $ref: ../components/schemas/JobStatusEnvelope.yaml } } } }
+    '400': { $ref: ../components/responses/Error400.yaml }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '403': { $ref: ../components/responses/Error403.yaml }
+    '404': { $ref: ../components/responses/Error404.yaml }
+    '429': { $ref: ../components/responses/Error429.yaml }
+    '500': { $ref: ../components/responses/Error500.yaml }
+  x-abp-module: Platform
+  x-abp-permission: source-resource.view
+  x-abp-scope-rule: Source ownership or source permission intersected with Country Scope and DENY
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: JobIdPath
+  x-abp-success-schema: JobStatusEnvelope
+  x-abp-job-dto: true
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

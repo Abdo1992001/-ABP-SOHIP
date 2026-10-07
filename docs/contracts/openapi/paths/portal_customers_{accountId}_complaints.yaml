@@ -1,0 +1,37 @@
+get:
+  security: [{ ExternalBffAssertion: [] }]
+  tags: [CRM Service]
+  summary: Client-safe own complaint tracking
+  operationId: get_portal_customers_by_accountId_complaints
+  parameters: [{ name: accountId, in: path, required: true, schema: { type: string, format: uuid } }, { $ref: ../components/parameters/Offset.yaml }, { $ref: ../components/parameters/Limit.yaml }]
+  responses:
+    '200': { description: Success, content: { application/json: { schema: { type: object, additionalProperties: false, required: [data, meta], properties: { data: { type: array, items: { type: object, additionalProperties: false, required: [complaintId, complaintRef, accountId, complaintTypeCode, statusCode, description, createdAt, updatedAt], properties: { complaintId: { type: string, format: uuid }, complaintRef: { type: string }, accountId: { type: string, format: uuid }, productId: { type: [string, 'null'], format: uuid }, complaintTypeCode: { type: string }, statusCode: { type: string }, description: { type: string }, resolution: { type: [string, 'null'] }, createdAt: { type: string, format: date-time }, updatedAt: { type: string, format: date-time } } } }, meta: { $ref: ../components/schemas/OffsetPageMeta.yaml } } } } } }
+    '400': { $ref: ../components/responses/Error400.yaml }
+  x-abp-module: Client Portal
+  x-abp-permission: external.active-binding
+  x-abp-scope-rule: Current explicit customer binding
+  x-abp-concurrency: NONE
+  x-abp-execution-mode: SYNC
+  x-abp-job-dto: false
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true
+post:
+  security: [{ ExternalBffAssertion: [] }]
+  tags: [CRM Service]
+  summary: Create complaint for an explicitly bound customer
+  operationId: post_portal_customers_by_accountId_complaints
+  parameters: [{ name: accountId, in: path, required: true, schema: { type: string, format: uuid } }]
+  requestBody:
+    required: true
+    content: { application/json: { schema: { type: object, additionalProperties: false, required: [complaintTypeCode, description], properties: { complaintTypeCode: { type: string }, description: { type: string }, productId: { type: string, format: uuid } } } } }
+  responses:
+    '201': { description: Created, content: { application/json: { schema: { type: object, additionalProperties: false, required: [data], properties: { data: { type: object, additionalProperties: false, required: [complaintId, complaintRef, accountId, complaintTypeCode, statusCode, description, createdAt, updatedAt], properties: { complaintId: { type: string, format: uuid }, complaintRef: { type: string }, accountId: { type: string, format: uuid }, productId: { type: [string, 'null'], format: uuid }, complaintTypeCode: { type: string }, statusCode: { type: string }, description: { type: string }, resolution: { type: [string, 'null'] }, createdAt: { type: string, format: date-time }, updatedAt: { type: string, format: date-time } } } } } } } }
+    '400': { $ref: ../components/responses/Error400.yaml }
+  x-abp-module: Client Portal
+  x-abp-permission: external.active-binding
+  x-abp-scope-rule: Current explicit customer binding; no attachments
+  x-abp-concurrency: NONE
+  x-abp-execution-mode: SYNC
+  x-abp-job-dto: false
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

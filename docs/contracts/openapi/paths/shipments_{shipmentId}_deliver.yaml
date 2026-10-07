@@ -1,0 +1,19 @@
+post:
+  tags: [Logistics]
+  summary: Record a delivery
+  operationId: post_shipments_by_shipmentId_deliver
+  description: 'The customer took the goods. A delivery that was not GOOD needs notes. When every shipment of a READY customer order is delivered, the order is handed over on the delivery date.'
+  parameters: [{ name: shipmentId, in: path, required: true, schema: { type: string, format: uuid } }, { $ref: ../components/parameters/IdempotencyKey.yaml }]
+  requestBody:
+    required: true
+    content: { application/json: { schema: { type: object, additionalProperties: false, required: [expectedRowVersion, deliveredAt, receivedByName, deliveryConditionCode], properties: { expectedRowVersion: { type: string, pattern: '^\d+$' }, deliveredAt: { type: string, format: date-time }, receivedByName: { type: string, minLength: 2, maxLength: 200 }, deliveryConditionCode: { type: string, enum: [GOOD, DAMAGED, SHORT, REFUSED] }, deliveryNotes: { type: string, maxLength: 2000 } } } } }
+  responses: { '200': { description: Recorded, content: { application/json: { schema: { $ref: ../components/schemas/ShipmentEnvelope.yaml } } } }, '400': { $ref: ../components/responses/Error400.yaml }, '404': { $ref: ../components/responses/Error404.yaml }, '412': { $ref: ../components/responses/Error412.yaml }, '422': { $ref: ../components/responses/Error422.yaml } }
+  x-abp-module: Logistics
+  x-abp-permission: shipments.edit
+  x-abp-scope-rule: Country Scope; the shipment has reached its last step before delivery
+  x-abp-concurrency: expectedRowVersion
+  x-abp-idempotency: Required
+  x-abp-execution-mode: SYNC
+  x-abp-job-dto: false
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

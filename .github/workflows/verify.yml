@@ -1,0 +1,64 @@
+name: verify
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      DATABASE_URL: postgresql://abp:abp_ci_only@127.0.0.1:5432/abp?schema=public
+      TEST_DATABASE_URL: postgresql://abp:abp_ci_only@127.0.0.1:5432/abp?schema=public
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_DB: abp
+          POSTGRES_USER: abp
+          POSTGRES_PASSWORD: abp_ci_only
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U abp -d abp"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.22.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm db:generate
+      - run: pnpm db:migrate:deploy
+      - name: Install the Bicep CLI for the devops proof
+        run: |
+          mkdir -p .tmp/tools
+          curl -fsSL -o .tmp/tools/bicep https://github.com/Azure/bicep/releases/latest/download/bicep-linux-x64
+          chmod +x .tmp/tools/bicep
+      - name: Verify and preserve the authoritative exit code
+        env:
+          # The backup proof dumps and restores inside the Postgres container.
+          ABP_DATABASE_CONTAINER: ${{ job.services.postgres.id }}
+        run: |
+          set -o pipefail
+          corepack pnpm verify 2>&1 | tee verify.log
+      - run: pnpm proof:platform
+      - run: pnpm proof:customer
+      - name: Upload verification log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: verify-log
+          path: verify.log
+          if-no-files-found: warn

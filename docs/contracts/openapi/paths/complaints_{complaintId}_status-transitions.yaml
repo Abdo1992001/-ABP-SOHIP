@@ -1,0 +1,72 @@
+post:
+  tags:
+    - CRM Service
+  summary: Move a complaint along its route
+  operationId: post_complaints_by_complaintId_status_transitions
+  description: >-
+    Route OPEN -> OPERATIONS_REVIEW -> QUALITY_REVIEW -> SOLUTION -> RESOLVED
+    -> CLOSED. Sales (complaints.edit) hands a complaint to Operations;
+    Operations (complaints.operations-review) records findings and routes it to
+    Quality or straight to a solution; Quality (complaints.quality-review)
+    names the root cause and the corrective action, its owner and due date;
+    the solution owner resolves it; complaints.close closes it. Steps back
+    need a reason. Missing stage fields answer 422 COMPLAINT_STAGE_INCOMPLETE.
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ComplaintEnvelope.yaml
+      headers:
+        ETag:
+          $ref: ../components/headers/ETag.yaml
+    '400':
+      $ref: ../components/responses/Error400.yaml
+    '401':
+      $ref: ../components/responses/Error401.yaml
+    '403':
+      $ref: ../components/responses/Error403.yaml
+    '404':
+      $ref: ../components/responses/Error404.yaml
+    '409':
+      $ref: ../components/responses/Error409.yaml
+    '412':
+      $ref: ../components/responses/Error412.yaml
+    '422':
+      $ref: ../components/responses/Error422.yaml
+    '429':
+      $ref: ../components/responses/Error429.yaml
+    '500':
+      $ref: ../components/responses/Error500.yaml
+    '503':
+      $ref: ../components/responses/Error503.yaml
+  parameters:
+    - name: complaintId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    - $ref: ../components/parameters/IdempotencyKey.yaml
+    - $ref: ../components/parameters/CsrfToken.yaml
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/ComplaintTransitionRequest.yaml
+  x-abp-module: CRM Service
+  x-abp-permission: complaints.view
+  x-abp-scope-rule: Case scope
+  x-abp-concurrency: expectedRowVersion
+  x-abp-idempotency: Required
+  x-abp-request-schema: ComplaintTransitionRequest
+  x-abp-success-schema: ComplaintEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

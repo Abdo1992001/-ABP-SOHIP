@@ -1,0 +1,17 @@
+type: object
+properties:
+  contactChannelId:
+    type: string
+    format: uuid
+  channelTypeCode:
+    type: string
+  value:
+    type: string
+  isPrimary:
+    type: boolean
+additionalProperties: false
+required:
+  - contactChannelId
+  - channelTypeCode
+  - value
+  - isPrimary

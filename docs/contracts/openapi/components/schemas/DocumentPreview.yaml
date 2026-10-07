@@ -1,0 +1,18 @@
+type: object
+properties:
+  contentType:
+    type: string
+  previewUrl:
+    type: string
+  expiresAt:
+    type: string
+    format: date-time
+  sourceRowVersion:
+    type: integer
+    format: int64
+additionalProperties: false
+required:
+  - contentType
+  - previewUrl
+  - expiresAt
+  - sourceRowVersion

@@ -1,0 +1,47 @@
+get:
+  tags: [Identity]
+  summary: Read my own profile
+  operationId: get_me_profile
+  security: [{ WebCookie: [] }, { DesktopOAuth: [] }]
+  responses:
+    '200': { description: Success, content: { application/json: { schema: { $ref: ../components/schemas/MyProfileEnvelope.yaml } } } }
+    '401': { $ref: ../components/responses/Error401.yaml }
+  x-abp-module: Identity
+  x-abp-permission: authenticated
+  x-abp-scope-rule: Self only
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: none
+  x-abp-success-schema: MyProfileEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true
+patch:
+  tags: [Identity]
+  summary: Update the parts of my profile I control
+  description: >-
+    Display name and phone only. Role, country scope, manager, team and
+    account status are set by administration and are read-only here.
+  operationId: patch_me_profile
+  security: [{ WebCookie: [] }, { DesktopOAuth: [] }]
+  parameters:
+    - { $ref: ../components/parameters/CsrfToken.yaml }
+  requestBody:
+    required: true
+    content: { application/json: { schema: { $ref: ../components/schemas/UpdateMyProfileRequest.yaml } } }
+  responses:
+    '200': { description: Success, content: { application/json: { schema: { $ref: ../components/schemas/MyProfileEnvelope.yaml } } } }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '422': { $ref: ../components/responses/Error422.yaml }
+  x-abp-module: Identity
+  x-abp-permission: authenticated
+  x-abp-scope-rule: Self only
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: UpdateMyProfileRequest
+  x-abp-success-schema: MyProfileEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

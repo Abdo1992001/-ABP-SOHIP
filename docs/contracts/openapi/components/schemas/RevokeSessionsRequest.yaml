@@ -1,0 +1,9 @@
+type: object
+properties:
+  reason:
+    type: string
+  exceptCurrentSession:
+    type: boolean
+additionalProperties: false
+required:
+  - reason

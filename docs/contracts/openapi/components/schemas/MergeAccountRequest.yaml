@@ -1,0 +1,14 @@
+type: object
+properties:
+  sourceAccountId:
+    type: string
+    format: uuid
+  masterExpectedRowVersion:
+    $ref: ./RowVersion.yaml
+  sourceExpectedRowVersion:
+    $ref: ./RowVersion.yaml
+additionalProperties: false
+required:
+  - sourceAccountId
+  - masterExpectedRowVersion
+  - sourceExpectedRowVersion

@@ -1,0 +1,10 @@
+type: object
+additionalProperties: false
+required: [paymentAllocationId, allocatedAmount, createdByUserId, createdAt]
+properties:
+  paymentAllocationId: { type: string, format: uuid }
+  salesOrderId: { type: [string, 'null'], format: uuid }
+  allocatedAmount: { type: string, pattern: '^-?\d+(\.\d+)?$' }
+  reason: { type: [string, 'null'] }
+  createdByUserId: { type: string, format: uuid }
+  createdAt: { type: string, format: date-time }

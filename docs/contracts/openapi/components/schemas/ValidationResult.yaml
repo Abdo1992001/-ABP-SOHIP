@@ -1,0 +1,38 @@
+type: object
+properties:
+  validationResultId:
+    type: string
+    format: uuid
+    description: Plan validation result.
+  planVersionId:
+    type: string
+    format: uuid
+    description: Plan version.
+  ruleCode:
+    type: string
+    description: Validation rule code.
+  severityCode:
+    type: string
+    description: INFO/WARNING/ERROR/BLOCKER.
+  message:
+    type: string
+    description: Display-safe validation message.
+  contextJsonb:
+    type:
+      - object
+      - 'null'
+    additionalProperties:
+      $ref: ./DynamicJsonValue.yaml
+    description: Rule context/placement IDs/etc.
+    maxProperties: 100
+  createdAt:
+    type: string
+    format: date-time
+    description: Validation time.
+additionalProperties: false
+required:
+  - message
+  - planVersionId
+  - ruleCode
+  - severityCode
+  - validationResultId

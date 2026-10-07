@@ -1,0 +1,21 @@
+type: object
+additionalProperties: false
+required: [jobId, jobTypeCode, statusCode, progressPct, createdAt, retryEligible, attemptCount, maxAttempts, version]
+properties:
+  jobId: { type: string, format: uuid }
+  jobTypeCode: { type: string }
+  statusCode: { type: string, enum: [QUEUED, RUNNING, COMPLETED, FAILED] }
+  progressPct: { type: integer, minimum: 0, maximum: 100 }
+  createdAt: { type: string, format: date-time }
+  startedAt: { type: [string, 'null'], format: date-time }
+  completedAt: { type: [string, 'null'], format: date-time }
+  failedAt: { type: [string, 'null'], format: date-time }
+  failure:
+    oneOf:
+      - $ref: ./JobFailure.yaml
+      - type: 'null'
+  resultReference: { type: [string, 'null'] }
+  retryEligible: { type: boolean }
+  attemptCount: { type: integer, minimum: 0 }
+  maxAttempts: { type: integer, minimum: 1 }
+  version: { type: integer, minimum: 1 }

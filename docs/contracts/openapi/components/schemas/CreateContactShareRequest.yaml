@@ -1,0 +1,26 @@
+type: object
+properties:
+  recipientUserId:
+    type: string
+    format: uuid
+  contactIds:
+    type: array
+    items:
+      type: string
+      format: uuid
+    minItems: 1
+  accessLevelCode:
+    type: string
+    enum:
+      - VIEW
+      - COLLABORATE_EDIT
+  expiresAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+additionalProperties: false
+required:
+  - recipientUserId
+  - contactIds
+  - accessLevelCode

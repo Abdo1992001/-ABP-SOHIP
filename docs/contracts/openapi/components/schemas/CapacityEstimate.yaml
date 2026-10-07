@@ -1,0 +1,36 @@
+type: object
+properties:
+  capacityEstimateId:
+    type: string
+    format: uuid
+  sourceTypeCode:
+    type: string
+  sourceResourceId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  startAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+  estimatedFinishAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+  items:
+    type: array
+    items:
+      $ref: ./CapacityEstimateItem.yaml
+    minItems: 1
+  createdAt:
+    type: string
+    format: date-time
+additionalProperties: false
+required:
+  - capacityEstimateId
+  - sourceTypeCode
+  - items
+  - createdAt

@@ -1,0 +1,29 @@
+# A person's own profile. The first group they control; the second is
+# organisational fact shown read-only, so a screen can display role and scope
+# without implying the user may change them.
+type: object
+additionalProperties: false
+required: [userId, displayName, hasPhoto, email, countryCodes, roles]
+properties:
+  userId: { type: string, format: uuid }
+  displayName: { type: string }
+  phone: { type: [string, 'null'] }
+  photoVisible: { type: boolean }
+  phoneVisible: { type: boolean }
+  hasPhoto: { type: boolean }
+  photoUpdatedAt:
+    type: [string, 'null']
+    format: date-time
+    description: >-
+      Cache key for the avatar URL. A replaced photo changes this, so clients
+      append it and the browser treats the new photo as a different resource.
+  email: { type: string }
+  jobTitle: { type: [string, 'null'] }
+  teamId: { type: [string, 'null'], format: uuid }
+  managerUserId: { type: [string, 'null'], format: uuid }
+  countryCodes:
+    type: array
+    items: { type: string, minLength: 2, maxLength: 2 }
+  roles:
+    type: array
+    items: { type: string }

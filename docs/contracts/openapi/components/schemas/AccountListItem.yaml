@@ -1,0 +1,41 @@
+type: object
+additionalProperties: false
+required:
+  - accountId
+  - accountRef
+  - canonicalName
+  - customerNumber
+  - country
+  - accountCategoryCode
+  - businessTypeCode
+  - ownerUserId
+  - recordStatusCode
+properties:
+  accountId:
+    $ref: ./UUID.yaml
+  accountRef:
+    type: string
+    minLength: 1
+    maxLength: 100
+  customerNumber:
+    type:
+      - string
+      - 'null'
+    maxLength: 100
+  canonicalName:
+    type: string
+    minLength: 1
+    maxLength: 300
+  country:
+    oneOf:
+      - $ref: ./CountryReference.yaml
+      - type: 'null'
+  accountCategoryCode:
+    $ref: ./AccountCategoryCode.yaml
+  businessTypeCode:
+    $ref: ./AccountBusinessTypeCode.yaml
+  ownerUserId:
+    $ref: ./UUID.yaml
+  recordStatusCode:
+    $ref: ./AccountRecordStatus.yaml
+description: Safe Sales Customer-grid projection. Source lineage, raw/normalized names, finance data, and unrelated workspace internals are intentionally absent.

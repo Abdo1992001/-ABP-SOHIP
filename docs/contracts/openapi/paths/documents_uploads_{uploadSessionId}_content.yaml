@@ -1,0 +1,64 @@
+post:
+  tags:
+    - Documents
+  summary: Write the raw binary content for a pending upload session
+  operationId: post_documents_uploads_by_uploadSessionId_content
+  description: >-
+    Streams the exact binary bytes registered by the upload session to
+    governed object storage. Must be called after session creation and before
+    the completion call. Permission: documents.create. Scope: Upload owner.
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  parameters:
+    - name: uploadSessionId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    - $ref: ../components/parameters/IdempotencyKey.yaml
+    - $ref: ../components/parameters/CsrfToken.yaml
+  requestBody:
+    required: true
+    content:
+      application/octet-stream:
+        schema:
+          type: string
+          format: binary
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/UploadSessionEnvelope.yaml
+    '400':
+      $ref: ../components/responses/Error400.yaml
+    '401':
+      $ref: ../components/responses/Error401.yaml
+    '403':
+      $ref: ../components/responses/Error403.yaml
+    '404':
+      $ref: ../components/responses/Error404.yaml
+    '409':
+      $ref: ../components/responses/Error409.yaml
+    '422':
+      $ref: ../components/responses/Error422.yaml
+    '429':
+      $ref: ../components/responses/Error429.yaml
+    '500':
+      $ref: ../components/responses/Error500.yaml
+    '503':
+      $ref: ../components/responses/Error503.yaml
+  x-abp-module: Documents
+  x-abp-permission: documents.create
+  x-abp-scope-rule: Upload owner
+  x-abp-concurrency: NONE
+  x-abp-idempotency: Required
+  x-abp-request-schema: UploadContentBinary
+  x-abp-success-schema: UploadSessionEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

@@ -1,0 +1,172 @@
+{
+  "changeRequestId": "CR-001",
+  "status": "PASS",
+  "generatedAt": "2026-08-26T00:00:00.000+03:00",
+  "designDecisionGates": { "closed": 10, "blocked": 0, "total": 10 },
+  "implementedChanges": { "implemented": 10, "total": 10 },
+  "contract": {
+    "originalBaselineOpenApiVersion": "1.4.0",
+    "originalBaselineOpenApiSha256": "7a7cb32a0df396e7bd4241ccfda4bbaf4f9eb891e2b35f17f43286f7515cbbba",
+    "originalBaselineOpenApiFileSha256": "98dd2d29dbedce0a87fefc757e9359b241e7dfd986496fca14ec8be26a809a90",
+    "originalBaselineGeneratedClientSha256": "442d295b60ad2a5d2191d4f27b1b00cfc7282364b30226b06b508f2be4443fe1",
+    "implementationStartingOpenApiVersion": "1.5.0",
+    "implementationStartingOpenApiSha256": "86bfec5e4c86ef1497a2efd5dba044bc56b8c8c7970b25a44e71fc1c56fdcb9a",
+    "implementationStartingGeneratedClientSha256": "d5739f85a31398e9d4940fc2a5a4c9a3f1781ccc533c44cbcc5e7c39cf7a9d2b",
+    "finalOpenApiVersion": "1.6.0",
+    "finalOpenApiSha256": "f1d00e39cc0151e40f2166f7dae67885a007d622199d1d4a4705c112fc317053",
+    "finalOpenApiFileSha256": "edc3f13c9449fa9e9e73073612b658dff14e71a0d750bf0272d0d9db9bfd4671",
+    "finalGeneratedClientVersion": "1.6.0",
+    "finalGeneratedClientSha256": "fd5b0797605ffbd18210d8681c82d8ca1f9d49d385962efcf6b0d202b19b0f90",
+    "generatedArtifactDrift": 0,
+    "historicalEvidenceOverwritten": false
+  },
+  "runtimeOperations": {
+    "implemented": 217,
+    "mandatory": 217,
+    "contractedNotImplemented": 0,
+    "outOfScopeV1": 21
+  },
+  "databaseMigrations": [
+    "20260825010000_cr001_business_decisions",
+    "20260825011000_cr001_quotation_state_guard"
+  ],
+  "changes": [
+    {
+      "id": "CR-001-01",
+      "status": "PASS",
+      "evidence": [
+        "MET-PIPE-005 Sales Conversion Rate",
+        "PostgreSQL analytics proof"
+      ]
+    },
+    {
+      "id": "CR-001-02",
+      "status": "PASS",
+      "evidence": [
+        "Canonical effective-dated customer segment definitions/assignments",
+        "MET-CUST-006 historical as-of aggregation",
+        "unknown segment import DQ proof"
+      ]
+    },
+    {
+      "id": "CR-001-03",
+      "status": "PASS",
+      "evidence": [
+        "MET-CUST-003 and MET-GEO-004 server ranking",
+        "Country Scope before aggregation",
+        "performance proof"
+      ]
+    },
+    {
+      "id": "CR-001-04",
+      "status": "PASS",
+      "evidence": [
+        "Opportunity lifecycle runtime",
+        "WON reopen and target reversal proof"
+      ]
+    },
+    {
+      "id": "CR-001-05",
+      "status": "PASS",
+      "evidence": [
+        "Separate document/commercial quotation state",
+        "atomic official send",
+        "SENT immutability",
+        "supersede proof",
+        "Cancel unavailable"
+      ]
+    },
+    {
+      "id": "CR-001-06",
+      "status": "PASS",
+      "evidence": [
+        "One shipment to one ERP order",
+        "0..N shipments per order",
+        "guarded milestone workflow",
+        "append-only corrections"
+      ]
+    },
+    {
+      "id": "CR-001-07",
+      "status": "PASS",
+      "evidence": [
+        "Versioned EG/LY/SA/AE Local rules",
+        "historical as-was classification",
+        "authorization independence"
+      ]
+    },
+    {
+      "id": "CR-001-08",
+      "status": "PASS",
+      "evidence": [
+        "Dedicated complaint list/detail UI",
+        "PostgreSQL complaint lifecycle",
+        "portal complaint projection"
+      ]
+    },
+    {
+      "id": "CR-001-09",
+      "status": "PASS",
+      "evidence": [
+        "External client identity and multi-customer binding",
+        "BFF assertion boundary",
+        "portal projection isolation",
+        "revocation proof"
+      ]
+    },
+    {
+      "id": "CR-001-10",
+      "status": "PASS",
+      "evidence": [
+        "R&D Most Requested Sizes",
+        "official quotation lines only",
+        "read-only and no customer identity/pricing/export proof"
+      ]
+    }
+  ],
+  "negativeTests": {
+    "required": 40,
+    "executed": 42,
+    "result": "PASS",
+    "runtimeEvidence": "corepack pnpm proof:cr001-runtime",
+    "dataConflictEvidence": "corepack pnpm proof:analytics"
+  },
+  "verification": {
+    "postgresql17Migrations": "PASS",
+    "schemaDrift": "PASS",
+    "apiContract": "PASS",
+    "openApiTypedOperations": "217/217",
+    "generatedClientDrift": 0,
+    "analytics": "PASS — 72 metrics / 18 reports",
+    "frontendProof": {
+      "result": "PASS",
+      "screens": "55/55",
+      "productionActions": "195/195",
+      "deadActions": 0,
+      "fakeUi": 0,
+      "criticalE2e": "8/8"
+    },
+    "dockerRuntime": "PASS",
+    "security": "PASS",
+    "performance": "PASS — CR-001 internal, portal, analytics, shipment, complaint and R&D reads covered",
+    "corepackPnpmVerify": "PASS / exit 0"
+  },
+  "preserved": {
+    "globalImplementationAuthorized": false,
+    "step12": "NOT_STARTED",
+    "productionReady": false,
+    "releaseGatesPassed": 0,
+    "releaseGatesTotal": 16,
+    "ssotDeviations": 0
+  },
+  "externalDependencies": [
+    "DEP-001 live Entra External ID tenant, MFA and BFF configuration evidence",
+    "DEP-002 live Azure infrastructure, secrets and malware-scanner evidence",
+    "DEP-003 approved UAE Central DR malware-scanning fallback or supported alternate region evidence",
+    "DEP-004 three Baseline signoffs and RG-01 formal approval",
+    "DEP-005 governed cutover source register",
+    "DEP-006 representative production load sizing and formal performance evidence",
+    "DEP-007 formal retention approval",
+    "DEP-008 production access and UAT rosters"
+  ]
+}

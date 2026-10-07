@@ -1,0 +1,28 @@
+type: object
+additionalProperties: false
+required:
+  - sessionId
+  - authTransport
+  - assurance
+  - issuedAt
+  - expiresAt
+properties:
+  sessionId:
+    type: string
+    minLength: 8
+    maxLength: 200
+  authTransport:
+    type: string
+    enum:
+      - BFF_COOKIE
+      - DESKTOP_OAUTH_PKCE
+  assurance:
+    type: string
+    enum:
+      - PASSWORD
+      - MFA
+      - FEDERATED_MFA
+  issuedAt:
+    $ref: ./DateTime.yaml
+  expiresAt:
+    $ref: ./DateTime.yaml

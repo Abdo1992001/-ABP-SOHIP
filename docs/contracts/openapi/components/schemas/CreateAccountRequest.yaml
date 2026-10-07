@@ -1,0 +1,16 @@
+type: object
+properties:
+  canonicalName:
+    type: string
+    minLength: 1
+    maxLength: 300
+  countryCode:
+    $ref: ./CountryCode.yaml
+  accountCategoryCode:
+    $ref: ./AccountCategoryCode.yaml
+  businessTypeCode:
+    $ref: ./AccountBusinessTypeCode.yaml
+additionalProperties: false
+required:
+  - canonicalName
+  - countryCode

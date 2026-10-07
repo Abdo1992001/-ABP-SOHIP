@@ -1,0 +1,64 @@
+post:
+  tags:
+    - CRM
+  summary: Map account into group
+  operationId: post_group_networks_by_groupId_memberships
+  description: >-
+    Permission: groups.manage. Scope: Authorized + account access.
+    Audited/effective-dated.
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/GroupMembershipEnvelope.yaml
+    '400':
+      $ref: ../components/responses/Error400.yaml
+    '401':
+      $ref: ../components/responses/Error401.yaml
+    '403':
+      $ref: ../components/responses/Error403.yaml
+    '404':
+      $ref: ../components/responses/Error404.yaml
+    '409':
+      $ref: ../components/responses/Error409.yaml
+    '412':
+      $ref: ../components/responses/Error412.yaml
+    '422':
+      $ref: ../components/responses/Error422.yaml
+    '429':
+      $ref: ../components/responses/Error429.yaml
+    '500':
+      $ref: ../components/responses/Error500.yaml
+    '503':
+      $ref: ../components/responses/Error503.yaml
+  parameters:
+    - name: groupId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    - $ref: ../components/parameters/IdempotencyKey.yaml
+    - $ref: ../components/parameters/CsrfToken.yaml
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/GroupMembershipRequest.yaml
+  x-abp-module: CRM
+  x-abp-permission: groups.manage
+  x-abp-scope-rule: Authorized + account access
+  x-abp-concurrency: NONE
+  x-abp-idempotency: Required
+  x-abp-request-schema: GroupMembershipRequest
+  x-abp-success-schema: GroupMembershipEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

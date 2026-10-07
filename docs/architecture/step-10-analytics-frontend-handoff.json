@@ -1,0 +1,43 @@
+{
+  "version": "0.1.0",
+  "status": "PREPARED_DURING_STEP_9_PARTIAL_NO_STEP_10_IMPLEMENTATION",
+  "surfaces": [
+    {
+      "screen": "HOME",
+      "metricPlaceholderRequirement": "4–6 server-authoritative KPIs and action queue",
+      "filterContext": ["effective Country Scope", "workspace", "date period"],
+      "currency": "server supplied; USD primary",
+      "drilldownRequirement": "authorized source records only",
+      "permissionRequirement": "dashboard and source-resource permissions"
+    },
+    {
+      "screen": "REPORTS",
+      "metricPlaceholderRequirement": "commercial, pipeline, quotation, ERP order and finance semantic results",
+      "filterContext": [
+        "effective Country Scope",
+        "geography",
+        "period",
+        "source freshness"
+      ],
+      "currency": "typed semantic contract",
+      "drilldownRequirement": "evidence-linked authorized drilldown",
+      "permissionRequirement": "separate report and export permissions"
+    },
+    {
+      "screen": "TARGETS",
+      "metricPlaceholderRequirement": "ACROW company target and Opportunity WON achievement only",
+      "filterContext": ["year", "versioned monthly/quarter allocation"],
+      "currency": "USD primary",
+      "drilldownRequirement": "authorized WON opportunities",
+      "permissionRequirement": "targets.view / targets.manage"
+    },
+    {
+      "screen": "AI",
+      "metricPlaceholderRequirement": "evidence-linked advisory outputs only",
+      "filterContext": ["same effective user scope", "freshness"],
+      "currency": "never calculated by frontend",
+      "drilldownRequirement": "source evidence where permitted",
+      "permissionRequirement": "ai.advisory.view plus source permissions"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+type: object
+description: Governed semantic metric definition; display labels are not identifiers.
+properties:
+  metricId: { type: string, pattern: '^MET-[A-Z]+-[0-9]{3}$' }
+  metricVersion: { type: string, pattern: '^\d+\.\d+\.\d+$' }
+  name: { type: string }
+  description: { type: string }
+  domain: { type: string }
+  measureType: { type: string, enum: [MONEY, COUNT, RATIO, DURATION, QUANTITY] }
+  dateBasis: { type: string }
+  currencyBasis: { type: string }
+  sourceEntities:
+    type: array
+    items: { type: string }
+  sourceFacts:
+    type: array
+    items: { type: string }
+  sourceLineage:
+    type: object
+    properties:
+      authority: { type: string }
+      fact: { type: string }
+      workbookSha256: { type: string, pattern: '^[a-f0-9]{64}$' }
+    additionalProperties: false
+    required: [authority, fact, workbookSha256]
+  aggregation: { type: string }
+  filters:
+    type: array
+    items: { type: string }
+  dimensions:
+    type: array
+    items: { type: string }
+  exclusions:
+    type: array
+    items: { type: string }
+  dqBehavior: { type: string }
+  countryScopeBehavior: { type: string }
+  authorization:
+    type: object
+    properties:
+      viewPermission: { type: string }
+      drilldownPermission: { type: string }
+      exportPermission: { type: string }
+    additionalProperties: false
+    required: [viewPermission, drilldownPermission, exportPermission]
+  drilldownSupport: { type: boolean }
+  exportSupport: { type: boolean }
+  zeroDenominatorBehavior: { type: string, enum: [NULL_UNAVAILABLE, NOT_APPLICABLE] }
+  roundingRule: { type: string }
+  status: { type: string, enum: [ACTIVE] }
+  guard: { type: string }
+additionalProperties: false
+required: [metricId, metricVersion, name, description, domain, measureType, sourceEntities, sourceFacts, sourceLineage, dateBasis, currencyBasis, aggregation, filters, dimensions, exclusions, dqBehavior, countryScopeBehavior, authorization, drilldownSupport, exportSupport, zeroDenominatorBehavior, roundingRule, status, guard]

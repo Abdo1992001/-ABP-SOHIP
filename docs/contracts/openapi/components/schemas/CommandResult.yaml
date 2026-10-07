@@ -1,0 +1,11 @@
+type: object
+properties:
+  data:
+    $ref: ./CommandData.yaml
+  meta:
+    $ref: ./PaginationMeta.yaml
+  analyticsMetadata:
+    $ref: ./AnalyticsResponseMetadata.yaml
+additionalProperties: false
+required:
+  - data

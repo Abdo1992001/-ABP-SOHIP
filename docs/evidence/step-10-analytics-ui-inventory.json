@@ -1,0 +1,716 @@
+{
+  "version": "1.0.0",
+  "screenInventory": {
+    "implemented": 48,
+    "total": 48
+  },
+  "productionActions": {
+    "mapped": 91,
+    "total": 91,
+    "dead": 0,
+    "fake": 0,
+    "unmapped": 0
+  },
+  "surfaces": [
+    {
+      "route": "/reports",
+      "reportId": "RPT-001",
+      "metricIds": [
+        "MET-TGT-001",
+        "MET-TGT-002",
+        "MET-TGT-003",
+        "MET-TGT-004",
+        "MET-TGT-005",
+        "MET-TGT-006",
+        "MET-PIPE-001",
+        "MET-PIPE-002",
+        "MET-PIPE-003",
+        "MET-PIPE-004",
+        "MET-PIPE-005",
+        "MET-PIPE-006",
+        "MET-PIPE-007",
+        "MET-QUOTE-001",
+        "MET-QUOTE-002",
+        "MET-QUOTE-003",
+        "MET-QUOTE-004",
+        "MET-QUOTE-005",
+        "MET-QUOTE-006",
+        "MET-QUOTE-007",
+        "MET-CUST-001",
+        "MET-CUST-002",
+        "MET-CUST-003",
+        "MET-CUST-004",
+        "MET-CUST-005",
+        "MET-GEO-001",
+        "MET-GEO-002",
+        "MET-GEO-003",
+        "MET-GEO-004",
+        "MET-GEO-005",
+        "MET-GROUP-001",
+        "MET-GROUP-002",
+        "MET-ERP-001",
+        "MET-ERP-002",
+        "MET-ERP-003",
+        "MET-ERP-004",
+        "MET-ERP-005",
+        "MET-ERP-006",
+        "MET-ERP-007",
+        "MET-PROD-001",
+        "MET-PROD-002",
+        "MET-PROD-003",
+        "MET-PROD-004",
+        "MET-PROD-005",
+        "MET-PROD-006",
+        "MET-PRICE-001",
+        "MET-LOG-001",
+        "MET-LOG-002",
+        "MET-LOG-003",
+        "MET-LOG-004",
+        "MET-LOG-005",
+        "MET-LOG-006",
+        "MET-LOG-007",
+        "MET-CAP-001",
+        "MET-CAP-002",
+        "MET-CAP-003",
+        "MET-DQ-001",
+        "MET-DQ-002",
+        "MET-FX-001",
+        "MET-FX-002",
+        "MET-PAY-001",
+        "MET-PAY-002",
+        "MET-PAY-003",
+        "MET-CHQ-001",
+        "MET-RET-001",
+        "MET-RET-002",
+        "MET-RET-003",
+        "MET-CMP-001",
+        "MET-CMP-002",
+        "MET-AI-001",
+        "MET-AI-002"
+      ],
+      "permission": {
+        "view": "reports.commercial",
+        "drilldown": "reports.commercial",
+        "export": "data.export"
+      },
+      "countryScope": "SOURCE_ROWS_BEFORE_AGGREGATION",
+      "filters": ["Year", "Quarter", "Month", "Country", "Group", "Segment"],
+      "drilldowns": true,
+      "exports": ["PDF", "XLSX"],
+      "rtl": true,
+      "responsive": true,
+      "testEvidence": [
+        "pnpm proof:analytics",
+        "apps/web/src/app/step10-analytics.test.ts",
+        "pnpm proof:frontend"
+      ]
+    },
+    {
+      "route": "/reports",
+      "reportId": "RPT-002",
+      "metricIds": [
+        "MET-GEO-001",
+        "MET-GEO-002",
+        "MET-GEO-003",
+        "MET-GEO-004",
+        "MET-GEO-005",
+        "MET-CUST-001",
+        "MET-CUST-002",
+        "MET-CUST-003",
+        "MET-CUST-004",
+        "MET-CUST-005",
+        "MET-GROUP-001",
+        "MET-GROUP-002",
+        "MET-ERP-001",
+        "MET-ERP-002",
+        "MET-ERP-003",
+        "MET-ERP-004",
+        "MET-ERP-005",
+        "MET-ERP-006",
+        "MET-ERP-007"
+      ],
+      "permission": {
+        "view": "reports.commercial",
+        "drilldown": "accounts.view",
+        "export": "data.export"
+      },
+      "countryScope": "SOURCE_ROWS_BEFORE_AGGREGATION",
+      "filters": [
+        "Period",
+        "Continent",
+        "Country",
+        "Local-Global",
+        "Group",
+        "Segment",
+        "Metric Basis"
+      ],
+      "drilldowns": true,
+      "exports": ["PDF", "XLSX"],
+      "rtl": true,
+      "responsive": true,
+      "testEvidence": [
+        "pnpm proof:analytics",
+        "apps/web/src/app/step10-analytics.test.ts",
+        "pnpm proof:frontend"
+      ]
+    },
+    {
+      "route": "/reports",
+      "reportId": "RPT-003",
+      "metricIds": [
+        "MET-GROUP-001",
+        "MET-GROUP-002",
+        "MET-CUST-001",
+        "MET-CUST-002",
+        "MET-CUST-003",
+        "MET-CUST-004",
+        "MET-CUST-005",
+        "MET-ERP-001",
+        "MET-ERP-002",
+        "MET-ERP-003",
+        "MET-ERP-004",
+        "MET-ERP-005",
+        "MET-ERP-006",
+        "MET-ERP-007",
+        "MET-PROD-001",
+        "MET-PROD-002",
+        "MET-PROD-003",
+        "MET-PROD-004",
+        "MET-PROD-005",
+        "MET-PROD-006",
+        "MET-PRICE-001"
+      ],
+      "permission": {
+        "view": "reports.commercial",
+        "drilldown": "groups.view",
+        "export": "data.export"
+      },
+      "countryScope": "SOURCE_ROWS_BEFORE_AGGREGATION",
+      "filters": ["Period", "Family", "Country", "Branch"],
+      "drilldowns": true,
+      "exports": ["PDF", "XLSX"],
+      "rtl": true,
+      "responsive": true,
+      "testEvidence": [
+        "pnpm proof:analytics",
+        "apps/web/src/app/step10-analytics.test.ts",
+        "pnpm proof:frontend"
+      ]
+    },
+    {
+      "route": "/reports",
+      "reportId": "RPT-004",
+      "metricIds": [
+        "MET-PIPE-001",
+        "MET-PIPE-002",
+        "MET-PIPE-003",
+        "MET-PIPE-004",
+        "MET-PIPE-005",
+        "MET-PIPE-006",
+        "MET-PIPE-007",
+        "MET-QUOTE-001",
+        "MET-QUOTE-002",
+        "MET-QUOTE-003",
+        "MET-QUOTE-004",
+        "MET-QUOTE-005",
+        "MET-QUOTE-006",
+        "MET-QUOTE-007",
+        "MET-PRICE-001"
+      ],
+      "permission": {
+        "view": "reports.commercial",
+        "drilldown": "opportunities.view",
+        "export": "data.export"
+      },
+      "countryScope": "SOURCE_ROWS_BEFORE_AGGREGATION",
+      "filters": [
+        "Period",
+        "Owner",
+        "Country",
+        "Segment",
+        "Stage",
+        "Quote Status"
+      ],
+      "drilldowns": true,
+      "exports": ["PDF", "XLSX"],
+      "rtl": true,
+      "responsive": true,
+      "testEvidence": [
+        "pnpm proof:analytics",
+        "apps/web/src/app/step10-analytics.test.ts",
+        "pnpm proof:frontend"
+      ]
+    },
+    {
+      "route": "/customers/:accountId",
+      "reportId": "RPT-005",
+      "metricIds": [
+        "MET-CUST-001",
+        "MET-CUST-002",
+        "MET-CUST-003",
+        "MET-CUST-004",
+        "MET-CUST-005",
+        "MET-ERP-001",
+        "MET-ERP-002",
+        "MET-ERP-003",
+        "MET-ERP-004",
+        "MET-ERP-005",
+        "MET-ERP-006",
+        "MET-ERP-007",
+        "MET-PRICE-001",
+        "MET-LOG-001",
+        "MET-LOG-002",
+        "MET-LOG-003",
+        "MET-LOG-004",
+        "MET-LOG-005",
+        "MET-LOG-006",
+        "MET-LOG-007"
+      ],
+      "permission": {
+        "view": "reports.commercial",
+        "drilldown": "accounts.view",
+        "export": "data.export"
+      },
+      "countryScope": "SOURCE_ROWS_BEFORE_AGGREGATION",
+      "filters": ["Customer", "Country", "Segment", "Period"],
+      "drilldowns": true,
+      "exports": ["XLSX", "detail view"],
+      "rtl": true,
+      "responsive": true,
+      "testEvidence": [
+        "pnpm proof:analytics",
+        "apps/web/src/app/step10-analytics.test.ts",
+        "pnpm proof:frontend"
+      ]
+    },
+    {
+      "route": "/erp/orders",
+      "reportId": "RPT-006",
+      "metricIds": [
+        "MET-ERP-001",
+        "MET-ERP-002",
+        "MET-ERP-003",
+        "MET-ERP-004",
+        "MET-ERP-005",
+        "MET-ERP-006",
+        "MET-ERP-007"
+      ],
+      "permission": {
+        "view": "reports.commercial",
+        "drilldown": "sales-orders.view",
+        "export": "data.export"
+      },
+      "countryScope": "SOURCE_ROWS_BEFORE_AGGREGATION",
+      "filters": [
+        "Period",
+        "Status",
+        "Country",
+        "Customer",
+        "Item",
+        "Clean Mode"
+      ],
+      "drilldowns": true,
+      "exports": ["XLSX"],
+      "rtl": true,
+      "responsive": true,
+      "testEvidence": [
+        "pnpm proof:analytics",
+        "apps/web/src/app/step10-analytics.test.ts",
+        "pnpm proof:frontend"
+      ]
+    },
+    {
+      "route": "/reports",
+      "reportId": "RPT-007",
+      "metricIds": [
+        "MET-PROD-001",
+        "MET-PROD-002",
+        "MET-PROD-003",
+        "MET-PROD-004",
+        "MET-PROD-005",
+        "MET-PROD-006",
+        "MET-PRICE-001"
+      ],
+      "permission": {
+        "view": "reports.commercial",
+        "drilldown": "reports.commercial",
+        "export": "data.export"
+      },
+      "countryScope": "SOURCE_ROWS_BEFORE_AGGREGATION",
+      "filters": ["Period", "Product", "Thickness", "Segment", "Metric Basis"],
+      "drilldowns": true,
+      "exports": ["PDF", "XLSX"],
+      "rtl": true,
+      "responsive": true,
+      "testEvidence": [
+        "pnpm proof:analytics",
+        "apps/web/src/app/step10-analytics.test.ts",
+        "pnpm proof:frontend"
+      ]
+    },
+    {
+      "route": "/logistics",
+      "reportId": "RPT-008",
+      "metricIds": [
+        "MET-LOG-001",
+        "MET-LOG-002",
+        "MET-LOG-003",
+        "MET-LOG-004",
+        "MET-LOG-005",
+        "MET-LOG-006",
+        "MET-LOG-007"
+      ],
+      "permission": {
+        "view": "logistics.view",
+        "drilldown": "logistics.view",
+        "export": "data.export"
+      },
+      "countryScope": "SOURCE_ROWS_BEFORE_AGGREGATION",
+      "filters": [
+        "Period",
+        "Country",
+        "Client",
+        "Template",
+        "Source",
+        "Plan Status"
+      ],
+      "drilldowns": true,
+      "exports": ["PDF", "XLSX"],
+      "rtl": true,
+      "responsive": true,
+      "testEvidence": [
+        "pnpm proof:analytics",
+        "apps/web/src/app/step10-analytics.test.ts",
+        "pnpm proof:frontend"
+      ]
+    },
+    {
+      "route": "/operations/capacity",
+      "reportId": "RPT-009",
+      "metricIds": [
+        "MET-ERP-001",
+        "MET-ERP-002",
+        "MET-ERP-003",
+        "MET-ERP-004",
+        "MET-ERP-005",
+        "MET-ERP-006",
+        "MET-ERP-007",
+        "MET-CAP-001",
+        "MET-CAP-002",
+        "MET-CAP-003",
+        "MET-DQ-001",
+        "MET-DQ-002"
+      ],
+      "permission": {
+        "view": "capacity.view",
+        "drilldown": "capacity.view",
+        "export": "data.export"
+      },
+      "countryScope": "SOURCE_ROWS_BEFORE_AGGREGATION",
+      "filters": ["Period", "Category", "Country", "Item", "ERP Status"],
+      "drilldowns": true,
+      "exports": ["PDF", "XLSX"],
+      "rtl": true,
+      "responsive": true,
+      "testEvidence": [
+        "pnpm proof:analytics",
+        "apps/web/src/app/step10-analytics.test.ts",
+        "pnpm proof:frontend"
+      ]
+    },
+    {
+      "route": "/finance/fx",
+      "reportId": "RPT-010",
+      "metricIds": [
+        "MET-FX-001",
+        "MET-FX-002",
+        "MET-PAY-001",
+        "MET-PAY-002",
+        "MET-PAY-003",
+        "MET-CHQ-001"
+      ],
+      "permission": {
+        "view": "reports.finance",
+        "drilldown": "finance.fx.view",
+        "export": "data.export"
+      },
+      "countryScope": "SOURCE_ROWS_BEFORE_AGGREGATION",
+      "filters": ["Period", "AsOf"],
+      "drilldowns": true,
+      "exports": ["PDF", "XLSX"],
+      "rtl": true,
+      "responsive": true,
+      "testEvidence": [
+        "pnpm proof:analytics",
+        "apps/web/src/app/step10-analytics.test.ts",
+        "pnpm proof:frontend"
+      ]
+    },
+    {
+      "route": "/finance/payments",
+      "reportId": "RPT-011",
+      "metricIds": [
+        "MET-FX-001",
+        "MET-FX-002",
+        "MET-PAY-001",
+        "MET-PAY-002",
+        "MET-PAY-003",
+        "MET-CHQ-001"
+      ],
+      "permission": {
+        "view": "reports.finance",
+        "drilldown": "payments.view",
+        "export": "data.export"
+      },
+      "countryScope": "SOURCE_ROWS_BEFORE_AGGREGATION",
+      "filters": ["Period", "Currency", "Status", "Method", "Source"],
+      "drilldowns": true,
+      "exports": ["XLSX"],
+      "rtl": true,
+      "responsive": true,
+      "testEvidence": [
+        "pnpm proof:analytics",
+        "apps/web/src/app/step10-analytics.test.ts",
+        "pnpm proof:frontend"
+      ]
+    },
+    {
+      "route": "/returned-scrap",
+      "reportId": "RPT-012",
+      "metricIds": [
+        "MET-RET-001",
+        "MET-RET-002",
+        "MET-RET-003",
+        "MET-CMP-001",
+        "MET-CMP-002"
+      ],
+      "permission": {
+        "view": "reports.commercial",
+        "drilldown": "returns.view",
+        "export": "data.export"
+      },
+      "countryScope": "SOURCE_ROWS_BEFORE_AGGREGATION",
+      "filters": ["Period", "Customer", "Product", "Country", "Status", "Type"],
+      "drilldowns": true,
+      "exports": ["PDF", "XLSX"],
+      "rtl": true,
+      "responsive": true,
+      "testEvidence": [
+        "pnpm proof:analytics",
+        "apps/web/src/app/step10-analytics.test.ts",
+        "pnpm proof:frontend"
+      ]
+    },
+    {
+      "route": "/data-quality",
+      "reportId": "RPT-013",
+      "metricIds": ["MET-DQ-001", "MET-DQ-002"],
+      "permission": {
+        "view": "data-quality.view",
+        "drilldown": "data-quality.view",
+        "export": "data.export"
+      },
+      "countryScope": "SOURCE_ROWS_BEFORE_AGGREGATION",
+      "filters": ["Source", "Run", "Severity", "Issue Type"],
+      "drilldowns": true,
+      "exports": ["XLSX"],
+      "rtl": true,
+      "responsive": true,
+      "testEvidence": [
+        "pnpm proof:analytics",
+        "apps/web/src/app/step10-analytics.test.ts",
+        "pnpm proof:frontend"
+      ]
+    },
+    {
+      "route": "/ai/brief",
+      "reportId": "RPT-014",
+      "metricIds": [
+        "MET-AI-001",
+        "MET-AI-002",
+        "MET-TGT-001",
+        "MET-TGT-002",
+        "MET-TGT-003",
+        "MET-TGT-004",
+        "MET-TGT-005",
+        "MET-TGT-006",
+        "MET-PIPE-001",
+        "MET-PIPE-002",
+        "MET-PIPE-003",
+        "MET-PIPE-004",
+        "MET-PIPE-005",
+        "MET-PIPE-006",
+        "MET-PIPE-007",
+        "MET-GEO-001",
+        "MET-GEO-002",
+        "MET-GEO-003",
+        "MET-GEO-004",
+        "MET-GEO-005",
+        "MET-DQ-001",
+        "MET-DQ-002"
+      ],
+      "permission": {
+        "view": "ai.advisory.view",
+        "drilldown": "ai.advisory.view",
+        "export": "data.export"
+      },
+      "countryScope": "SOURCE_ROWS_BEFORE_AGGREGATION",
+      "filters": ["AsOf", "Scope"],
+      "drilldowns": true,
+      "exports": ["PDF"],
+      "rtl": true,
+      "responsive": true,
+      "testEvidence": [
+        "pnpm proof:analytics",
+        "apps/web/src/app/step10-analytics.test.ts",
+        "pnpm proof:frontend"
+      ]
+    },
+    {
+      "route": "/",
+      "reportId": "RPT-015",
+      "metricIds": [
+        "MET-PIPE-001",
+        "MET-PIPE-002",
+        "MET-PIPE-003",
+        "MET-PIPE-004",
+        "MET-PIPE-005",
+        "MET-PIPE-006",
+        "MET-PIPE-007",
+        "MET-QUOTE-001",
+        "MET-QUOTE-002",
+        "MET-QUOTE-003",
+        "MET-QUOTE-004",
+        "MET-QUOTE-005",
+        "MET-QUOTE-006",
+        "MET-QUOTE-007",
+        "MET-CUST-001",
+        "MET-CUST-002",
+        "MET-CUST-003",
+        "MET-CUST-004",
+        "MET-CUST-005",
+        "MET-ERP-001",
+        "MET-ERP-002",
+        "MET-ERP-003",
+        "MET-ERP-004",
+        "MET-ERP-005",
+        "MET-ERP-006",
+        "MET-ERP-007",
+        "MET-LOG-001",
+        "MET-LOG-002",
+        "MET-LOG-003",
+        "MET-LOG-004",
+        "MET-LOG-005",
+        "MET-LOG-006",
+        "MET-LOG-007"
+      ],
+      "permission": {
+        "view": "reports.commercial",
+        "drilldown": "reports.commercial",
+        "export": "data.export"
+      },
+      "countryScope": "SOURCE_ROWS_BEFORE_AGGREGATION",
+      "filters": ["User", "AsOf", "Country"],
+      "drilldowns": true,
+      "exports": [],
+      "rtl": true,
+      "responsive": true,
+      "testEvidence": [
+        "pnpm proof:analytics",
+        "apps/web/src/app/step10-analytics.test.ts",
+        "pnpm proof:frontend"
+      ]
+    },
+    {
+      "route": "/logistics",
+      "reportId": "RPT-016",
+      "metricIds": [
+        "MET-LOG-001",
+        "MET-LOG-002",
+        "MET-LOG-003",
+        "MET-LOG-004",
+        "MET-LOG-005",
+        "MET-LOG-006",
+        "MET-LOG-007"
+      ],
+      "permission": {
+        "view": "logistics.view",
+        "drilldown": "logistics.view",
+        "export": "data.export"
+      },
+      "countryScope": "SOURCE_ROWS_BEFORE_AGGREGATION",
+      "filters": ["AsOf", "Country", "Template"],
+      "drilldowns": true,
+      "exports": ["In-app"],
+      "rtl": true,
+      "responsive": true,
+      "testEvidence": [
+        "pnpm proof:analytics",
+        "apps/web/src/app/step10-analytics.test.ts",
+        "pnpm proof:frontend"
+      ]
+    },
+    {
+      "route": "/operations/capacity",
+      "reportId": "RPT-017",
+      "metricIds": [
+        "MET-ERP-001",
+        "MET-ERP-002",
+        "MET-ERP-003",
+        "MET-ERP-004",
+        "MET-ERP-005",
+        "MET-ERP-006",
+        "MET-ERP-007",
+        "MET-CAP-001",
+        "MET-CAP-002",
+        "MET-CAP-003",
+        "MET-DQ-001",
+        "MET-DQ-002"
+      ],
+      "permission": {
+        "view": "capacity.view",
+        "drilldown": "capacity.view",
+        "export": "data.export"
+      },
+      "countryScope": "SOURCE_ROWS_BEFORE_AGGREGATION",
+      "filters": ["AsOf", "Category", "Country"],
+      "drilldowns": true,
+      "exports": ["In-app"],
+      "rtl": true,
+      "responsive": true,
+      "testEvidence": [
+        "pnpm proof:analytics",
+        "apps/web/src/app/step10-analytics.test.ts",
+        "pnpm proof:frontend"
+      ]
+    },
+    {
+      "route": "/finance/fx",
+      "reportId": "RPT-018",
+      "metricIds": [
+        "MET-FX-001",
+        "MET-FX-002",
+        "MET-PAY-001",
+        "MET-PAY-002",
+        "MET-PAY-003",
+        "MET-CHQ-001"
+      ],
+      "permission": {
+        "view": "reports.finance",
+        "drilldown": "payments.view",
+        "export": "data.export"
+      },
+      "countryScope": "SOURCE_ROWS_BEFORE_AGGREGATION",
+      "filters": ["AsOf"],
+      "drilldowns": true,
+      "exports": ["In-app"],
+      "rtl": true,
+      "responsive": true,
+      "testEvidence": [
+        "pnpm proof:analytics",
+        "apps/web/src/app/step10-analytics.test.ts",
+        "pnpm proof:frontend"
+      ]
+    }
+  ]
+}

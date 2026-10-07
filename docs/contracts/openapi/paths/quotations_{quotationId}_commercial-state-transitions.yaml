@@ -1,0 +1,19 @@
+post:
+  tags: [Quotation]
+  summary: Move immutable SENT quotation into active commercial negotiation
+  operationId: post_quotations_by_quotationId_commercial_state_transitions
+  parameters: [{ name: quotationId, in: path, required: true, schema: { type: string, format: uuid } }]
+  requestBody:
+    required: true
+    content: { application/json: { schema: { type: object, additionalProperties: false, required: [targetStateCode, expectedRowVersion], properties: { targetStateCode: { type: string, enum: [UNDER_NEGOTIATION] }, expectedRowVersion: { type: string, pattern: '^\d+$' }, reason: { type: string } } } } }
+  responses:
+    '200': { description: Transitioned, content: { application/json: { schema: { type: object, additionalProperties: false, required: [data], properties: { data: { $ref: ../components/schemas/QuotationCommercialState.yaml } } } } } }
+    '400': { $ref: ../components/responses/Error400.yaml }
+  x-abp-module: Quotation
+  x-abp-permission: quotations.edit
+  x-abp-scope-rule: Country Scope and existing quotation context; SENT document remains immutable
+  x-abp-concurrency: expectedRowVersion
+  x-abp-execution-mode: SYNC
+  x-abp-job-dto: false
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

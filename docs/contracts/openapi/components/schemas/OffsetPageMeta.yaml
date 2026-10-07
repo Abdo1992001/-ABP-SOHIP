@@ -1,0 +1,8 @@
+type: object
+additionalProperties: false
+required: [offset, limit, total, hasNext]
+properties:
+  offset: { type: integer, minimum: 0 }
+  limit: { type: integer, minimum: 1, maximum: 200 }
+  total: { type: integer, minimum: 0 }
+  hasNext: { type: boolean }

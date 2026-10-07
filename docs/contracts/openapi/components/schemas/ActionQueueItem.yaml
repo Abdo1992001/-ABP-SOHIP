@@ -1,0 +1,44 @@
+type: object
+properties:
+  sourceTypeCode:
+    type: string
+  sourceId:
+    type: string
+    format: uuid
+  actionCode:
+    type: string
+  title:
+    type: string
+  dueAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+  priorityCode:
+    type:
+      - string
+      - 'null'
+  subtitle:
+    type:
+      - string
+      - 'null'
+    description: Who or what the action is about, e.g. the customer name.
+  href:
+    type:
+      - string
+      - 'null'
+    description: Where the action is done. Without it the queue is a list of regrets.
+  amount:
+    type:
+      - string
+      - 'null'
+  currencyCode:
+    type:
+      - string
+      - 'null'
+additionalProperties: false
+required:
+  - sourceTypeCode
+  - sourceId
+  - actionCode
+  - title

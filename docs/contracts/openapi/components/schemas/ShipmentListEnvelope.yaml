@@ -1,0 +1,6 @@
+type: object
+additionalProperties: false
+required: [data, meta]
+properties:
+  data: { type: array, items: { $ref: ./Shipment.yaml } }
+  meta: { $ref: ./OffsetPageMeta.yaml }

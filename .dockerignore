@@ -1,0 +1,31 @@
+.git
+.github
+.idea
+.vscode
+node_modules
+**/node_modules
+dist
+**/dist
+coverage
+**/coverage
+.tmp
+**/.tmp
+*.log
+.env
+.env.*
+!.env.example
+
+artifacts
+apps/mobile/.expo
+apps/mobile/android
+apps/mobile/ios
+
+# Never inside an image: backups and database dumps hold the company's data,
+# and local working folders are not part of the system.
+backups
+backups-*
+*.dump
+.abp-admin
+.claude
+ABP_Presentation
+.codex-build-*

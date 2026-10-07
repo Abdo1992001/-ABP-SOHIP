@@ -1,0 +1,12 @@
+type: object
+additionalProperties: false
+required: [segmentId, code, displayNameEn, displayNameAr, statusCode, rowVersion, createdAt]
+properties:
+  segmentId: { type: string, format: uuid }
+  code: { type: string, pattern: '^[A-Z][A-Z0-9_]{1,49}$' }
+  displayNameEn: { type: string }
+  displayNameAr: { type: string }
+  statusCode: { type: string, enum: [ACTIVE, ARCHIVED] }
+  rowVersion: { type: string, pattern: '^\d+$' }
+  createdAt: { type: string, format: date-time }
+  archivedAt: { type: [string, 'null'], format: date-time }

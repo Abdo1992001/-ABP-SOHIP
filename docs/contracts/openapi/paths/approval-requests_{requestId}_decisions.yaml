@@ -1,0 +1,64 @@
+post:
+  tags:
+    - Approval
+  summary: Approve/reject/request changes
+  operationId: post_approval_requests_by_requestId_decisions
+  description: >-
+    Permission: approvals.decide. Scope: Authority/context.
+    Self-approval/delegation checked.
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ApprovalRequestEnvelope.yaml
+    '400':
+      $ref: ../components/responses/Error400.yaml
+    '401':
+      $ref: ../components/responses/Error401.yaml
+    '403':
+      $ref: ../components/responses/Error403.yaml
+    '404':
+      $ref: ../components/responses/Error404.yaml
+    '409':
+      $ref: ../components/responses/Error409.yaml
+    '412':
+      $ref: ../components/responses/Error412.yaml
+    '422':
+      $ref: ../components/responses/Error422.yaml
+    '429':
+      $ref: ../components/responses/Error429.yaml
+    '500':
+      $ref: ../components/responses/Error500.yaml
+    '503':
+      $ref: ../components/responses/Error503.yaml
+  parameters:
+    - name: requestId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    - $ref: ../components/parameters/IdempotencyKey.yaml
+    - $ref: ../components/parameters/CsrfToken.yaml
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/ApprovalDecisionRequest.yaml
+  x-abp-module: Approval
+  x-abp-permission: approvals.decide
+  x-abp-scope-rule: Authority/context
+  x-abp-concurrency: NONE
+  x-abp-idempotency: Required
+  x-abp-request-schema: ApprovalDecisionRequest
+  x-abp-success-schema: ApprovalRequestEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

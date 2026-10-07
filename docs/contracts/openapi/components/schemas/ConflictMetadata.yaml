@@ -1,0 +1,15 @@
+type:
+  - object
+  - 'null'
+additionalProperties: false
+required:
+  - resource
+  - expectedRowVersion
+  - currentRowVersion
+properties:
+  resource:
+    $ref: ./ResourceReference.yaml
+  expectedRowVersion:
+    $ref: ./RowVersion.yaml
+  currentRowVersion:
+    $ref: ./RowVersion.yaml

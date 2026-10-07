@@ -1,0 +1,30 @@
+type: object
+additionalProperties: false
+required:
+  - page
+  - offset
+  - limit
+  - total
+  - hasNext
+properties:
+  page:
+    type: integer
+    minimum: 1
+  offset:
+    type: integer
+    minimum: 0
+  limit:
+    type: integer
+    minimum: 1
+    maximum: 200
+  total:
+    type:
+      - integer
+      - "null"
+    minimum: 0
+  hasNext:
+    type: boolean
+  unreadCount:
+    type: integer
+    minimum: 0
+    description: Unread notifications across all pages for the authenticated recipient.

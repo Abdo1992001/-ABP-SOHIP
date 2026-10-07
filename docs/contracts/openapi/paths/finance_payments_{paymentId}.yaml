@@ -1,0 +1,29 @@
+parameters:
+  - name: paymentId
+    in: path
+    required: true
+    schema: { type: string, format: uuid }
+get:
+  tags: [Payments]
+  summary: Get a Finance-authorized payment detail projection
+  operationId: get_finance_payments_by_paymentId
+  security: [{ WebCookie: [] }, { DesktopOAuth: [] }]
+  responses:
+    '200': { description: Success, content: { application/json: { schema: { $ref: ../components/schemas/PaymentDetailEnvelope.yaml } } } }
+    '400': { $ref: ../components/responses/Error400.yaml }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '403': { $ref: ../components/responses/Error403.yaml }
+    '404': { $ref: ../components/responses/Error404.yaml }
+    '429': { $ref: ../components/responses/Error429.yaml }
+    '500': { $ref: ../components/responses/Error500.yaml }
+  x-abp-module: Payments
+  x-abp-permission: payments.view
+  x-abp-scope-rule: Finance workspace + Permission + Country/account + DENY; restricted source fields omitted outside this projection
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: PaymentIdPath
+  x-abp-success-schema: PaymentDetailEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

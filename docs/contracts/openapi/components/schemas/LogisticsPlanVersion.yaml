@@ -1,0 +1,77 @@
+type: object
+properties:
+  planVersionId:
+    type: string
+    format: uuid
+    description: Logistics scenario version.
+  logisticsPlanId:
+    type: string
+    format: uuid
+    description: Parent plan.
+  versionNo:
+    type: integer
+    format: int32
+    description: Version number.
+  statusCode:
+    type: string
+    description: DRAFT/OPTIMIZING/VALIDATED/SELECTED/ARCHIVED.
+  sourceSnapshotHash:
+    type:
+      - string
+      - 'null'
+    description: Hash of source inputs.
+  inputSnapshotJsonb:
+    type:
+      - object
+      - 'null'
+    additionalProperties:
+      $ref: ./DynamicJsonValue.yaml
+    description: Validated version inputs.
+    maxProperties: 100
+  constraintsSnapshotJsonb:
+    type:
+      - object
+      - 'null'
+    additionalProperties:
+      $ref: ./DynamicJsonValue.yaml
+    description: Optimizer constraints snapshot.
+    maxProperties: 100
+  createdByUserId:
+    type: string
+    format: uuid
+    description: Creator.
+  createdAt:
+    type: string
+    format: date-time
+    description: Creation timestamp.
+  rowVersion:
+    $ref: ./RowVersion.yaml
+    description: Optimistic concurrency.
+  completenessModeCode:
+    type: string
+    enum:
+      - COMPLETE
+      - PARTIAL
+  derivedResultsStatusCode:
+    type: string
+    enum:
+      - NONE
+      - VALID
+      - INVALIDATED
+  derivedResultsInvalidatedAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+additionalProperties: false
+required:
+  - createdByUserId
+  - logisticsPlanId
+  - planVersionId
+  - completenessModeCode
+  - derivedResultsStatusCode
+  - rowVersion
+description: >-
+  Planning-only Flat-on-Face scenario: footprint is length × width, thickness is
+  stack height, and face rotation is 0/90. Shipment milestone tracking is a
+  separate CR-001 aggregate. No dispatch, delivery, or POD execution.

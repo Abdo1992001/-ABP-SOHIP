@@ -1,0 +1,5 @@
+type: object
+properties:
+  data: { $ref: ./GovernedMetricResult.yaml }
+additionalProperties: false
+required: [data]

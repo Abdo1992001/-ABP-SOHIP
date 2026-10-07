@@ -1,0 +1,49 @@
+type: object
+properties:
+  auditEventId:
+    type: string
+    format: uuid
+    description: Audit event.
+  actorUserId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    description: User actor if any.
+  actorTypeCode:
+    type: string
+    description: USER/SYSTEM.
+  resourceTypeCode:
+    type: string
+    description: Resource type.
+  resourceId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    description: Resource ID.
+  actionCode:
+    type: string
+    description: Action.
+  diffJsonb:
+    type:
+      - object
+      - 'null'
+    additionalProperties:
+      $ref: ./DynamicJsonValue.yaml
+    description: Changed fields only; redacted.
+    maxProperties: 100
+  reason:
+    type:
+      - string
+      - 'null'
+    description: Reason.
+  createdAt:
+    type: string
+    format: date-time
+    description: Event time.
+additionalProperties: false
+required:
+  - actionCode
+  - auditEventId
+  - resourceTypeCode

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="no-referrer" />
+    <meta
+      name="description"
+      content="ABP Commercial System for governed sales, customer, quotation, logistics, and analytics workflows."
+    />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <!-- IBM Plex is served from this application, not from Google Fonts.
+         The handoff names the font as the fix for Arabic falling through to
+         a system font; fetching that fix from a CDN puts it one blocked
+         domain away on a factory network. Same families and weights, same
+         unicode-range subsetting — see public/fonts/plex.css. -->
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/fonts/plex-arabic-400-1.woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="/fonts/plex.css" />
+    <title>ABP Commercial System</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="/runtime-config.js?v=2"></script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

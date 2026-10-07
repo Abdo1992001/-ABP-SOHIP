@@ -1,0 +1,19 @@
+type: object
+additionalProperties: false
+required:
+  - user
+  - session
+  - access
+  - stepUp
+properties:
+  user:
+    $ref: ./User.yaml
+  session:
+    $ref: ./SessionSummary.yaml
+  access:
+    $ref: ./EffectiveAccessContext.yaml
+  stepUp:
+    $ref: ./StepUpRequirementState.yaml
+description: >-
+  Sales Management and Sales Support are roles/capabilities within SALES, never
+  separate workspaces.

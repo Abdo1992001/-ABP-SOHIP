@@ -1,0 +1,19 @@
+type: object
+additionalProperties: false
+required:
+  - countryCode
+  - displayName
+  - continent
+  - marketScope
+properties:
+  countryCode:
+    $ref: ./CountryCode.yaml
+  displayName:
+    type: string
+    minLength: 1
+    maxLength: 200
+  continent:
+    $ref: ./ContinentCode.yaml
+  marketScope:
+    $ref: ./MarketScope.yaml
+description: Canonical platform country projection. It is reference data and does not grant Country Scope.

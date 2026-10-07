@@ -1,0 +1,40 @@
+type: object
+properties:
+  metricId: { type: string, pattern: '^MET-[A-Z]+-[0-9]{3}$' }
+  metricVersion: { type: string }
+  name: { type: string }
+  value:
+    type: [string, 'null']
+    pattern: '^-?\d+(\.\d+)?$'
+  unit: { type: string }
+  currency:
+    type: [string, 'null']
+    enum: [USD, EGP, null]
+  basis: { type: string }
+  asOf: { type: string, format: date-time }
+  scope:
+    type: object
+    properties:
+      countryCodes:
+        type: array
+        items: { $ref: ./CountryCode.yaml }
+    additionalProperties: false
+    required: [countryCodes]
+  filters: { $ref: ./AnalyticsFilterContext.yaml }
+  generatedAt: { type: string, format: date-time }
+  availability: { type: string, enum: [AVAILABLE, UNAVAILABLE] }
+  unavailableReason: { type: string }
+  breakdown:
+    type: array
+    items:
+      type: object
+      properties:
+        key: { type: string }
+        label: { type: string }
+        value: { type: string, pattern: '^-?\d+(\.\d+)?$' }
+        count: { type: integer }
+      additionalProperties: false
+      required: [key, label, value]
+  dqContext: { $ref: ./AnalyticsDqContext.yaml }
+additionalProperties: false
+required: [metricId, metricVersion, name, value, unit, currency, basis, asOf, scope, filters, generatedAt, availability, dqContext]

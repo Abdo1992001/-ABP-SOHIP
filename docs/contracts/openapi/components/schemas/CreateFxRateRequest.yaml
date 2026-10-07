@@ -1,0 +1,28 @@
+type: object
+properties:
+  baseCurrencyCode:
+    type: string
+    const: USD
+  quoteCurrencyCode:
+    type: string
+    const: EGP
+  rate:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+  effectiveAt:
+    type: string
+    format: date-time
+  reason:
+    type: string
+  supersedesFxRateId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+additionalProperties: false
+required:
+  - baseCurrencyCode
+  - quoteCurrencyCode
+  - rate
+  - effectiveAt
+  - reason

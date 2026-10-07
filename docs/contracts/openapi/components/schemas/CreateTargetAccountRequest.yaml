@@ -1,0 +1,11 @@
+type: object
+additionalProperties: false
+required: [companyName, countryCode, rationale]
+properties:
+  companyName: { type: string, minLength: 2, maxLength: 300 }
+  countryCode: { type: string, minLength: 2, maxLength: 2 }
+  segmentCode: { type: string, maxLength: 100 }
+  website: { type: string, format: uri, maxLength: 2000 }
+  rationale: { type: string, minLength: 3, maxLength: 4000 }
+  sourceSignalId: { type: string, format: uuid }
+  ownerUserId: { type: string, format: uuid }

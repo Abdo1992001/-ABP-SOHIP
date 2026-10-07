@@ -1,0 +1,37 @@
+type: object
+properties:
+  data:
+    type: array
+    maxItems: 100
+    items:
+      type: object
+      properties:
+        quotationId:
+          type: string
+          format: uuid
+        quotationRef:
+          type: string
+        accountId:
+          type: string
+          format: uuid
+        accountName:
+          type: string
+        currencyCode:
+          type: [string, 'null']
+        totalAmount:
+          type: string
+        acceptedAt:
+          type: [string, 'null']
+          format: date-time
+      additionalProperties: false
+      required:
+        - quotationId
+        - quotationRef
+        - accountId
+        - accountName
+        - currencyCode
+        - totalAmount
+        - acceptedAt
+additionalProperties: false
+required:
+  - data

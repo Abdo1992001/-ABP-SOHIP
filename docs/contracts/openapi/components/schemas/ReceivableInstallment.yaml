@@ -1,0 +1,42 @@
+type: object
+properties:
+  receivableInstallmentId:
+    type: string
+    format: uuid
+  customerOrderId:
+    type: string
+    format: uuid
+  orderRef:
+    type: string
+  accountName:
+    type: string
+  currencyCode:
+    type: string
+  label:
+    type: string
+  dueDate:
+    type: [string, 'null']
+    format: date
+  amount:
+    type: string
+  outstandingAmount:
+    type: string
+  statusCode:
+    type: string
+    enum: [OPEN, PARTIAL, PAID, WRITTEN_OFF, CANCELLED]
+  agingBucket:
+    type: string
+  rowVersion:
+    type: string
+  receipts:
+    type: array
+    maxItems: 500
+    items:
+      type: object
+      additionalProperties: true
+additionalProperties: true
+required:
+  - receivableInstallmentId
+  - statusCode
+  - amount
+  - outstandingAmount

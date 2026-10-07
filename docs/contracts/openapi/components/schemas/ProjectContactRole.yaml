@@ -1,0 +1,23 @@
+type: object
+properties:
+  projectContactRoleId:
+    type: string
+    format: uuid
+    description: Role relation.
+  projectPartyId:
+    type: string
+    format: uuid
+    description: Party.
+  contactId:
+    type: string
+    format: uuid
+    description: Contact.
+  roleCode:
+    type: string
+    description: Project-specific role.
+additionalProperties: false
+required:
+  - contactId
+  - projectContactRoleId
+  - projectPartyId
+  - roleCode

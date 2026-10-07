@@ -1,0 +1,72 @@
+name: security
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 2 * * 1"
+permissions:
+  contents: read
+  # gitleaks lists the pull request's commits.
+  pull-requests: read
+  security-events: write
+jobs:
+  dependency-and-secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: pnpm/action-setup@v4
+        with: { version: 11.22.0 }
+      - uses: actions/setup-node@v4
+        with: { node-version: 24, cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm audit --audit-level high
+      - name: Secret scan
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # The proof builds the API, which needs the generated Prisma client.
+      - run: pnpm db:generate
+      - run: pnpm proof:security
+  codeql:
+    permissions:
+      # Private repositories need this for CodeQL to read its own workflow run.
+      actions: read
+      contents: read
+      security-events: write
+    strategy:
+      { fail-fast: false, matrix: { language: [javascript-typescript] } }
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: github/codeql-action/init@v3
+        with:
+          languages: ${{ matrix.language }}
+      # Code scanning is not enabled on this private repository, so the
+      # results cannot be uploaded. Keep them in the run and fail on errors.
+      - uses: github/codeql-action/analyze@v3
+        with:
+          upload: never
+          output: codeql-results
+      - name: Fail on error-level CodeQL findings
+        run: |
+          node -e '
+          const fs = require("node:fs");
+          const errors = [];
+          for (const file of fs.readdirSync("codeql-results")) {
+            const sarif = JSON.parse(fs.readFileSync(`codeql-results/${file}`, "utf8"));
+            for (const run of sarif.runs) {
+              const rules = new Map((run.tool.driver.rules ?? []).map((r) => [r.id, r]));
+              for (const result of run.results ?? []) {
+                const level = result.level ?? rules.get(result.ruleId)?.defaultConfiguration?.level ?? "warning";
+                if (level === "error") {
+                  const where = result.locations?.[0]?.physicalLocation;
+                  errors.push(`${result.ruleId} ${where?.artifactLocation?.uri}:${where?.region?.startLine}`);
+                }
+              }
+            }
+          }
+          console.log(errors.join("\n") || "No error-level findings.");
+          process.exit(errors.length ? 1 : 0);
+          '

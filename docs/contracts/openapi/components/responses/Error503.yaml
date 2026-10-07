@@ -1,0 +1,5 @@
+description: Dependency temporarily unavailable
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/ErrorEnvelope.yaml

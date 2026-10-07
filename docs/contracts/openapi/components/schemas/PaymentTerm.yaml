@@ -1,0 +1,40 @@
+type: object
+properties:
+  paymentTermId:
+    type: string
+    format: uuid
+    description: Standard payment term.
+  termCode:
+    type: string
+    description: Stable machine code.
+  displayText:
+    type: string
+    description: Client-facing standard text.
+  effectiveFrom:
+    type: string
+    format: date-time
+    description: Effective start.
+  effectiveTo:
+    type:
+      - string
+      - 'null'
+    format: date-time
+    description: Effective end.
+  isActive:
+    type: boolean
+    description: Selectable status.
+  createdByUserId:
+    type: string
+    format: uuid
+    description: Policy actor.
+  createdAt:
+    type: string
+    format: date-time
+    description: Creation timestamp.
+additionalProperties: false
+required:
+  - createdByUserId
+  - displayText
+  - effectiveFrom
+  - paymentTermId
+  - termCode

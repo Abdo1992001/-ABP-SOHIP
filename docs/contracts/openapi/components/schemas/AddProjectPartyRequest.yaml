@@ -1,0 +1,13 @@
+type: object
+properties:
+  accountId:
+    type: string
+    format: uuid
+  roleCode:
+    type: string
+  primaryFlag:
+    type: boolean
+additionalProperties: false
+required:
+  - accountId
+  - roleCode

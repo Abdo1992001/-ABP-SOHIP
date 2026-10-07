@@ -1,0 +1,8 @@
+type: object
+additionalProperties: false
+required: [resourceTypeCode, resourceId, latitude, longitude]
+properties:
+  resourceTypeCode: { type: string, enum: [ACCOUNT, PROJECT] }
+  resourceId: { type: string, format: uuid }
+  latitude: { type: [number, 'null'], minimum: -90, maximum: 90 }
+  longitude: { type: [number, 'null'], minimum: -180, maximum: 180 }

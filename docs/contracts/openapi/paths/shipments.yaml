@@ -1,0 +1,109 @@
+get:
+  tags:
+    - Logistics
+  summary: Shipment tracking list
+  operationId: get_shipments
+  parameters:
+    - $ref: ../components/parameters/Offset.yaml
+    - $ref: ../components/parameters/Limit.yaml
+    - $ref: ../components/parameters/Search.yaml
+    - $ref: ../components/parameters/AccountFilter.yaml
+    - name: customerOrderId
+      in: query
+      required: false
+      schema:
+        type: string
+        format: uuid
+    - name: status
+      in: query
+      required: false
+      schema:
+        type: string
+        enum: [READY_FOR_DELIVERY, SHIPPED, VESSEL_DEPARTED, ARRIVED_AT_PORT_OF_DISCHARGE, DELIVERED, POD_RECEIVED]
+  responses:
+    "200":
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ShipmentListEnvelope.yaml
+    "400":
+      $ref: ../components/responses/Error400.yaml
+  x-abp-module: Logistics
+  x-abp-permission: shipments.view
+  x-abp-scope-rule: Country Scope; Sales projection is view-only
+  x-abp-concurrency: NONE
+  x-abp-execution-mode: SYNC
+  x-abp-job-dto: false
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true
+post:
+  tags:
+    - Logistics
+  summary: Plan a shipment for an ERP order or a customer order
+  operationId: post_shipments
+  parameters:
+    - $ref: ../components/parameters/IdempotencyKey.yaml
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          additionalProperties: false
+          description: Exactly one of erpOrderId and customerOrderId.
+          required:
+            - businessOccurredAt
+          properties:
+            erpOrderId:
+              type: string
+              format: uuid
+            customerOrderId:
+              type: string
+              format: uuid
+            businessOccurredAt:
+              type: string
+              format: date-time
+            transportModeCode:
+              type: string
+              enum: [LOCAL_TRUCK, SEA_CONTAINER]
+            plannedDispatchDate:
+              type: string
+              format: date
+            expectedDeliveryDate:
+              type: string
+              format: date
+            loadPlan:
+              type: object
+              additionalProperties: false
+              required: [units]
+              properties:
+                units:
+                  type: array
+                  maxItems: 10
+                  items:
+                    type: object
+                    additionalProperties: false
+                    required: [typeCode, count]
+                    properties:
+                      typeCode: { type: string, enum: [CONTAINER_40, CONTAINER_20, TRUCK] }
+                      count: { type: integer, minimum: 1, maximum: 500 }
+                totalWeightKg: { type: number, minimum: 0 }
+                note: { type: string, maxLength: 1000 }
+  responses:
+    "201":
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ShipmentEnvelope.yaml
+    "400":
+      $ref: ../components/responses/Error400.yaml
+  x-abp-module: Logistics
+  x-abp-permission: shipments.create
+  x-abp-scope-rule: Country Scope; an ERP order, or a confirmed customer order the caller can see
+  x-abp-concurrency: NONE
+  x-abp-execution-mode: SYNC
+  x-abp-job-dto: false
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

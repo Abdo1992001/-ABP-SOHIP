@@ -1,0 +1,19 @@
+post:
+  tags: [Administration]
+  summary: Explicitly bind a client identity to a customer
+  operationId: post_admin_client_identities_by_clientId_customer_bindings
+  parameters: [{ name: clientId, in: path, required: true, schema: { type: string, format: uuid } }]
+  requestBody:
+    required: true
+    content: { application/json: { schema: { type: object, additionalProperties: false, required: [accountId], properties: { accountId: { type: string, format: uuid }, validFrom: { type: string, format: date-time } } } } }
+  responses:
+    '201': { description: Bound, content: { application/json: { schema: { type: object, additionalProperties: false, required: [data], properties: { data: { type: object, additionalProperties: false, required: [bindingId, clientIdentityId, accountId, statusCode, validFrom, rowVersion], properties: { bindingId: { type: string, format: uuid }, clientIdentityId: { type: string, format: uuid }, accountId: { type: string, format: uuid }, statusCode: { type: string, enum: [ACTIVE, REVOKED] }, validFrom: { type: string, format: date-time }, validTo: { type: [string, 'null'], format: date-time }, rowVersion: { type: string } } } } } } } }
+    '400': { $ref: ../components/responses/Error400.yaml }
+  x-abp-module: Administration
+  x-abp-permission: users.manage
+  x-abp-scope-rule: Country Scope and explicit customer binding
+  x-abp-concurrency: NONE
+  x-abp-execution-mode: SYNC
+  x-abp-job-dto: false
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

@@ -1,0 +1,8 @@
+name: countryCode
+in: query
+required: false
+description: Filter by resolved country (ISO-2).
+schema:
+  type: string
+  minLength: 2
+  maxLength: 2

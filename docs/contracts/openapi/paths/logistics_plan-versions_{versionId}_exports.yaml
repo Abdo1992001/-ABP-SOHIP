@@ -1,0 +1,62 @@
+post:
+  tags:
+    - Logistics
+  summary: Generate export for exact selected/validated version
+  operationId: post_logistics_plan_versions_by_versionId_exports
+  description: 'Permission: logistics.export. Scope: Plan scope. No shipment execution doc.'
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    '202':
+      description: Accepted
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ExportJobEnvelope.yaml
+    '400':
+      $ref: ../components/responses/Error400.yaml
+    '401':
+      $ref: ../components/responses/Error401.yaml
+    '403':
+      $ref: ../components/responses/Error403.yaml
+    '404':
+      $ref: ../components/responses/Error404.yaml
+    '409':
+      $ref: ../components/responses/Error409.yaml
+    '412':
+      $ref: ../components/responses/Error412.yaml
+    '422':
+      $ref: ../components/responses/Error422.yaml
+    '429':
+      $ref: ../components/responses/Error429.yaml
+    '500':
+      $ref: ../components/responses/Error500.yaml
+    '503':
+      $ref: ../components/responses/Error503.yaml
+  parameters:
+    - name: versionId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    - $ref: ../components/parameters/IdempotencyKey.yaml
+    - $ref: ../components/parameters/CsrfToken.yaml
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/CreateLogisticsExportRequest.yaml
+  x-abp-module: Logistics
+  x-abp-permission: logistics.export
+  x-abp-scope-rule: Plan scope
+  x-abp-concurrency: NONE
+  x-abp-idempotency: Required
+  x-abp-request-schema: CreateLogisticsExportRequest
+  x-abp-success-schema: JobEnvelope
+  x-abp-job-dto: true
+  x-abp-execution-mode: ASYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

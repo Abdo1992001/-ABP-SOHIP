@@ -1,0 +1,23 @@
+get:
+  tags: [Messages]
+  summary: Search inside authorized conversations
+  operationId: get_messages_search
+  security: [{ WebCookie: [] }, { DesktopOAuth: [] }]
+  parameters:
+    - { name: q, in: query, required: true, schema: { type: string, minLength: 2, maxLength: 200 } }
+    - { $ref: ../components/parameters/Page.yaml }
+    - { $ref: ../components/parameters/Limit.yaml }
+  responses:
+    '200': { description: Success, content: { application/json: { schema: { $ref: ../components/schemas/MessageListEnvelope.yaml } } } }
+    '401': { $ref: ../components/responses/Error401.yaml }
+  x-abp-module: Messages
+  x-abp-permission: authenticated
+  x-abp-scope-rule: Active participant conversations only
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: MessageSearchQuery
+  x-abp-success-schema: MessageListEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

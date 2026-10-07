@@ -1,0 +1,26 @@
+{
+  "decision": "NO_GO",
+  "productionReady": false,
+  "productionDeployment": "NOT_EXECUTED",
+  "releaseGatesPassed": 5,
+  "releaseGatesTotal": 16,
+  "criticalTechnicalDefects": 0,
+  "highTechnicalDefects": 0,
+  "uat": "PENDING",
+  "accessCertification": "PENDING",
+  "training": "PENDING",
+  "cutoverRehearsal": "PENDING",
+  "rollbackRehearsal": "PENDING",
+  "backupRestore": "LOCAL_PASS_LIVE_PENDING",
+  "dr": "DESIGN_PASS_DEP_003_PENDING",
+  "monitoring": "CONFIGURATION_PASS_LIVE_PENDING",
+  "deploymentReadiness": "BLOCKED",
+  "recommendation": "Do not deploy production. Supply DEP-001 through DEP-008, create a clean immutable release candidate, execute the remaining gates, and reconvene Go/No-Go.",
+  "requiredApproverRoles": [
+    "Business/Product Owner",
+    "Technical Owner/Architect",
+    "Security Owner"
+  ],
+  "actualApprovals": [],
+  "noStep13": true
+}

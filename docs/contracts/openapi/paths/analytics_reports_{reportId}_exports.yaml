@@ -1,0 +1,41 @@
+parameters:
+  - name: reportId
+    in: path
+    required: true
+    schema: { type: string, pattern: '^RPT-[0-9]{3}$' }
+post:
+  tags: [Analytics, Exports]
+  summary: Queue a reproducible governed report export
+  operationId: post_analytics_reports_by_reportId_exports
+  security: [{ WebCookie: [] }, { DesktopOAuth: [] }]
+  parameters:
+    - $ref: ../components/parameters/IdempotencyKey.yaml
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema: { $ref: ../components/schemas/CreateAnalyticsExportRequest.yaml }
+  responses:
+    '202':
+      description: Export queued with fixed asOf, scope, report, and metric versions
+      content:
+        application/json:
+          schema: { $ref: ../components/schemas/AnalyticsExportEnvelope.yaml }
+    '400': { $ref: ../components/responses/Error400.yaml }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '403': { $ref: ../components/responses/Error403.yaml }
+    '404': { $ref: ../components/responses/Error404.yaml }
+    '409': { $ref: ../components/responses/Error409.yaml }
+    '422': { $ref: ../components/responses/Error422.yaml }
+    '500': { $ref: ../components/responses/Error500.yaml }
+  x-abp-module: Analytics
+  x-abp-permission: Registry-defined view + data.export + exports.create
+  x-abp-scope-rule: Export request is reauthorized and persists exact Country Scope and asOf
+  x-abp-concurrency: NONE
+  x-abp-idempotency: REQUIRED
+  x-abp-request-schema: CreateAnalyticsExportRequest
+  x-abp-success-schema: AnalyticsExportEnvelope
+  x-abp-job-dto: true
+  x-abp-execution-mode: ASYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

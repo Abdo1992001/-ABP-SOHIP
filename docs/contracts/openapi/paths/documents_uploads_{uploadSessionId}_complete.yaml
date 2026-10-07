@@ -1,0 +1,70 @@
+post:
+  tags:
+    - Documents
+  summary: Complete upload verification and start malware scan when asynchronous
+  operationId: post_documents_uploads_by_uploadSessionId_complete
+  description: >-
+    Permission: documents.create. Scope: Upload owner/resource. No AVAILABLE
+    until all gates pass.
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/UploadSessionEnvelope.yaml
+    '202':
+      description: Accepted for asynchronous malware scanning
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/UploadSessionEnvelope.yaml
+    '400':
+      $ref: ../components/responses/Error400.yaml
+    '401':
+      $ref: ../components/responses/Error401.yaml
+    '403':
+      $ref: ../components/responses/Error403.yaml
+    '404':
+      $ref: ../components/responses/Error404.yaml
+    '409':
+      $ref: ../components/responses/Error409.yaml
+    '412':
+      $ref: ../components/responses/Error412.yaml
+    '422':
+      $ref: ../components/responses/Error422.yaml
+    '429':
+      $ref: ../components/responses/Error429.yaml
+    '500':
+      $ref: ../components/responses/Error500.yaml
+    '503':
+      $ref: ../components/responses/Error503.yaml
+  parameters:
+    - name: uploadSessionId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    - $ref: ../components/parameters/IdempotencyKey.yaml
+    - $ref: ../components/parameters/CsrfToken.yaml
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/CompleteUploadRequest.yaml
+  x-abp-module: Documents
+  x-abp-permission: documents.create
+  x-abp-scope-rule: Upload owner/resource
+  x-abp-concurrency: NONE
+  x-abp-idempotency: Required
+  x-abp-request-schema: CompleteUploadRequest
+  x-abp-success-schema: UploadSessionEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

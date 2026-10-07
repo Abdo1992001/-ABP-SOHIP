@@ -1,0 +1,21 @@
+type: object
+properties:
+  reconciliationTypeCode:
+    type: string
+  sourceSystemId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  filters:
+    type: object
+    additionalProperties:
+      type:
+        - string
+        - number
+        - integer
+        - boolean
+        - 'null'
+additionalProperties: false
+required:
+  - reconciliationTypeCode

@@ -1,0 +1,43 @@
+type: object
+properties:
+  expectedRowVersion:
+    type: string
+    pattern: ^\d+$
+  customerPoNumber:
+    type: [string, 'null']
+    maxLength: 120
+  requestedDeliveryDate:
+    type: [string, 'null']
+    format: date
+  deliveryTerms:
+    type: [string, 'null']
+    maxLength: 500
+  deliveryPoint:
+    type: [string, 'null']
+    maxLength: 500
+  notes:
+    type: [string, 'null']
+    maxLength: 2000
+  lines:
+    type: array
+    maxItems: 1000
+    items:
+      type: object
+      properties:
+        lineId:
+          type: string
+          format: uuid
+        quantity:
+          type: string
+          pattern: ^\d+(\.\d+)?$
+      additionalProperties: false
+      required:
+        - lineId
+        - quantity
+  reason:
+    type: string
+    maxLength: 500
+additionalProperties: false
+required:
+  - expectedRowVersion
+  - reason

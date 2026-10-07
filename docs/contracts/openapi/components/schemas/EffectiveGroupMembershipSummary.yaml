@@ -1,0 +1,49 @@
+type: object
+additionalProperties: false
+required:
+  - membershipId
+  - groupNetworkId
+  - groupCode
+  - groupName
+  - groupTypeCode
+  - effectiveFrom
+  - effectiveTo
+  - rowVersion
+properties:
+  membershipId:
+    $ref: ./UUID.yaml
+  groupNetworkId:
+    $ref: ./UUID.yaml
+  groupCode:
+    type: string
+    minLength: 1
+    maxLength: 100
+  groupName:
+    type: string
+    minLength: 1
+    maxLength: 200
+  groupTypeCode:
+    type:
+      - string
+      - 'null'
+    maxLength: 100
+  effectiveFrom:
+    type:
+      - string
+      - 'null'
+    format: date
+  effectiveTo:
+    type:
+      - string
+      - 'null'
+    format: date
+  rowVersion:
+    type: string
+    minLength: 1
+    maxLength: 100
+    description: >-
+      The precondition `DELETE /group-memberships/{membershipId}` requires in
+      `If-Match`. Without it a membership could be read here and then not
+      ended, because the value the delete checks was never published — which
+      is why nothing in the UI could end one.
+description: Effective Customer/group mapping for Customer 360. Historical source evidence remains in auditable persistence and is not exposed here.

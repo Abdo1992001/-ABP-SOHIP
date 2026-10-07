@@ -1,0 +1,68 @@
+get:
+  tags:
+    - Targets
+  summary: Targets by salesperson
+  operationId: get_targets_by_year_people
+  description: 'Permission: targets.view. Scope: a manager reads every salesperson; anyone else reads only their own line. Won and weighted pipeline are the person''s own opportunities, shown in EGP at the dated USD/EGP rate.'
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/PersonTargetsEnvelope.yaml
+    '400':
+      $ref: ../components/responses/Error400.yaml
+    '401':
+      $ref: ../components/responses/Error401.yaml
+    '403':
+      $ref: ../components/responses/Error403.yaml
+    '404':
+      $ref: ../components/responses/Error404.yaml
+    '409':
+      $ref: ../components/responses/Error409.yaml
+    '412':
+      $ref: ../components/responses/Error412.yaml
+    '422':
+      $ref: ../components/responses/Error422.yaml
+    '429':
+      $ref: ../components/responses/Error429.yaml
+    '500':
+      $ref: ../components/responses/Error500.yaml
+    '503':
+      $ref: ../components/responses/Error503.yaml
+  parameters:
+    - name: year
+      in: path
+      required: true
+      schema:
+        type: string
+        format: string
+    - name: from
+      in: query
+      required: false
+      description: Start of the window won is counted in; defaults to the start of the year.
+      schema:
+        type: string
+        format: date
+    - name: to
+      in: query
+      required: false
+      description: End of the window (exclusive); defaults to the end of the year.
+      schema:
+        type: string
+        format: date
+  x-abp-module: Targets
+  x-abp-permission: targets.view
+  x-abp-scope-rule: Own line, or every salesperson for management
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: NONE
+  x-abp-success-schema: PersonTargetsEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

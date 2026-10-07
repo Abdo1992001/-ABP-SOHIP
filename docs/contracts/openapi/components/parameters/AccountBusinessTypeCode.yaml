@@ -1,0 +1,5 @@
+name: businessTypeCode
+in: query
+required: false
+schema:
+  $ref: ../schemas/AccountBusinessTypeCode.yaml

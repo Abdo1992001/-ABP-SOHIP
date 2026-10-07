@@ -1,0 +1,30 @@
+post:
+  tags: [System]
+  summary: Send a test email
+  operationId: post_system_mail_test
+  description: 'Queues a test email to the caller, through the configured provider.'
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    '202':
+      description: Success
+      content:
+        application/json:
+          schema: { $ref: ../components/schemas/SystemMailTestEnvelope.yaml }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '403': { $ref: ../components/responses/Error403.yaml }
+    '422': { $ref: ../components/responses/Error422.yaml }
+    '429': { $ref: ../components/responses/Error429.yaml }
+    '500': { $ref: ../components/responses/Error500.yaml }
+  x-abp-module: System
+  x-abp-permission: users.manage
+  x-abp-scope-rule: System-wide
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: NONE
+  x-abp-success-schema: SystemMailTestEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

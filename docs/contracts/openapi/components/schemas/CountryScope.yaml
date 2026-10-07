@@ -1,0 +1,14 @@
+type: object
+additionalProperties: false
+required:
+  - enforced
+  - countryCodes
+properties:
+  enforced:
+    type: boolean
+    const: true
+  countryCodes:
+    type: array
+    uniqueItems: true
+    items:
+      $ref: ./CountryCode.yaml

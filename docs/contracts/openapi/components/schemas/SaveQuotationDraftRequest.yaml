@@ -1,0 +1,398 @@
+type: object
+properties:
+  lines:
+    type: array
+    items:
+      type: object
+      properties:
+        quotationLineId:
+          type:
+            - string
+            - 'null'
+          format: uuid
+        productId:
+          type:
+            - string
+            - 'null'
+          format: uuid
+        sectionLabel:
+          type:
+            - string
+            - 'null'
+          maxLength: 120
+          description: Optional grouping label (e.g. "COLUMNS", "SLABS") rendered as its own sub-table with its own subtotal on the official document.
+        description:
+          type: string
+        qty:
+          type: string
+          pattern: ^-?\d+(\.\d+)?$
+        unitCode:
+          type: string
+        unitPrice:
+          type:
+            - string
+            - 'null'
+          pattern: ^-?\d+(\.\d+)?$
+        discountAmount:
+          type:
+            - string
+            - 'null'
+          pattern: ^-?\d+(\.\d+)?$
+        pricingMethodCode:
+          type:
+            - string
+            - 'null'
+          enum:
+            - LINEAR
+            - WEIGHT_BASED
+            - null
+          description: When set and unitPrice is omitted, the server computes unitPrice from the dimension fields below using the same formulas as ABP Engineering Studio.
+        lengthMm:
+          type:
+            - string
+            - 'null'
+          pattern: ^-?\d+(\.\d+)?$
+        widthMm:
+          type:
+            - string
+            - 'null'
+          pattern: ^-?\d+(\.\d+)?$
+        thicknessMm:
+          type:
+            - string
+            - 'null'
+          pattern: ^-?\d+(\.\d+)?$
+        densityKgM3:
+          type:
+            - string
+            - 'null'
+          pattern: ^-?\d+(\.\d+)?$
+        pricePerKg:
+          type:
+            - string
+            - 'null'
+          pattern: ^-?\d+(\.\d+)?$
+        materialClass:
+          type:
+            - string
+            - 'null'
+          enum:
+            - STANDARD
+            - REGULAR
+            - CURVED
+            - CIRCULAR
+            - CORE
+            - WALL
+            - null
+          description: When set, supersedes pricingMethodCode — resolves the applied EGP/kg rate through the company/quotation/item pricing hierarchy (see priceSource in the response) and always prices by weight.
+        category:
+          type:
+            - string
+            - 'null'
+          enum:
+            - COLUMN
+            - CORE
+            - WALL
+            - SLAB
+            - CUSTOM
+            - null
+        reference:
+          type:
+            - string
+            - 'null'
+          maxLength: 60
+        cadMark:
+          type:
+            - string
+            - 'null'
+          maxLength: 60
+        notes:
+          type:
+            - string
+            - 'null'
+          maxLength: 2000
+        diameterMm:
+          type:
+            - string
+            - 'null'
+          pattern: ^-?\d+(\.\d+)?$
+        radiusMm:
+          type:
+            - string
+            - 'null'
+          pattern: ^-?\d+(\.\d+)?$
+        columnHeightMm:
+          type:
+            - string
+            - 'null'
+          pattern: ^-?\d+(\.\d+)?$
+        mouldSegments:
+          type:
+            - integer
+            - 'null'
+          minimum: 1
+        arcModuleMm:
+          type:
+            - string
+            - 'null'
+          pattern: ^-?\d+(\.\d+)?$
+        verticalCourseMm:
+          type:
+            - string
+            - 'null'
+          pattern: ^-?\d+(\.\d+)?$
+        # Rectangular column geometry. A column of A x B is cut as
+        # A / B / A+closure / B+closure: the two closing panels lap the
+        # thickness of their neighbours. IRREGULAR names its faces instead.
+        columnShape:
+          type:
+            - string
+            - 'null'
+          enum: [RECTANGULAR, IRREGULAR, null]
+        sideAMm:
+          type:
+            - string
+            - 'null'
+          pattern: ^-?\d+(\.\d+)?$
+        sideBMm:
+          type:
+            - string
+            - 'null'
+          pattern: ^-?\d+(\.\d+)?$
+        faceWidthsMm:
+          type:
+            - array
+            - 'null'
+          maxItems: 20
+          items:
+            type: string
+            pattern: ^-?\d+(\.\d+)?$
+        maxPanelWidthMm:
+          type:
+            - string
+            - 'null'
+          pattern: ^-?\d+(\.\d+)?$
+        maxPanelLengthMm:
+          type:
+            - string
+            - 'null'
+          pattern: ^-?\d+(\.\d+)?$
+        # Which faces the drawing marks as curved, numbered from 1. Those
+        # panels are charged at the curved rate, the rest at the class rate.
+        curvedFaceNumbers:
+          type:
+            - array
+            - 'null'
+          maxItems: 20
+          items:
+            type: integer
+            minimum: 1
+        expectedFaces:
+          type:
+            - integer
+            - 'null'
+          minimum: 1
+          maximum: 20
+        # The span this item covers. ceil(extensionLengthM / 2.44) is the board
+        # count a Linear row's quantity is multiplied by; curved and circular
+        # rows are complete pieces and are never multiplied.
+        extensionLengthM:
+          type:
+            - string
+            - 'null'
+          pattern: ^-?\d+(\.\d+)?$
+        quantityMode:
+          type:
+            - string
+            - 'null'
+          enum: [EXTENSION, DIRECT, null]
+        # Let the server name the line: thickness x width x length, then the
+        # family, then the diameter. Off by default, so a line someone worded
+        # by hand keeps its wording.
+        autoDescribe:
+          type: boolean
+        # A pricing rule stored as data (calculation_formulas), selected by
+        # key. Evaluated server-side over this line's own dimensions.
+        customFormulaKey:
+          type:
+            - string
+            - 'null'
+          maxLength: 80
+        formulaRate:
+          type:
+            - string
+            - 'null'
+          pattern: ^-?\d+(\.\d+)?$
+        fabricationCost:
+          type:
+            - string
+            - 'null'
+          pattern: ^-?\d+(\.\d+)?$
+        fixedCost:
+          type:
+            - string
+            - 'null'
+          pattern: ^-?\d+(\.\d+)?$
+      additionalProperties: false
+      required:
+        - description
+        - qty
+        - unitCode
+  adjustments:
+    type: array
+    items:
+      type: object
+      properties:
+        typeCode:
+          type: string
+        modeCode:
+          type: string
+          enum:
+            - PERCENT
+            - FIXED_AMOUNT
+        value:
+          type: string
+          pattern: ^-?\d+(\.\d+)?$
+        label:
+          type:
+            - string
+            - 'null'
+      additionalProperties: false
+      required:
+        - typeCode
+        - modeCode
+        - value
+  paymentTermsCode:
+    type:
+      - string
+      - 'null'
+  customPaymentTerms:
+    type:
+      - string
+      - 'null'
+  validFrom:
+    type:
+      - string
+      - 'null'
+    format: date
+  expiresOn:
+    type:
+      - string
+      - 'null'
+    format: date
+  documentTypeCode:
+    type: string
+    enum:
+      - QUOTATION
+      - PROFORMA_INVOICE
+  incotermCode:
+    type:
+      - string
+      - 'null'
+    enum:
+      - DDP
+      - CIF
+      - FOB
+      - null
+  contactId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  subject:
+    type:
+      - string
+      - 'null'
+    maxLength: 300
+    description: >-
+      What the offer is for, printed under the header. Chosen from
+      GET /document-subjects rather than typed free-hand.
+  customerPoNumber:
+    type:
+      - string
+      - 'null'
+    maxLength: 100
+    description: The customer's own purchase-order number, which a proforma states.
+  leadTime:
+    type:
+      - string
+      - 'null'
+    maxLength: 200
+    description: How long after the order the goods ship, in the offer's own words.
+  freightAmount:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+    description: >-
+      Freight and insurance in the quotation currency. EX-WORKS plus this is
+      the CIF total a proforma states.
+  paymentScheduleCode:
+    type:
+      - string
+      - 'null'
+    enum:
+      - ADVANCE_INSTALLMENTS
+      - null
+    description: When set, the server computes and persists an advance + equal-installments payment schedule from the quotation's own grand total (exact amounts, due dates, and prose), instead of using paymentTermsCode/customPaymentTerms.
+  advancePct:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+  installments:
+    type:
+      - integer
+      - 'null'
+    minimum: 1
+    maximum: 60
+  frequencyDays:
+    type:
+      - integer
+      - 'null'
+    minimum: 1
+    maximum: 365
+  referenceDate:
+    type:
+      - string
+      - 'null'
+    format: date
+  paymentMethod:
+    type:
+      - string
+      - 'null'
+    enum:
+      - CHEQUE
+      - BANK_TRANSFER
+      - CASH
+      - LC
+      - null
+  standardPricePerKgOverride:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+    description: Quotation-level override for STANDARD-class lines. Never mutates company defaults.
+  curvedPricePerKgOverride:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+    description: Quotation-level override for CURVED-class lines.
+  circularPricePerKgOverride:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+    description: >-
+      Quotation-level override for CIRCULAR-class lines. Circular work is sold
+      as part of the curved family but carries its own rate, so it falls back
+      to the curved override only when this is not set.
+  densityOverrideKgM3:
+    type:
+      - string
+      - 'null'
+    pattern: ^-?\d+(\.\d+)?$
+additionalProperties: false
+required:
+  - lines

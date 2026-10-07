@@ -1,0 +1,27 @@
+type: object
+additionalProperties: false
+required: [data]
+properties:
+  data:
+    type: object
+    additionalProperties: false
+    required: [action, requiresConfirmation, createsBusinessRecord, draft]
+    properties:
+      action: { type: string, enum: [PREPARE_CUSTOMER_CREATION, PREPARE_OPPORTUNITY_CREATION] }
+      requiresConfirmation: { type: boolean, const: true }
+      createsBusinessRecord: { type: boolean, const: false }
+      prerequisite: { type: [string, 'null'] }
+      duplicate:
+        type: [object, 'null']
+        additionalProperties: false
+        required: [id, accountRef, canonicalName]
+        properties:
+          id: { type: string, format: uuid }
+          accountRef: { type: string }
+          canonicalName: { type: string }
+      draft:
+        type: object
+        additionalProperties:
+          oneOf:
+            - { type: string }
+            - { type: 'null' }

@@ -1,0 +1,9 @@
+name: sort
+in: query
+required: false
+description: Stable comma-separated field[:asc|desc] ordering; id is the final tie-breaker.
+schema:
+  type: string
+  maxLength: 300
+  pattern: >-
+    ^[A-Za-z][A-Za-z0-9]*(?::(?:asc|desc))?(?:,[A-Za-z][A-Za-z0-9]*(?::(?:asc|desc))?)*$

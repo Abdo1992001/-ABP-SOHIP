@@ -1,0 +1,26 @@
+parameters:
+  - $ref: ../components/parameters/DocumentId.yaml
+get:
+  tags: [Documents]
+  summary: List persisted immutable versions of an authorized document
+  operationId: get_documents_by_documentId_versions
+  security: [{ WebCookie: [] }, { DesktopOAuth: [] }]
+  responses:
+    '200': { description: Success, content: { application/json: { schema: { $ref: ../components/schemas/DocumentVersionListEnvelope.yaml } } } }
+    '400': { $ref: ../components/responses/Error400.yaml }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '403': { $ref: ../components/responses/Error403.yaml }
+    '404': { $ref: ../components/responses/Error404.yaml }
+    '429': { $ref: ../components/responses/Error429.yaml }
+    '500': { $ref: ../components/responses/Error500.yaml }
+  x-abp-module: Documents
+  x-abp-permission: documents.view
+  x-abp-scope-rule: Permission + resource Country Scope + DENY
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: DocumentIdPath
+  x-abp-success-schema: DocumentVersionListEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

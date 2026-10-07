@@ -1,0 +1,44 @@
+type: object
+properties:
+  accountId:
+    type: string
+    format: uuid
+  salesOrderId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+  chequeNumber:
+    type: string
+  bankName:
+    type:
+      - string
+      - 'null'
+  amount:
+    type: string
+    pattern: ^-?\d+(\.\d+)?$
+  currencyCode:
+    type: string
+  issueDate:
+    type:
+      - string
+      - 'null'
+    format: date
+  dueDate:
+    type:
+      - string
+      - 'null'
+    format: date
+  sourceTypeCode:
+    type: string
+  sourceChequeKey:
+    type:
+      - string
+      - 'null'
+additionalProperties: false
+required:
+  - accountId
+  - chequeNumber
+  - amount
+  - currencyCode
+  - sourceTypeCode

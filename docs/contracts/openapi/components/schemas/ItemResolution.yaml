@@ -1,0 +1,23 @@
+type: object
+properties:
+  statusCode:
+    type: string
+    enum:
+      - EXACT
+      - CANDIDATES
+      - UNRESOLVED
+  product:
+    $ref: ./Product.yaml
+  candidates:
+    type: array
+    items:
+      $ref: ./ItemResolutionCandidate.yaml
+  dataQualityIssueId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+additionalProperties: false
+required:
+  - statusCode
+  - candidates

@@ -1,0 +1,25 @@
+type: object
+properties:
+  subject:
+    type:
+      - string
+      - 'null'
+  notes:
+    type:
+      - string
+      - 'null'
+  scheduledAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+  dueAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+  outcomeCode:
+    type:
+      - string
+      - 'null'
+additionalProperties: false

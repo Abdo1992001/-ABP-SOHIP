@@ -1,0 +1,72 @@
+type: object
+properties:
+  approvalRequestId:
+    type: string
+    format: uuid
+    description: Approval request.
+  quotationId:
+    type: string
+    format: uuid
+    description: Exact quotation.
+  requestedByUserId:
+    type: string
+    format: uuid
+    description: Requester.
+  statusCode:
+    type: string
+    description: PENDING/APPROVED/REJECTED/CHANGES_REQUESTED/CANCELLED.
+    enum:
+      - PENDING
+      - APPROVED
+      - REJECTED
+      - CHANGES_REQUESTED
+      - CANCELLED
+      - INVALIDATED
+  requiredAuthorityTier:
+    type:
+      - integer
+      - 'null'
+    format: int32
+    description: Authority requirement.
+  currentAssigneeUserId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    description: Current approver.
+  requestedAt:
+    type: string
+    format: date-time
+    description: Request time.
+  resolvedAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+    description: Resolution time.
+  quotationRowVersionSnapshot:
+    type: integer
+    format: int64
+  materialContentHash:
+    type: string
+  calculationVersionSnapshot:
+    type: string
+  policySnapshotJsonb:
+    type: object
+    additionalProperties:
+      $ref: ./DynamicJsonValue.yaml
+    maxProperties: 100
+  invalidatedAt:
+    type:
+      - string
+      - 'null'
+    format: date-time
+  invalidationReasonCode:
+    type:
+      - string
+      - 'null'
+additionalProperties: false
+required:
+  - approvalRequestId
+  - quotationId
+  - requestedByUserId

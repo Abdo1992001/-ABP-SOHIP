@@ -1,0 +1,47 @@
+put:
+  tags: [Identity]
+  summary: Upload or replace my profile photo
+  operationId: put_me_profile_photo
+  security: [{ WebCookie: [] }, { DesktopOAuth: [] }]
+  parameters:
+    - { $ref: ../components/parameters/CsrfToken.yaml }
+  requestBody:
+    required: true
+    content: { application/json: { schema: { $ref: ../components/schemas/UploadProfilePhotoRequest.yaml } } }
+  responses:
+    '200': { description: Success, content: { application/json: { schema: { $ref: ../components/schemas/MyProfileEnvelope.yaml } } } }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '422': { $ref: ../components/responses/Error422.yaml }
+  x-abp-module: Identity
+  x-abp-permission: authenticated
+  x-abp-scope-rule: Self only
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: UploadProfilePhotoRequest
+  x-abp-success-schema: MyProfileEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true
+delete:
+  tags: [Identity]
+  summary: Remove my profile photo and fall back to initials
+  operationId: delete_me_profile_photo
+  security: [{ WebCookie: [] }, { DesktopOAuth: [] }]
+  parameters:
+    - { $ref: ../components/parameters/CsrfToken.yaml }
+  responses:
+    '200': { description: Success, content: { application/json: { schema: { $ref: ../components/schemas/MyProfileEnvelope.yaml } } } }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '404': { $ref: ../components/responses/Error404.yaml }
+  x-abp-module: Identity
+  x-abp-permission: authenticated
+  x-abp-scope-rule: Self only
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: none
+  x-abp-success-schema: MyProfileEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

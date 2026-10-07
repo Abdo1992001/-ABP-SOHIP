@@ -1,0 +1,36 @@
+type: object
+properties:
+  membershipId:
+    type: string
+    format: uuid
+    description: Membership.
+  accountId:
+    type: string
+    format: uuid
+    description: Account.
+  groupNetworkId:
+    type: string
+    format: uuid
+    description: Group.
+  validFrom:
+    type:
+      - string
+      - 'null'
+    format: date
+    description: Start.
+  validTo:
+    type:
+      - string
+      - 'null'
+    format: date
+    description: End.
+  sourceRef:
+    type:
+      - string
+      - 'null'
+    description: Mapping evidence/source.
+additionalProperties: false
+required:
+  - accountId
+  - groupNetworkId
+  - membershipId

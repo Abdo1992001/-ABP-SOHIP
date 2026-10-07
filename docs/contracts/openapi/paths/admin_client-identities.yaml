@@ -1,0 +1,41 @@
+get:
+  tags: [Administration]
+  summary: List provisioned client portal identities and their customer bindings
+  operationId: get_admin_client_identities
+  parameters:
+    - $ref: ../components/parameters/Offset.yaml
+    - $ref: ../components/parameters/Limit.yaml
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ClientIdentityListEnvelope.yaml
+    '400': { $ref: ../components/responses/Error400.yaml }
+  x-abp-module: Administration
+  x-abp-permission: users.manage
+  x-abp-scope-rule: Administration only; no country projection
+  x-abp-concurrency: NONE
+  x-abp-execution-mode: SYNC
+  x-abp-job-dto: false
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true
+post:
+  tags: [Administration]
+  summary: Provision an Entra External ID application binding record
+  operationId: post_admin_client_identities
+  requestBody:
+    required: true
+    content: { application/json: { schema: { type: object, additionalProperties: false, required: [issuer, subject], properties: { issuer: { type: string }, subject: { type: string }, displayName: { type: string }, email: { type: string, format: email } } } } }
+  responses:
+    '201': { description: Created, content: { application/json: { schema: { type: object, additionalProperties: false, required: [data], properties: { data: { type: object, additionalProperties: false, required: [clientIdentityId, issuer, subject, statusCode, rowVersion], properties: { clientIdentityId: { type: string, format: uuid }, issuer: { type: string }, subject: { type: string }, displayName: { type: [string, 'null'] }, email: { type: [string, 'null'] }, statusCode: { type: string, enum: [ACTIVE, REVOKED] }, rowVersion: { type: string } } } } } } } }
+    '400': { $ref: ../components/responses/Error400.yaml }
+  x-abp-module: Administration
+  x-abp-permission: users.manage
+  x-abp-scope-rule: Controlled provisioning; no implicit customer match
+  x-abp-concurrency: NONE
+  x-abp-execution-mode: SYNC
+  x-abp-job-dto: false
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

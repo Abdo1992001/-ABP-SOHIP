@@ -1,0 +1,608 @@
+{
+  "changeRequestId": "CR-001",
+  "artifactType": "DESIGN_DECISION_CLOSURE_PACK",
+  "status": "BUSINESS_APPROVED_IMPLEMENTED",
+  "generatedAt": "2026-08-25T00:00:00.000+03:00",
+  "authorityPolicy": {
+    "sources": [
+      "ABP-SSOT-2026-08-20-R1 authoritative source registry",
+      "Approved CR-001 text",
+      "docs/governance/CR-001.md",
+      "docs/governance/cr-001-impact-reconciliation.json",
+      "docs/governance/cr-001-design-decision-register.json",
+      "Current PostgreSQL schema and migrations",
+      "Current OpenAPI, runtime inventory, source code, authorization and proof tests"
+    ],
+    "excluded": [
+      "Quarantined Step 8 rebuild branch",
+      "Superseded Step 2-5 quotation-revision/internal-order/shipment decisions",
+      "Any unsupported inference or recommendation treated as approval"
+    ]
+  },
+  "runtimeDeltaAudit": {
+    "id": "RUNTIME-DELTA-001",
+    "status": "VALID",
+    "operationId": "post_quotations_by_quotationId_cancel",
+    "method": "POST",
+    "path": "/quotations/{quotationId}/cancel",
+    "previousClassification": "IMPLEMENTED_MANDATORY_V1",
+    "currentClassification": "OUT_OF_SCOPE_V1",
+    "startingMandatory": 198,
+    "currentMandatory": 197,
+    "startingOutOfScope": 21,
+    "currentOutOfScope": 22,
+    "changeType": "REMOVED_AND_RECLASSIFIED",
+    "renamed": false,
+    "consolidated": false,
+    "sourceFiles": [
+      "docs/contracts/openapi/paths/quotations_{quotationId}_cancel.yaml",
+      "docs/contracts/out-of-scope-v1.yaml",
+      "docs/contracts/api-inventory.json",
+      "docs/contracts/runtime-v1-operations.json"
+    ],
+    "reason": "CR-001 keeps quotation cancellation unavailable in V1.",
+    "relatedChange": "CR-001-05",
+    "authority": [
+      "Approved CR-001 invariant: Cancel remains OUT OF SCOPE",
+      "docs/governance/CR-001.md preserved rule: Cancel remains out of V1"
+    ],
+    "runtimeEvidence": "The canonical OpenAPI no longer references the route and runtime proof requires HTTP 404."
+  },
+  "complaintStorageAudit": {
+    "status": "PASS",
+    "canonicalEntity": "Complaint",
+    "physicalTable": "complaints",
+    "migration": "packages/database/prisma/migrations/20260822038000_step7_support_runtime/migration.sql",
+    "aggregate": "Standalone Complaint case aggregate",
+    "repository": "Typed DatabaseClient.complaint Prisma access inside EngagementService; no separate repository class",
+    "service": "apps/api/src/support/engagement.service.ts",
+    "controller": "apps/api/src/support/engagement.controller.ts",
+    "apiOperations": [
+      "get_complaints",
+      "post_complaints",
+      "get_complaints_by_complaintId",
+      "patch_complaints_by_complaintId",
+      "post_complaints_by_complaintId_status_transitions"
+    ],
+    "authorization": {
+      "workspace": "SALES",
+      "permissions": [
+        "complaints.view",
+        "complaints.create",
+        "complaints.edit",
+        "complaints.close"
+      ],
+      "scope": "Country Scope plus complaint/account owner or active Account share; DENY wins",
+      "closeRule": "complaints.close required for CLOSED"
+    },
+    "concurrency": "row_version with ETag/If-Match or expectedRowVersion",
+    "idempotency": "Required and persisted for create and status transition",
+    "audit": "Structured AuditService events for create, update and status transition",
+    "tests": [
+      "apps/api/src/support-proof-cli.ts PostgreSQL proof",
+      "OpenAPI validation",
+      "Runtime contract checks"
+    ],
+    "frontend": {
+      "dedicatedScreen": false,
+      "finding": "No dedicated complaints route exists in the current 48-screen registry. Generated client operations exist but are not wired to a dedicated management screen.",
+      "classification": "FRONTEND_COMPLETENESS_GAP_NOT_STORAGE_DEFECT"
+    }
+  },
+  "preservedFacts": [
+    "No formal quotation revisions",
+    "DRAFT edits in place; SENT immutable; post-SENT change creates independent quotation with supersedes_quotation_id",
+    "ERP Sales Orders are imported read-only facts",
+    "Quotation Cancel is outside V1",
+    "Country Scope is mandatory and DENY wins",
+    "Local/Global is never authorization",
+    "Current CR-001 Local countries are EG, LY, SA and AE; missing country is UNCLASSIFIED",
+    "Client Portal isolation is server-side",
+    "R&D is view-only and excludes pricing, cost, margin, Finance, writes, approvals and commercial administration"
+  ],
+  "gates": [
+    {
+      "id": "DG-01",
+      "subject": "Customer Segment",
+      "status": "BUSINESS_DECISION_REQUIRED",
+      "resolvedFacts": [
+        "CR-001 replaces the affected Product Mix presentation with Customer Segment.",
+        "Formwork and Loose Boards are recognized labels in Step 10.",
+        "Customer Segment is not Account Category or pricing customer_segment context.",
+        "Server semantics, Country Scope and DENY apply to analytics."
+      ],
+      "unresolvedQuestions": [
+        "Taxonomy type and owner",
+        "Canonical initial codes",
+        "Sales User, Sales Support and Sales Manager assignment permissions",
+        "Import assignment and unknown-code behavior",
+        "Effective dating and historical analytics mode",
+        "Audit, archive and code immutability"
+      ],
+      "options": {
+        "taxonomy": [
+          {
+            "id": "A",
+            "name": "Fixed canonical reference list",
+            "businessEffect": "Release-managed values only",
+            "analyticsEffect": "Stable dimension",
+            "dataModelEffect": "Seeded reference plus membership",
+            "migrationEffect": "Seed and governed backfill",
+            "securityEffect": "No runtime taxonomy administration",
+            "operationalComplexity": "LOW_RUNTIME_HIGH_CHANGE_FRICTION"
+          },
+          {
+            "id": "B",
+            "name": "Admin-configurable reference list",
+            "businessEffect": "Authorized owner can add or archive values",
+            "analyticsEffect": "Stable codes and reportable archived values",
+            "dataModelEffect": "Reference plus effective-dated memberships and audit",
+            "migrationEffect": "Expand-only tables and approved backfill",
+            "securityEffect": "Separate taxonomy and membership permissions",
+            "operationalComplexity": "MEDIUM"
+          },
+          {
+            "id": "C",
+            "name": "Free text",
+            "businessEffect": "Uncontrolled user/import values",
+            "analyticsEffect": "Fragmentation and DQ",
+            "dataModelEffect": "Uncontrolled text",
+            "migrationEffect": "Low initial",
+            "securityEffect": "Broad write surface",
+            "operationalComplexity": "HIGH_PERMANENT_DQ"
+          }
+        ],
+        "assignment": [
+          "A: Sales Manager only; imports propose and unknown values become DQ",
+          "B: Sales Manager plus Data Steward; Sales User/Support propose; imports assign known approved mappings only",
+          "C: Sales User/Support/Manager assign directly; imports auto-create values"
+        ],
+        "history": [
+          "A: Latest/current membership only",
+          "B: Historical As-Was only",
+          "C: As-Was default plus explicit Current-Reclassified mode"
+        ]
+      },
+      "recommendationNotApproval": "Taxonomy B, Assignment B, History C; immutable code after use, editable label, archive not delete, unknown imports to DQ.",
+      "recommendationTradeoff": {
+        "pros": "Stable codes, auditable changes, reproducible and reclassifiable analytics",
+        "cons": "More tables, permissions and stewardship work"
+      },
+      "impacts": {
+        "dataModel": "customer_segments plus effective-dated account_segment_memberships",
+        "api": "Typed reference and membership history/mutation contracts",
+        "workflow": "Proposal/approval behavior depends on selected authority",
+        "frontend": "Server-fed selector and membership history",
+        "analytics": "Explicit historical mode if approved",
+        "security": "Taxonomy and membership permissions intersected with Country Scope",
+        "migration": "No guessed backfill",
+        "externalDependency": "Taxonomy and import mapping owner"
+      },
+      "exactDecisionRequired": "Select taxonomy, assignment/import and history options; approve owner, initial codes and role permissions."
+    },
+    {
+      "id": "DG-04",
+      "subject": "Quotation Submitted and Under Negotiation",
+      "status": "BUSINESS_DECISION_REQUIRED",
+      "resolvedFacts": [
+        "DRAFT is mutable in place and SENT is immutable.",
+        "Post-SENT change creates an independent superseding quotation.",
+        "Approval is content/hash-bound and official document success precedes SENT.",
+        "Cancel is outside V1.",
+        "Hot Lead, WON and LOST belong to Opportunity."
+      ],
+      "unresolvedQuestions": [
+        "Meaning of Submitted",
+        "Whether Under Negotiation is Quotation state or Opportunity phase",
+        "Complete transitions and actors",
+        "Content freeze and negotiation edit behavior",
+        "Approval/document/send triggers",
+        "Backward transitions",
+        "ETag and idempotency per transition"
+      ],
+      "options": [
+        {
+          "id": "A",
+          "submitted": "Internal submission for approval",
+          "underNegotiation": "Approved content negotiated before official issue",
+          "sent": "Official immutable external issue"
+        },
+        {
+          "id": "B",
+          "submitted": "Commercial submission to customer",
+          "underNegotiation": "Negotiation after submission",
+          "sent": "Delivery evidence rather than distinct lifecycle state",
+          "risk": "Submitted and Sent overlap"
+        },
+        {
+          "id": "C",
+          "submitted": "Internal commercial review",
+          "underNegotiation": "Opportunity engagement phase, not Quotation state",
+          "sent": "Official immutable Quotation state"
+        }
+      ],
+      "recommendationNotApproval": "Option A if both requested states must exist; material negotiation edit returns to DRAFT, invalidates approval/readiness, and SENT never moves backward.",
+      "recommendationTradeoff": {
+        "pros": "Separates internal approval from client commitment and preserves SENT immutability",
+        "cons": "More transitions, reapproval cycles and training"
+      },
+      "proposedGraphNotApproved": "DRAFT -> SUBMITTED -> APPROVED -> UNDER_NEGOTIATION -> SENT; SUBMITTED or UNDER_NEGOTIATION may return to DRAFT only under approved guards.",
+      "impacts": {
+        "dataModel": "Status history and hash-bound approval/document relations; no revisions",
+        "api": "Typed transitions with ETag and idempotency",
+        "workflow": "Explicit actor, guard and stale-approval rules",
+        "frontend": "Truthful actions and no fake SENT",
+        "analytics": "Distinct submitted/negotiation/sent timestamps",
+        "security": "Edit, submit, approve, generate and send remain separate",
+        "migration": "Existing-state mapping requires approval",
+        "externalDependency": "Approved send evidence/provider behavior"
+      },
+      "exactDecisionRequired": "Approve semantic option and complete transition, actor, edit/freeze, approval/document and concurrency/idempotency matrix."
+    },
+    {
+      "id": "DG-05",
+      "subject": "Shipment Tracking",
+      "status": "BUSINESS_DECISION_REQUIRED",
+      "resolvedFacts": [
+        "Milestones are Ready for Delivery, Shipped, Vessel Departed and Arrived at Port of Discharge.",
+        "ERP Orders remain imported read-only facts.",
+        "CR-001 is the only authority for the new tracking scope.",
+        "Dispatch, Delivery, POD, GPS, driver, customs, last-mile and warehouse picking are not approved."
+      ],
+      "unresolvedQuestions": [
+        "Shipment/order cardinality and reference source",
+        "Creator/editor and workspace permissions",
+        "Required data per milestone",
+        "BL Date requirement and BL Number approval",
+        "Port reference authority",
+        "Arrival date requirement",
+        "Manual/imported timestamps and backdating",
+        "Correction and evidence policy"
+      ],
+      "options": {
+        "cardinality": [
+          "A: One Shipment belongs to one ERP Order; one order may have many Shipments",
+          "B: Many-to-many through explicit shipment/order allocations",
+          "C: One-to-one"
+        ],
+        "correction": [
+          "A: Overwrite current timestamp",
+          "B: Append milestone/correction event and project current state",
+          "C: Immutable milestone with administrator data-fix process"
+        ]
+      },
+      "recommendationNotApproval": "Use many-to-many only if consolidation is real; otherwise one-order-to-many-shipments. Use append-only milestone and correction events with occurredAt separate from recordedAt. Use governed port reference with DQ fallback.",
+      "recommendationTradeoff": {
+        "pros": "Traceable corrections without premature aggregate complexity",
+        "cons": "Business consolidation behavior must be confirmed before schema closure"
+      },
+      "impacts": {
+        "dataModel": "Shipment header, ERP-order allocation, milestone events and optional authorized documents",
+        "api": "Scoped shipment and milestone contracts without ERP mutation",
+        "workflow": "Monotonic milestone guards and correction policy",
+        "frontend": "Logistics edit and separately approved projections",
+        "analytics": "Blocked until milestone/date/DQ semantics approved",
+        "security": "Country Scope, projections, permissions and IDOR",
+        "migration": "New expand-only aggregate; no quarantined table reuse",
+        "externalDependency": "Source owners for reference, milestone, port and evidence"
+      },
+      "exactDecisionRequired": "Approve cardinality, identity, actor/permission matrix, required milestone fields, date/backdating/correction and evidence rules."
+    },
+    {
+      "id": "DG-07",
+      "subject": "External Client Identity",
+      "status": "BUSINESS_SECURITY_DECISION_REQUIRED",
+      "resolvedFacts": [
+        "Microsoft Entra OIDC is the reference internal IdP.",
+        "MFA is mandatory.",
+        "Local username/password auth is not approved.",
+        "BFF HttpOnly PostgreSQL-backed sessions are the baseline.",
+        "External identity requires an explicit customer binding and cannot inherit Sales access."
+      ],
+      "options": [
+        {
+          "id": "A",
+          "name": "Microsoft Entra External ID / CIAM",
+          "security": "Purpose-built external boundary and customer journeys",
+          "azure": "External tenant/configuration, app registrations and external Conditional Access/MFA",
+          "effort": "MEDIUM_HIGH",
+          "dep001": "Tenant, licensing and consent evidence required",
+          "productionReadiness": "Blocked until provider and security evidence"
+        },
+        {
+          "id": "B",
+          "name": "Entra B2B invitations",
+          "security": "Enterprise identities represented as workforce-tenant guests",
+          "azure": "Guest invitation/redemption and access-review governance",
+          "effort": "MEDIUM",
+          "dep001": "Guest policy and tenant consent required",
+          "productionReadiness": "Blocked until guest lifecycle/offboarding evidence"
+        }
+      ],
+      "unresolvedQuestions": [
+        "Provider option and tenant boundary",
+        "Invitation and binding authority",
+        "Identity/customer multiplicity",
+        "Multiple Client Users per Customer",
+        "External session lifetime and step-up",
+        "Recovery and helpdesk",
+        "Revocation owner and propagation target",
+        "Customer-company admin capability",
+        "Binding administrator and access reviews",
+        "Audit and retention"
+      ],
+      "recommendationNotApproval": "External ID/CIAM for durable portal scale; B2B only for a small invitation-only population. Effective-date and audit bindings; revoke server sessions immediately.",
+      "recommendationTradeoff": {
+        "pros": "Clean external boundary and customer lifecycle",
+        "cons": "Higher Azure/identity effort and direct DEP-001 dependency"
+      },
+      "impacts": {
+        "dataModel": "External subject, invite state, customer binding, validity and revocation",
+        "api": "Provider-neutral admin boundary after approval",
+        "workflow": "Invite, redeem, approve binding, activate, suspend/revoke",
+        "frontend": "Isolated portal and recovery/support UX",
+        "analytics": "Usage telemetry only",
+        "security": "Tenant, MFA, session, CSRF, IDOR, abuse and revocation tests",
+        "migration": "No guessed client-user seed",
+        "externalDependency": "DEP-001"
+      },
+      "exactDecisionRequired": "Select provider and tenant boundary; approve provisioning, binding, multiplicity, session, recovery, revocation and customer-admin policy."
+    },
+    {
+      "id": "DG-08",
+      "subject": "Client Portal Projections and Actions",
+      "status": "BUSINESS_DECISION_REQUIRED",
+      "bindingRule": "External Identity -> Active Client Account Binding -> Canonical Customer -> Explicit Projection",
+      "classification": {
+        "ALLOW": [
+          "Own Orders read-only",
+          "Own trusted ERP Order Status",
+          "Own permitted Shipment Status after DG-05",
+          "Create, view and track own Complaints"
+        ],
+        "DENY": ["Financial balances", "Payments", "Cheques"],
+        "UNRESOLVED_DENY_BY_DEFAULT": [
+          "Order line quantities",
+          "Order monetary value and prices",
+          "Quotation and Quotation PDF",
+          "Invoice",
+          "BL Date and Port of Discharge",
+          "Shipment and BL documents",
+          "Project",
+          "Contacts",
+          "Complaint attachments",
+          "Product/SKU fields",
+          "Exports and downloads"
+        ]
+      },
+      "unresolvedQuestions": [
+        "Downloads and exports",
+        "Quotation, invoice, value and price visibility",
+        "BL/document visibility",
+        "Complaint attachments",
+        "One identity representing multiple Customers",
+        "Search and pagination",
+        "Visibility after relationship ends"
+      ],
+      "recommendationNotApproval": "Separate external DTOs/endpoints or explicit projections; stable server pagination; scoped search; no download/export until individually approved and audited.",
+      "recommendationTradeoff": {
+        "pros": "Strong isolation and minimum data disclosure",
+        "cons": "Smaller initial portal and additional contract surface"
+      },
+      "impacts": {
+        "dataModel": "DG-07 binding and resource provenance",
+        "api": "External projections that omit unauthorized fields",
+        "workflow": "Complaint flow only; no order mutation",
+        "frontend": "Separate portal shell with no internal navigation",
+        "analytics": "Operational telemetry only",
+        "security": "Server isolation, field omission, IDOR/BFLA, rate limits and export/file controls",
+        "migration": "Blocked until projection and identity approval",
+        "externalDependency": "DG-07 and DEP-001"
+      },
+      "exactDecisionRequired": "Resolve all UNRESOLVED fields/actions plus multiplicity, search, pagination, retention and download/export policy."
+    },
+    {
+      "id": "DG-09",
+      "subject": "R&D Dataset and Most Requested Sizes",
+      "status": "BUSINESS_DECISION_REQUIRED",
+      "resolvedFacts": [
+        "R&D is view-only.",
+        "Required views are Most Requested Sizes and Complaint insights.",
+        "Pricing, cost, margin, Finance, writes, approvals and commercial administration are denied.",
+        "Country Scope and DENY remain mandatory."
+      ],
+      "basisOptions": [
+        {
+          "id": "A",
+          "basis": "All DRAFT quotation lines",
+          "meaning": "Early expressed demand",
+          "risk": "High noise, abandoned drafts and repeated edits",
+          "availability": "AVAILABLE_NOT_RECOMMENDED_AS_STABLE_TRUTH"
+        },
+        {
+          "id": "B",
+          "basis": "Submitted quotation lines",
+          "meaning": "Internally reviewed demand",
+          "risk": "Depends on unresolved Submitted semantics",
+          "availability": "BLOCKED_BY_DG_04"
+        },
+        {
+          "id": "C",
+          "basis": "SENT quotation lines",
+          "meaning": "Demand formally issued to customers",
+          "risk": "Excludes early demand; superseding/repeated quotes need rules",
+          "availability": "AVAILABLE"
+        },
+        {
+          "id": "D",
+          "basis": "Opportunity demand lines",
+          "meaning": "Early technical demand",
+          "risk": "No canonical demand-line authority",
+          "availability": "NOT_AUTHORITATIVE"
+        },
+        {
+          "id": "E",
+          "basis": "WON quotation/order quantities",
+          "meaning": "Converted commercial demand",
+          "risk": "Strong conversion bias",
+          "availability": "PARTIAL_MAPPING_REQUIRED"
+        },
+        {
+          "id": "F",
+          "basis": "ERP Booked quantities",
+          "meaning": "Real booked demand",
+          "risk": "Lagging and excludes requested-but-not-won demand",
+          "availability": "AVAILABLE_AFTER_DQ_RECONCILIATION"
+        }
+      ],
+      "unresolvedQuestions": [
+        "Basis and whether count, quantity or both",
+        "Date basis and canonical size/unit",
+        "Customer/country identity and minimum cohort",
+        "Complaint customer and field projection",
+        "Product/SKU fields",
+        "Export, drilldown, audit and retention",
+        "Country Scope and Local/Global split"
+      ],
+      "recommendationNotApproval": "Separate SENT-quote Requested Size Frequency and Requested Size Quantity; keep ERP Booked Size Quantity separate. Aggregate and suppress customer identity by default; no raw export initially.",
+      "recommendationTradeoff": {
+        "pros": "Separates requested from realized demand and protects privacy",
+        "cons": "More metric IDs and explicit interpretation guidance"
+      },
+      "impacts": {
+        "dataModel": "Semantic views over canonical facts; no duplicate R&D truth",
+        "api": "Read-only projection with basis, version, asOf and scope metadata",
+        "workflow": "None",
+        "frontend": "R&D-only view with no write actions",
+        "analytics": "Separate metric IDs for frequency/requested quantity/booked quantity",
+        "security": "Field omission, cohort, Country Scope, DENY and audit",
+        "migration": "Semantic registry change unless materialization is approved",
+        "externalDependency": "R&D owner, privacy/security and retention approval"
+      },
+      "exactDecisionRequired": "Approve metric basis, measure, date, canonical size, projection/cohort, complaint/product fields, export/drilldown/audit/retention and geography visibility."
+    },
+    {
+      "id": "DG-10",
+      "subject": "Local / Global History and Effective Dating",
+      "status": "BUSINESS_DECISION_REQUIRED",
+      "resolvedFacts": [
+        "Current Local set is EG, LY, SA and AE.",
+        "Every other known country is Global and missing country is Unclassified plus DQ.",
+        "Country and Continent come from server reference truth.",
+        "Customer HQ and Project geography are distinct.",
+        "Local/Global is separate from Country Scope security."
+      ],
+      "options": [
+        {
+          "id": "A",
+          "name": "Historical As-Was",
+          "effect": "Event-date classification is preserved",
+          "reproducibility": "STRONG",
+          "dataImpact": "Effective-dated rule/version"
+        },
+        {
+          "id": "B",
+          "name": "Current Reclassified",
+          "effect": "All history changes with current rule",
+          "reproducibility": "WEAK",
+          "dataImpact": "Current rule only"
+        },
+        {
+          "id": "C",
+          "name": "Both modes",
+          "effect": "As-Was default plus explicit Current-Reclassified",
+          "reproducibility": "STRONG_FLEXIBLE",
+          "dataImpact": "Versioned rule, query mode and optional snapshot version"
+        }
+      ],
+      "unresolvedQuestions": [
+        "Effective date",
+        "Historical option",
+        "Versioned/effective-dated reference governance",
+        "Snapshot classification version",
+        "Whether old reports change",
+        "Customer HQ versus Project Country report matrix",
+        "Export reproducibility and asOf semantics",
+        "Golden-data/backfill impact"
+      ],
+      "recommendationNotApproval": "Option C with As-Was default; exports store mode, classification version, asOf and geography basis.",
+      "recommendationTradeoff": {
+        "pros": "Reproducible reports and strategic current-rule comparison",
+        "cons": "Versioned rules and more complex semantic queries"
+      },
+      "impacts": {
+        "dataModel": "Effective-dated classification rule and optional snapshot version",
+        "api": "classificationMode, classificationVersion, asOf and geographyBasis metadata",
+        "workflow": "Governed change with analytics-impact review",
+        "frontend": "Visible mode/basis; no client calculation",
+        "analytics": "Deterministic modes and report geography basis",
+        "security": "No Country Scope grant effect",
+        "migration": "Approved effective-date seed and optional backfill only",
+        "externalDependency": "Business effective date and analytics owner matrix"
+      },
+      "exactDecisionRequired": "Approve effective date, option, version/snapshot policy, report geography matrix and export/asOf behavior."
+    }
+  ],
+  "postApprovalContractOutputs": {
+    "DG-01": [
+      "Segment code register and owner/RACI",
+      "Role-action and import/DQ matrix",
+      "Effective-date/history policy",
+      "DB/API/analytics delta"
+    ],
+    "DG-04": [
+      "State definitions and transition/actor/guard matrix",
+      "Edit/freeze and approval/document/send rules",
+      "ETag/idempotency/error contract",
+      "Existing-data mapping"
+    ],
+    "DG-05": [
+      "Aggregate/cardinality and source ownership",
+      "Milestone required-field matrix",
+      "Permission/projection and correction/evidence policy",
+      "DB/API/workflow delta"
+    ],
+    "DG-07": [
+      "Provider/tenant decision",
+      "Provisioning/binding lifecycle and multiplicity",
+      "MFA/session/recovery/revocation and audit/retention",
+      "DEP-001 evidence plan"
+    ],
+    "DG-08": [
+      "ALLOW/DENY field matrix and binding invariant",
+      "External list/detail/action DTOs",
+      "Search/pagination/attachment/download/export/retention",
+      "IDOR/BFLA test matrix"
+    ],
+    "DG-09": [
+      "Metric IDs, definitions, canonical size/unit and date basis",
+      "Cohort/field projection/drilldown/export/audit/retention",
+      "Country Scope and Local/Global contract"
+    ],
+    "DG-10": [
+      "Effective date and rule versions",
+      "Historical/snapshot/asOf contract",
+      "Report geography-basis matrix",
+      "Export and golden/backfill plan"
+    ]
+  },
+  "implementationReadiness": {
+    "DG-01": "IMPLEMENTED",
+    "DG-04": "IMPLEMENTED",
+    "DG-05": "IMPLEMENTED",
+    "DG-07": "IMPLEMENTED_WITH_LIVE_ENTRA_EVIDENCE_PENDING",
+    "DG-08": "IMPLEMENTED",
+    "DG-09": "IMPLEMENTED",
+    "DG-10": "IMPLEMENTED"
+  },
+  "cr001ImplementationStatus": "PASS",
+  "step12": "NOT_STARTED",
+  "productionReady": false,
+  "releaseGates": {
+    "passed": 0,
+    "total": 16
+  },
+  "productionBehaviorChanged": true,
+  "historicalOptionsPreserved": true,
+  "finalAuthority": "docs/governance/cr-001-design-decision-register.json#finalBusinessApproval"
+}

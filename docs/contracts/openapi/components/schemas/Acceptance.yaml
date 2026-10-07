@@ -1,0 +1,43 @@
+type: object
+properties:
+  acceptanceId:
+    type: string
+    format: uuid
+    description: Acceptance evidence.
+  quotationId:
+    type: string
+    format: uuid
+    description: Exact immutable quotation.
+  evidenceTypeCode:
+    type: string
+    description: PO/EMAIL/WHATSAPP/SIGNED/etc.
+  documentId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    description: Evidence document if present.
+  externalReference:
+    type:
+      - string
+      - 'null'
+    description: External evidence reference.
+  acceptedAt:
+    type: string
+    format: date-time
+    description: Acceptance time.
+  verifiedByUserId:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    description: Verifier.
+  statusCode:
+    type: string
+    description: VALID/REVOKED/REPLACED.
+additionalProperties: false
+required:
+  - acceptanceId
+  - acceptedAt
+  - evidenceTypeCode
+  - quotationId

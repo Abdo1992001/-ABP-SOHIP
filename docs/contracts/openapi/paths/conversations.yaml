@@ -1,0 +1,44 @@
+get:
+  tags: [Messages]
+  summary: List the current user's conversations
+  operationId: get_conversations
+  security: [{ WebCookie: [] }, { DesktopOAuth: [] }]
+  parameters: [{ $ref: ../components/parameters/Page.yaml }, { $ref: ../components/parameters/Limit.yaml }]
+  responses:
+    '200': { description: Success, content: { application/json: { schema: { $ref: ../components/schemas/ConversationListEnvelope.yaml } } } }
+    '401': { $ref: ../components/responses/Error401.yaml }
+  x-abp-module: Messages
+  x-abp-permission: authenticated
+  x-abp-scope-rule: Active participant only
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: MessageListQuery
+  x-abp-success-schema: ConversationListEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true
+post:
+  tags: [Messages]
+  summary: Create a direct or approved group conversation
+  operationId: post_conversations
+  security: [{ WebCookie: [] }, { DesktopOAuth: [] }]
+  parameters: [{ $ref: ../components/parameters/CsrfToken.yaml }]
+  requestBody:
+    required: true
+    content: { application/json: { schema: { $ref: ../components/schemas/CreateConversationRequest.yaml } } }
+  responses:
+    '201': { description: Created, content: { application/json: { schema: { $ref: ../components/schemas/ConversationEnvelope.yaml } } } }
+    '401': { $ref: ../components/responses/Error401.yaml }
+    '422': { $ref: ../components/responses/Error422.yaml }
+  x-abp-module: Messages
+  x-abp-permission: authenticated
+  x-abp-scope-rule: Creator and explicit participants
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: CreateConversationRequest
+  x-abp-success-schema: ConversationEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

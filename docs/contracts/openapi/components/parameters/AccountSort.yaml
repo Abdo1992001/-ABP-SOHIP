@@ -1,0 +1,20 @@
+name: sort
+in: query
+required: false
+description: Stable Customer-grid ordering. accountId is always the final server-side tie-breaker.
+schema:
+  type: string
+  default: canonicalName:asc
+  enum:
+    - accountRef:asc
+    - accountRef:desc
+    - canonicalName:asc
+    - canonicalName:desc
+    - countryCode:asc
+    - countryCode:desc
+    - accountCategoryCode:asc
+    - accountCategoryCode:desc
+    - recordStatusCode:asc
+    - recordStatusCode:desc
+    - updatedAt:asc
+    - updatedAt:desc

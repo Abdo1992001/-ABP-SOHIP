@@ -1,0 +1,7 @@
+name: accountId
+in: query
+required: false
+description: Restrict results to this customer within the caller’s authorized scope.
+schema:
+  type: string
+  format: uuid

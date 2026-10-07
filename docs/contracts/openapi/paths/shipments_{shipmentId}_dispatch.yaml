@@ -1,0 +1,19 @@
+post:
+  tags: [Logistics]
+  summary: Dispatch a shipment
+  operationId: post_shipments_by_shipmentId_dispatch
+  description: 'The truck or container leaves. A vehicle reference or a container number is required.'
+  parameters: [{ name: shipmentId, in: path, required: true, schema: { type: string, format: uuid } }, { $ref: ../components/parameters/IdempotencyKey.yaml }]
+  requestBody:
+    required: true
+    content: { application/json: { schema: { type: object, additionalProperties: false, required: [expectedRowVersion, dispatchedAt], properties: { expectedRowVersion: { type: string, pattern: '^\d+$' }, dispatchedAt: { type: string, format: date-time }, vehicleRef: { type: string, maxLength: 100 }, containerNo: { type: string, maxLength: 100 }, sealNo: { type: string, maxLength: 100 }, driverName: { type: string, maxLength: 200 }, driverPhone: { type: string, maxLength: 50 }, expectedDeliveryDate: { type: string, format: date } } } } }
+  responses: { '200': { description: Recorded, content: { application/json: { schema: { $ref: ../components/schemas/ShipmentEnvelope.yaml } } } }, '400': { $ref: ../components/responses/Error400.yaml }, '404': { $ref: ../components/responses/Error404.yaml }, '412': { $ref: ../components/responses/Error412.yaml }, '422': { $ref: ../components/responses/Error422.yaml } }
+  x-abp-module: Logistics
+  x-abp-permission: shipments.edit
+  x-abp-scope-rule: Country Scope; the shipment is ready for delivery
+  x-abp-concurrency: expectedRowVersion
+  x-abp-idempotency: Required
+  x-abp-execution-mode: SYNC
+  x-abp-job-dto: false
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true

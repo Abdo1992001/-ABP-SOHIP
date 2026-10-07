@@ -1,0 +1,26 @@
+type: object
+properties:
+  name:
+    type:
+      - string
+      - 'null'
+    minLength: 1
+    maxLength: 300
+  city:
+    type:
+      - string
+      - 'null'
+  region:
+    type:
+      - string
+      - 'null'
+  addressText:
+    type:
+      - string
+      - 'null'
+  stageCode:
+    type:
+      - string
+      - 'null'
+    maxLength: 100
+additionalProperties: false

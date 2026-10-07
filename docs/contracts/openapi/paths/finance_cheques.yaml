@@ -1,0 +1,111 @@
+get:
+  tags:
+    - Cheques
+  summary: Cheque facts
+  operationId: get_finance_cheques
+  description: "Permission: cheques.view. Scope: Separate cheque permission + scope. "
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    "200":
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ChequeListEnvelope.yaml
+    "400":
+      $ref: ../components/responses/Error400.yaml
+    "401":
+      $ref: ../components/responses/Error401.yaml
+    "403":
+      $ref: ../components/responses/Error403.yaml
+    "404":
+      $ref: ../components/responses/Error404.yaml
+    "409":
+      $ref: ../components/responses/Error409.yaml
+    "412":
+      $ref: ../components/responses/Error412.yaml
+    "422":
+      $ref: ../components/responses/Error422.yaml
+    "429":
+      $ref: ../components/responses/Error429.yaml
+    "500":
+      $ref: ../components/responses/Error500.yaml
+    "503":
+      $ref: ../components/responses/Error503.yaml
+  parameters:
+    - $ref: ../components/parameters/Page.yaml
+    - $ref: ../components/parameters/Offset.yaml
+    - $ref: ../components/parameters/Limit.yaml
+    - $ref: ../components/parameters/Sort.yaml
+    - $ref: ../components/parameters/Search.yaml
+    - $ref: ../components/parameters/AccountFilter.yaml
+  x-abp-module: Cheques
+  x-abp-permission: cheques.view
+  x-abp-scope-rule: Separate cheque permission + scope
+  x-abp-concurrency: NONE
+  x-abp-idempotency: NONE
+  x-abp-request-schema: ChequeListQuery
+  x-abp-success-schema: ChequeListEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true
+  x-abp-pagination: OFFSET
+post:
+  tags:
+    - Cheques
+  summary: Create/import cheque
+  operationId: post_finance_cheques
+  description: "Permission: cheques.create. Scope: Separate cheque permission. "
+  security:
+    - WebCookie: []
+    - DesktopOAuth: []
+  responses:
+    "200":
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ChequeEnvelope.yaml
+    "400":
+      $ref: ../components/responses/Error400.yaml
+    "401":
+      $ref: ../components/responses/Error401.yaml
+    "403":
+      $ref: ../components/responses/Error403.yaml
+    "404":
+      $ref: ../components/responses/Error404.yaml
+    "409":
+      $ref: ../components/responses/Error409.yaml
+    "412":
+      $ref: ../components/responses/Error412.yaml
+    "422":
+      $ref: ../components/responses/Error422.yaml
+    "429":
+      $ref: ../components/responses/Error429.yaml
+    "500":
+      $ref: ../components/responses/Error500.yaml
+    "503":
+      $ref: ../components/responses/Error503.yaml
+  parameters:
+    - $ref: ../components/parameters/IdempotencyKey.yaml
+    - $ref: ../components/parameters/CsrfToken.yaml
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/CreateChequeRequest.yaml
+  x-abp-module: Cheques
+  x-abp-permission: cheques.create
+  x-abp-scope-rule: Separate cheque permission
+  x-abp-concurrency: NONE
+  x-abp-idempotency: Required
+  x-abp-request-schema: CreateChequeRequest
+  x-abp-success-schema: ChequeEnvelope
+  x-abp-job-dto: false
+  x-abp-execution-mode: SYNC
+  x-implementation-status: IMPLEMENTED
+  x-runtime-enabled: true
