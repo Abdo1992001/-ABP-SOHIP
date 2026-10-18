@@ -6,9 +6,11 @@ useDefault = true
 description = "Content hashes and the documented local-only MFA key"
 regexTarget = "line"
 # SHA-256 digests of the OpenAPI contract and generated client, which the
-# generic-api-key rule mistakes for keys.
+# generic-api-key rule mistakes for keys. Evidence documents use both prose
+# labels and camel-cased JSON field names for the same immutable digests.
 regexes = [
-  '''canonical OpenAPI SHA-256: [0-9a-f]{64}''',
+  '''(?i)OpenAPI(?: evidence)?(?: SHA-256)?:\s*`?[0-9a-f]{64}`?''',
+  '''(?i)"[A-Za-z0-9]*openapi[A-Za-z0-9]*sha256": "[0-9a-f]{64}"''',
   '''"(openapiSha256|generatedClientSha256)": "[0-9a-f]{64}"''',
 ]
 # docker-compose.yml is the local development stack; its fixed MFA key is

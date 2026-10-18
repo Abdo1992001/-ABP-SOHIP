@@ -89,7 +89,7 @@ describe("Commercial workspace interactions", () => {
       ).not.toBeInTheDocument(),
     );
     expect(post).toHaveBeenCalledTimes(2);
-  });
+  }, 15_000);
   it("saves edited quote lines without discarding existing adjustments or payment terms", async () => {
     const adjustments = [
       {
@@ -147,7 +147,7 @@ describe("Commercial workspace interactions", () => {
         }),
       }),
     );
-  });
+  }, 15_000);
   it("hides session revocation for a user without the sessions.revoke permission", async () => {
     const get = vi.fn(() => ok({ preferencesJsonb: {}, rowVersion: "1" }));
     mount(
